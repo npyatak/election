@@ -10,7 +10,14 @@ use unclead\multipleinput\TabularInput;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'comment')->textarea() ?>
+    <div class="row">
+    	<div class="col-md-6">
+    		<?= $form->field($model, 'comment_right')->textarea() ?>
+    	</div>
+    	<div class="col-md-6">
+    		<?= $form->field($model, 'comment_wrong')->textarea() ?>
+    	</div>
+    </div>
 
 	<hr>
 

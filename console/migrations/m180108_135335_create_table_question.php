@@ -15,13 +15,14 @@ class m180108_135335_create_table_question extends Migration
         $this->createTable('{{%question}}', [
             'id' => $this->primaryKey(),
             'title' => $this->string(255)->notNull(),
-            'comment' => $this->string(),
+            'comment_right' => $this->string(),
+            'comment_wrong' => $this->string(),
         ], $tableOptions);
 
-        $this->batchInsert('{{%question}}', ['title', 'comment'], [
-            ['Вопрос 1', 'Комментарий к первому вопросу'],
-            ['Вопрос 2', ''],
-            ['Вопрос 3', ''],
+        $this->batchInsert('{{%question}}', ['title', 'comment_right', 'comment_wrong'], [
+            ['Вопрос 1', 'Правильно', 'Неправильно'],
+            ['Вопрос 2', '', ''],
+            ['Вопрос 3', '', ''],
         ]);
     }
 

@@ -4,15 +4,6 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "question".
- *
- * @property integer $id
- * @property string $title
- * @property string $comment
- *
- * @property Answer[] $answers
- */
 class Question extends \yii\db\ActiveRecord
 {
     public $answersArray;
@@ -31,7 +22,7 @@ class Question extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['title', 'comment'], 'string', 'max' => 255],
+            [['title', 'comment_right', 'comment_wrong'], 'string', 'max' => 255],
             ['answersArray', function($attribute, $params) {
                 if(count($this->answersArray) < 2) {
                     $this->addError($attribute, 'Не менее двух вариантов');
@@ -86,7 +77,8 @@ class Question extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Заголовок',
-            'comment' => 'Комментарий',
+            'comment_right' => 'Комментарий для правильного ответа',
+            'comment_wrong' => 'Комментарий для неправильного ответа',
         ];
     }
 
