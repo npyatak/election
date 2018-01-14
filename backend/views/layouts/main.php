@@ -40,6 +40,7 @@ AppAsset::register($this);
         ['label' => 'Календарь', 'url' => ['/calendar']],
         ['label' => 'Карточки', 'url' => ['/card']],
         ['label' => 'Вопросы', 'url' => ['/question']],
+        ['label' => 'Настройки', 'url' => ['/settings']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Войти', 'url' => ['/site/login']];

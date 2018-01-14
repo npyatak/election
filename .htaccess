@@ -9,6 +9,9 @@ RewriteEngine on
 # AuthUserFile /home/promo-1/events2018.promo-group.org/docs/htpassword
 # Require valid-user
 
+#RewriteCond %{HTTP_HOST} ^admin\.(.*)$ [NC]
+#RewriteRule ^(.*)$ /backend/web/$1 [L]
+
 RewriteCond %{REQUEST_URI} ^/admin/$
 RewriteRule ^(admin)/$ /$1 [R=301,L]
 RewriteCond %{REQUEST_URI} ^/admin

@@ -27,12 +27,21 @@ use common\models\CandidateQuotation;
 
     <div class="row">
     	<div class="col-md-6">
-		    <?= $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
+		    <?= $form->field($model, 'status')->textInput() ?>
 		</div>
     	<div class="col-md-4">
             <?= $form->field($model, 'image')->widget(ElfinderInput::className());?>
 		</div>
 	</div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'video_list_1')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'video_list_2')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
 	<?= $form->field($model, 'bio')->widget(CKEditor::className(), [
 	    'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [

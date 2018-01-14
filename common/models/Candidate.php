@@ -68,7 +68,7 @@ class Candidate extends \yii\db\ActiveRecord
     }
 
     public function getUrl() {
-        return Url::toRoute(['site/candidate', 'alias' => $this->alias]);
+        return Url::toRoute(['site/candidate', 'id' => $this->id]);
     }
 
     public function getFullName() {

@@ -14,7 +14,7 @@ class m180108_135335_create_table_question extends Migration
 
         $this->createTable('{{%question}}', [
             'id' => $this->primaryKey(),
-            'title' => $this->string(255)->notNull(),
+            'title' => $this->string()->notNull(),
             'comment_right' => $this->string(),
             'comment_wrong' => $this->string(),
         ], $tableOptions);

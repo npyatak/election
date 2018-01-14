@@ -43,6 +43,9 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [
+                'settings/<section:\d>' => 'settings/index',
+            ],
         ],
     ],
     'params' => $params,

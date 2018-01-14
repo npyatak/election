@@ -1,0 +1,30 @@
+<svg width="80" height="80" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>logo</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-14946 549)">
+<g id="logo">
+<g id="Fill 1">
+<use xlink:href="#path0_fill" transform="translate(14946 -549)" fill="#252AA6"/>
+</g>
+<g id="Fill 2">
+<use xlink:href="#path1_fill" transform="translate(14951 -498.895)" fill="#FFFFFF"/>
+</g>
+<g id="Fill 3">
+<use xlink:href="#path2_fill" transform="translate(14988.8 -498.895)" fill="#FFFFFF"/>
+</g>
+<g id="Fill 5">
+<use xlink:href="#path3_fill" transform="translate(14968.7 -498.895)" fill="#FFFFFF"/>
+</g>
+<g id="Fill 7">
+<use xlink:href="#path4_fill" transform="translate(15005.6 -498.895)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 80L 80 80L 80 0L 0 0L 0 80Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 0 0L 18.1008 0L 15.6265 4.28789L 10.8761 4.28789L 10.8761 18.4242L 6.34423 18.4242L 6.34423 4.28789L 0 4.28789L 0 0Z"/>
+<path id="path2_fill" fill-rule="evenodd" d="M 5.41127 4.28789C 4.89746 4.28789 4.53014 4.6062 4.53014 5.14479L 4.53014 13.3042C 4.53014 13.8434 4.89746 14.1363 5.41127 14.1363L 14.7927 14.1363L 14.7927 18.4242L 5.41127 18.4242C 2.13014 18.4242 0 16.44 0 13.3042L 0 5.14479C 0 2.0338 2.13014 0 5.41127 0L 15.9194 0L 13.4451 4.28789L 5.41127 4.28789Z"/>
+<path id="path3_fill" fill-rule="evenodd" d="M 12.7609 14.2699L 6.21497 14.2699C 5.28032 14.2699 4.59863 13.587 4.59863 12.6513C 4.59863 11.6907 5.28032 11.0073 6.21497 11.0073L 12.7609 11.0073L 12.7609 14.2699ZM 11.9037 0L 3.42986 0L 0.954366 4.28789L 11.9037 4.28789C 12.4428 4.28789 12.7611 4.60676 12.7611 5.14535L 12.7611 7.10535L 5.65803 7.10535C 2.4 7.10535 0 9.50648 0 12.7645C 0 16.0237 2.4 18.4242 5.65803 18.4242L 17.2924 18.4242L 17.2924 5.14535C 17.2924 2.0338 15.1611 0 11.9037 0L 11.9037 0Z"/>
+<path id="path4_fill" fill-rule="evenodd" d="M 5.41239 4.28789C 4.89859 4.28789 4.53014 4.6062 4.53014 5.14479L 4.53014 13.3042C 4.53014 13.8434 4.89859 14.1363 5.41239 14.1363L 14.7927 14.1363L 14.7927 18.4242L 5.41239 18.4242C 2.13014 18.4242 0 16.44 0 13.3042L 0 5.14479C 0 2.0338 2.13014 0 5.41239 0L 15.9206 0L 13.4462 4.28789L 5.41239 4.28789Z"/>
+</defs>
+</svg>

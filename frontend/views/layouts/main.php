@@ -40,7 +40,53 @@ AppAsset::register($this);
     <!-- End Google Tag Manager (noscript) -->
     <?php endif;?>
 
-	<?= $content ?>
+    <div class="wrapper">
+        <div class="main-menu">
+            <div class="main-menu_inner">
+                <div class="pull-left">
+                    <a href="" class="logo"></a>
+                </div>
+                <div class="pull-right">
+                    <ul class="main-menu_buttons">
+                        <li><a href="" class="main-menu_btn"><i class="fa fa-bars"></i></a></li>
+                        <li><a href="" class="main-share_btn"><i class="fa fa-share-alt"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	    
+        <?= $content ?>
+    </div>
+    
+
+
+
+    <footer>
+        <div class="container">
+            <div class="vertical-title">Будь в курсе</div>
+            <div class="footer-inner clearfix">
+                <div class="pull-left">
+                    <h4>ТАСС в социальных сетях</h4>
+                    <div class="share-wrap">
+                        <a href="https://vk.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a href="https://twitter.com/tass_agency" class="share-btn" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://t.me/tass_agency" class="share-btn" target="_blank"><i class="fa fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="right">
+                        <div class="copyright">
+                            <p>Копирайты про ТАСС, откуда взяли данные рейтингов, фотки ну и вот это вот всё</p>
+                        </div>
+                        <div class="footer-logo">
+                            <a href=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 <?php $this->endBody() ?>
 </body>

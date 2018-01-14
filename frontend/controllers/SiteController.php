@@ -7,8 +7,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 
-use common\models\Category;
-use common\models\Page;
+use common\models\Candidate;
 use common\models\Question;
 
 /**
@@ -30,8 +29,6 @@ class SiteController extends Controller
     }
     
     public function actionIndex() {
-        //$pages = Page::find()->where(['status' => Page::STATUS_ACTIVE])->all();
-        $categories = Category::find()->all();
         return $this->render('index', [
             'categories' => $categories
         ]);
@@ -49,50 +46,17 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionPreview($alias) {
-        $page = $this->findPage($alias);
-        $categories = Category::find()->all();
-        $categoryPages = Page::find()->where(['category_id' => $page->category_id])->all();
-        
-        return $this->render('preview', [
-            'page' => $page,
-            'categories' => $categories,
-            'categoryPages' => $categoryPages,
-        ]);
-    }
+    public function actionCandidate($id) {
+        $candidate = Candidate::findOne($id);
+        if($candidate === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
 
-    public function actionCategory($alias) {
-        // $category = Category::find()->where(['alias' => $alias])->one();
-        // $categories = Category::find()->all();
-        // if ($category === null) {
-        //     throw new NotFoundHttpException('The requested page does not exist.');
-        // }
+        $candidates = Candidate::find()->orderBy('name')->all();
 
-        // return $this->render('category', [
-        //     'category' => $category,
-        //     'categories' => $categories,
-        // ]);
-        $category = Category::find()->where(['alias' => $alias])->one();
-        $page = Page::find()->where(['category_id' => $category->id])->orderBy('id ASC')->one();
-        $categories = Category::find()->all();
-        $categoryPages = Page::find()->where(['category_id' => $page->category_id])->all();
-        
-        return $this->render('preview', [
-            'page' => $page,
-            'categories' => $categories,
-            'categoryPages' => $categoryPages,
-        ]);
-    }
-
-    public function actionInfographic() {
-        $category = Category::find()->one();
-        $categories = Category::find()->all();
-        $page = Page::find()->where(['alias' => 'infographic'])->one();
-
-        return $this->render('infographic', [
-            'category' => $category,
-            'categories' => $categories,
-            'page' => $page,
+        return $this->render('candidate', [
+            'candidate' => $candidate,
+            'candidates' => $candidates,
         ]);
     }
 

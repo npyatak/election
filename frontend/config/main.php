@@ -15,6 +15,17 @@ return [
     'bootstrap' => ['log'/*, 'assetsAutoCompress'*/],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'js' => ['/js/jquery-3.2.1.min.js'],
+                ],
+                // 'yii\bootstrap\BootstrapAsset' => [
+                //     'js' => ['/js/bootstrap.min.js'],
+                //     'css' => ['/css/bootstrap.min.css']
+                // ],
+            ]
+        ],
         'request' => [
             'baseUrl' => '/',
             'csrfParam' => '_csrf-frontend',
@@ -46,7 +57,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<action:\w+>/<alias>' => 'site/<action>',
+                'candidate/<id:\d>' => 'site/candidate',
+                //'<action:\w+>/<alias>' => 'site/<action>',
                 // 'page/<alias>' => 'site/page',
                 // 'preview/<alias>' => 'site/preview',
                 // 'category/<alias:\w+>' => 'site/category',

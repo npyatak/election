@@ -1,0 +1,25 @@
+<svg width="40" height="40" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Group</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-19706 89)">
+<g id="Group">
+<g id="Rectangle">
+<use xlink:href="#path0_fill" transform="translate(19706 -89)" fill="#3E43C8"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(19706 -89)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(19706 -89)" fill="#252AA6"/>
+</g>
+</g>
+<g id="&#239;&#128;&#140;">
+<use xlink:href="#path2_fill" transform="translate(19717 -89)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 0L 40 0L 40 40L 0 40L 0 0Z"/>
+<path id="path1_stroke_2x" d="M 0 0L 0 -5L -5 -5L -5 0L 0 0ZM 40 0L 45 0L 45 -5L 40 -5L 40 0ZM 40 40L 40 45L 45 45L 45 40L 40 40ZM 0 40L -5 40L -5 45L 0 45L 0 40ZM 0 5L 40 5L 40 -5L 0 -5L 0 5ZM 35 0L 35 40L 45 40L 45 0L 35 0ZM 40 35L 0 35L 0 45L 40 45L 40 35ZM 5 40L 5 0L -5 0L -5 40L 5 40Z"/>
+<path id="path2_fill" d="M 16.7846 16.2567C 16.7846 16.0056 16.6842 15.7545 16.5033 15.5737L 15.1373 14.2076C 14.9565 14.0268 14.7054 13.9263 14.4542 13.9263C 14.2031 13.9263 13.952 14.0268 13.7712 14.2076L 7.18192 20.8069L 4.22879 17.8438C 4.04799 17.6629 3.79688 17.5625 3.54576 17.5625C 3.29464 17.5625 3.04353 17.6629 2.86272 17.8438L 1.49665 19.2098C 1.31585 19.3906 1.2154 19.6417 1.2154 19.8929C 1.2154 20.144 1.31585 20.3951 1.49665 20.5759L 5.13281 24.2121L 6.49888 25.5781C 6.67969 25.7589 6.9308 25.8594 7.18192 25.8594C 7.43304 25.8594 7.68415 25.7589 7.86496 25.5781L 9.23103 24.2121L 16.5033 16.9397C 16.6842 16.7589 16.7846 16.5078 16.7846 16.2567Z"/>
+</defs>
+</svg>

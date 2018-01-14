@@ -22,7 +22,7 @@ class Question extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['title', 'comment_right', 'comment_wrong'], 'string', 'max' => 255],
+            [['title', 'comment_right', 'comment_wrong'], 'string'],
             ['answersArray', function($attribute, $params) {
                 if(count($this->answersArray) < 2) {
                     $this->addError($attribute, 'Не менее двух вариантов');

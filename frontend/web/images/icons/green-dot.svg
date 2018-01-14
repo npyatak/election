@@ -1,0 +1,20 @@
+<svg width="15" height="15" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>&#208;&#191;&#208;&#187;&#208;&#176;&#209;&#136;&#208;&#186;&#208;&#176; copy 4</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-4599 24)">
+<g id="&#208;&#191;&#208;&#187;&#208;&#176;&#209;&#136;&#208;&#186;&#208;&#176; copy 4">
+<use xlink:href="#path0_fill" transform="translate(4604 -19)" fill="#F3F3F3"/>
+<mask id="mask0_outline_out">
+<rect id="mask0_outline_inv" fill="white" x="-5" y="-5" width="15" height="15" transform="translate(4604 -19)"/>
+<use xlink:href="#path0_fill" fill="black" transform="translate(4604 -19)"/>
+</mask>
+<g mask="url(#mask0_outline_out)">
+<use xlink:href="#path1_stroke_2x" transform="translate(4604 -19)" fill="#1FB38C"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 2.5C 0 1.11929 1.11929 0 2.5 0C 3.88071 0 5 1.11929 5 2.5C 5 3.88071 3.88071 5 2.5 5C 1.11929 5 0 3.88071 0 2.5Z"/>
+<path id="path1_stroke_2x" d="M 2.5 0C 3.88071 0 5 1.11929 5 2.5L -5 2.5C -5 6.64214 -1.64214 10 2.5 10L 2.5 0ZM 0 2.5C 0 1.11929 1.11929 0 2.5 0L 2.5 10C 6.64214 10 10 6.64214 10 2.5L 0 2.5ZM 2.5 5C 1.11929 5 0 3.88071 0 2.5L 10 2.5C 10 -1.64214 6.64214 -5 2.5 -5L 2.5 5ZM 2.5 -5C -1.64214 -5 -5 -1.64214 -5 2.5L 5 2.5C 5 3.88071 3.88071 5 2.5 5L 2.5 -5Z"/>
+</defs>
+</svg>
