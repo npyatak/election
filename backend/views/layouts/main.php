@@ -39,7 +39,17 @@ AppAsset::register($this);
         ['label' => 'Кандидаты', 'url' => ['/candidate']],
         ['label' => 'Календарь', 'url' => ['/calendar']],
         ['label' => 'Карточки', 'url' => ['/card']],
-        ['label' => 'Вопросы', 'url' => ['/question']],
+        ['label' => 'Тест', 'items' => [
+                ['label' => 'Вопросы', 'url' => ['/question']],
+                ['label' => 'Тексты теста', 'url' => ['/test-text']],
+            ]
+        ],
+        ['label' => 'Рейтинги', 'items' => [
+                ['label' => 'Рейтинг', 'url' => ['/rating/default']],
+                ['label' => 'Группы', 'url' => ['/rating/group']],
+                ['label' => 'Значения', 'url' => ['/rating/item']],
+            ]
+        ],
         ['label' => 'Настройки', 'url' => ['/settings']],
     ];
     if (Yii::$app->user->isGuest) {

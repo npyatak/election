@@ -60,7 +60,7 @@ AppAsset::register($this);
     
 
 
-
+    <?php if(Yii::$app->controller->action->id !== 'test'):?>
     <footer>
         <div class="container">
             <div class="vertical-title">Будь в курсе</div>
@@ -87,6 +87,7 @@ AppAsset::register($this);
             </div>
         </div>
     </footer>
+    <?php endif;?>
 
 <?php $this->endBody() ?>
 </body>

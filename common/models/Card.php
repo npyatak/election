@@ -44,7 +44,7 @@ class Card extends \yii\db\ActiveRecord
     }
 
     public function getUrl() {
-        return Url::toRoute(['site/candidate', 'alias' => $this->alias]);
+        return Url::toRoute(['site/cards', 'id' => $this->id]);
     }
 
     public function getCategoryArray() {

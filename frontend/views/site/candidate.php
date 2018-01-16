@@ -8,9 +8,12 @@
                     <h1><?=$candidate->name;?> <br><?=$candidate->surname;?></h1>
                     <p class="intro"><?=$candidate->status;?></p>
                     <div class="candidate-detail_info">
-                        <div class="candidate-percent"><span class="number">83,8%</span> <span class="place">1 место из 6</span></div>
+                        <div class="candidate-percent">
+                            <span class="number"><?=$ratingResults[$candidate->id]['score'];?>%</span> 
+                            <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
+                        </div>
                         <div class="candidate-rating">
-                            <p>Рейтинг кандидата по данным ВЦИОМ от 17 декабря 2017</p>
+                            <p><?=$rating->subtitle;?></p>
                         </div>
                     </div>
                 </div>

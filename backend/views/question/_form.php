@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use unclead\multipleinput\TabularInput;
+use common\components\CKEditor;
 ?>
 
 <div class="form">
@@ -12,10 +13,20 @@ use unclead\multipleinput\TabularInput;
 
     <div class="row">
     	<div class="col-md-6">
-    		<?= $form->field($model, 'comment_right')->textarea() ?>
+			<?= $form->field($model, 'comment_right')->widget(CKEditor::className(), [
+			    'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
+		            'allowedContent' => true,
+			    	'preset' => 'textEditor'
+			    ])
+		    ]);?>
     	</div>
     	<div class="col-md-6">
-    		<?= $form->field($model, 'comment_wrong')->textarea() ?>
+			<?= $form->field($model, 'comment_wrong')->widget(CKEditor::className(), [
+			    'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
+		            'allowedContent' => true,
+			    	'preset' => 'textEditor'
+			    ])
+		    ]);?>
     	</div>
     </div>
 
@@ -47,11 +58,7 @@ use unclead\multipleinput\TabularInput;
 	        	'title' => 'Правильный ответ',
 	        	'name' => 'is_right',
 	            'type'  => 'checkbox',
-	        ],
-	        [
-	        	'title' => 'Комментарий',
-	        	'name' => 'comment',
-	        ],
+	        ]
 	    ],
 	]) ?>
 

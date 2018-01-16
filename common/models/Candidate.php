@@ -78,4 +78,8 @@ class Candidate extends \yii\db\ActiveRecord
     public function getNameAndSurname() {
         return $this->name.' '.$this->surname;
     }
+
+    public function getRating() {
+        return RatingItem::find()->select('score')->where(['candidate_id' => $this->id, 'rating_group_id' => 1])->orderBy('rating_id DESC, id DESC')->column();
+    }
 }

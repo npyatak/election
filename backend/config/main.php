@@ -14,7 +14,11 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'rating' => [
+            'class' => 'backend\modules\rating\Module',
+        ],
+    ],
     'components' => [
         'user' => [
             'identityClass' => 'backend\models\Admin',
@@ -45,6 +49,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'settings/<section:\d>' => 'settings/index',
+                //'<module>/<controller>/<action>/<id:\w+>' => '<module>/<controller>/<action>',
             ],
         ],
     ],

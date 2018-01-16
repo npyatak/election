@@ -21,10 +21,7 @@ class m180114_161327_create_table_settings extends Migration {
         ], $tableOptions);
 
         $this->batchInsert('{{%settings}}', ['key', 'value', 'title', 'type', 'section'], [
-            ['testMainImage', '', 'Поле для картинки теста на главной ', 5, 2],
-            ['testTitle', 'тест', 'Заголовок теста', 1, 2],
-            ['testSubTitle', 'подзаголовок тест', 'Подзаголовок теста', 1, 2],
-            ['testButtonTitle', 'текст на кнопке тест', 'Текст на кнопке теста', 1, 2],
+            
         ]);
     }
 

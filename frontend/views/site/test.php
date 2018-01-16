@@ -1,58 +1,61 @@
-<?php $this->title = $page->title; ?>
-
 <?php
-$this->params['share_title'] = $page->share_title;
-$this->params['share_image'] = $page->share_image ? $page->shareImageUrl : '';
-$this->params['share_text'] = $page->share_text;
+use yii\helpers\Url;
 
-\frontend\assets\TestAsset::register($this);
+$this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
+//$this->registerCssFile(Url::toRoute('css/test.css'));
 ?>
 
-<div class="test-page wrap">
-    <div class="main">
-        <div class="content">
-            <span class="test-category-name">Господдержка</span>
-            <header class="page-header">
-                <h1 class="page-title">Тест: Что вы знаете о господдержке малого и среднего бизнеса?</h1>
-            </header>
-            <div class="page-content">
-                <div class="test-container" data-view="">
-                    <?php $count = count($questions);
-                    foreach ($questions as $key => $question):?>
-                        <div class="test-questions-cnt">
-                            <div class="test-question">
-                                <span class="test-question-counter"><?= $key + 1; ?>/<?= $count; ?></span>
-                                <span class="test-question-text"><?= $question->title; ?></span>
-                            </div>
-
-                            <?php foreach ($question->answers as $answer): ?>
-                                <div class="test-answer" onclick="onSelectAnswer(event, <?= $answer->is_right ?>)">
-                                    <span><?= $answer->title; ?></span>
-                                </div>
-                            <?php endforeach; ?>
-
-                            <p class="test-tip">
-                                <span class="test-selected-result" style="font-weight: bold;"></span>
-                                <?= $question->comment; ?>
-                            </p>
-                            <button class="test-next-btn" onclick="onNextQuestion()">Следующий вопрос ></button>
-                        </div>
-                    <?php endforeach; ?>
-                    <div class="test-results-cnt">
-                        <div class="test-result-score-cnt">
-                            <span class="test-result-score">4/8</span>
-                            <span>правильных ответов</span>
-                        </div>
-                        <div class="test-result-desc-cnt">
-                            <h2 class="test-result-title">Ваш результат</h2>
-                            <p class="test-result-description"></p>
-                            <button class="test-again-btn" onclick="onAgain()">Пройти заново</button>
-                        </div>
-                    </div>
-                </div>
+<div class="test-wrap height">
+    <div class="left-sww"></div>
+    <div class="right-sww"></div>
+    <div class="container" id="start" data-key="0">
+        <div class="pull-left">
+            <h1 class="tt-up">Политический диктант</h1>
+            <p>18 марта во всех регионах страны пройдет общероссийская проверка политической грамотности — выборы президента России. Чтобы не наделать ошибок в этой работе и проверить ваши знания о кандидатах, предлагаем ответить на вопросы нашего "политического диктанта".</p>
+            <a href="" class="btn btn-h50 btn-w200 btn-white nextQuestion">Начать</a>
+        </div>
+        <div class="pull-right">
+            <div class="test-wrap_img">
+                <img src="/images/icons/test.svg" alt="Test image">
             </div>
         </div>
     </div>
 
-    <?= $this->render('_nav_right', ['page' => $page, 'categoryPages' => $categoryPages, 'categories' => $categories, 'activeCategoryId' => $page->category_id]); ?>
+
+    <?php foreach ($questions as $key => $q):?>
+        <?php $key++;?>
+        <div class="container hide" id="q<?=$q->id;?>" data-key="<?=$key;?>">
+            <div class="pull-left">
+                <h1 class="tt-up"><?=$key;?> / <?=count($questions);?></h1>
+                <h3>Однажды один кандидат ударил оппонента этим сосудом в ходе дискуссии о качестве жизни в стране.</h3>
+                <div class="check-block hide">
+                    <img src="/images/icons/check.svg" alt="Check icon">
+                    <span></span>
+                </div>
+            </div>
+            <div class="pull-right">
+                <div class="test-checkbox">
+                    <form action="">
+                        <?php foreach ($q->answers as $i => $answer):?>
+                            <div class="form-group" data-right="<?=$answer->is_right;?>">
+                                <div class="radio">
+                                    <input id="radio_<?=$i + 1;?>" type="radio" name="question">
+                                    <label for="radio_<?=$i + 1;?>"><?=$answer->title;?></label>
+                                </div>
+                            </div>
+                        <?php endforeach;?>
+                    </form>
+                </div>
+
+                <div class="test-text hide wrong">
+                    <?=$q->comment_wrong;?>
+                </div>
+
+                <div class="test-text hide right">
+                    <?=$q->comment_right;?>
+                </div>
+                <a href="" class="continue nextQuestion">Продолжить<i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    <?php endforeach;?>
 </div>

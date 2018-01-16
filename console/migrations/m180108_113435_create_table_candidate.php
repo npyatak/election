@@ -25,8 +25,9 @@ class m180108_113435_create_table_candidate extends Migration
             'video_list_2' => $this->string(255),
         ], $tableOptions);
 
-        $this->batchInsert('{{%candidate}}', ['name', 'second_name', 'surname', 'status', 'bio', 'facts'], [
+        $this->batchInsert('{{%candidate}}', ['id', 'name', 'second_name', 'surname', 'status', 'bio', 'facts'], [
             [
+                1,
                 'Владимир',
                 'Владимирович',
                 'Путин',
@@ -80,6 +81,15 @@ class m180108_113435_create_table_candidate extends Migration
                     </div>
                     <p>2008–2012 годы работал председателем правительства РФ.</p>
                 ',
+            ],
+            [
+                2,
+                'Владимир',
+                'Вольфович',
+                'Жириновский',
+                'Кандидат от партии ЛДПР',
+                '',
+                '',
             ]
         ]);
     }

@@ -57,7 +57,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'candidate/<id:\d>' => 'site/candidate',
+                '<action:\w+>/<id:\d>' => 'site/<action>',
+                '<action:\w+>' => 'site/<action>',
                 //'<action:\w+>/<alias>' => 'site/<action>',
                 // 'page/<alias>' => 'site/page',
                 // 'preview/<alias>' => 'site/preview',

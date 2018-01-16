@@ -44,7 +44,7 @@ class Calendar extends \yii\db\ActiveRecord
     }
 
     public function getUrl() {
-        return Url::toRoute(['site/candidate', 'alias' => $this->alias]);
+        return Url::toRoute(['site/calendar', 'id' => $this->id]);
     }
 
     public function getViewDate() {

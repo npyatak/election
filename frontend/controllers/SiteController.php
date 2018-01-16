@@ -9,6 +9,11 @@ use yii\filters\AccessControl;
 
 use common\models\Candidate;
 use common\models\Question;
+use common\models\Card;
+use common\models\Calendar;
+use common\models\TestText;
+use common\models\Rating;
+use common\models\RatingItem;
 
 /**
  * Site controller
@@ -29,8 +34,22 @@ class SiteController extends Controller
     }
     
     public function actionIndex() {
+        $timeNow = time();
+        $calendar = Calendar::find()->orderBy('date ASC')->limit(2)->where(['>', 'date', time()])->orderBy('date') ->all();
+        $candidates = Candidate::find()->orderBy('name')->indexBy('id')->all();
+        $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->all();
+        $testText = TestText::find()->orderBy(new \yii\db\Expression('rand()'))->one();
+        
+        $rating = Rating::find()->orderBy('id DESC')->one();
+        $ratingResults = RatingItem::find()->where(['rating_group_id' => 1])->orderBy('score DESC')->asArray()->all();
+        
         return $this->render('index', [
-            'categories' => $categories
+            'calendar' => $calendar,
+            'candidates' => $candidates,
+            'cards' => $cards,
+            'testText' => $testText,
+            'rating' => $rating,
+            'ratingResults' => $ratingResults,
         ]);
     }
 
@@ -52,25 +71,38 @@ class SiteController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        $candidates = Candidate::find()->orderBy('name')->all();
+        $candidates = Candidate::find()->where(['not', ['id' => $id]])->orderBy('name')->all();
+
+        $rating = Rating::find()->orderBy('id DESC')->one();
+
+        $ratingResults = RatingItem::find()->select(['score', 'candidate_id'])->where(['not', ['candidate_id' => null]])->groupBy('candidate_id')->orderBy('score DESC')->indexBy('candidate_id')->asArray()->all();
+        $candidatePlace = array_search($id, array_keys($ratingResults)) + 1;
 
         return $this->render('candidate', [
             'candidate' => $candidate,
             'candidates' => $candidates,
+            'rating' => $rating,
+            'ratingResults' => $ratingResults,
+            'candidatePlace' => $candidatePlace,
+        ]);
+    }
+
+    public function actionCards($id = null) {
+        $cards = Card::find()->all();
+        $candidates = Candidate::find()->orderBy('name')->all();
+
+        return $this->render('cards', [
+            'cards' => $cards,
+            'candidates' => $candidates,
+            'id' => $id,
         ]);
     }
 
     public function actionTest() {
-        $page = $this->findPage('test');
         $questions = Question::find()->with('answers')->all();
-        $categories = Category::find()->all();
-        $categoryPages = Page::find()->where(['category_id' => $page->category_id])->all();
 
         return $this->render('test', [
-            'page' => $page,
             'questions' => $questions,
-            'categories' => $categories,
-            'categoryPages' => $categoryPages,
         ]);
     }
 
