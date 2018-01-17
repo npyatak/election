@@ -2,20 +2,10 @@
 <div class="candidate-detail">
     <div class="candidate-detail_top">
         <div class="container">
-            <div class="left-sw"></div>
             <div class="left">
                 <div class="inner">
                     <h1><?=$candidate->name;?> <br><?=$candidate->surname;?></h1>
                     <p class="intro"><?=$candidate->status;?></p>
-                    <div class="candidate-detail_info">
-                        <div class="candidate-percent">
-                            <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span> 
-                            <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
-                        </div>
-                        <div class="candidate-rating">
-                            <p><?=$rating->subtitle;?></p>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="right">
@@ -24,7 +14,17 @@
                 </div>
                 <span class="play"><i class="fa fa-play"></i></span>
             </div>
-            <div class="right-sw"></div>
+            <div class="bottom">
+                <div class="candidate-detail_info">
+                    <div class="candidate-percent">
+                        <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
+                        <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
+                    </div>
+                    <div class="candidate-rating">
+                        <p><?=$rating->subtitle;?></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="candidate-detail_middle">
