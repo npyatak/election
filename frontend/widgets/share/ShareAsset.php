@@ -9,12 +9,14 @@ use yii\web\AssetBundle;
  */
 class ShareAsset extends AssetBundle
 {
+    
+    public $sourcePath = __DIR__ . '/assets';
     //public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    //public $baseUrl = '@web';
     public $css = [
     ];
     public $js = [
-        'src/js/share.js',
+        'js/share.js',
     ];
     public $depends = [
         'frontend\assets\AppAsset',
