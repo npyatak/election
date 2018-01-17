@@ -4,6 +4,7 @@
 
 /* @var $content string */
 
+use yii\helpers\Url;
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 
@@ -33,6 +34,8 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+    <?php $share = isset($this->params['share']) ? $this->params['share'] : ['text' => '', 'title' => 'title', 'url' => Url::current([], true), 'image' => '', 'twitter' => ''];?>
+
     <?php if($_SERVER['HTTP_HOST'] !== 'election.local'):?>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KX9ZXT"
@@ -49,7 +52,9 @@ AppAsset::register($this);
                 <div class="pull-right">
                     <ul class="main-menu_buttons">
                         <li><a href="" class="main-menu_btn"><i class="fa fa-bars"></i></a></li>
-                        <li><a href="" class="main-share_btn"><i class="fa fa-share-alt"></i></a></li>
+                        <li><a href="" class="main-share_btn"><i class="fa fa-share-alt"></i></a>
+                            <?=\frontend\widgets\share\ShareWidget::widget(['share' => $share]);?>
+                        </li>
                     </ul>
                 </div>
             </div>

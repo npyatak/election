@@ -9,7 +9,7 @@
                     <p class="intro"><?=$candidate->status;?></p>
                     <div class="candidate-detail_info">
                         <div class="candidate-percent">
-                            <span class="number"><?=$ratingResults[$candidate->id]['score'];?>%</span> 
+                            <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span> 
                             <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
                         </div>
                         <div class="candidate-rating">
@@ -66,21 +66,28 @@
                     <div class="inner">
                         <h3 class="candidate-hobbies_title">Увлечения и таланты</h3>
                         <div id="candidate-hobbies" class="owl-carousel">
-                            <?php foreach ($candidate->perks as $perk):?>
+                            <?php foreach ($candidate->perks as $key => $perk):?>
+                                <?php if($key % 2 == 0):?>
                                 <div class="item">
                                     <div class="top">
-                                        <div class="candidate-hobbies_img">
-                                            <img src="<?=$perk->image;?>">
-                                        </div>
+                                        <?php if($perk->image):?>
+                                            <div class="candidate-hobbies_img">
+                                                <img src="<?=$perk->image;?>">
+                                            </div>
+                                        <?php endif;?>
                                         <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
                                     </div>
+                                <?php else:?>
                                     <div class="bottom">
-                                        <div class="candidate-hobbies_img">
-                                            <img src="/images/icons/Shape1.svg" alt="Shape">
-                                        </div>
-                                        <h3 class="candidate-hobbies_title">Участник Ночной хоккейной лиги. Впервые встал на коньки в 2011 году.</h3>
+                                        <?php if($perk->image):?>
+                                            <div class="candidate-hobbies_img">
+                                                <img src="<?=$perk->image;?>">
+                                            </div>
+                                        <?php endif;?>
+                                        <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
                                     </div>
                                 </div>
+                                <?php endif;?>
                             <?php endforeach;?>
                         </div>
                     </div>

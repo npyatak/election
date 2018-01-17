@@ -31,6 +31,7 @@ class Rating extends \yii\db\ActiveRecord
         return [
             [['title', 'subtitle'], 'required'],
             [['title', 'subtitle'], 'string', 'max' => 255],
+            ['text', 'safe'],
         ];
     }
 
@@ -43,6 +44,7 @@ class Rating extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Заголовок',
             'subtitle' => 'Подзаголовок',
+            'text' => 'Текст',
         ];
     }
 

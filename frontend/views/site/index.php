@@ -14,7 +14,7 @@ use common\models\RatingItem;
                     <a href="" class="btn btn-green btn-h50 btn-w240">Календарь выборов</a>
                 </div>
                 <div class="right-block">
-                    <img src="images/icons/kreml.svg" alt="Kreml">
+                    <img src="/images/icons/kreml.svg" alt="Kreml">
                 </div>
             </div>
             <div class="bottom">

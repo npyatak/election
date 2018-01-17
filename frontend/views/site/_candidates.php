@@ -1,5 +1,4 @@
-
-<div class="candidates">
+<div class="candidates" id="candidates">
     <div class="container">
         <div class="vertical-title">Кандидаты</div>
         <div class="candidates-inner">          

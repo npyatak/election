@@ -63,21 +63,4 @@ $(document).ready(function () {
         verticalSwiping: true,
         arrows: false
     });
-    
-    $(this)
-        .on('click', '.card-show', function () {
-            $(this).toggleClass('card-show card-hide');
-            $(this).parent().toggleClass('active');
-            $(this).parent().find('.card-text').slideDown(300);
-
-            $('html,body').animate({scrollTop: $(this).offset().top}, 500);
-        })
-        .on('click', '.card-hide', function () {
-            $(this).toggleClass('card-show card-hide');
-            $(this).parent().toggleClass('active');
-            $(this).parent().find('.card-text').slideUp(300);
-            
-            $('html,body').animate({scrollTop: $(this).offset().top}, 500);
-        })
-
 });
