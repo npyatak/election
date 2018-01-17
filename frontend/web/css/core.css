@@ -47,15 +47,18 @@ a:hover:not(.btn) {
     clear: both;
 }
 h1, .h1 {
+    margin: 0;
     font: 50px 'FiraSans-Bold', sans-serif;
     line-height: 60px;
     letter-spacing: 2px;
 }
 h3 {
+    margin: 0;
     font: 30px 'FiraSans-Bold', sans-serif;
     line-height: 40px;
 }
 h4 {
+    margin: 0;
     font: 24px 'FiraSans-Bold', sans-serif;
     line-height: 30px;
 }

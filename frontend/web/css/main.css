@@ -29,7 +29,7 @@
     display: block;
     width: 80px;
     height: 80px;
-    background-color: #f9f9f9;
+    background-color: #fff;
     color: #252aa6;
     text-align: center;
     line-height: 80px;
@@ -101,9 +101,11 @@
 .test-item {
     position: relative;
     width: 320px;
-    padding-bottom: 40px;
+    height: 230px;
+    padding-bottom: 35px;
 }
 .test-title {
+    margin-top: 0;
     margin-bottom: 20px;
     color: #fff;
 }
@@ -185,12 +187,15 @@
     display: -webkit-flex;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
     margin: 0 0 0 -40px;
 }
 .faq-item {
     position: relative;
     display: block;
     width: 33.333%;
+    height: 100%;
     -webkit-transition: .25s;
     -moz-transition: .25s;
     -ms-transition: .25s;
@@ -199,7 +204,7 @@
     padding: 80px 40px 0;
 }
 .faq-item h3 {
-    height: 160px;
+    min-height: 160px;
     color: #fff;
     -webkit-box-shadow: inset 0 -1px 0 0 #30c49d;
     -moz-box-shadow: inset 0 -1px 0 0 #30c49d;
@@ -360,6 +365,10 @@ footer .copyright p {
 .candidate-detail_middle .block {
     padding-bottom: 40px;
 }
+.candidate-detail_middle .quote {
+    margin-left: -40px;
+    width: calc(100% + 40px);
+}
 
 .candidate-detail_top .left {
     padding-top: 230px;
@@ -371,18 +380,24 @@ footer .copyright p {
     padding-top: 140px;
     background-color: #252aa6;
 }
-.candidate-detail_top .left-sw {
+.candidate-detail_top .left::after {
+    content: '';
+    display: block;
     position: absolute;
     top: 0;
     bottom: 0;
     right: 100%;
+    width: 4000px;
     background-color: #3e43c8;
 }
-.candidate-detail_top .right-sw {
+.candidate-detail_top .right::after {
+    content: '';
+    display: block;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 100%;
+    width: 4000px;
     background-color: #252aa6;
 }
 .candidate-detail_top .left .inner {
@@ -412,6 +427,11 @@ footer .copyright p {
     height: 80px;
     background-color: #f9f9f9;
     cursor: pointer;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+    transition: .25s;
 }
 .candidate-detail_top .right .play i {
     position: absolute;
@@ -423,6 +443,19 @@ footer .copyright p {
     -o-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
     color: #252aa6;
+}
+.candidate-detail_top .right .play:hover {
+    background-color: #e6e6e6;
+}
+.candidate-detail_top .right .play:active {
+    background-color: #cccccc;
+}
+.candidate-detail_top .bottom {
+    width: 440px;
+    position: absolute;
+    top: 490px;
+    left: 40px;
+    color: #fff;
 }
 .candidate-percent {
     position: relative;
@@ -1081,7 +1114,14 @@ header .left .bottom .left-sw {
 header .right {
     position: relative;
     width: 440px;
-    background: #252aa6 url('../images/icons/Oval.svg') no-repeat 0px 160px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    background: #252aa6 url('../images/icons/Oval.svg') no-repeat 0 160px;
     -webkit-background-size: 40px 320px;
     background-size: 40px 320px;
     z-index: 1;
@@ -1090,7 +1130,7 @@ header .right {
 header .right-info {
     position: relative;
 }
-header .right-info::before {
+header .right::before {
     content: '';
     display: block;
     position: absolute;
@@ -1324,9 +1364,9 @@ a.all-news {
     .vertical-title {
         position: static;
         -moz-transform: rotate(0deg);
-         -webkit-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
         -o-transform: rotate(0deg);
-         transform: rotate(0deg);
+        transform: rotate(0deg);
         writing-mode: inherit;
         padding: 40px 40px 20px;
         background-color: #fff;
@@ -1348,6 +1388,7 @@ a.all-news {
     }
     .faq-item h3 {
         height: 180px;
+        min-height: inherit;
         padding: 80px 0 40px;
         font-size: 24px;
     }
@@ -1406,6 +1447,99 @@ a.all-news {
     .test-image {
         bottom: -30px;
     }
+    .card-header .container .left {
+        padding-left: 40px;
+    }
+    .card-content_inner {
+        max-width: 100%;
+    }
+    .candidate-percent::before {
+        display: none;
+    }
+    .candidate-detail_top .right .play {
+        left: auto;
+        right: 0;
+    }
+    .candidate-detail_top .right,
+    .candidate-detail_top .right::after {
+        background-color: #3e43c8;
+    }
+    .candidate-detail_top .bottom {
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        background-color: #252aa6;
+        padding: 40px;
+    }
+    .candidate-detail_top .container {
+        flex-wrap: wrap;
+    }
+    .candidate-percent, .candidate-rating {
+        display: inline-block;
+        vertical-align: top;
+        width: auto;
+        margin-top: 0;
+    }
+    .candidate-percent .number {
+        margin-right: 10px;
+    }
+    .candidate-percent .place {
+        width: auto;
+        vertical-align: top;
+        margin-top: 5px;
+        margin-right: 30px;
+    }
+    .candidate-detail_top .left {
+        width: calc(100% - 300px);
+        padding-top: 120px;
+        padding-bottom: 40px;
+    }
+    .candidate-detail_top .left .inner {
+        max-width: inherit;
+        width: 100%;
+    }
+    .candidate-detail_top .left .inner h1 {
+        max-width: 400px;
+    }
+    .candidate-detail_top .right {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 120px 40px 40px 0;
+        width: 300px;
+    }
+    .candidate-detail_top .right .inner {
+        max-width: inherit;
+        width: 260px;
+        margin-left: 0;
+    }
+    .candidate-detail_middle .left,
+    .candidate-detail_middle .right {
+        width: 100%;
+    }
+    .candidate-detail_middle .left {
+        padding: 40px 80px;
+    }
+    .candidate-detail_middle .container {
+        flex-wrap: wrap;
+    }
+    .candidate-statistics,
+    .candidate-quotes .item {
+        height: auto;
+    }
+    .candidate-detail_middle .left h4:last-child,
+    .candidate-detail_middle .left p:last-child {
+        margin-bottom: 0;
+    }
+    .candidate-detail_middle .quote {
+        margin-bottom: 40px;
+    }
 }
 @media (max-width:1125px) {
     .faq-item {
@@ -1457,6 +1591,26 @@ a.all-news {
     }
     .footer-inner {
         padding: 0;
+    }
+}
+@media (max-width:1000px) {
+    .card-header .container .left {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+    .card-header .container .right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+@media (max-width:845px) {
+    .card-header .right::after {
+        left: auto;
+        right: 40px;
+        width: 250px;
     }
 }
 @media (max-width:767px) {
@@ -1693,6 +1847,7 @@ a.all-news {
     }
     .faq-item h3 {
         padding: 20px;
+        min-height: inherit;
         height: auto;
         font-size: 16px;
         line-height: 20px;
@@ -1738,6 +1893,51 @@ a.all-news {
     }
     .header-timeLine_middle .dot {
         display: block;
+    }
+    .card-header h1 {
+        max-width: 250px;
+        margin-top: 80px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 2px;
+    }
+    .card-header .container .left {
+        padding-left: 20px;
+    }
+    .card-header .container .right {
+        width: 100%;
+    }
+    .card-header .right::after {
+        width: 125px;
+    }
+    .cards {
+        padding-top: 30px;
+    }
+    .card-content_inner h3 {
+        margin-bottom: 20px;
+        padding-left: 20px;
+        font-size: 20px;
+    }
+    .card-title {
+        padding: 20px 40px 20px 20px;
+    }
+    .card-title h4 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .card-title i {
+        right: 13px;
+    }
+    .card-text {
+        padding: 20px;
+    }
+    .card-text p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .card-text p:not(:last-child), .card-text h4:not(:last-child) {
+        margin-bottom: 20px;
     }
 }
 @media (max-width:480px) {
