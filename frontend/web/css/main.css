@@ -1328,6 +1328,9 @@ header h2 {
 a.all-news {
     display: none;
 }
+.share-buttons {
+    display: none;
+}
 
 @media (max-width:1279px) {
     .container {

@@ -53,7 +53,7 @@ AppAsset::register($this);
                     <ul class="main-menu_buttons">
                         <li><a href="" class="main-menu_btn"><i class="fa fa-bars"></i></a></li>
                         <li><a href="" class="main-share_btn"><i class="fa fa-share-alt"></i></a>
-                            <?=\frontend\widgets\share\ShareWidget::widget(['share' => $share]);?>
+                            <div class="share-buttons"><?=\frontend\widgets\share\ShareWidget::widget(['share' => $share]);?></div>
                         </li>
                     </ul>
                 </div>
