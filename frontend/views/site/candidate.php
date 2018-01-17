@@ -1,4 +1,3 @@
-
 <div class="candidate-detail">
     <div class="candidate-detail_top">
         <div class="container">

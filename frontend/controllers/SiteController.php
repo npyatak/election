@@ -98,6 +98,13 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionCalendar($id = null) {
+        $calendar = Calendar::find()->orderBy('date ASC')->where(['>', 'date', time()])->orderBy('date') ->all();
+
+        return $this->render('calendar', [
+        ]);
+    }
+
     public function actionTest() {
         $questions = Question::find()->with('answers')->all();
 
