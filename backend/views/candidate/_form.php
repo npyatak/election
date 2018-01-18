@@ -90,7 +90,7 @@ use common\models\CandidateQuotation;
 	    		}
 	    	}?>
 	    </div>
-	    <a href="#" data-class="Perk" class="add-item">Добавить</a>
+	    <a href="#" data-class="Thesis" class="add-item">Добавить</a>
     </div>
 
     <div class="form-group">

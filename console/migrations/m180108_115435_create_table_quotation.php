@@ -15,8 +15,8 @@ class m180108_115435_create_table_quotation extends Migration
         $this->createTable('{{%quotation}}', [
             'id' => $this->primaryKey(),
             'candidate_id' => $this->integer()->notNull(),
-            'text' => $this->string(255)->notNull(),
-            'caption' => $this->string(255),
+            'text' => $this->string()->notNull(),
+            'caption' => $this->string(),
         ], $tableOptions);
         
         $this->addForeignKey("{quotation}_candidate_id_fkey", '{{%quotation}}', 'candidate_id', '{{%candidate}}', 'id', 'CASCADE', 'CASCADE');

@@ -15,8 +15,8 @@ class m180108_115735_create_table_perk extends Migration
         $this->createTable('{{%perk}}', [
             'id' => $this->primaryKey(),
             'candidate_id' => $this->integer()->notNull(),
-            'text' => $this->string(255)->notNull(),
-            'image' => $this->string(255),
+            'text' => $this->string()->notNull(),
+            'image' => $this->string(),
         ], $tableOptions);
         
         $this->addForeignKey("{perk}_candidate_id_fkey", '{{%perk}}', 'candidate_id', '{{%candidate}}', 'id', 'CASCADE', 'CASCADE');

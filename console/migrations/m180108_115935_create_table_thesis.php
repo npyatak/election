@@ -16,8 +16,8 @@ class m180108_115935_create_table_thesis extends Migration
             'id' => $this->primaryKey(),
             'candidate_id' => $this->integer()->notNull(),
             'title' => $this->string(255)->notNull(),
-            'text' => $this->string(255)->notNull(),
-            'caption' => $this->string(255),
+            'text' => $this->string()->notNull(),
+            'caption' => $this->string(),
         ], $tableOptions);
         
         $this->addForeignKey("{thesis}_candidate_id_fkey", '{{%thesis}}', 'candidate_id', '{{%candidate}}', 'id', 'CASCADE', 'CASCADE');

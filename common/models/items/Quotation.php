@@ -24,7 +24,7 @@ class Quotation extends \yii\db\ActiveRecord
         return [
             [['text'], 'required'],
             [['candidate_id'], 'integer'],
-            [['text', 'caption'], 'string', 'max' => 255],
+            [['text', 'caption'], 'string'],
             [['candidate_id'], 'exist', 'skipOnError' => false, 'targetClass' => Candidate::className(), 'targetAttribute' => ['candidate_id' => 'id']],
         ];
     }

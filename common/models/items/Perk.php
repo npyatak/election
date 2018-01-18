@@ -24,7 +24,7 @@ class Perk extends \yii\db\ActiveRecord
         return [
             [['text'], 'required'],
             [['candidate_id'], 'integer'],
-            [['text', 'image'], 'string', 'max' => 255],
+            [['text', 'image'], 'string'],
             [['candidate_id'], 'exist', 'skipOnError' => false, 'targetClass' => Candidate::className(), 'targetAttribute' => ['candidate_id' => 'id']],
         ];
     }

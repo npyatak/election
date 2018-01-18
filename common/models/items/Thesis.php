@@ -24,7 +24,7 @@ class Thesis extends \yii\db\ActiveRecord
         return [
             [['text', 'title'], 'required'],
             [['candidate_id'], 'integer'],
-            [['text', 'title', 'caption'], 'string', 'max' => 255],
+            [['text', 'title', 'caption'], 'string'],
             [['candidate_id'], 'exist', 'skipOnError' => false, 'targetClass' => Candidate::className(), 'targetAttribute' => ['candidate_id' => 'id']],
         ];
     }
