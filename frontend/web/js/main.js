@@ -22,13 +22,25 @@ $(document).ready(function () {
     });
 
     $('#candidate-hobbies').owlCarousel({
-        items: 1,
-        margin: 10,
         loop: false,
         autoplay: false,
-        nav: true,
-        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-        dots: true
+        responsive: {
+            0: {
+                items:1,
+                margin: 0,
+                nav: false,
+                dots: false,
+                touchDrag: false,
+                mouseDrag: false
+            },
+            1280: {
+                items:1,
+                margin: 10,
+                nav: true,
+                navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+                dots: true
+            }
+        }
     });
 
     $('#news-slider').owlCarousel({

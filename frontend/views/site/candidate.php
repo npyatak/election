@@ -11,12 +11,12 @@
                 <div class="inner">
                     <img src="/images/icons/fat-boy-smilingWhite.svg" alt="<?=$candidate->name;?> <?=$candidate->surname;?>">
                 </div>
-                <span class="play"><i class="fa fa-play"></i></span>
+                <span class="play"><i class="fa fa-play"></i><span class="text">Видео</span></span>
             </div>
             <div class="bottom">
                 <div class="candidate-detail_info">
                     <div class="candidate-percent">
-                        <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
+                        <span class="number">80,3<?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
                         <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
                     </div>
                     <div class="candidate-rating">
@@ -69,21 +69,21 @@
                                 <?php if($key % 2 == 0):?>
                                 <div class="item">
                                     <div class="top">
+                                        <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
                                         <?php if($perk->image):?>
                                             <div class="candidate-hobbies_img">
                                                 <img src="<?=$perk->image;?>">
                                             </div>
                                         <?php endif;?>
-                                        <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
                                     </div>
                                 <?php else:?>
                                     <div class="bottom">
+                                        <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
                                         <?php if($perk->image):?>
                                             <div class="candidate-hobbies_img">
                                                 <img src="<?=$perk->image;?>">
                                             </div>
                                         <?php endif;?>
-                                        <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
                                     </div>
                                 </div>
                                 <?php endif;?>
