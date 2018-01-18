@@ -28,7 +28,14 @@ return [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
-            ],
+                'file' => [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'categories' => ['rss'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/info.log',
+                ],
+            ]
         ],
     ],
     'params' => $params,

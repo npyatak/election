@@ -7,3 +7,4 @@
 6) composer update. Только сначала установить composer надо
 7) Создать базу данных и прописать ее в конфиге: /common/config/main-local.php
 8) php yii migrate
+9) Настроить cron для получения новостей: php yii news/rss

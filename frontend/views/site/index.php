@@ -46,27 +46,19 @@ use common\models\RatingItem;
                 <div class="news">
                     <div><h4 class="title">Новости</h4></div>
                     <div class="news_inner">
-                        <div id="news-slider" class="owl-carousel">
-                            <div class="news-item">
-                                <div class="news-item_date">18 декабря, 11:24</div>
-                                <div class="news-item_title">
-                                    <a href="">Памфилова дала старт президентской избирательной кампании</a>
-                                </div>
+                        <?php if($news):?>
+                            <div id="news-slider" class="owl-carousel">
+                                <?php foreach ($news as $n):?>
+                                    <div class="news-item">
+                                        <div class="news-item_date"><?=$n->viewDate;?></div>
+                                        <div class="news-item_title">
+                                            <a href="<?=$n->url;?>" target="_blank"><?=$n->title;?></a>
+                                        </div>
+                                        <a href="http://tass.ru/vybory-prezidenta-rf-2018" class="all-news" target="_blank">Все новости</a>
+                                    </div>
+                                <?php endforeach;?>
                             </div>
-                            <div class="news-item">
-                                <div class="news-item_date">18 декабря, 11:24</div>
-                                <div class="news-item_title">
-                                    <a href="">Памфилова назвала бессмысленными попытки публичного давления на ЦИК</a>
-                                </div>
-                            </div>
-                            <div class="news-item">
-                                <div class="news-item_date">18 декабря, 11:24</div>
-                                <div class="news-item_title">
-                                    <a href="">Инициативная группа по выдвижению Путина в президенты соберется 26 декабря на ВДНХ</a>
-                                </div>
-                                <a href="" class="all-news">Все новости</a>
-                            </div>
-                        </div>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>

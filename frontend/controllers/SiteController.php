@@ -14,6 +14,7 @@ use common\models\Calendar;
 use common\models\TestText;
 use common\models\Rating;
 use common\models\RatingItem;
+use common\models\News;
 
 /**
  * Site controller
@@ -41,7 +42,9 @@ class SiteController extends Controller
         $testText = TestText::find()->orderBy(new \yii\db\Expression('rand()'))->one();
         
         $rating = Rating::find()->orderBy('id DESC')->one();
-        $ratingResults = RatingItem::find()->where(['rating_group_id' => 1])->orderBy('score DESC')->asArray()->all();
+        $ratingResults = RatingItem::find()->where(['rating_group_id' => 1])->orderBy('score DESC')->limit(7)->asArray()->all();
+
+        $news = News::find()->orderBy('date DESC')->limit(3)->all();
         
         return $this->render('index', [
             'calendar' => $calendar,
@@ -50,6 +53,7 @@ class SiteController extends Controller
             'testText' => $testText,
             'rating' => $rating,
             'ratingResults' => $ratingResults,
+            'news' => $news,
         ]);
     }
 
