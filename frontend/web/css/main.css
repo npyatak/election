@@ -40,7 +40,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    width: 100%;
     max-width: 100%;
     background-color: #3e43c8;
     z-index: 9;
@@ -114,14 +114,7 @@
     padding-left: 40px;
     background-color: #252aa6;
 }
-#hidden-menu .container .right::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 99%;
-    top: 0;
-    bottom: 0;
-    width: 4000px;
+#hidden-menu .container .right-sw {
     background-color: #252aa6;
 }
 #hidden-menu .container .right ul::after,
@@ -1803,6 +1796,12 @@ a.all-news {
     .slick-slider_wrap .slick-dots li.slick-active button:before {
         width: 10px;
         height: 10px;
+    }
+    #hidden-menu {
+        padding-left: 40px;
+    }
+    #hidden-menu .container .right::after {
+        display: none;
     }
 }
 @media (max-width:1125px) {

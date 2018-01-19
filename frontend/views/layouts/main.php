@@ -114,6 +114,7 @@ AppAsset::register($this);
                                 </a>
                             </li>
                         </ul>
+                        <div class="right-sw"></div>
                     </div>
                 </div>
             </div>
