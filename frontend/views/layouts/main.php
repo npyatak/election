@@ -59,6 +59,65 @@ AppAsset::register($this);
                 </div>
             </div>
         </div>
+        <div id="hidden-menu">
+            <div id="hidden-menu_btn">
+                <i class="fa fa-close"></i>
+            </div>
+            <div class="hidden-menu_inner">
+                <div class="container">
+                    <div class="left">
+                        <ul>
+                            <li><a href="">Главная</a></li>
+                            <li><a href="">Календарь выборов</a></li>
+                            <li><a href="">Рейтинги</a></li>
+                            <li><a href="">Что нужно знать</a></li>
+                            <li><a href="">Тест</a></li>
+                            <li><a href="">Новости ТАСС</a></li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
+                                    <h4>Владимир <br>Жириновский</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
+                                    <h4>Геннадий <br>Зюганов</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
+                                    <h4>Владимир <br>Путин</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
+                                    <h4>Ксения <br>Собчак</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
+                                    <h4>Борис <br>Титов</h4>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
+                                    <h4>Григорий <br>Явлинский</h4>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 	    
         <?= $content ?>
     </div>

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     $(window).resize(function () {
         var cont = $('.container').width();
         var win = $(this).width();
@@ -8,6 +8,7 @@ $(document).ready(function () {
         $('.right-sw').css({right: -(win - cont) / 2});
         
         $('.height').css({'min-height':hei});
+
     });
     $(window).trigger('resize');
 
@@ -75,4 +76,16 @@ $(document).ready(function () {
         verticalSwiping: true,
         arrows: false
     });
+
+    $('.main-menu_btn').click(function (e) {
+        e.preventDefault();
+        $('#hidden-menu').fadeIn(300);
+        $('body').addClass('overflow');
+    });
+    $('#hidden-menu_btn').click(function (e) {
+        e.preventDefault();
+        $('#hidden-menu').fadeOut(300);
+        $('body').removeClass('overflow');
+    });
+
 });
