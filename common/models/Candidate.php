@@ -82,4 +82,8 @@ class Candidate extends \yii\db\ActiveRecord
     public function getRating() {
         return RatingItem::find()->select('score')->where(['candidate_id' => $this->id, 'rating_group_id' => 1])->orderBy('rating_id DESC, id DESC')->column();
     }
+
+    public static function getImageUrl($user_id, $image) {
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/images/'.$this->image);
+    }
 }

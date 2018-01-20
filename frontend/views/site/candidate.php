@@ -9,7 +9,7 @@
             </div>
             <div class="right">
                 <div class="inner">
-                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="<?=$candidate->name;?> <?=$candidate->surname;?>">
+                    <img src="<?=$candidate->image;?>" width=440 alt="<?=$candidate->name;?> <?=$candidate->surname;?>">
                 </div>
                 <span class="play"><i class="fa fa-play"></i></span>
             </div>

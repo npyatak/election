@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'header' => 'Изображение',
                     'format' => 'raw',
                     'value' => function($data) {
-                        return $data->image ? Html::img($data->image, ['width' => '200']) : '';
+                        return $data->image ? Html::img($data->imageUrl, ['width' => '200']) : '';
                     },
                 ],
 

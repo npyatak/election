@@ -37,7 +37,7 @@ class SiteController extends Controller
     public function actionIndex() {
         $timeNow = time();
         $calendar = Calendar::find()->orderBy('date ASC')->limit(2)->where(['>', 'date', time()])->orderBy('date') ->all();
-        $candidates = Candidate::find()->orderBy('name')->indexBy('id')->all();
+        $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
         $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->all();
         $testText = TestText::find()->orderBy(new \yii\db\Expression('rand()'))->one();
         
@@ -75,7 +75,7 @@ class SiteController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        $candidates = Candidate::find()->where(['not', ['id' => $id]])->orderBy('name')->all();
+        $candidates = Candidate::find()->where(['not', ['id' => $id]])->orderBy('surname')->all();
 
         $rating = Rating::find()->orderBy('id DESC')->one();
 
