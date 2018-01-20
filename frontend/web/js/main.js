@@ -31,6 +31,37 @@ $(document).ready(function () {
         dots: true
     });
 
+    // $('#calendar-dates').owlCarousel({
+    //     items: 1,
+    //     margin: 10,
+    //     loop: true,
+    //     autoplay: false,
+    //     nav: true,
+    //     navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+    //     dots: true
+    // });
+    // $('#calendar-dates').owlCarousel({
+    //     loop:true,
+    //     margin:10,
+    //     responsiveClass:true,
+    //     navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+    //     responsive:{
+    //         0:{
+    //             items:1,
+    //             nav:true
+    //         },
+    //         600:{
+    //             items:3,
+    //             nav:false
+    //         },
+    //         1000:{
+    //             items:5,
+    //             nav:true,
+    //             loop:false
+    //         }
+    //     }
+    // });
+
     $('#news-slider').owlCarousel({
         margin: 0,
         autoplay: false,
@@ -53,6 +84,29 @@ $(document).ready(function () {
                 touchDrag: false
             }
         }
+    });
+
+    $('#calendar-dates').slick({
+        dots: false,
+        slidesToShow: 6,
+        arrows: true,
+        variableWidth: true,
+        slidesToScroll: 1,
+        infinite: true,
+        // nextArrow: `
+        // <button 
+        //     class="slick-next
+        //     slick-arrow"
+        //     type="button"
+        // ></button>`,
+        // prevArrow:  `
+        // <button 
+        //     class="slick-prev
+        //     slick-arrow"
+        //     type="button"
+        // ></button>`
+        nextArrow: '<i class="fa fa-angle-right next-arrow" aria-hidden="true"></i>',
+        prevArrow: '<i class="fa fa-angle-left prev-arrow" aria-hidden="true"></i>',
     });
 
     $('.slick-slider').slick({
