@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     $(window).resize(function () {
         var cont = $('.container').width();
         var win = $(this).width();
@@ -8,6 +8,7 @@ $(document).ready(function () {
         $('.right-sw').css({right: -(win - cont) / 2});
         
         $('.height').css({'min-height':hei});
+
     });
     $(window).trigger('resize');
 
@@ -22,13 +23,25 @@ $(document).ready(function () {
     });
 
     $('#candidate-hobbies').owlCarousel({
-        items: 1,
-        margin: 10,
         loop: false,
         autoplay: false,
-        nav: true,
-        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-        dots: true
+        responsive: {
+            0: {
+                items:1,
+                margin: 0,
+                nav: false,
+                dots: false,
+                touchDrag: false,
+                mouseDrag: false
+            },
+            1280: {
+                items:1,
+                margin: 10,
+                nav: true,
+                navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+                dots: true
+            }
+        }
     });
 
     // $('#calendar-dates').owlCarousel({
@@ -117,4 +130,16 @@ $(document).ready(function () {
         verticalSwiping: true,
         arrows: false
     });
+
+    $('.main-menu_btn').click(function (e) {
+        e.preventDefault();
+        $('#hidden-menu').fadeIn(300);
+        $('body').addClass('overflow');
+    });
+    $('#hidden-menu_btn').click(function (e) {
+        e.preventDefault();
+        $('#hidden-menu').fadeOut(300);
+        $('body').removeClass('overflow');
+    });
+
 });
