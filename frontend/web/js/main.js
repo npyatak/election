@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     $(window).resize(function () {
         var cont = $('.container').width();
         var win = $(this).width();
@@ -8,6 +8,7 @@ $(document).ready(function () {
         $('.right-sw').css({right: -(win - cont) / 2});
         
         $('.height').css({'min-height':hei});
+
     });
     $(window).trigger('resize');
 
@@ -22,14 +23,57 @@ $(document).ready(function () {
     });
 
     $('#candidate-hobbies').owlCarousel({
-        items: 1,
-        margin: 10,
         loop: false,
         autoplay: false,
-        nav: true,
-        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-        dots: true
+        responsive: {
+            0: {
+                items:1,
+                margin: 0,
+                nav: false,
+                dots: false,
+                touchDrag: false,
+                mouseDrag: false
+            },
+            1280: {
+                items:1,
+                margin: 10,
+                nav: true,
+                navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+                dots: true
+            }
+        }
     });
+
+    // $('#calendar-dates').owlCarousel({
+    //     items: 1,
+    //     margin: 10,
+    //     loop: true,
+    //     autoplay: false,
+    //     nav: true,
+    //     navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+    //     dots: true
+    // });
+    // $('#calendar-dates').owlCarousel({
+    //     loop:true,
+    //     margin:10,
+    //     responsiveClass:true,
+    //     navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+    //     responsive:{
+    //         0:{
+    //             items:1,
+    //             nav:true
+    //         },
+    //         600:{
+    //             items:3,
+    //             nav:false
+    //         },
+    //         1000:{
+    //             items:5,
+    //             nav:true,
+    //             loop:false
+    //         }
+    //     }
+    // });
 
     $('#news-slider').owlCarousel({
         margin: 0,
@@ -55,6 +99,29 @@ $(document).ready(function () {
         }
     });
 
+    $('#calendar-dates').slick({
+        dots: false,
+        slidesToShow: 6,
+        arrows: true,
+        variableWidth: true,
+        slidesToScroll: 1,
+        infinite: true,
+        // nextArrow: `
+        // <button 
+        //     class="slick-next
+        //     slick-arrow"
+        //     type="button"
+        // ></button>`,
+        // prevArrow:  `
+        // <button 
+        //     class="slick-prev
+        //     slick-arrow"
+        //     type="button"
+        // ></button>`
+        nextArrow: '<i class="fa fa-angle-right next-arrow" aria-hidden="true"></i>',
+        prevArrow: '<i class="fa fa-angle-left prev-arrow" aria-hidden="true"></i>',
+    });
+
     $('.slick-slider').slick({
         dots: true,
         vertical: true,
@@ -63,4 +130,16 @@ $(document).ready(function () {
         verticalSwiping: true,
         arrows: false
     });
+
+    $('.main-menu_btn').click(function (e) {
+        e.preventDefault();
+        $('#hidden-menu').fadeIn(300);
+        $('body').addClass('overflow');
+    });
+    $('#hidden-menu_btn').click(function (e) {
+        e.preventDefault();
+        $('#hidden-menu').fadeOut(300);
+        $('body').removeClass('overflow');
+    });
+
 });
