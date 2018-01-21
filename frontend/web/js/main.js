@@ -1,5 +1,15 @@
 $(document).ready(function () {
-    
+    var maxHeight = 0;
+    var highestElement = {};
+    $('.faq-item').each(function() {
+        var thisHeight = $(this).height();
+        if (thisHeight>maxHeight) {
+            maxHeight = thisHeight;
+            highestElement = $(this);
+            $('.faq-item').css({'min-height':$(highestElement).height() + 80})
+        }
+    });
+
     $(window).resize(function () {
         var cont = $('.container').width();
         var win = $(this).width();
@@ -106,4 +116,33 @@ $(document).ready(function () {
         verticalSwiping: true,
         arrows: false
     });
+
+    $('.main-menu_btn').click(function (e) {
+        e.preventDefault();
+        $('#hidden-menu').fadeIn(300);
+        $('body').addClass('overflow');
+    });
+
+    $('#hidden-menu_btn').click(function (e) {
+        e.preventDefault();
+        $('#hidden-menu').fadeOut(300);
+        $('body').removeClass('overflow');
+    });
+    
+    $(window).scroll(function () {
+        if($(this).scrollTop() >= 10){
+            $('.main-menu').addClass('shadow');
+        }else {
+            $('.main-menu').removeClass('shadow');
+        }    
+    });
+    
+    $(this)
+        .on('click', '.main-share_btn', function (e) {
+            e.preventDefault();
+            $(this).toggleClass('show');
+            $(this).parent().find('.share-buttons').toggleClass('show');
+            $(this).find('i').toggleClass('fa fa-share-alt fa fa-close');    
+        })
+
 });

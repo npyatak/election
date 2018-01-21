@@ -3,7 +3,14 @@
     top: 0;
     left: 0;
     right: 0;
+    height: 80px;
     z-index: 8;
+}
+.main-menu.shadow {
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .main-menu_inner {
     padding-left: 20px;
@@ -16,14 +23,30 @@
 }
 .main-menu .logo {
     display: block;
+    float: left;
     width: 80px;
     height: 80px;
     background: url('../images/logo/logo.svg') no-repeat center;
     -webkit-background-size: 80px;
     background-size: 80px;
 }
-.main-menu_buttons li {
+.main-menu .slogan {
     float: left;
+    padding: 25px 0 25px 40px;
+}
+.main-menu .slogan a {
+    font-size: 24px;
+    color: #252aa6;
+}
+.main-menu_buttons li {
+    position: relative;
+    float: left;
+}
+.main-menu_buttons li:nth-child(1) {
+    z-index: 0;
+}
+.main-menu_buttons li:nth-child(2) {
+    z-index: 1;
 }
 .main-menu_buttons li a {
     display: block;
@@ -33,6 +56,61 @@
     color: #252aa6;
     text-align: center;
     line-height: 80px;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    font-size: 17px;
+    z-index: 1;
+}
+.main-menu_buttons li a:hover {
+    background-color: #e6e6e6;
+}
+.main-menu_buttons li a:active {
+    background-color: #cccccc;
+}
+.share-buttons {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 80px;
+    -webkit-transition: .45s;
+    -moz-transition: .45s;
+    -ms-transition: .45s;
+    -o-transition: .45s;
+    transition: .45s;
+    z-index: -1;
+    white-space: nowrap;
+}
+.share-buttons::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.main-menu_buttons .share-buttons a {
+    display: inline-block;
+}
+.share-buttons.show {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+.main-share_btn i {
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+}
+.main-share_btn.show i {
+    -webkit-transform: translateY(2px) rotate(-180deg);
+    -moz-transform: translateY(2px) rotate(-180deg);
+    -ms-transform: translateY(2px) rotate(-180deg);
+    -o-transform: translateY(2px) rotate(-180deg);
+    transform: translateY(2px) rotate(-180deg);
 }
 #hidden-menu {
     display: none;
@@ -56,6 +134,17 @@
     font-size: 15px;
     z-index: 1;
     cursor: pointer;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+#hidden-menu_btn:hover {
+    background-color: #e6e6e6;
+}
+#hidden-menu_btn:active {
+    background-color: #cccccc;
 }
 #hidden-menu_btn i {
     position: absolute;
@@ -89,6 +178,9 @@
 }
 #hidden-menu .container .left li {
     margin-bottom: 30px;
+}
+#hidden-menu .container .left li:nth-child(2) {
+    display: none;
 }
 #hidden-menu .container .left a {
     display: block;
@@ -313,7 +405,9 @@
 }
 .faq-item {
     position: relative;
-    display: block;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
     width: 33.333%;
     height: 100%;
     -webkit-transition: .25s;
@@ -1480,9 +1574,6 @@ header .left .left-block .btn {
 a.all-news {
     display: none;
 }
-.share-buttons {
-    display: none;
-}
 
 @media (max-width:1279px) {
     .container {
@@ -1800,8 +1891,15 @@ a.all-news {
     #hidden-menu {
         padding-left: 40px;
     }
+    #hidden-menu .container .right,
     #hidden-menu .container .right::after {
         display: none;
+    }
+    #hidden-menu .container .left {
+        width: 100%;
+    }
+    #hidden-menu .container .left li:nth-child(2) {
+        display: block;
     }
 }
 @media (max-width:1125px) {
@@ -2301,6 +2399,24 @@ a.all-news {
     .candidate-hobbies .top .candidate-hobbies_title,
     .candidate-hobbies .bottom .candidate-hobbies_title {
         padding-right: 40px;
+    }
+    #hidden-menu_btn {
+        width: 50px;
+        height: 50px;
+    }
+    #hidden-menu .container .left a {
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 1px;
+    }
+    .main-menu {
+        height: 40px;
+    }
+    .main-menu .slogan {
+        padding: 13px 0 13px 10px;
+    }
+    .main-menu .slogan a {
+        font-size: 12px;
     }
 }
 @media (max-width:480px) {

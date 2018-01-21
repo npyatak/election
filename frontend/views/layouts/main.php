@@ -48,6 +48,7 @@ AppAsset::register($this);
             <div class="main-menu_inner">
                 <div class="pull-left">
                     <a href="" class="logo"></a>
+                    <div class="slogan"><a href="">Выборы президента России</a></div>
                 </div>
                 <div class="pull-right">
                     <ul class="main-menu_buttons">
@@ -68,6 +69,7 @@ AppAsset::register($this);
                     <div class="left">
                         <ul>
                             <li><a href="">Главная</a></li>
+                            <li><a href="#candidates">Кандидаты</a></li>
                             <li><a href="">Календарь выборов</a></li>
                             <li><a href="">Рейтинги</a></li>
                             <li><a href="">Что нужно знать</a></li>
