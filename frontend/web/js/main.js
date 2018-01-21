@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    
     $(window).resize(function () {
         var cont = $('.container').width();
         var win = $(this).width();
@@ -8,7 +8,6 @@ $(document).ready(function () {
         $('.right-sw').css({right: -(win - cont) / 2});
         
         $('.height').css({'min-height':hei});
-
     });
     $(window).trigger('resize');
 
@@ -23,58 +22,14 @@ $(document).ready(function () {
     });
 
     $('#candidate-hobbies').owlCarousel({
+        items: 1,
+        margin: 10,
         loop: false,
         autoplay: false,
-        responsive: {
-            0: {
-                items:1,
-                margin: 0,
-                nav: false,
-                dots: false,
-                touchDrag: false,
-                mouseDrag: false
-            },
-            1280: {
-                items:1,
-                margin: 10,
-                nav: true,
-                navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-                dots: true
-            }
-        }
+        nav: true,
+        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+        dots: true
     });
-
-    // $('#calendar-dates').owlCarousel({
-    //     items: 1,
-    //     margin: 10,
-    //     loop: true,
-    //     autoplay: false,
-    //     nav: true,
-    //     navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-    //     dots: true
-    // });
-    // $('#calendar-dates').owlCarousel({
-    //     loop:true,
-    //     margin:10,
-    //     responsiveClass:true,
-    //     navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-    //     responsive:{
-    //         0:{
-    //             items:1,
-    //             nav:true
-    //         },
-    //         600:{
-    //             items:3,
-    //             nav:false
-    //         },
-    //         1000:{
-    //             items:5,
-    //             nav:true,
-    //             loop:false
-    //         }
-    //     }
-    // });
-
     $('#news-slider').owlCarousel({
         margin: 0,
         autoplay: false,
@@ -98,7 +53,14 @@ $(document).ready(function () {
             }
         }
     });
-
+     $('#calendar-date').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '#calendar-dates',
+      focusOnSelect: true
+    });
     $('#calendar-dates').slick({
         dots: false,
         slidesToShow: 6,
@@ -106,22 +68,36 @@ $(document).ready(function () {
         variableWidth: true,
         slidesToScroll: 1,
         infinite: true,
-        // nextArrow: `
-        // <button 
-        //     class="slick-next
-        //     slick-arrow"
-        //     type="button"
-        // ></button>`,
-        // prevArrow:  `
-        // <button 
-        //     class="slick-prev
-        //     slick-arrow"
-        //     type="button"
-        // ></button>`
+        asNavFor: '#calendar-date',
         nextArrow: '<i class="fa fa-angle-right next-arrow" aria-hidden="true"></i>',
         prevArrow: '<i class="fa fa-angle-left prev-arrow" aria-hidden="true"></i>',
+        focusOnSelect: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: true,
+              slidesToShow: 5
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: true,
+              variableWidth: false,
+              slidesToShow: 3,
+              nextArrow: `
+              <div class="next-arrow-mobile">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </div>`,
+              prevArrow: `
+              <div class="prev-arrow-mobile">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+              </div>`
+            }
+          }
+        ]
     });
-
     $('.slick-slider').slick({
         dots: true,
         vertical: true,
@@ -130,16 +106,4 @@ $(document).ready(function () {
         verticalSwiping: true,
         arrows: false
     });
-
-    $('.main-menu_btn').click(function (e) {
-        e.preventDefault();
-        $('#hidden-menu').fadeIn(300);
-        $('body').addClass('overflow');
-    });
-    $('#hidden-menu_btn').click(function (e) {
-        e.preventDefault();
-        $('#hidden-menu').fadeOut(300);
-        $('body').removeClass('overflow');
-    });
-
 });
