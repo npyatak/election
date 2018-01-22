@@ -1,9 +1,6 @@
 <div class="card-header calendar-header">
 	<div class="container">
 		<div class="left">
-			<p class="tt-top">
-				Выборы президента России
-			</p>
 			<h1 class="calendar__tt-up">
 				31 января 2018
 			</h1>

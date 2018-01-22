@@ -13,7 +13,7 @@
             <?php foreach ($candidates as $c):?>
                 <a href="<?=$c->url;?>" class="candidates-item">
                     <div class="candidates-img">
-                        <img src="<?=$c->image;?>" alt="<?=$c->nameAndSurname;?>">
+                        <img src="images/putin.svg<?=$c->image;?>" alt="<?=$c->nameAndSurname;?>">
                     </div>
                     <div class="candidate"><h4><?=$c->nameAndSurname;?></h4></div>
                 </a>

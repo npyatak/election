@@ -17,7 +17,7 @@ $(document).ready(function () {
         var hei = $(this).height();
         $('.left-sw').css({left: -(win - cont) / 2});
         $('.right-sw').css({right: -(win - cont) / 2});
-        
+
         $('.height').css({'min-height':hei});
 
     });
@@ -118,13 +118,13 @@ $(document).ready(function () {
         slidesToScroll: 1,
         infinite: true,
         // nextArrow: `
-        // <button 
+        // <button
         //     class="slick-next
         //     slick-arrow"
         //     type="button"
         // ></button>`,
         // prevArrow:  `
-        // <button 
+        // <button
         //     class="slick-prev
         //     slick-arrow"
         //     type="button"
@@ -133,13 +133,29 @@ $(document).ready(function () {
         prevArrow: '<i class="fa fa-angle-left prev-arrow" aria-hidden="true"></i>',
     });
 
-    $('.slick-slider').slick({
+    $('#slick-slider').slick({
         dots: true,
-        vertical: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        verticalSwiping: true,
-        arrows: false
+        responsive: [
+            {
+                breakpoint: 1279,
+                settings: {
+                    vertical: false,
+                    arrows: true,
+                    nextArrow: '<span class="next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>',
+                    prevArrow: '<span class="prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></span>',
+                }
+            },
+            {
+                breakpoint: 2560,
+                settings: {
+                    vertical: true,
+                    verticalSwiping: true,
+                    arrows: false
+                }
+            }
+        ]
     });
 
     $('.main-menu_btn').click(function (e) {
@@ -153,21 +169,36 @@ $(document).ready(function () {
         $('#hidden-menu').fadeOut(300);
         $('body').removeClass('overflow');
     });
-    
+
     $(window).scroll(function () {
         if($(this).scrollTop() >= 10){
             $('.main-menu').addClass('shadow');
         }else {
             $('.main-menu').removeClass('shadow');
-        }    
+        }
     });
-    
+
     $(this)
         .on('click', '.main-share_btn', function (e) {
             e.preventDefault();
             $(this).toggleClass('show');
             $(this).parent().find('.share-buttons').toggleClass('show');
-            $(this).find('i').toggleClass('fa fa-share-alt fa fa-close');    
+            $(this).find('i').toggleClass('fa fa-share-alt fa fa-close');
         })
+        .on('click', '.popup-open', function () {
+            $(this).parent().find('.question-popup').fadeIn(300);
+        })
+        .on('click', '.popup-close', function () {
+            $('.question-popup').fadeOut(300);
+        });
+
+    $('.play').click(function () {
+        $('body').addClass('overflow');
+        $('.video-modal').fadeIn(300);
+    });
+    $('.play-close').click(function () {
+        $('body').removeClass('overflow');
+        $('.video-modal').fadeOut(300);
+    });
 
 });

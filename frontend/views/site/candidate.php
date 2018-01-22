@@ -21,6 +21,11 @@
                     </div>
                     <div class="candidate-rating">
                         <p><?=$rating->subtitle;?></p>
+                        <span class="question-icon popup-open"></span>
+                        <div class="question-popup">
+                            <p>Респондентам задавался вопрос: "А если бы президентские выборы проводились в ближайшее воскресенье и список выглядел бы следующим образом, то за кого из этих кандидатов Вы бы, скорее всего, проголосовали? Вы можете дать один ответ (закрытый вопрос, один ответ)". Ежедневный объем выборки – 1000 человек.</p>
+                            <span class="popup-close">Закрыть</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,7 +106,7 @@
 <?php if($candidate->theses):?>
 <div class="slick-slider_wrap">
     <div class="container">
-        <div class="slick-slider">
+        <div id="slick-slider" class="slick-slider">
             <?php foreach ($candidate->theses as $thesis):?>
                 <div class="item">
                     <div class="container-grid">
@@ -136,5 +141,12 @@
                 </a>
             <?php endforeach;?>
         </div>
+    </div>
+</div>
+
+<div class="video-modal">
+    <div class="play-close"><i class="fa fa-close"></i></div>
+    <div class="video-modal_inner">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/k2qgadSvNyU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </div>
