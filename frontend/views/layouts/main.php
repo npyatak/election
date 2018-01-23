@@ -8,6 +8,8 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 
+use common\models\Candidate;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -67,52 +69,25 @@ AppAsset::register($this);
                 <div class="container">
                     <div class="left">
                         <ul>
-                            <li><a href="">Главная</a></li>
-                            <li><a href="">Календарь выборов</a></li>
-                            <li><a href="">Рейтинги</a></li>
-                            <li><a href="">Что нужно знать</a></li>
-                            <li><a href="">Тест</a></li>
-                            <li><a href="">Новости ТАСС</a></li>
+                            <li><a href="<?=Url::home();?>">Главная</a></li>
+                            <li><a href="<?=Url::toRoute(['site/calendar']);?>">Календарь выборов</a></li>
+                            <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li>
+                            <li><a href="<?=Url::toRoute(['site/cards']);?>">Что нужно знать</a></li>
+                            <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
+                            <li><a href="http://tass.ru/vybory-prezidenta-rf-2018" target="_blank">Новости ТАСС</a></li>
                         </ul>
                     </div>
                     <div class="right">
                         <ul>
-                            <li>
-                                <a href="">
-                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
-                                    <h4>Владимир <br>Жириновский</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
-                                    <h4>Геннадий <br>Зюганов</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
-                                    <h4>Владимир <br>Путин</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
-                                    <h4>Ксения <br>Собчак</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
-                                    <h4>Борис <br>Титов</h4>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="/images/icons/fat-boy-smilingWhite.svg" alt="Candidate name">
-                                    <h4>Григорий <br>Явлинский</h4>
-                                </a>
-                            </li>
+                            <?php $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();?>
+                            <?php foreach ($candidates as $c):?>
+                                <li>
+                                    <a href="<?=$c->url;?>">
+                                        <img src="<?=$c->image;?>">
+                                        <h4><?=$c->name;?> <br><?=$c->surname;?></h4>
+                                    </a>
+                                </li>
+                            <?php endforeach;?>
                         </ul>
                         <div class="right-sw"></div>
                     </div>

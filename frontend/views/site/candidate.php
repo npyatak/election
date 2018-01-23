@@ -16,7 +16,7 @@
             <div class="bottom">
                 <div class="candidate-detail_info">
                     <div class="candidate-percent">
-                        <span class="number">80,3<?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
+                        <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
                         <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
                     </div>
                     <div class="candidate-rating">
