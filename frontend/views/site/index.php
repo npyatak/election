@@ -71,7 +71,7 @@ use common\models\RatingItem;
                         <span class="question-icon popup-open"></span>
                         <div class="question-popup">
                             <p><?=$rating->text;?></p>
-                            <span class="popup-close">Закрыть</span>
+<!--                            <span class="popup-close">Закрыть</span>-->
                         </div>
                     </h4>
                     <p><?=$rating->subtitle;?></p>

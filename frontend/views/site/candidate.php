@@ -26,7 +26,7 @@
                         <span class="question-icon popup-open"></span>
                         <div class="question-popup">
                             <p><?=$rating->text;?></p>
-                            <span class="popup-close">Закрыть</span>
+<!--                            <span class="popup-close">Закрыть</span>-->
                         </div>
                     </div>
                 </div>

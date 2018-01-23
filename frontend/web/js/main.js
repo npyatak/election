@@ -116,10 +116,10 @@ $(document).ready(function () {
             $(this).parent().find('.share-buttons').toggleClass('show');
             $(this).find('i').toggleClass('fa fa-share-alt fa fa-close');
         })
-        .on('click', '.popup-open', function () {
+        .on('mouseenter', '.popup-open', function () {
             $(this).parent().find('.question-popup').fadeIn(300);
         })
-        .on('click', '.popup-close', function () {
+        .on('mouseleave', '.popup-open', function () {
             $('.question-popup').fadeOut(300);
         });
 

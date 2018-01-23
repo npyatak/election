@@ -250,7 +250,7 @@
 }
 #hidden-menu .right ul li img {
     display: block;
-    width: 80px;
+    height: 85px;
     margin-bottom: 20px;
 }
 #hidden-menu .right ul li a:hover,
@@ -790,7 +790,12 @@ footer .copyright p {
     top: 50%;
     left: 0;
     width: 100%;
-    border-top: 1px dotted #fff;
+    height: 2px;
+    background: url('../images/icons/circular-shape-silhouette.png') repeat-x;
+    background-position-x: 99px;
+    background-position-y: center;
+    -webkit-background-size: contain;
+    background-size: contain;
 }
 .candidate-statistics_table .t-td:first-child span {
     position: relative;
@@ -1459,8 +1464,12 @@ header .right-content li::before {
     top: 50%;
     left: 0;
     right: 0;
-    height: 12px;
-    background: url('../images/icons/simple-line.svg') left center repeat-x;
+    height: 2px;
+    background: url('../images/icons/circular-shape-silhouette.png') repeat-x;
+    background-position-x: 99px;
+    background-position-y: center;
+    -webkit-background-size: contain;
+    background-size: contain;
     z-index: 0;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
