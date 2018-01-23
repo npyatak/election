@@ -66,7 +66,14 @@ use common\models\RatingItem;
         <div class="right">
             <div class="right-info">
                 <div class="right-title">
-                    <h4><?=$rating->title;?></h4>
+                    <h4>
+                        <?=$rating->title;?>
+                        <span class="question-icon popup-open"></span>
+                        <div class="question-popup">
+                            <p>Респондентам задавался вопрос: "А если бы президентские выборы проводились в ближайшее воскресенье и список выглядел бы следующим образом, то за кого из этих кандидатов Вы бы, скорее всего, проголосовали? Вы можете дать один ответ (закрытый вопрос, один ответ)". Ежедневный объем выборки – 1000 человек.</p>
+                            <span class="popup-close">Закрыть</span>
+                        </div>
+                    </h4>
                     <p><?=$rating->subtitle;?></p>
                 </div>
                 <div class="right-content">
@@ -117,3 +124,11 @@ use common\models\RatingItem;
         </div>
     </div>
 </div>
+<style>
+    .main-menu .slogan {
+        display: none;
+    }
+    .main-menu.shadow .slogan {
+        display: block;
+    }
+</style>

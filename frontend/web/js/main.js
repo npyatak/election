@@ -16,7 +16,7 @@ $(document).ready(function () {
         var hei = $(this).height();
         $('.left-sw').css({left: -(win - cont) / 2});
         $('.right-sw').css({right: -(win - cont) / 2});
-        
+
         $('.height').css({'min-height':hei});
     });
     $(window).trigger('resize');
@@ -78,7 +78,22 @@ $(document).ready(function () {
         variableWidth: true,
         slidesToScroll: 1,
         infinite: true,
+<<<<<<< HEAD
         asNavFor: '#calendar-date',
+=======
+        // nextArrow: `
+        // <button
+        //     class="slick-next
+        //     slick-arrow"
+        //     type="button"
+        // ></button>`,
+        // prevArrow:  `
+        // <button
+        //     class="slick-prev
+        //     slick-arrow"
+        //     type="button"
+        // ></button>`
+>>>>>>> 63e2d15d471892da4d00fe05c0e75d0dce8aa0a5
         nextArrow: '<i class="fa fa-angle-right next-arrow" aria-hidden="true"></i>',
         prevArrow: '<i class="fa fa-angle-left prev-arrow" aria-hidden="true"></i>',
         focusOnSelect: true,
@@ -108,13 +123,34 @@ $(document).ready(function () {
           }
         ]
     });
+<<<<<<< HEAD
     $('.slick-slider').slick({
+=======
+
+    $('#slick-slider').slick({
+>>>>>>> 63e2d15d471892da4d00fe05c0e75d0dce8aa0a5
         dots: true,
-        vertical: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        verticalSwiping: true,
-        arrows: false
+        responsive: [
+            {
+                breakpoint: 1279,
+                settings: {
+                    vertical: false,
+                    arrows: true,
+                    nextArrow: '<span class="next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>',
+                    prevArrow: '<span class="prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></span>',
+                }
+            },
+            {
+                breakpoint: 2560,
+                settings: {
+                    vertical: true,
+                    verticalSwiping: true,
+                    arrows: false
+                }
+            }
+        ]
     });
 
     $('.main-menu_btn').click(function (e) {
@@ -128,21 +164,36 @@ $(document).ready(function () {
         $('#hidden-menu').fadeOut(300);
         $('body').removeClass('overflow');
     });
-    
+
     $(window).scroll(function () {
         if($(this).scrollTop() >= 10){
             $('.main-menu').addClass('shadow');
         }else {
             $('.main-menu').removeClass('shadow');
-        }    
+        }
     });
-    
+
     $(this)
         .on('click', '.main-share_btn', function (e) {
             e.preventDefault();
             $(this).toggleClass('show');
             $(this).parent().find('.share-buttons').toggleClass('show');
-            $(this).find('i').toggleClass('fa fa-share-alt fa fa-close');    
+            $(this).find('i').toggleClass('fa fa-share-alt fa fa-close');
         })
+        .on('click', '.popup-open', function () {
+            $(this).parent().find('.question-popup').fadeIn(300);
+        })
+        .on('click', '.popup-close', function () {
+            $('.question-popup').fadeOut(300);
+        });
+
+    $('.play').click(function () {
+        $('body').addClass('overflow');
+        $('.video-modal').fadeIn(300);
+    });
+    $('.play-close').click(function () {
+        $('body').removeClass('overflow');
+        $('.video-modal').fadeOut(300);
+    });
 
 });
