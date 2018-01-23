@@ -11,7 +11,7 @@
                 <div class="inner">
                     <img src="<?=$candidate->image;?>" width=440 alt="<?=$candidate->name;?> <?=$candidate->surname;?>">
                 </div>
-                <?php if($candidate->video_list_1 || $vandidate->video_list_2):?>
+                <?php if($candidate->video_list_1 || $candidate->video_list_2):?>
                     <span class="play"><i class="fa fa-play"></i><span class="text">Видео</span></span>
                 <?php endif;?>
             </div>
