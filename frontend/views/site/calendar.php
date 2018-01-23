@@ -6,16 +6,17 @@
 			</p>
 			<div id="calendar-date">
 				<div class="item">
-	        <h1>
+	        <h1 class="test3">
 						20 — 25 декабря 2017
-					</h1>
-	        <p>
-						Предвыборные съезды партий 
-						<br/><br/>
-						В этот период прошли предвыборные съезды парламентских партий — "Единой России", КПРФ, "Справедливой России" и ЛДПР. КПРФ выдвинула кандидатом в президенты директора подмосковного предприятия "Совхоз имени Ленина" Павла Грудинина, ЛДПР — главу высшего совета партии Владимира Жириновского. "Единая Россия" и "Справедливая Россия" приняли решение поддержать кандидатуру действующего президента Владимира Путина, который идет на выборы в качестве самовыдвиженца.
-						<br/><br/>
-						Прошли также съезды некоторых непарламентских партий. Партия роста утвердила кандидатом уполномоченного при президенте РФ по защите прав предпринимателей Бориса Титова, "Яблоко" — основателя партии Григория Явлинского. "Коммунисты России" выдвинули лидера партии Максима Сурайкина, "Гражданская инициатива" — телеведущую Ксению Собчак.
-					</p>
+					</h1>	
+					<div class="test4">
+						<p class="test1">
+							В этот период прошли предвыборные съезды парламентских партий — "Единой России", КПРФ, "Справедливой России" и ЛДПР. КПРФ выдвинула кандидатом в президенты директора подмосковного предприятия "Совхоз имени Ленина" Павла Грудинина, ЛДПР — главу высшего совета партии Владимира Жириновского. "Единая Россия" и "Справедливая Россия" приняли решение поддержать кандидатуру действующего президента Владимира Путина, который идет на выборы в качестве самовыдвиженца.
+						</p>
+						<p class="test2">
+							Прошли также съезды некоторых непарламентских партий. Партия роста утвердила кандидатом уполномоченного при президенте РФ по защите прав предпринимателей Бориса Титова, "Яблоко" — основателя партии Григория Явлинского. "Коммунисты России" выдвинули лидера партии Максима Сурайкина, "Гражданская инициатива" — телеведущую Ксению Собчак.
+						</p>
+					</div>				
 	      </div>
 	      <div class="item">
 	        <h1>
@@ -118,56 +119,56 @@
 	<div class="bottom">
 		<div id="calendar-dates" style="z-index:1;">
 				<div class="item special-date">
-	        <h3 class="item__title">20 — 25 декабря <br/> 2017</h3>
+	        <p class="item__title">20 — 25 декабря <br/> 2017</p>
 	        <p class="item__text">
 	        	Предвыборные съезды партий
 	        </p>
 	        <div class="timeline"></div>
 	      </div>
 	      <div class="item">
-	        <h3 class="item__title">27 декабря <br/> 2017</h3>
+	        <p class="item__title">27 декабря <br/> 2017</p>
 	        <p class="item__text">
 	        	ЦИК начинает принимать документы для регистрации кандидатов
 	        </p>
 	      </div>
 	      <div class="item">
-	        <h3 class="item__title">7 января <br/> 2018</h3>
+	        <p class="item__title">7 января <br/> 2018</p>
 	        <p class="item__text">
 	        	Истекает срок для выдвижения кандидатов-самовыдвиженцев
 	        </p>
 	      </div>
 	      <div class="item">
-	        <h3 class="item__title">12 января <br/> 2018</h3>
+	        <p class="item__title">12 января <br/> 2018</p>
 	        <p class="item__text">
 	        	Истекает срок выдвижения кандидатов от политических партий
 	        </p>
 	      </div>
 	      <div class="item">
-	        <h3 class="item__title">31 января <br/> 2018</h3>
+	        <p class="item__title">31 января <br/> 2018</p>
 	        <p class="item__text">
 	        	ЦИК прекращает принимать документы для регистрации кандидатов
 	        </p>
 	      </div>
 	      <div class="item">
-	        <h3 class="item__title">10 февраля <br/> 2018</h3>
+	        <p class="item__title">10 февраля <br/> 2018</p>
 	        <p class="item__text">
 	        	Истекает срок принятия решений о регистрации кандидатов
 	        </p>
 	      </div>
 	      <div class="item">
-	        <h3 class="item__title">17 февраля <br/> 2018</h3>
+	        <p class="item__title">17 февраля <br/> 2018</p>
 	        <p class="item__text">
 	        	Начало предвыборной агитации в СМИ
 	        </p>
 	      </div>
 	      <div class="item">
-	        <h3 class="item__title">25 февраля <br/> 2018</h3>
+	        <p class="item__title">25 февраля <br/> 2018</p>
 	        <p class="item__text">
 	        	Все участки начинают прием заявлений для голосования не по прописке
 	        </p>
 	      </div>
 	      <div class="item">
-	        <h3 class="item__title">2 марта <br/> 2018</h3>
+	        <p class="item__title">2 марта <br/> 2018</p>
 	        <p class="item__text">
 	        	Начинается досрочное голосование за пределами РФ
 	        </p>
@@ -191,6 +192,21 @@
 </div>	
 
 <style>
+	.test1 {
+		display: inline-block;
+		width: 44%!important;
+	}
+	.test2 {
+		display: inline-block;
+		width: 48%!important;
+	}
+	.test3 {
+		max-width: 560px!important;
+	}
+	.test4 {
+		display: flex;
+		justify-content: space-between;
+	}
 	#calendar-dates .special-date {
 		position: relative;
 	}
@@ -231,6 +247,14 @@
 	.calendar-header {
 		background-color: #1fb38c;
 	}
+	.calendar-header .right {
+    position: absolute!important;
+    bottom: 0;
+    right: 0;
+    width: 50%!important;
+    height: 500px;
+    z-index: 0;
+	}
 	.calendar-header .right:after {
 		content: '';
     display: block;
@@ -243,6 +267,10 @@
     -webkit-background-size: contain;
     background-size: contain;
 	}
+	.calendar-header .left {
+		width: 100%!important;
+		z-index: 1;
+	}
 	.calendar-header .left h1 {
     margin: 100px 0 40px 0!important;
     text-transform: uppercase;
@@ -254,16 +282,17 @@
     margin: 0;
     text-transform: initial;
     margin-bottom: 15%;
-    height: 510px;
+    height: auto;
     overflow: auto;
     padding-right: 10px;
+    width: 50%;
 	}
 	.tt-top {
 		color: #ffffff;
     line-height: 1.25;
     font-size: 24px;
     position: absolute;
-    top: 50px;
+    top: 58px;
 	}
 /*timeline styles*/
 	.calendar__line {
@@ -366,6 +395,9 @@
     margin: 30px 0 0 -1px;
     width: 272px;
 	}
+	#calendar-dates .item:focus {
+		outline: none;
+	}
 	#calendar-dates .item:hover {
 		cursor: pointer;
 	}
@@ -390,7 +422,7 @@
     display: block;
     position: absolute;
     top: -30px;
-    left: -10px;
+    left: -3px;
     height: 10px;
     width: 25px;
     background: #f9f9f9 url(../images/icons/dot.svg) no-repeat center;
@@ -398,25 +430,35 @@
 	}
 /*main slider___*/
 /*@media*/
-	@media screen and (min-width : 768px) {
-		.calendar-header .left {
-		    padding-left: 105px!important;
+	@media screen and (max-width : 1000px) {
+		.card-header .container .right {
+      top: initial;
+	    bottom: 0;
+	    right: 0;
 		}
-		.calendar-header .tt-top {
-      left: 105px;
-    }
 	}
-	@media screen and (min-width : 501px) {
-    .calendar-header .left {
-      width: 50%!important;
+	@media screen and (min-width : 768px) and (max-width : 1321px) {
+		.calendar-header .tt-top {
+      left: 142px;
     }
     .calendar-header .right {
-      width: 50%!important;
-    }
-    #calendar-header-right:after {
-	    right: 0px;
-	    width: 360px;
-	    left: inherit;
+	    padding-left: 105px!important;
+      top: inherit!important;
+			bottom: 0;
+		}
+	}
+	@media screen and (min-width : 501px) and (max-width : 800px) {
+		.calendar-header .left p {
+			width: 90%!important;
+		}
+		.calendar-header .right {
+	    margin: 0 25% 0 0;
+		}
+		.next-arrow {
+			right: 5%;
+		}
+		.prev-arrow {
+			right: 10%;
 		}
 	}
 	@media screen and (min-width : 501px) and (max-width : 767px) {
@@ -425,6 +467,20 @@
     }
 	}
 	@media screen and (max-width : 767px) {
+		.test1 {
+	    display: block;
+	    width: 100%!important;
+		}
+		.test2 {
+	    display: block;
+	    width: 100%!important;
+		}
+		.test4 {
+			display: flex;
+	    justify-content: space-between;
+	    flex-direction: column;
+	    margin-top: 30px;
+		}
 		#calendar-timeline .header-timeLine_middle {
 	  	background-color: #d0d0d0;
 	  }
@@ -435,7 +491,7 @@
     	display: none;
     }
 	}
-	@media screen and (max-width : 500px) {
+	@media screen and (max-width : 650px) {
 		.container-custom-mobile {
 	    display: block;
 	    left: 65px;
@@ -463,6 +519,7 @@
 			padding-right: 10px;
 			margin: 0 0 20px 0!important;
 			font-size: 16px;
+			width: 100%;
 		}
 		.calendar-triangle {
 			display: none;
@@ -499,19 +556,14 @@
 		}
 	}
 /*@media___*/
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
 	border-radius: 10px;
 	background-color: #1fb38c;
 }
-
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
 	width: 2px;
 }
-
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	background-color: #f9f9f9;
 }
