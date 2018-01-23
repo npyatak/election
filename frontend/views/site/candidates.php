@@ -1,0 +1,1 @@
+<?=$this->render('_candidates', ['candidates' => $candidates]);?>

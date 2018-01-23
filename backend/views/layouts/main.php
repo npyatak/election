@@ -42,6 +42,7 @@ AppAsset::register($this);
         ['label' => 'Тест', 'items' => [
                 ['label' => 'Вопросы', 'url' => ['/question']],
                 ['label' => 'Тексты теста', 'url' => ['/test-text']],
+                ['label' => 'Диапазоны теста', 'url' => ['/test-result']],
             ]
         ],
         ['label' => 'Рейтинги', 'items' => [

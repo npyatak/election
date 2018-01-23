@@ -3,6 +3,9 @@ $(document).ready(function () {
 
 	$('.nextQuestion').on('click', function(e) {
 		$('.test-wrap').removeClass('correct incorrect');
+		$('.test-wrap').removeClass('correct incorrect');
+		$(this).closest('.test-wrap').find('.right-sww').removeClass('correct-background incorrect-background');
+		$(this).closest('.right-part').removeClass('correct-background');
 		$(this).closest('.container').addClass('hide');
 		key = parseInt($(this).closest('.container').data('key'));
 		nextKey = key + 1;
@@ -22,12 +25,30 @@ $(document).ready(function () {
 	    $(this).closest('.test-checkbox').addClass('hide');
 
 	    if($(this).closest('.form-group').data('right')) {
-	       $(this).closest('.test-wrap').addClass('correct');
-	       $(this).closest('.pull-right').find('.right').removeClass('hide');
-	       rightAnswers++;
+	    	// adding correct background
+				$(this).closest('.hidden-container').addClass('correct-background');
+				$(this).closest('.test-wrap').find('.right-sww').addClass('correct-background');
+				$(this).closest('.right-part').addClass('correct-background');
+
+				$(this).closest('.right-part').find('.right').removeClass('hide');
+				$(this).closest('.right-part').find('.correct-icon').removeClass('hide');
+				rightAnswers++;
 	    } else {
-	       $(this).closest('.test-wrap').addClass('incorrect');
-	       $(this).closest('.pull-right').find('.wrong').removeClass('hide');
+				// adding incorrect background
+				$(this).closest('.hidden-container').addClass('incorrect-background');
+				$(this).closest('.test-wrap').find('.right-sww').addClass('incorrect-background');
+				$(this).closest('.right-part').addClass('incorrect-background');
+
+				$(this).closest('.right-part').find('.wrong').removeClass('hide');
+				$(this).closest('.right-part').find('.incorrect-icon').removeClass('hide');
+
+
+
+				// $(this).closest('.test-wrap').addClass('incorrect');
+				// $(this).closest('.test-wrap').find('.right-sww').addClass('incorrect-background');
+				// $(this).closest('.right-part').find('.wrong').removeClass('hide');
+				// $(this).closest('.right-part').find('.incorrect-icon').removeClass('hide');
+
 	    }
 	});
 });

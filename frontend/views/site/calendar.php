@@ -4,82 +4,42 @@
 			<p class="tt-top">
 				Выборы президента России
 			</p>
-			<h1 class="calendar__tt-up">
-				31 января 2018
-			</h1>
-			<p class="calendar__tt-sub">
-				С 18.00 ЦИК прекращает принимать документы для регистрации кандидатов. 
-				<br/><br/>
-				Также с этого дня избиратели могут подать заявление в ТИК, в МФЦ или через 
-				портал госуслуг, если они намерены <span>голосовать не по месту регистрации,</span>
-				а по месту пребывания.
-			</p>
+			<div id="calendar-date">
+				<?php foreach ($items as $item):?>
+					<div class="item <?=$item->id == $id ? 'slick-active' : '';?>" data-id="<?=$item->id;?>">
+		        		<h1>
+							<?=$item->viewDate;?>
+						</h1>
+						<?=$item->text;?>				
+		      		</div>
+		      	<?php endforeach;?>
+			</div>
 		</div>
-		<div class="right" id="calendar-header-right"></div>
+		<div class="right"></div>
 	</div>
 </div>
 <div class="dates-wrapper">
 	<div class="container-custom">
 		<div class="calendar-triangle"></div>
 	</div>
+	<div class="container-custom-mobile">
+		<div class="calendar-triangle-mobile"></div>
+	</div>
 	<div class="bottom">
-		<div id="calendar-dates" class="owl-carousel">
-				<div class="item">
-	        <h3 class="item__title"> <br/> </h3>
-	        <p class="empty"></p>
-	      </div>
-	      <div class="item">
-	        <h3 class="item__title">27 декабря <br/> 2017</h3>
-	        <p class="item__text">
-	        	ЦИК начинает принимать документы для регистрации кандидатов
-	        </p>
-	      </div>
-	      <div class="item">
-	        <h3 class="item__title">7 января <br/> 2018</h3>
-	        <p class="item__text">
-	        	Истекает срок для выдвижения кандидатов-самовыдвиженцев
-	        </p>
-	      </div>
-	      <div class="item">
-	        <h3 class="item__title">12 января <br/> 2018</h3>
-	        <p class="item__text">
-	        	Истекает срок выдвижения кандидатов от политических партий
-	        </p>
-	      </div>
-	      <div class="item">
-	        <h3 class="item__title">31 января <br/> 2018</h3>
-	        <p class="item__text">
-	        	ЦИК прекращает принимать документы для регистрации кандидатов
-	        </p>
-	      </div>
-	      <div class="item">
-	        <h3 class="item__title">10 февраля <br/> 2018</h3>
-	        <p class="item__text">
-	        	Истекает срок принятия решений о регистрации кандидатов
-	        </p>
-	      </div>
-	      <div class="item">
-	        <h3 class="item__title">17 февраля <br/> 2018</h3>
-	        <p class="item__text">
-	        	Начало предвыборной агитации в СМИ
-	        </p>
-	      </div>
-	      <div class="item">
-	        <h3 class="item__title">25 февраля <br/> 2018</h3>
-	        <p class="item__text">
-	        	Все участки начинают прием заявлений для голосования не по прописке
-	        </p>
-	      </div>
-	      <div class="item">
-	        <h3 class="item__title">2 марта <br/> 2018</h3>
-	        <p class="item__text">
-	        	Начинается досрочное голосование за пределами РФ
-	        </p>
-	      </div>
+		<div id="calendar-dates" style="z-index:1;">
+			<?php foreach ($items as $item):?>
+				<div class="item slick-active" data-id=<?=$item->id;?>>
+			        <p class="item__title"><?=$item->viewDate;?></p>
+			        <p class="item__text">
+			        	<?=$item->title;?>
+			        </p>
+			        <div class="timeline"></div>
+		      	</div>
+		    <?php endforeach;?>
 	  </div>
-	  <div class="testClass">
+	  <div class="calendar__line">
 		  <div class="container-custom">
-				<div class="header-timeLine" id="test">
+				<div class="header-timeLine" id="calendar-timeline">
 				    <div class="header-timeLine_middle">
 			        <div class="green-dot"></div>
 			        <span class="dot dot-1"></span>
@@ -92,15 +52,133 @@
 			</div>
 		</div>	
 	</div>
-</div>	
+</div>
+
+<?php 
+	$initial = $id ? $id : 0;
+	$script = "
+		$('#calendar-date').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			initialSlide: ".$initial.",
+			arrows: false,
+			fade: true,
+			asNavFor: '#calendar-dates',
+			focusOnSelect: true
+		});
+
+
+	    $('#calendar-dates').slick({
+	        dots: false,
+	        slidesToShow: 6,
+			initialSlide: ".$initial.",
+	        arrows: true,
+	        variableWidth: true,
+	        slidesToScroll: 1,
+	        infinite: true,
+
+	        asNavFor: '#calendar-date',
+
+	        nextArrow: '<i class=\"fa fa-angle-right next-arrow\" aria-hidden=\"true\"></i>',
+	        prevArrow: '<i class=\"fa fa-angle-left prev-arrow\" aria-hidden=\"true\"></i>',
+	        focusOnSelect: true,
+	        responsive: [
+	          {
+	            breakpoint: 768,
+	            settings: {
+	              arrows: true,
+	              slidesToShow: 5
+	            }
+	          },
+	          {
+	            breakpoint: 480,
+	            settings: {
+	              arrows: true,
+	              variableWidth: false,
+	              slidesToShow: 3,
+	              nextArrow: `
+	              <div class=\"next-arrow-mobile\">
+	                <i class=\"fa fa-angle-right\" aria-hidden=\"true\"></i>
+	              </div>`,
+	              prevArrow: `
+	              <div class=\"prev-arrow-mobile\">
+	                <i class=\"fa fa-angle-left\" aria-hidden=\"true\"></i>
+	              </div>`
+	            }
+	          }
+	        ]
+	    });
+	";
+
+	$this->registerJs($script, yii\web\View::POS_END);
+?>
+
 
 <style>
-	.testClass {
-		position: absolute;
-    width: 100%;
-    top: 50%;
+	.test1 {
+		display: inline-block;
+		width: 44%!important;
 	}
-	#calendar-header-right:after {
+	.test2 {
+		display: inline-block;
+		width: 48%!important;
+	}
+	.test3 {
+		max-width: 560px!important;
+	}
+	.test4 {
+		display: flex;
+		justify-content: space-between;
+	}
+	#calendar-dates .special-date {
+		position: relative;
+	}
+	#calendar-dates .special-date .item__text::before {
+    position: absolute;
+    top: -37px;
+    left: 80px;
+    width: 25px;
+    height: 25px;
+    background: #f9f9f9 url(../images/icons/green-dot.svg) no-repeat center;
+    z-index: 2;
+	}
+	#calendar-dates .special-date .timeline {
+		position: absolute;
+    height: 1px;
+    background-color: #1fb38c;
+    width: 60px;
+    bottom: 46%;
+    z-index: 1;
+    right: 90px;
+	}
+	.container-custom {
+		margin-left: 105px;
+	}
+	.container-custom-mobile {
+		display: none;
+	}
+	.calendar-triangle {
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 20px 10px 0 10px;
+		border-color: #1fb38c transparent transparent transparent;
+	}
+	.calendar-triangle-mobile {
+		display: none;		
+	}	
+	.calendar-header {
+		background-color: #1fb38c;
+	}
+	.calendar-header .right {
+    position: absolute!important;
+    bottom: 0;
+    right: 0;
+    width: 50%!important;
+    height: 500px;
+    z-index: 0;
+	}
+	.calendar-header .right:after {
 		content: '';
     display: block;
     position: absolute;
@@ -112,121 +190,48 @@
     -webkit-background-size: contain;
     background-size: contain;
 	}
-	.calendar-triangle {
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 20px 10px 0 10px;
-		border-color: #1fb38c transparent transparent transparent;
+	.calendar-header .left {
+		width: 100%!important;
+		z-index: 1;
 	}
-	.calendar-header {
-		background-color: #1fb38c;
+	.calendar-header .left h1 {
+    margin: 100px 0 40px 0!important;
+    text-transform: uppercase;
 	}
-	.calendar__tt-up {
-		margin-bottom: 40px!important;
-	}
-	.calendar__tt-sub {
+	.calendar-header .left p {
 		color: #ffffff;
     line-height: 1.67;
     font-size: 18px;
     margin: 0;
     text-transform: initial;
-    margin-bottom: 175px;
-	}
-	.calendar__tt-sub span {
-		font-weight: normal;
-		text-decoration: underline;
+    margin-bottom: 15%;
+    height: auto;
+    overflow: auto;
+    padding-right: 10px;
+    width: 50%;
 	}
 	.tt-top {
 		color: #ffffff;
     line-height: 1.25;
     font-size: 24px;
     position: absolute;
-    top: 50px;
+    top: 58px;
 	}
-	/*#calendar-dates .owl-nav {
+/*timeline styles*/
+	.calendar__line {
 		position: absolute;
-    right: 0;
-    top: -80px;
-    width: 100px;
-    display: flex;
-    color: #fff;
-    font-size: 40px;
-    align-items: center;
-    justify-content: space-between;
-	}*/
-	#calendar-dates .slick-next {
-		position: absolute;
-    right: 0;
-    top: -80px;
-    width: 100px;
-    display: flex;
-    color: #fff;
-    font-size: 40px;
+    width: 100%;
+    top: 48%;
 	}
-	#calendar-dates .slick-prev {
-		position: absolute;
-    left: 0;
-    top: -80px;
-    width: 100px;
-    display: flex;
-    color: #fff;
-    font-size: 40px;
-	}
-	.next-arrow {
-		position: absolute;
-    right: 12%;
-    top: -80px;
-    display: flex;
-    color: #fff;
-    font-size: 40px;
-	}
-	.prev-arrow {
-		position: absolute;
-    right: 15%;
-    top: -80px;
-    display: flex;
-    color: #fff;
-    font-size: 40px;
-	}
-	#calendar-dates .item {
-    margin: 30px 0 0 -10px;
-    width: 256px;
-	}
-	#calendar-dates .item__title {
-		max-width: 160px;
-		color: #252aa6;
-		font-size: 18px;
-		line-height: 1.39;
-	}
-	#calendar-dates .item__text {
-		max-width: 160px;
-		color: #636363;
-		font-size: 14px;
-		line-height: 1.43;
-		margin: 50px 0 0 0;
-		position: relative;
-	}
-	#calendar-dates .item__text::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: -25px;
-    left: -10px;
-    height: 10px;
-    width: 25px;
-    background: #f9f9f9 url(../images/icons/dot.svg) no-repeat center;
-    z-index: 2;
-	}
-	#test {
+	#calendar-timeline {
 		position: absolute;
 		width: 100%;
 		top: 50%;
 	}
-	#test .header-timeLine_middle .green-dot {
-		left: 0;
+	#calendar-timeline .header-timeLine_middle .green-dot {
+		left: -5px;
 	}
-	#test .header-timeLine_middle:after {
+	#calendar-timeline .header-timeLine_middle:after {
     content: '';
     display: block;
     position: absolute;
@@ -237,7 +242,7 @@
     background-color: #d0d0d0;
     z-index: 1;
 	}
-	#test .header-timeLine_middle:before {
+	#calendar-timeline .header-timeLine_middle:before {
     content: '';
     display: block;
     position: absolute;
@@ -248,13 +253,242 @@
     background-color: #d0d0d0;
     z-index: 1;
 	}
+/*timeline styles___*/
+/*slick modifications*/
+	.next-arrow {
+		position: absolute;
+    right: 12%;
+    top: -80px;
+    display: flex;
+    color: #fff;
+    font-size: 40px;
+	}
+	.next-arrow-mobile {
+    position: absolute;
+    right: -25px;
+    top: 0;
+    color: #252aa6;
+    font-size: 30px;
+    align-self: center;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+	}
+	.next-arrow-mobile i {
+		display: flex;
+		align-self: center;
+	}
+	.next-arrow:hover {
+		cursor: pointer;
+	}
+	.prev-arrow {
+		position: absolute;
+    right: 20%;
+    top: -80px;
+    display: flex;
+    color: #fff;
+    font-size: 40px;
+	}
+	.prev-arrow-mobile {
+    position: absolute;
+    left: -25px;
+    top: 0;
+    color: #252aa6;
+    font-size: 30px;
+    align-self: center;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+	}
+	.prev-arrow-mobile i {
+		display: flex;
+		align-self: center;
+	}
+	.prev-arrow:hover {
+		cursor: pointer;
+	}
+/*slick modifications___*/
+/*main slider*/
 	.dates-wrapper {
 		background: #f9f9f9;
 		padding-bottom: 30px;
 		position: relative;
 	}
-	.container-custom {
-		margin-left: 243px;
+	#calendar-dates .item {
+    margin: 30px 0 0 -1px;
+    width: 272px;
 	}
+	#calendar-dates .item:focus {
+		outline: none;
+	}
+	#calendar-dates .item:hover {
+		cursor: pointer;
+	}
+	#calendar-dates .item__title {
+		max-width: 160px;
+		color: #252aa6;
+		font-size: 18px;
+		line-height: 1.39;
+    margin-left: 105px;
+	}
+	#calendar-dates .item__text {
+		max-width: 160px;
+		color: #636363;
+		font-size: 14px;
+		line-height: 1.43;
+		margin: 50px 0 0 0;
+		position: relative;
+    margin-left: 105px;
+	}
+	#calendar-dates .item__text::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -30px;
+    left: -3px;
+    height: 10px;
+    width: 25px;
+    background: #f9f9f9 url(../images/icons/dot.svg) no-repeat center;
+    z-index: 2;
+	}
+/*main slider___*/
+/*@media*/
+	@media screen and (max-width : 1000px) {
+		.card-header .container .right {
+      top: initial;
+	    bottom: 0;
+	    right: 0;
+		}
+	}
+	@media screen and (min-width : 768px) and (max-width : 1321px) {
+		.calendar-header .tt-top {
+      left: 142px;
+    }
+    .calendar-header .right {
+	    padding-left: 105px!important;
+      top: inherit!important;
+			bottom: 0;
+		}
+	}
+	@media screen and (min-width : 501px) and (max-width : 800px) {
+		.calendar-header .left p {
+			width: 90%!important;
+		}
+		.calendar-header .right {
+	    margin: 0 25% 0 0;
+		}
+		.next-arrow {
+			right: 5%;
+		}
+		.prev-arrow {
+			right: 10%;
+		}
+	}
+	@media screen and (min-width : 501px) and (max-width : 767px) {
+    #calendar-dates .item__text:before {
+			top: -45px;
+    }
+	}
+	@media screen and (max-width : 767px) {
+		.test1 {
+	    display: block;
+	    width: 100%!important;
+		}
+		.test2 {
+	    display: block;
+	    width: 100%!important;
+		}
+		.test4 {
+			display: flex;
+	    justify-content: space-between;
+	    flex-direction: column;
+	    margin-top: 30px;
+		}
+		#calendar-timeline .header-timeLine_middle {
+	  	background-color: #d0d0d0;
+	  }
+	  .calendar-header .tt-top {
+      display: none;
+    }
+    #calendar-dates .special-date .timeline {
+    	display: none;
+    }
+	}
+	@media screen and (max-width : 650px) {
+		.container-custom-mobile {
+	    display: block;
+	    left: 65px;
+	    position: absolute;
+		}
+    .calendar__line {
+      display: none;
+    }
+		.calendar-header {
+			height: 90vh;
+		}
+    .calendar-header .right:after {
+	    right: 0px;
+	    width: 160px;
+	    left: inherit;
+		}
+		.calendar-header .left {
+	    height: 90vh;
+	    overflow: auto;
+		}
+		.calendar-header .left h1 {
+	    margin: 60px 0 0 0!important;
+		}
+		.calendar-header .left p {
+			padding-right: 10px;
+			margin: 0 0 20px 0!important;
+			font-size: 16px;
+			width: 100%;
+		}
+		.calendar-triangle {
+			display: none;
+		}
+		.calendar-triangle-mobile {
+			display: block;	
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 1vh 10px 0 10px;
+			border-color: #1fb38c transparent transparent transparent;	
+		}
+		.dates-wrapper {
+	    z-index: 9999;
+	    bottom: 0;
+      height: 10vh;
+      padding: 0 30px;
+		}
+		#calendar-dates .item {
+	    margin: 0;
+	    width: 150px;
+	  }
+	  #calendar-dates .item__title {
+	    margin-left: 20px;
+      padding-top: 5px!important;
+      height: 10vh;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    font-size: 12px;
+		}
+		#calendar-dates .item__text {
+			display: none;
+		}
+	}
+/*@media___*/
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #1fb38c;
+}
+::-webkit-scrollbar {
+	width: 2px;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #f9f9f9;
+}
 </style>
 

@@ -91,6 +91,14 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionCandidates() {
+        $candidates = Candidate::find()->orderBy('surname')->all();
+
+        return $this->render('candidates', [
+            'candidates' => $candidates,
+        ]);
+    }
+
     public function actionCards($id = null) {
         $cards = Card::find()->all();
         $candidates = Candidate::find()->orderBy('name')->all();
@@ -103,9 +111,11 @@ class SiteController extends Controller
     }
 
     public function actionCalendar($id = null) {
-        $calendar = Calendar::find()->orderBy('date ASC')->where(['>', 'date', time()])->orderBy('date') ->all();
+        $items = Calendar::find()->orderBy('date ASC')/*->where(['>', 'date', time()])*/->orderBy('date') ->all();
 
         return $this->render('calendar', [
+            'items' => $items,
+            'id' => $id,
         ]);
     }
 

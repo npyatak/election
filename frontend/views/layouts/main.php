@@ -17,7 +17,8 @@ AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?=Yii::$app->name;?> - <?=Html::encode($this->title);?></title>
@@ -50,6 +51,7 @@ AppAsset::register($this);
             <div class="main-menu_inner">
                 <div class="pull-left">
                     <a href="" class="logo"></a>
+                    <div class="slogan"><a href="">Выборы президента России</a></div>
                 </div>
                 <div class="pull-right">
                     <ul class="main-menu_buttons">
@@ -70,6 +72,7 @@ AppAsset::register($this);
                     <div class="left">
                         <ul>
                             <li><a href="<?=Url::home();?>">Главная</a></li>
+                            <li><a href="#candidates">Кандидаты</a></li>
                             <li><a href="<?=Url::toRoute(['site/calendar']);?>">Календарь выборов</a></li>
                             <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li>
                             <li><a href="<?=Url::toRoute(['site/cards']);?>">Что нужно знать</a></li>

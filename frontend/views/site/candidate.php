@@ -11,7 +11,9 @@
                 <div class="inner">
                     <img src="<?=$candidate->image;?>" width=440 alt="<?=$candidate->name;?> <?=$candidate->surname;?>">
                 </div>
-                <span class="play"><i class="fa fa-play"></i><span class="text">Видео</span></span>
+                <?php if($candidate->video_list_1 || $vandidate->video_list_2):?>
+                    <span class="play"><i class="fa fa-play"></i><span class="text">Видео</span></span>
+                <?php endif;?>
             </div>
             <div class="bottom">
                 <div class="candidate-detail_info">
@@ -21,6 +23,11 @@
                     </div>
                     <div class="candidate-rating">
                         <p><?=$rating->subtitle;?></p>
+                        <span class="question-icon popup-open"></span>
+                        <div class="question-popup">
+                            <p><?=$rating->text;?></p>
+                            <span class="popup-close">Закрыть</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,7 +108,7 @@
 <?php if($candidate->theses):?>
 <div class="slick-slider_wrap">
     <div class="container">
-        <div class="slick-slider">
+        <div id="slick-slider" class="slick-slider">
             <?php foreach ($candidate->theses as $thesis):?>
                 <div class="item">
                     <div class="container-grid">
@@ -136,5 +143,12 @@
                 </a>
             <?php endforeach;?>
         </div>
+    </div>
+</div>
+
+<div class="video-modal">
+    <div class="play-close"><i class="fa fa-close"></i></div>
+    <div class="video-modal_inner">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/k2qgadSvNyU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </div>

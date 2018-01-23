@@ -11,7 +11,7 @@ use common\models\RatingItem;
                 <div class="left-block">
                     <h1>18 марта 2018</h1>
                     <h2>День выборов президента России</h2>
-                    <a href="" class="btn btn-green btn-h50 btn-w240">Календарь выборов</a>
+                    <a href="<?=Url::toRoute(['site/calendar']);?>" class="btn btn-green btn-h50 btn-w240">Календарь выборов</a>
                 </div>
                 <div class="right-block">
                     <img src="/images/icons/kreml.svg" alt="Kreml">
@@ -66,7 +66,14 @@ use common\models\RatingItem;
         <div class="right">
             <div class="right-info">
                 <div class="right-title">
-                    <h4><?=$rating->title;?></h4>
+                    <h4>
+                        <?=$rating->title;?>
+                        <span class="question-icon popup-open"></span>
+                        <div class="question-popup">
+                            <p><?=$rating->text;?></p>
+                            <span class="popup-close">Закрыть</span>
+                        </div>
+                    </h4>
                     <p><?=$rating->subtitle;?></p>
                 </div>
                 <div class="right-content">
@@ -89,7 +96,7 @@ use common\models\RatingItem;
                     <a href="<?=Url::toRoute(['site/test']);?>" class="btn btn-h50 btn-w200 btn-white"><?=$testText->button_title;?></a>
                     <?php if($testText->image):?>
                         <div class="test-image">
-                            <img src="<?=$testText->image;?>" alt="Amphora">
+                            <img src="<?=$testText->image;?>">
                         </div>
                     <?php endif?>
                 </div>
@@ -117,3 +124,11 @@ use common\models\RatingItem;
         </div>
     </div>
 </div>
+<style>
+    .main-menu .slogan {
+        display: none;
+    }
+    .main-menu.shadow .slogan {
+        display: block;
+    }
+</style>
