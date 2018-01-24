@@ -18,12 +18,12 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?=Yii::$app->name;?> - <?=Html::encode($this->title);?></title>
     <?php $this->head() ?>
-
     <?php if($_SERVER['HTTP_HOST'] !== 'election.local'):?>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

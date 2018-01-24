@@ -4,79 +4,246 @@ use yii\helpers\Url;
 $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
 //$this->registerCssFile(Url::toRoute('css/test.css'));
 ?>
+<link href="/css/css-circular-prog-bar.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/js/bookBlock/default.css" />
+<link rel="stylesheet" type="text/css" href="/js/bookBlock/bookblock.css" />
+<link rel="stylesheet" type="text/css" href="/js/bookBlock/demo4.css" />
 
-<div class="test-wrap height test-page">
-  <div class="left-sww"></div>
-  <div class="right-sww"></div>
-  <div class="container test-container" id="start" data-key="0">
-    <div class="left-part">
-      <h1 class="tt-up">Политический диктант</h1>
-      <p>
-        18 марта во всех регионах страны пройдет общероссийская проверка политической грамотности — выборы президента России. Чтобы не наделать ошибок в этой работе и проверить ваши знания о кандидатах, предлагаем ответить на вопросы нашего "политического диктанта".
-      </p>
-      <a href="" class="btn btn-h50 btn-w200 btn-white nextQuestion bottom-mobile-btn">
-        Начать
-        <i class="fa fa-angle-right"></i>
-      </a>
-    </div>
-    <div class="right-part">
-      <div class="test-wrap_img">
-        <img src="/images/icons/test-white.svg" alt="Test-white image" id="test-img-white">
-        <img src="/images/icons/test.svg" alt="Test-white image" id="test-img-blue">
-      </div>
-    </div>
-  </div>
-  <?php foreach ($questions as $key => $q):?>
-    <?php $key++;?>
-    <div class="container hide hidden-container" id="q<?=$q->id;?>" data-key="<?=$key;?>">
-      <div class="left-part">
-        <div class="test-wrapper-test">
-          <h1 class="tt-up"><?=$key;?> / <?=count($questions);?></h1>
-          <h3>
-            Однажды один кандидат ударил оппонента этим сосудом в ходе дискуссии о качестве жизни в стране.
-          </h3>
-          <div class="check-block hide">
-            <img src="/images/icons/check.svg" alt="Check icon">
-            <span></span>
-          </div>
-        </div>
-      </div>
-      <div class="right-part">
-        <div class="test-checkbox">
-          <form action="">
-            <?php foreach ($q->answers as $i => $answer):?>
-              <div class="form-group" data-right="<?=$answer->is_right;?>">
-                <div class="radio">
-                  <input id="radio_<?=$i + 1;?>" type="radio" name="question">
-                  <label for="radio_<?=$i + 1;?>"><?=$answer->title;?></label>
-                </div>
-              </div>
-            <?php endforeach;?>
-          </form>
-        </div>
-        <div class="test-text hide wrong">
-          <?=$q->comment_wrong;?>
-        </div>
-        <div class="test-text hide right">
-          <?=$q->comment_right;?>
-        </div>
-        <div class="correct-icon hide"></div>
-        <div class="incorrect-icon hide"></div>
-        <a href="" class="continue nextQuestion continue-mobile-btn">
-          Продолжить
+
+<script src="/js/bookBlock/modernizr.custom.js"></script>
+
+<div class="bb-custom-wrapper">
+
+  <div class="test-wrap height test-page bb-bookblocka" id="bb-bookblock">
+    <div class="left-sww"></div>
+    <div class="right-sww"></div>
+    <div class="container test-container bb-item" id="start" data-key="0">
+      <div class="left-part bb-custom-side">
+        <h1 class="tt-up">Политический диктант</h1>
+        <p>
+          18 марта во всех регионах страны пройдет общероссийская проверка политической грамотности — выборы президента России. Чтобы не наделать ошибок в этой работе и проверить ваши знания о кандидатах, предлагаем ответить на вопросы нашего "политического диктанта".
+        </p>
+        <a href="" class="btn btn-h50 btn-w200 btn-white nextQuestion bottom-mobile-btn">
+          Начать
           <i class="fa fa-angle-right"></i>
         </a>
       </div>
+      <div class="right-part bb-custom-side">
+        <div class="test-wrap_img">
+          <img src="/images/icons/test-white.svg" alt="Test-white image" id="test-img-white">
+          <img src="/images/icons/test.svg" alt="Test-white image" id="test-img-blue">
+        </div>
+      </div>
     </div>
-  <?php endforeach;?>
+    <div class="result-container test-container hide">
+      <div class="left-part">
+        <div class="group" id="progress-circle-wrapper">
+          <div class="progress-circle">
+            <!-- Кол-во правильных ответов -->
+            <b id="result-text"></b>
+            <span id="result-helper">из 10</span>
+            <div class="left-half-clipper">
+              <div class="first50-bar"></div>
+              <div class="value-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-part" style="z-index: 99;">
+        <!-- Текст результата -->
+        <p>
+          Вы сильны в матчасти и можете смело шагать к избирательной урне. Кстати, если бы голосование состоялось сегодня, результат был бы таким.
+        </p>
+        <div class="finish-buttons">
+          <a href="http://election.promo-group.org/site/test" class="finish-button left-button">
+            <i class="fa fa-refresh"></i>
+            Еще раз
+          </a>
+          <a href="http://election.promo-group.org/" class="finish-button right-button">
+            Завершить
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <?php foreach ($questions as $key => $q):?>
+      <?php $key++;?>
+      <div class="container hide hidden-container bb-item" id="q<?=$q->id;?>" data-key="<?=$key;?>">
+        <div class="left-part bb-custom-side">
+          <div class="test-wrapper-test">
+            <h1 class="tt-up"><?=$key;?> / <?=count($questions);?></h1>
+            <h3>
+              Однажды один кандидат ударил оппонента этим сосудом в ходе дискуссии о качестве жизни в стране.
+            </h3>
+            <div class="check-block hide">
+              <img src="/images/icons/check.svg" alt="Check icon">
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="right-part bb-custom-side">
+          <div class="test-checkbox">
+            <form action="">
+              <?php foreach ($q->answers as $i => $answer):?>
+                <div class="form-group" data-right="<?=$answer->is_right;?>">
+                  <div class="radio">
+                    <input id="radio_<?=$i + 1;?>" type="radio" name="question">
+                    <label for="radio_<?=$i + 1;?>"><?=$answer->title;?></label>
+                  </div>
+                </div>
+              <?php endforeach;?>
+            </form>
+          </div>
+          <div class="test-text hide wrong">
+            <?=$q->comment_wrong;?>
+          </div>
+          <div class="test-text hide right">
+            <?=$q->comment_right;?>
+          </div>
+          <div class="correct-icon hide"></div>
+          <div class="incorrect-icon hide"></div>
+          <a href="" class="continue nextQuestion continue-mobile-btn">
+            Продолжить
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
+      </div>
+    <?php endforeach;?>
+  </div>
+  <nav>
+    <a id="bb-nav-prev" href="#" class="fa fa-arrow-left">Previous</a>
+    <a id="bb-nav-next" href="#" class="fa fa-arrow-right">Next</a>
+  </nav>
 </div>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+<script src="/js/bookBlock/jquerypp.custom.js"></script>
+<script src="/js/bookBlock/bookblock.js"></script>
+<script>
+      var Page = (function() {
+        
+        var config = {
+            $bookBlock : $( '#bb-bookblock' )[0],
+            $navNext : $( '#bb-nav-next' ),
+            $navPrev : $( '#bb-nav-prev' ),
+            $navFirst : $( '#bb-nav-first' ),
+            $navLast : $( '#bb-nav-last' )
+          },
+          init = function() {
+            config.$bookBlock.bookblock( {
+              speed : 1000,
+              shadowSides : 0.8,
+              shadowFlip : 0.4
+            } );
+            initEvents();
+          },
+          initEvents = function() {
+            
+            var $slides = config.$bookBlock.children();
+            config.$navNext.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'next' );
+              return false;
+            } );
+            config.$navPrev.on( 'click touchstart', function() {
+              config.$bookBlock.bookblock( 'prev' );
+              return false;
+            } );
+            $slides.on( {
+              'swipeleft' : function( event ) {
+                config.$bookBlock.bookblock( 'next' );
+                return false;
+              },
+              'swiperight' : function( event ) {
+                config.$bookBlock.bookblock( 'prev' );
+                return false;
+              }
+            } );
+          };
+          console.log('config', config);
+          // console.log('config', config.$bookBlock[0]);
+          return { init : init };
+      })();
+    </script>
+    <script>
+        Page.init();
+    </script>
+<!-- <script>
+  var Page = (function() {
+    // var $bookBlock = $('#bb-bookblock')
+    // console.log($bookBlock);
+    // $bookBlock.bookblock();
+    // var bb = $bookBlock.bookblock({
+    //   speed: 800,
+    //   perspective: 2000,
+    //   shadowSides: 0.8,
+    //   shadowFlip: 0.4
+    // });
+    var config = {
+      $bookBlock : $( '#bb-bookblock' ),
+      $navNext : $( '#bb-nav-next' ),
+      $navPrev : $( '#bb-nav-prev' )
+    }
+    console.log(config);
+    var init = function() {
+      config.$bookBlock.BookBlock( {
+        speed : 1000,
+        shadowSides : 0.8,
+        shadowFlip : 0.4
+      } );
+      initEvents();
+    }
+    // console.log(init());
+    var initEvents = function() {
+      var $slides = config.$bookBlock.children();
+      config.$navNext.on( 'click touchstart', function() {
+        config.$bookBlock.bookblock( 'next' );
+        return false;
+      } );
+      config.$navPrev.on( 'click touchstart', function() {
+        config.$bookBlock.bookblock( 'prev' );
+        return false;
+      } );
+      $slides.on( {
+        'swipeleft' : function( event ) {
+          config.$bookBlock.bookblock( 'next' );
+          return false;
+        },
+        'swiperight' : function( event ) {
+          config.$bookBlock.bookblock( 'prev' );
+          return false;
+        }
+      } );
+    }; 
+    // return { init : init };
+  })();
+</script> -->
 
+<script>
+  // Page.init();
+</script>
 <style>
 /*desktop styles*/
+nav {
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+}
+  .result-container .left-part {
+    align-items: center!important;
+  }
+  .result-container .right-part {
+    z-index: 99;
+  }
+  .result-container .right-part p {
+    font-size: 30px;
+    line-height: 40px;
+    max-width: 500px;
+    width: 500px;
+  }
   .checkbox input[type="checkbox"], .radio input[type="radio"] {
     top: 15px;
-    left: 30px;
-    width: 30px;
+    left: 20px;
+    width: 40px;
     height: 40px;
   }
   .test-page {
@@ -86,6 +253,22 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
   }
   .bottom-mobile-btn i {
     display: none;
+  }
+  .finish-buttons {
+    position: absolute;
+    bottom: 40px;
+    font-size: 24px;
+    color: #fff;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    left: 11%;
+  }
+  .finish-buttons .left-button {
+    color: #fff;
+  }
+  .finish-buttons .right-button {
+    color: #fff;
   }
   .left-sww {
     display: initial;
@@ -125,11 +308,12 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
     align-items: center;
     display: flex;
     padding: 80px 40px 0 40px;
+    position: relative;
   }
   .hidden-container .right-part .test-checkbox {
     min-height: 450px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
   }
   .hidden-container .left-part .test-wrapper-test {
     min-height: 450px;
@@ -141,6 +325,7 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
     margin: 0 0 20px 0;
     max-width: 500px;
     text-align: -webkit-left;
+    text-align: left;
   }
   .test-container .left-part p {
     font-size: 24px;
@@ -173,6 +358,7 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
     margin: 0 0 20px 0;
     max-width: 500px;
     text-align: -webkit-left;
+    text-align: left;
   }
   .hidden-container .left-part p {
     font-size: 24px;
@@ -216,6 +402,18 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
     line-height: 30px;
     z-index: 99999;
   }
+  .test-text p span {
+    width: 400px;
+    line-height: 30px;
+    z-index: 99999;
+    font-size: 18px!important;
+  }
+  .test-text p font {
+    width: 400px;
+    line-height: 30px;
+    z-index: 99999;
+    font-size: 18px!important;
+  }
   .correct-icon {
     content: '';
     display: block;
@@ -254,9 +452,56 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
   .incorrect-background {
     background-color: #ea7d63!important;
   }
+  #progress-circle-wrapper {
+    transform: scale(3);
+  }
+  #progress-circle-wrapper:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -28px;
+    width: 140%;
+    height: 100%;
+    background: url(../images/icons/stars.svg) no-repeat center;
+    -webkit-background-size: contain;
+    background-size: contain;
+    z-index: 0;
+    transform: scale(1.1);
+  }
+  #result-text {
+    position: absolute;
+    color: #fff;
+    top: -10px;
+    z-index: 99;
+    width: 100%;
+    text-align: -webkit-center;
+    text-align: center;
+    font-size: 50px;
+  }
+  .progress-circle {
+    background-color: #252aa6;
+  }
+  .progress-circle span {
+    color: #fff;
+    font-size: 11px;
+    top: 17px;
+    width: 100%;
+    line-height: inherit;
+  }
+  .progress-circle:after {
+    background-color: #3e43c8;
+  }
+  .value-bar {
+    border: 0.45em solid #fff;
+  }
+  .progress-circle.over50 .first50-bar {
+    background-color: #fff;
+  }
 /*desktop styles*/
 /*(max-width : 1199px)*/  
   @media screen and (max-width : 1199px) {
+
     .hidden-container .right-part .test-checkbox {
       min-height: 30px;
     }
@@ -265,6 +510,10 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
     }
     .test-container {
       flex-direction: column-reverse!important;
+    }
+    .result-container {
+      height: 100vh;
+      flex-direction: column!important;
     }
     .test-container .left-part {
       width: 100%;
@@ -276,6 +525,7 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
       font-size: 50px;
       line-height: 60px;
       text-align: -webkit-center;
+      text-align: center;
       width: 500px;
       margin: 40px 0 20px 0;
     }
@@ -403,6 +653,46 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
     .incorrect-icon {
       top: 10%;
     }
+    .finish-buttons {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      color: #252aa6;
+      background-color: #fff;
+      font-size: 24px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      width: auto;
+    }
+    .finish-buttons .finish-button {
+      display: inline-block;
+      width: 50%;
+      text-align: -webkit-center;
+      text-align: center;
+      position: relative;
+      height: 80px;
+      line-height: 80px;
+      color: #252aa6;
+    }
+    .finish-buttons .finish-button i {
+      display: initial;
+      position: absolute;
+      right: 20px;
+      top: 0;
+      height: 100%;
+      line-height: 80px;
+    }
+    .finish-buttons .right-button {
+      right: initial;
+      background: #f3f3f3;
+    }
+    .finish-buttons .left-button i {
+      left: 20px;
+      right: initial;
+    }
   }
 /*(max-width : 1199px)*/  
 /*(min-width : 320px) and (max-width : 767px)*/ 
@@ -453,6 +743,18 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
       width: 280px;
       margin-bottom: 20px;
     }
+    .hidden-container .right-part .test-text p span{
+      font-size: 14px!important;
+      line-height: 20px;
+      max-width: 280px;
+      width: 280px;
+    }
+    .hidden-container .right-part .test-text p font {
+      font-size: 14px!important;
+      line-height: 20px;
+      max-width: 280px;
+      width: 280px;
+    }
     .hidden-container .left-part h3 {
       font-size: 18px;
       line-height: 25px;
@@ -501,6 +803,36 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
     .continue-mobile-btn i {
       line-height: 50px;
     }
+    #progress-circle-wrapper {
+      transform: scale(1.3);
+      margin-top: 80px;
+    }
+    .result-container {
+      display: block;
+    }
+    .result-container .right-part p {
+      font-size: 16px;
+      line-height: 20px;
+      max-width: 280px;
+      width: 280px;
+    }
+    .result-container .right-part {
+      padding: 40px 0
+    }
+    .finish-buttons {
+      line-height: 50px;
+      height: 50px;
+    }
+    .finish-buttons .finish-button {
+      font-size: 16px;
+      line-height: 50px;
+      height: 50px;
+    }
+    .finish-buttons .finish-button i {
+      line-height: 50px;
+      height: 50px;
+    }
+
   }
 /*(min-width : 320px) and (max-width : 767px)*/   
 </style>
