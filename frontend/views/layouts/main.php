@@ -46,6 +46,14 @@ AppAsset::register($this);
     <!-- End Google Tag Manager (noscript) -->
     <?php endif;?>
 
+    <div id="loaders">
+        <div class="loader-container square-rotate-3d">
+            <div class="loader">
+                <div class="square"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="wrapper">
         <div class="main-menu">
             <div class="main-menu_inner">

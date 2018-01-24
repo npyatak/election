@@ -615,7 +615,7 @@ footer .copyright p {
 }
 .candidate-detail_top .right {
     padding-top: 140px;
-    background-color: #252aa6;
+    background-color: #f9f9f9;
 }
 .candidate-detail_top .left::after {
     content: '';
@@ -635,7 +635,7 @@ footer .copyright p {
     bottom: 0;
     left: 100%;
     width: 4000px;
-    background-color: #252aa6;
+    background-color: #f9f9f9;
 }
 .candidate-detail_top .left .inner {
     max-width: 440px;
@@ -1708,6 +1708,68 @@ a.all-news {
     transform: translate(-50%,-50%);
 }
 
+#calendar-date,
+#calendar-dates {
+    z-index: 1 !important;
+}
+
+.rating-page .container {
+    padding-left: 0;
+}
+.rating-page_top {
+    padding-top: 120px;
+    background-color: #3e43c8;
+}
+.tabs {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.tab {
+    width: 33.333%;
+}
+.tab a {
+    display: block;
+    width: 100%;
+    padding: 30px 40px 20px;
+    background-color: transparent;
+    color: #fff;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+}
+.tab a:hover,
+.tab a.active {
+    background-color: #252aa6;
+    text-decoration: none;
+}
+.tab a h4 {
+    height: 80px;
+}
+.tab a h4 span {
+    display: block;
+    margin-top: 10px;
+    font: 16px 'FiraSans-Bold', sans-serif;
+    line-height: 20px;
+}
+.tab a p {
+    margin-bottom: 0;
+}
+.rating-page_bottom {
+    background-color: #252aa6;
+}
+.tab-content {
+    padding: 40px;
+}
+.tab-content .container {
+    padding-left: 0;
+}
+
 @media (max-width:1279px) {
     .container {
         width: 100%;
@@ -1840,9 +1902,14 @@ a.all-news {
         left: auto;
         right: 0;
     }
+    .candidate-detail_top .left,
     .candidate-detail_top .right,
     .candidate-detail_top .right::after {
-        background-color: #3e43c8;
+        background-color: #f9f9f9;
+    }
+    .candidate-detail_top h1,
+    .candidate-detail_top .intro {
+        color: #252aa6;
     }
     .candidate-detail_top .bottom {
         width: 100%;
