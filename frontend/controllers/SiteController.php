@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
@@ -76,8 +77,8 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionCandidate($id = null, $alias = null) {
-        if(!$id && !$alias) {
+    public function actionCandidate($alias = null) {
+        if(!$alias) {
             $candidates = Candidate::find()->orderBy('surname')->all();
 
             return $this->render('candidates', [
@@ -85,11 +86,7 @@ class SiteController extends Controller
             ]);
         }
 
-        if($alias) {
-            $candidate = Candidate::find()->where(['alias' => $alias])->one();
-        } else {
-            $candidate = Candidate::findOne($id);
-        }
+        $candidate = Candidate::find()->where(['alias' => $alias])->one();
         if($candidate === null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
@@ -146,12 +143,9 @@ class SiteController extends Controller
         ]);
     }
 
-    protected function findPage($alias) {
-        $model = Page::find()->where(['alias' => $alias])->one();
-        if ($model === null || $model->status === Page::STATUS_INACTIVE) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
+    public function actionRating() {
 
-        return $model;
+        return $this->render('rating', [
+        ]);
     }
 }
