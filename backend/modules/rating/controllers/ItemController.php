@@ -71,7 +71,7 @@ class ItemController extends \backend\controllers\CController
             $transaction = Yii::$app->db->beginTransaction();
             $models = [];
             foreach ($post['RatingItem'] as $key => $postItem) {
-                if($postItem['id']) {
+                if(isset($postItem['id'])) {
                     $item = RatingItem::findOne($postItem['id']);
                 } else {
                     $item = new RatingItem;

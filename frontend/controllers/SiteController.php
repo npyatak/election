@@ -6,6 +6,7 @@ use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 
 use common\models\Candidate;
 use common\models\Question;
@@ -15,6 +16,7 @@ use common\models\TestText;
 use common\models\Rating;
 use common\models\RatingItem;
 use common\models\News;
+use common\models\Share;
 
 /**
  * Site controller
@@ -32,6 +34,23 @@ class SiteController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
         ];
+    }
+
+    public function beforeAction($action) {
+        $share = Share::find()->where(['uri' => $_SERVER['REQUEST_URI']])->asArray()->one();
+        if($share === null) {
+            $share = Share::find()->where(['uri' => '/'.$action->controller->action->id])->asArray()->one();
+        }
+        if($share === null) {
+            $share = Yii::$app->params['defaultShare'];
+        }
+        $share['url'] = Url::current([], true);
+        $share['image'] = Url::to([$share['image']], true);
+
+        $view = $this->getView();
+        $view->params['share'] = $share;
+
+        return parent::beforeAction($action);
     }
     
     public function actionIndex() {
@@ -57,30 +76,30 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionPage($alias) {
-        $page = $this->findPage($alias);
-        $categories = Category::find()->all();
-        $categoryPages = Page::find()->where(['category_id' => $page->category_id])->all();
+    public function actionCandidate($id = null, $alias = null) {
+        if(!$id && !$alias) {
+            $candidates = Candidate::find()->orderBy('surname')->all();
 
-        return $this->render('page', [
-            'page' => $page,
-            'categories' => $categories,
-            'categoryPages' => $categoryPages,
-        ]);
-    }
+            return $this->render('candidates', [
+                'candidates' => $candidates,
+            ]);
+        }
 
-    public function actionCandidate($id) {
-        $candidate = Candidate::findOne($id);
+        if($alias) {
+            $candidate = Candidate::find()->where(['alias' => $alias])->one();
+        } else {
+            $candidate = Candidate::findOne($id);
+        }
         if($candidate === null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        $candidates = Candidate::find()->where(['not', ['id' => $id]])->orderBy('surname')->all();
+        $candidates = Candidate::find()->where(['not', ['id' => $candidate->id]])->orderBy('surname')->all();
 
         $rating = Rating::find()->orderBy('id DESC')->one();
 
         $ratingResults = RatingItem::find()->select(['score', 'candidate_id'])->where(['not', ['candidate_id' => null]])->groupBy('candidate_id')->orderBy('score DESC')->indexBy('candidate_id')->asArray()->all();
-        $candidatePlace = array_search($id, array_keys($ratingResults)) + 1;
+        $candidatePlace = array_search($candidate->id, array_keys($ratingResults)) + 1;
 
         return $this->render('candidate', [
             'candidate' => $candidate,

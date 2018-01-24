@@ -30,7 +30,7 @@ class Rating extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'subtitle'], 'required'],
-            [['title', 'subtitle'], 'string', 'max' => 255],
+            [['title', 'subtitle', 'share_title', 'share_text', 'share_image', 'share_twitter'], 'string', 'max' => 255],
             ['text', 'safe'],
         ];
     }
@@ -45,6 +45,10 @@ class Rating extends \yii\db\ActiveRecord
             'title' => 'Заголовок',
             'subtitle' => 'Подзаголовок',
             'text' => 'Текст',
+            'share_title' => 'Заголовок поделиться',
+            'share_text' => 'Текст поделиться',
+            'share_image' => 'Изображение поделиться',
+            'share_twitter' => 'Текст для twitter',
         ];
     }
 

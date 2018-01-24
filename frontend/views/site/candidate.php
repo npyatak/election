@@ -1,3 +1,10 @@
+<?php 
+use yii\helpers\Url;
+
+$this->params['share'] = [
+    'text' => $candidate->share_text, 'title' => $candidate->share_title, 'url' => Url::current([], true), 'image' => Url::to($candidate->share_image, true), 'twitter' => $candidate->share_twitter
+];?>
+
 <div class="candidate-detail">
     <div class="candidate-detail_top">
         <div class="container">
@@ -22,7 +29,7 @@
                         <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
                     </div>
                     <div class="candidate-rating">
-                        <p><?=$rating->subtitle;?></p>
+                        <p>Рейтинг кандидата по данным <?=$rating->subtitle;?></p>
                         <span class="question-icon popup-open"></span>
                         <div class="question-popup">
                             <p><?=$rating->text;?></p>
@@ -38,7 +45,10 @@
             <div class="left">
                 <div class="inner">
                     <div class="biography">
-                        <?=$candidate->bio;?>
+                        <?=$candidate->bio_1;?>
+                        <?=$candidate->bio_2;?>
+                        <?=$candidate->bio_3;?>
+                        <?=$candidate->bio_4;?>
                     </div>
                 </div>
             </div>

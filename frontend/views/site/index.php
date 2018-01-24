@@ -74,7 +74,7 @@ use common\models\RatingItem;
                             <span class="popup-close">Закрыть</span>
                         </div>
                     </h4>
-                    <p><?=$rating->subtitle;?></p>
+                    <p>Опрос <?=$rating->subtitle;?></p>
                 </div>
                 <div class="right-content">
                     <ul>
@@ -86,7 +86,7 @@ use common\models\RatingItem;
                             </li>
                         <?php endforeach;?>
                     </ul>
-                    <a href="" class="btn btn-h50 btn-w200 btn-purple">Подробнее</a>
+                    <a href="<?=Url::toRoute(['site/rating']);?>" class="btn btn-h50 btn-w200 btn-purple">Подробнее</a>
                 </div>
             </div>
             <div class="tests">

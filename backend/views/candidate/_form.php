@@ -29,7 +29,10 @@ use common\models\CandidateQuotation;
     	<div class="col-md-6">
 		    <?= $form->field($model, 'status')->textInput() ?>
 		</div>
-    	<div class="col-md-4">
+        <div class="col-md-3">
+            <?= $form->field($model, 'alias')->textInput() ?>
+        </div>
+    	<div class="col-md-3">
             <?= $form->field($model, 'image')->widget(ElfinderInput::className());?>
 		</div>
 	</div>
@@ -43,11 +46,32 @@ use common\models\CandidateQuotation;
         </div>
     </div>
 
-	<?= $form->field($model, 'bio')->widget(CKEditor::className(), [
+	<?= $form->field($model, 'bio_1')->widget(CKEditor::className(), [
 	    'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
             'allowedContent' => true,
 	    	'preset' => 'textEditor'
 	    ])
+    ]);?>
+
+    <?= $form->field($model, 'bio_2')->widget(CKEditor::className(), [
+        'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
+            'allowedContent' => true,
+            'preset' => 'textEditor'
+        ])
+    ]);?>
+
+    <?= $form->field($model, 'bio_3')->widget(CKEditor::className(), [
+        'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
+            'allowedContent' => true,
+            'preset' => 'textEditor'
+        ])
+    ]);?>
+
+    <?= $form->field($model, 'bio_4')->widget(CKEditor::className(), [
+        'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
+            'allowedContent' => true,
+            'preset' => 'textEditor'
+        ])
     ]);?>
 
 	<?= $form->field($model, 'facts')->widget(CKEditor::className(), [
@@ -57,6 +81,26 @@ use common\models\CandidateQuotation;
 	    ])
     ]);?>
 
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'share_title')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-6">
+            <?= $form->field($model, 'share_image')->widget(ElfinderInput::className());?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            <?= $form->field($model, 'share_text')->textarea() ?>
+        </div>
+        <div class="col-md-5">
+            <?= $form->field($model, 'share_twitter')->textInput();?>
+        </div>
+    </div>
+
+    <hr>
     <div class="block">
     	<h3>Цитаты</h3>
     	<div class="items">

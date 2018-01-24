@@ -14,6 +14,7 @@ use Yii;
  */
 class RatingGroup extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -28,8 +29,9 @@ class RatingGroup extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'category', 'sub_category'], 'required'],
             [['title'], 'string', 'max' => 255],
+            [['category', 'sub_category'], 'integer'],
         ];
     }
 
@@ -41,6 +43,8 @@ class RatingGroup extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Заголовок',
+            'category' => 'Категория', 
+            'sub_category' => 'Подкатегория',
         ];
     }
 
@@ -50,5 +54,15 @@ class RatingGroup extends \yii\db\ActiveRecord
     public function getRatingItems()
     {
         return $this->hasMany(RatingItem::className(), ['rating_group_id' => 'id']);
+    }
+
+    public function getSubCategoryArray() {
+        return [
+            1 => '',
+            2 => 'Возраст',
+            3 => 'Трудоустройство',
+            4 => 'Среднедушевой доход',
+            5 => 'Населенные пункты',
+        ];
     }
 }

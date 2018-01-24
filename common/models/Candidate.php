@@ -22,10 +22,10 @@ class Candidate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'second_name', 'surname', 'status'], 'required'],
+            [['name', 'second_name', 'surname', 'status', 'alias'], 'required'],
             [['name', 'second_name', 'surname', 'video_list_1', 'video_list_2'], 'string', 'max' => 100],
-            [['status', 'image'], 'string', 'max' => 255],
-            [['bio', 'facts'], 'safe'],
+            [['status', 'image', 'alias', 'share_title', 'share_text', 'share_image', 'share_twitter'], 'string', 'max' => 255],
+            [['bio_1', 'bio_2', 'bio_3', 'bio_4', 'facts'], 'safe'],
 
         ];
     }
@@ -46,6 +46,15 @@ class Candidate extends \yii\db\ActiveRecord
             'facts' => 'Факты',
             'video_list_1' => 'Ссылка на видеофайл в SD качестве',
             'video_list_2' => 'Ссылка на видеофайл в HD качестве',
+            'alias' => 'Алиас',
+            'bio_1' => 'Биография 1',
+            'bio_2' => 'Биография 2',
+            'bio_3' => 'Биография 3',
+            'bio_4' => 'Биография 4',
+            'share_title' => 'Заголовок поделиться',
+            'share_text' => 'Текст поделиться',
+            'share_image' => 'Изображение поделиться',
+            'share_twitter' => 'Текст для twitter',
         ];
     }
 
@@ -68,7 +77,7 @@ class Candidate extends \yii\db\ActiveRecord
     }
 
     public function getUrl() {
-        return Url::toRoute(['site/candidate', 'id' => $this->id]);
+        return Url::toRoute(['site/candidate', 'alias' => $this->alias]);
     }
 
     public function getFullName() {
@@ -83,7 +92,7 @@ class Candidate extends \yii\db\ActiveRecord
         return RatingItem::find()->select('score')->where(['candidate_id' => $this->id, 'rating_group_id' => 1])->orderBy('rating_id DESC, id DESC')->column();
     }
 
-    public static function getImageUrl($user_id, $image) {
-        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/images/'.$this->image);
+    public function getImageUrl() {
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl($this->image);
     }
 }
