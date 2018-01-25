@@ -1,4 +1,39 @@
-	/*
+/*
+.bb-content {
+	background: #3e43c8;
+}
+.bb-item {
+	background: #3e43c8;
+}
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(1, 1);
+    }
+    50% {
+        -webkit-transform: scale(1.2, 1.2);
+    }
+    to {
+        -webkit-transform: scale(1, 1);
+    }
+}
+@keyframes zoom {
+    from {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.1, 1.1);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+#progress-circle-wrapper:before {
+    -webkit-animation: zoom 1s ease-in-out infinite;
+    animation: zoom 5s ease-in-out infinite;
+}
+.test-wrap {
+    z-index: 3;
+}
   .finish-buttons {
     position: absolute;
     bottom: 40px;
@@ -278,6 +313,23 @@
     height: 100%;
     position: relative;
   }
+  #bb-custom-wrapper #start-page-bottomm {
+  	width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  #bb-custom-wrapper #start-page-bottomm .left-part {
+  	width: 100%;
+  }
+  #bb-custom-wrapper #start-page-topp {
+  	width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  #bb-custom-wrapper #start-page-topp .right-part {
+  	width: 100%;
+  }
+
 
 .bb-custom-wrapper .bb-bookblock {
   width: 100%;
@@ -397,6 +449,30 @@
 }
 
 @media screen and (min-width : 320px) and (max-width : 1199px) {
+	.result-container {
+		flex-direction: column!important;
+	}
+	.result-container #start-page-bottomm .left-part {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    height: 50vh;
+	    background: #3e43c8;
+	}
+	.result-container #start-page-topp {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    height: 50vh;
+	    background: #3e43c8;
+	}
+	.result-container #start-page-topp .right-part {
+	    height: 50vh;
+	}
+	.result-container .right-part p {
+		text-align: center;
+		text-align: -webkit-center;
+	}
 	#resultBlock {
 	    flex-direction: column;
 	}
@@ -501,7 +577,7 @@
 	display: flex;
   }
   .left-part {
-    height: 41vh;
+    height: 40vh;
     align-items: flex-start;
   }
   .right-part {
@@ -674,8 +750,8 @@
 	.correct-background p {
 	    width: 280px;
 	    max-width:  280px;
-	    font-size:  14px;
-	    line-height: 20px;
+	    font-size:  13px;
+	    line-height: 19px;
 	    margin-top: 20px;
 	}
 
@@ -693,8 +769,8 @@
 	.incorrect-background p {
 	    width: 280px;
 	    max-width:  280px;
-	    font-size:  14px;
-	    line-height: 20px;
+	    font-size:  13px;
+	    line-height: 19px;
 	    margin-top: 20px;
 	}
 
@@ -704,7 +780,7 @@
 	}
 
 	.right-part .right {
-	    margin-top: 20px;
+	    margin-top: 0px;
 	}
 	.right-part .wrong {
 	    margin-top: 20px;

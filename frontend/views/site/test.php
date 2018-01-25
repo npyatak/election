@@ -11,115 +11,169 @@ TestAsset::register($this);
 <link rel="stylesheet" type="text/css" href="/js/bookBlock/bookblock.css" />
 <script src="/js/bookBlock/modernizr.custom.js"></script>
 <div class="no-js">
-<div class="bb-custom-wrapper">
+	<div class="bb-custom-wrapper">
 
-  <div class="test-wrap height test-page bb-bookblock" id="bb-bookblock">
-	<div class="bb-item container test-container">
-	  <div class="bb-custom-firstpage" id="start-page-bottomm">
-		<div class="left-part">
-		  <img src="/images/icons/test-white.svg" alt="Test-white image" id="test-img-white">
-		  <h1 class="tt-up" id="start-title">Политический диктант</h1>
-		  <p id="start-text">
-			18 марта во всех регионах страны пройдет общероссийская проверка политической грамотности — выборы президента России. Чтобы не наделать ошибок в этой работе и проверить ваши знания о кандидатах, предлагаем ответить на вопросы нашего "политического диктанта".
-		  </p>
-		</div> 
-	  </div>
-	  <div class="bb-custom-side" id="start-page-topp">
-		<div class="right-part">
-		  <div class="test-wrap_img">
-			<img src="/images/icons/test.svg" alt="Test-white image" id="test-img-blue">
-		  </div>
-		</div>
-	  </div>
-	</div>
-	<?php foreach ($questions as $key => $q):?>
-	  <?php $key++;?>
-		<div class="bb-item container t" id="questionBlock" data-key="<?=$key;?>">
-		  <div class="bb-custom-side">
-			<div class="left-part">
-			  <div class="test-wrapper-test">
-				<h1 id="testID" data-value="<?=$key;?>" class="tt-up"><?=$key;?> / <?=count($questions);?></h1>
-				<h3>
-				  <?=$q->title;?>
-				</h3>
-				<div class="check-block hide">
-				  <img src="/images/icons/check.svg" alt="Check icon">
-				  <span></span>
+		<div class="test-wrap height test-page bb-bookblock" id="bb-bookblock">
+			<div class="bb-item container test-container">
+				<div class="bb-custom-firstpage" id="start-page-bottomm">
+					<div class="left-part">
+						<img src="/images/icons/test-white.svg" alt="Test-white image" id="test-img-white">
+						<h1 class="tt-up" id="start-title">Политический диктант</h1>
+						<p id="start-text">
+							18 марта во всех регионах страны пройдет общероссийская проверка политической грамотности — выборы президента России. Чтобы не наделать ошибок в этой работе и проверить ваши знания о кандидатах, предлагаем ответить на вопросы нашего "политического диктанта".
+						</p>
+					</div> 
 				</div>
-			  </div>
-			</div>
-		  </div>
-		  <div class="bb-custom-side">
-			<div class="right-part">
-			  <div class="test-checkbox test-text" >
-				<form action="" style="width: 400px;">
-				  <?php foreach ($q->answers as $i => $answer):?>
-					<div class="form-group" data-right="<?=$answer->is_right;?>">
-					  <div class="radio">
-						<input id="radio_<?=$i + 1;?>" type="radio" name="question">
-						<label for="radio_<?=$i + 1;?>"><?=$answer->title;?></label>
-					  </div>
+			<div class="bb-custom-side" id="start-page-topp">
+				<div class="right-part">
+					<div class="test-wrap_img">
+						<img src="/images/icons/test.svg" alt="Test-white image" id="test-img-blue">
 					</div>
-				  <?php endforeach;?>
-				</form>
-			  </div>
-			  <div class="test-text hide wrong">
-				<?=$q->comment_wrong;?>
-			  </div>
-			  <div class="test-text hide right">
-				<?=$q->comment_right;?>
-			  </div>
-			  <div class="correct-icon hide"></div>
-			  <div class="incorrect-icon hide"></div>
+				</div>
 			</div>
-		  </div>
-		</div>
-	<?php endforeach;?>
-	<div id="resultBlock" class="result-container test-container hide">
-	  <div class="left-part">
-		<div class="group" id="progress-circle-wrapper">
-		  <div class="progress-circle" id="prgs-circle">
-			<b id="result-text"></b>
-			<span id="result-helper">из <?=count($questions);?></span>
-			<div class="left-half-clipper">
-			  <div class="first50-bar"></div>
-			  <div class="value-bar"></div>
 			</div>
-		  </div>
-		</div>
-	  </div>
-	  <div class="right-part" style="z-index: 2;" id="result-range-container">
-		<?php foreach ($testResults as $result):?>
-		  <p 
-		  	id="result-range"
-		  	class="hide"
-		  	data-start="<?=$result->range_start;?>"
-		  	data-end="<?=$result->range_end;?>"
-		  >
-			<?=$result->title;?>
-		  </p>
-		<?php endforeach;?>
-		<div class="finish-buttons">
-		  <a href="<?=Url::toRoute(['site/test']);?>" class="finish-button left-button next-btn again-position">
-			<i class="fa fa-refresh"></i>
-			Еще раз
-		  </a>
-		  <a href="<?=Url::toRoute(['site/index']);?>" class="finish-button right-button finish-position next-btn">
-			Завершить
-			<i class="fa fa-angle-right"></i>
-		  </a>
-		</div>
-	  </div>
+				<?php foreach ($questions as $key => $q):?>
+					<?php $key++;?>
+					<div class="bb-item container t" id="questionBlock" data-key="<?=$key;?>">
+						<div class="bb-custom-side">
+							<div class="left-part">
+								<div class="test-wrapper-test">
+									<h1 id="testID" data-value="<?=$key;?>" class="tt-up"><?=$key;?> / <?=count($questions);?></h1>
+									<h3>
+										<?=$q->title;?>
+									</h3>
+									<div class="check-block hide">
+										<img src="/images/icons/check.svg" alt="Check icon">
+										<span></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="bb-custom-side">
+							<div class="right-part">
+								<div class="test-checkbox test-text" >
+									<form action="" style="width: 400px;">
+										<?php foreach ($q->answers as $i => $answer):?>
+										<div class="form-group" data-right="<?=$answer->is_right;?>">
+											<div class="radio">
+												<input id="radio_<?=$i + 1;?>" type="radio" name="question">
+												<label for="radio_<?=$i + 1;?>"><?=$answer->title;?></label>
+											</div>
+										</div>
+										<?php endforeach;?>
+									</form>
+								</div>
+								<div class="test-text hide wrong">
+									<?=$q->comment_wrong;?>
+								</div>
+								<div class="test-text hide right">
+									<?=$q->comment_right;?>
+								</div>
+								<div class="correct-icon hide"></div>
+								<div class="incorrect-icon hide"></div>
+							</div>
+						</div>
+					</div>
+				<?php endforeach;?>
+			<div class="bb-item" id="bb-custom-wrapper">
+				<div class="result-container test-container hide">
+					<div class="bb-custom-firstpage" id="start-page-bottomm">
+						<div class="left-part">
+							<div class="group" id="progress-circle-wrapper">
+								<div class="progress-circle" id="prgs-circle">
+									<b id="result-text"></b>
+									<span id="result-helper">из <?=count($questions);?></span>
+									<div class="left-half-clipper">
+									<div class="first50-bar"></div>
+									<div class="value-bar"></div>
+									</div>
+								</div>
+							</div>
+						</div> 
+					</div>
+					<div class="bb-custom-side" id="start-page-topp">
+						<div class="right-part" style="z-index: 2;" id="result-range-container">
+							<?php foreach ($testResults as $result):?>
+								<p 
+									id="result-range"
+									class="hide"
+									data-start="<?=$result->range_start;?>"
+									data-end="<?=$result->range_end;?>"
+								>
+									<?=$result->title;?>
+								</p>
+							<?php endforeach;?>
+							<div class="finish-buttons">
+								<a href="<?=Url::toRoute(['site/test']);?>" class="finish-button left-button next-btn again-position">
+									<i class="fa fa-refresh"></i>
+									Еще раз
+								</a>
+								<a href="<?=Url::toRoute(['site/index']);?>" class="finish-button right-button finish-position next-btn">
+									Завершить
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="" id="bb-nav-next" class="btn btn-h50 btn-w200 btn-white nextQuestion start-position continue-mobile-btn">
+			  Начать
+			</a>
+		</div> 
+		 
 	</div>
-	<a href="" id="bb-nav-next" class="btn btn-h50 btn-w200 btn-white nextQuestion start-position continue-mobile-btn">
-	  Начать
-	</a>
-	</div>  
-  </div>
-</div>
 </div>
 <style>
-	
+.bb-content {
+	background: #3e43c8;
+}
+.bb-item {
+	background: #3e43c8;
+}
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(1, 1);
+    }
+    50% {
+        -webkit-transform: scale(1.2, 1.2);
+    }
+    to {
+        -webkit-transform: scale(1, 1);
+    }
+}
+@keyframes zoom {
+    from {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.1, 1.1);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+/*@keyframes zoom {
+    from {
+        width: 140%;
+        height: 100%;
+    }
+    50% {
+        width: 145%;
+        height: 105%;
+    }
+    to {
+        width: 140%;
+        height: 100%;
+    }
+}*/
+#progress-circle-wrapper:before {
+    -webkit-animation: zoom 1s ease-in-out infinite; /* Chrome, Safari, Opera */
+    animation: zoom 5s ease-in-out infinite;
+}
+.test-wrap {
+    z-index: 3;
+}
   .finish-buttons {
     position: absolute;
     bottom: 40px;
@@ -399,6 +453,23 @@ TestAsset::register($this);
     height: 100%;
     position: relative;
   }
+  #bb-custom-wrapper #start-page-bottomm {
+  	width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  #bb-custom-wrapper #start-page-bottomm .left-part {
+  	width: 100%;
+  }
+  #bb-custom-wrapper #start-page-topp {
+  	width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  #bb-custom-wrapper #start-page-topp .right-part {
+  	width: 100%;
+  }
+
 
 .bb-custom-wrapper .bb-bookblock {
   width: 100%;
@@ -518,6 +589,30 @@ TestAsset::register($this);
 }
 
 @media screen and (min-width : 320px) and (max-width : 1199px) {
+	.result-container {
+		flex-direction: column!important;
+	}
+	.result-container #start-page-bottomm .left-part {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    height: 50vh;
+	    background: #3e43c8;
+	}
+	.result-container #start-page-topp {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    height: 50vh;
+	    background: #3e43c8;
+	}
+	.result-container #start-page-topp .right-part {
+	    height: 50vh;
+	}
+	.result-container .right-part p {
+		text-align: center;
+		text-align: -webkit-center;
+	}
 	#resultBlock {
 	    flex-direction: column;
 	}
@@ -622,7 +717,7 @@ TestAsset::register($this);
 	display: flex;
   }
   .left-part {
-    height: 41vh;
+    height: 40vh;
     align-items: flex-start;
   }
   .right-part {
@@ -795,8 +890,8 @@ TestAsset::register($this);
 	.correct-background p {
 	    width: 280px;
 	    max-width:  280px;
-	    font-size:  14px;
-	    line-height: 20px;
+	    font-size:  13px;
+	    line-height: 19px;
 	    margin-top: 20px;
 	}
 
@@ -814,8 +909,8 @@ TestAsset::register($this);
 	.incorrect-background p {
 	    width: 280px;
 	    max-width:  280px;
-	    font-size:  14px;
-	    line-height: 20px;
+	    font-size:  13px;
+	    line-height: 19px;
 	    margin-top: 20px;
 	}
 
@@ -825,7 +920,7 @@ TestAsset::register($this);
 	}
 
 	.right-part .right {
-	    margin-top: 20px;
+	    margin-top: 0px;
 	}
 	.right-part .wrong {
 	    margin-top: 20px;

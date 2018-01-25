@@ -39,10 +39,10 @@ $(document).ready(function () {
 		},
 		init = function() {
 		config.$bookBlock.bookblock( {
-			speed : 800,
-			shadowSides : 0.8,
-			shadowFlip : 0.4,
-			orientation : orient
+				speed : 600,
+				shadowSides : 0.5,
+				shadowFlip : 0.3,
+				orientation : orient
 			} );
 			initEvents();
 		},
@@ -64,25 +64,29 @@ $(document).ready(function () {
 				$("#bb-nav-next").html('Продолжить<i class="fa fa-angle-right"></i>')
 				if(step <= questionsLength) console.log('continue')
 				else {
-					rightAnswers = 9
-					$('#questionBlock').addClass('hide')
-					$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
-					$('#resultBlock').removeClass('hide')
+					setTimeout(function() { 
 
-					$('.result-container').removeClass('hide')
-					if (rightAnswers <= 4) {
-						$('#prgs-circle').addClass('p'+rightAnswers+'0')
-						$('#result-range-container').children('#result-range[data-start=0]').removeClass('hide')
-					} else if (rightAnswers >= 5 && rightAnswers <=8) {
-						$('#prgs-circle').addClass('p'+rightAnswers+'0')
-						$('#prgs-circle').addClass('over50')
-						$('#result-range-container').children('#result-range[data-start=5]').removeClass('hide')
-					} else if (rightAnswers === 9 || rightAnswers === 10) {
-						$('#prgs-circle').addClass('p'+rightAnswers+'0')
-						$('#prgs-circle').addClass('over50')
-						$('#result-range-container').children('#result-range[data-start=9]').removeClass('hide')
-					}
-					$('#result-text').html(rightAnswers)
+						$('#questionBlock').addClass('hide')
+						$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
+						$('#resultBlock').removeClass('hide')
+
+						$('.result-container').removeClass('hide')
+						if (rightAnswers <= 4) {
+							$('#prgs-circle').addClass('p'+rightAnswers+'0')
+							$('#result-range-container').children('#result-range[data-start=0]').removeClass('hide')
+						} else if (rightAnswers >= 5 && rightAnswers <=8) {
+							$('#prgs-circle').addClass('p'+rightAnswers+'0')
+							$('#prgs-circle').addClass('over50')
+							$('#result-range-container').children('#result-range[data-start=5]').removeClass('hide')
+						} else if (rightAnswers === 9 || rightAnswers === 10) {
+							$('#prgs-circle').addClass('p'+rightAnswers+'0')
+							$('#prgs-circle').addClass('over50')
+							$('#result-range-container').children('#result-range[data-start=9]').removeClass('hide')
+						}
+						$('#result-text').html(rightAnswers) 
+
+					}, 900);
+					
 				}
 				return false;
 			});
