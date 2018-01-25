@@ -1,25 +1,43 @@
 $(document).ready(function () {
 	var rightAnswers = 0;
+	var questLength = 0;
 	$('.nextQuestion').on('click', function(e) {
+		console.log(rightAnswers);
 		$('.nextQuestion').addClass('hide')
-		$('.test-wrap').removeClass('correct incorrect');
-		$('.test-wrap').removeClass('correct incorrect');
-		$(this).closest('.test-wrap').find('.right-sww').removeClass('correct-background incorrect-background');
-		$(this).closest('.right-part').removeClass('correct-background');
-		$(this).closest('.container').addClass('hide');
+		$('.nextQuestion').removeClass('start-position')
+		$('.nextQuestion').addClass('next-position')
+		$('.nextQuestion').addClass('next-btn') 
+		$('.nextQuestion').removeClass('btn-white') 
+		var t = document.getElementsByClassName('bb-item container t')
+		var currentTemp = parseInt($("#testID").data('value'))
+		var current = currentTemp + 1
+		questLength = t.length
+		document.getElementById("bb-nav-next").innerHTML  = 'Продолжить<i class="fa fa-angle-right"></i>'
+		// $('.test-wrap').removeClass('correct incorrect');
+		// $('.test-wrap').removeClass('correct incorrect');
+		// $(this).closest('.test-wrap').find('.right-sww').removeClass('correct-background incorrect-background');
+		// $(this).closest('.right-part').removeClass('correct-background');
+		// $(this).closest('.container').addClass('hide');
 		key = parseInt($(this).closest('.container').data('key'));
 		nextKey = key + 1;
 		nextContainer = $('.container[data-key="'+nextKey+'"]');
-		if(nextContainer.length) {
-			nextContainer.removeClass('hide');
+		if(current <= questLength) {
+			// nextContainer.removeClass('hide');
+			console.log('continue');
 		} else {
 			// rightAnswers = 7
-			$(this).closest('.test-wrap').find('.result-container').removeClass('hide');
+			console.log('STOP');
+			// $(this).closest('.test-wrap').find('.result-container').removeClass('hide');
+			$('#questionBlock').addClass('hide')
+			$('#questionBlock[data-key="'+questLength+'"]').addClass('hide')
+			$('#resultBlock').removeClass('hide')
+
+			$('result-container test-container').removeClass('hide')
 			if (rightAnswers <= 5 ) {
-				$(this).closest('.test-wrap').find('.progress-circle').addClass('p'+rightAnswers+'0');
+				$('#prgs-circle').addClass('p'+rightAnswers+'0');
 			} else if (rightAnswers > 5) {
-				$(this).closest('.test-wrap').find('.progress-circle').addClass('p'+rightAnswers+'0');
-				$(this).closest('.test-wrap').find('.progress-circle').addClass('over50');
+				$('#prgs-circle').addClass('p'+rightAnswers+'0');
+				$('#prgs-circle').addClass('over50');
 			}
 			document.getElementById("result-text").innerHTML  = rightAnswers
 		}

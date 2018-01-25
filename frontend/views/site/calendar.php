@@ -1,10 +1,7 @@
 <div class="card-header calendar-header">
 	<div class="custom-container">
 		<div class="left">
-			<!-- <p class="tt-top">
-				Выборы президента России
-			</p> -->
-			<div id="calendar-date" style="z-index:99;">
+			<div id="calendar-date" style="z-index:3;">
 				<?php foreach ($items as $item):?>
 					<div class="item <?=$item->id == $id ? 'slick-active' : '';?>" data-id="<?=$item->id;?>">
 		        		<h1>
@@ -19,11 +16,24 @@
 	</div>
 </div>
 <div class="dates-wrapper">
+	<div class="custom-container">
+		<div class="calendar-triangle"></div>
+	</div>
+	<div class="calendar__line">
+	  <div class="custom-container">
+			<div class="header-timeLine" id="calendar-timeline">
+			    <div class="header-timeLine_middle">
+		        <div class="green-dot"></div>
+			    </div>
+			    <div class="left-sw"></div>
+			</div>
+		</div>
+	</div>
 	<div class="bottom">
 		<div class="cover-up"></div>
 		<!-- <div class="bottom__left-button"></div>
 		<div class="bottom__right-button"></div> -->
-		<div id="calendar-dates" style="z-index:99;">
+		<div id="calendar-dates" style="z-index:3;">
 			<?php foreach ($items as $item):?>
 				<div class="item slick-active" data-id=<?=$item->id;?>>
 			        <p class="item__title"><?=$item->viewDate;?></p>
@@ -33,21 +43,7 @@
 			        <div class="timeline"></div>
 		      	</div>
 		    <?php endforeach;?>
-	  </div>
-	  <div class="calendar__line">
-		  <div class="custom-container">
-				<div class="header-timeLine" id="calendar-timeline">
-				    <div class="header-timeLine_middle">
-			        <div class="green-dot"></div>
-			        <span class="dot dot-1"></span>
-			        <span class="dot dot-2"></span>
-			        <span class="dot dot-3"></span>
-			        <span class="dot dot-4"></span>
-				    </div>
-				    <div class="left-sw"></div>
-				</div>
-			</div>
-		</div>	
+	  </div>	
 	</div>
 </div>
 
@@ -210,8 +206,7 @@
 	.calendar__line {
 		position: absolute;
     width: 100%;
-    top: 80px;
-    /*z-index: 100;*/
+    top: 100px;
 	}
 	#calendar-timeline {
 		position: absolute;
@@ -220,7 +215,7 @@
 	}
 	#calendar-timeline .header-timeLine_middle .green-dot {
 		left: -5px;
-    z-index: 101;
+    z-index: 5;
 	}
 	#calendar-timeline .header-timeLine_middle:after {
     content: '';
@@ -231,7 +226,7 @@
     width: 4000px;
     height: 1px;
     background-color: #d0d0d0;
-    z-index: 1;
+    z-index: 2;
 	}
 	#calendar-timeline .header-timeLine_middle:before {
     content: '';
@@ -242,14 +237,14 @@
     width: 4000px;
     height: 1px;
     background-color: #d0d0d0;
-    z-index: 1;
+    z-index: 2;
 	}
 /*timeline styles___*/
 /*slick modifications*/
 	.next-arrow {
     position: absolute;
     right: 50px;
-    top: -80px;
+    top: -100px;
     color: #fff;
     font-size: 40px;
     width: 80px;
@@ -258,7 +253,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 101;
+    z-index: 4;
     margin: 0 100px 0 0;
     padding: 0 40px
 	}
@@ -274,26 +269,26 @@
     justify-content: center;
     width: 50px;
     background: #f3f3f3;
-    z-index: 99;
+    z-index: 4;
 	}
 	.next-arrow-mobile i {
 		display: flex;
 		align-self: center;
 	}
 	.next-arrow:hover {
-		background-color: rgba(31, 166, 131, 0.8);
+		background-color: #1c9576;
 		transition: background-color .2s; 
 		cursor: pointer;
 	}
-	.next-arrow:focus {
-		background-color: rgba(31, 166, 131, 0.8);
+	.next-arrow:active {
+    background-color: #188569;
 		transition: background-color .2s; 
 		cursor: pointer;
 	}
 	.prev-arrow {
     position: absolute;
     right: 230px;
-    top: -80px;
+    top: -100px;
     color: #fff;
     font-size: 40px;
     width: 80px;
@@ -302,7 +297,7 @@
     align-items: center;
     justify-content: center;
     transition: background-color .2s;
-    z-index: 101;
+    z-index: 4;
 	}
 	.prev-arrow-mobile {
     position: absolute;
@@ -316,19 +311,19 @@
     justify-content: center;
     width: 50px;
     background: #f9f9f9;
-    z-index: 99;
+    z-index: 4;
 	}
 	.prev-arrow-mobile i {
 		display: flex;
 		align-self: center;
 	}
 	.prev-arrow:hover {
-		background-color: rgba(31, 166, 131, 0.8);
+		background-color: #1c9576;
 		transition: background-color .2s; 
 		cursor: pointer;
 	}
-	.prev-arrow:focus {
-		background-color: rgba(31, 166, 131, 0.8);
+	.prev-arrow:active {
+    background-color: #188569;
 		transition: background-color .2s; 
 		cursor: pointer;
 	}
@@ -541,19 +536,11 @@
 		.calendar-triangle {
 			display: none;
 		}
-		/*.calendar-triangle-mobile {
-			display: block;	
-			width: 0;
-			height: 0;
-			border-style: solid;
-			border-width: 1vh 10px 0 10px;
-			border-color: #1fb38c transparent transparent transparent;	
-		}*/
 		.calendar-triangle-mobile {
 			display: none;
 		}
 		.dates-wrapper {
-	    z-index: 9999;
+	    z-index: 5;
 	    bottom: 0;
       height: 10vh;
       padding: 0;
@@ -583,9 +570,7 @@
 			padding: 0;
 		}
 		.slick-current .item__title {
-			/*color: #f3f3f3!important;*/
 			display: none!important;
-			/*z-index: -1;*/
 			transition: all .2s;
 		}
 		#calendar-dates {
@@ -607,7 +592,7 @@
 	    bottom: 0px;
 	    height: 10vh;
 	    left: 40%;
-	    z-index: 99;
+	    z-index: 3;
 		}
 		.bottom__left-button {
 			display: initial;
@@ -622,7 +607,7 @@
 	    justify-content: center;
 	    width: 50%;
 	    background: green;
-	    z-index: 100;			
+	    z-index: 4;			
 		}
 		.bottom__right-button {
 			display: initial;
@@ -637,7 +622,7 @@
 	    justify-content: center;
 	    width: 50%;
 	    background: red;
-	    z-index: 100;
+	    z-index: 3;
 		}
 	}
 /*@media___*/
