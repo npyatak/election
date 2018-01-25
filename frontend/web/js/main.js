@@ -1,3 +1,7 @@
+$(window).on('load', function () {
+    $('#loaders').fadeOut(500);
+});
+
 $(document).ready(function () {
     var maxHeight = 0;
     var highestElement = {};

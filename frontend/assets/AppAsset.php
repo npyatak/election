@@ -16,6 +16,7 @@ class AppAsset extends AssetBundle
         'css/owl.carousel.min.css',
         'css/slick.css',
         'css/slick-theme.css',
+        'css/preload.css',
         'css/core.css',
         'css/main.css',
     ];

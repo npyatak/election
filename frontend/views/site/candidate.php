@@ -1,6 +1,8 @@
 <?php 
 use yii\helpers\Url;
 
+$this->registerJsFile(Url::toRoute('js/player/jwplayer.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
+$this->registerJsFile(Url::toRoute('js/player_setup.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
 $this->params['share'] = [
     'text' => $candidate->share_text, 'title' => $candidate->share_title, 'url' => Url::current([], true), 'image' => Url::to($candidate->share_image, true), 'twitter' => $candidate->share_twitter
 ];?>
@@ -114,7 +116,6 @@ $this->params['share'] = [
         </div>
     </div>
 </div>
-
 <?php if($candidate->theses):?>
 <div class="slick-slider_wrap">
     <div class="container">
@@ -159,6 +160,6 @@ $this->params['share'] = [
 <div class="video-modal">
     <div class="play-close"><i class="fa fa-close"></i></div>
     <div class="video-modal_inner">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/k2qgadSvNyU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div id="candidate-video"></div>
     </div>
 </div>
