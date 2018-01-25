@@ -18,6 +18,7 @@ use common\models\Rating;
 use common\models\RatingItem;
 use common\models\News;
 use common\models\Share;
+use common\models\TestResult;
 
 /**
  * Site controller
@@ -137,9 +138,11 @@ class SiteController extends Controller
 
     public function actionTest() {
         $questions = Question::find()->with('answers')->all();
+        $testResults = TestResult::find()->all();
 
         return $this->render('test', [
             'questions' => $questions,
+            'testResults' => $testResults,
         ]);
     }
 

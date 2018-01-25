@@ -9,6 +9,7 @@ use yii\web\NotFoundHttpException;
 use common\models\Rating;
 use common\models\RatingGroup;
 use common\models\search\RatingSearch;
+use common\models\Share;
 
 /**
  * Default controller for the `rating` module
@@ -40,8 +41,13 @@ class DefaultController extends \backend\controllers\CController
     public function actionCreate()
     {
         $model = new Rating();
+        $share = new Share();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $share->load(Yii::$app->request->post());
+            $share->url = $model->url;
+            $share->save();
+
             return $this->redirect(['index']);
         } else {
             return $this->render('create', [
@@ -59,6 +65,7 @@ class DefaultController extends \backend\controllers\CController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);

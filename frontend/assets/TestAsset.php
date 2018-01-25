@@ -13,6 +13,9 @@ class TestAsset extends AssetBundle
     ];
     public $js = [
         'js/test.js',
+        'js/bookBlock/jquery.bookblock.js',
+        'js/bookBlock/jquerypp.custom.js',
+        'js/bookBlock/bookblock.js',
     ];
     public $depends = [
         'frontend\assets\AppAsset',

@@ -30,6 +30,7 @@ class Share extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            ['uri', 'required'],
             [['uri', 'title', 'text', 'image', 'twitter'], 'string', 'max' => 255],
         ];
     }
@@ -42,10 +43,10 @@ class Share extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'uri' => 'Uri',
-            'title' => 'Share Title',
-            'text' => 'Share Text',
-            'image' => 'Share Image',
-            'twitter' => 'Share Twitter',
+            'title' => 'Заголовок',
+            'text' => 'Текст',
+            'image' => 'Изображение',
+            'twitter' => 'Текст для твиттера',
         ];
     }
 }

@@ -70,4 +70,38 @@ $(document).ready(function () {
 				$(this).closest('.right-part').find('.incorrect-icon').removeClass('hide');
 	    }
 	});
+
+
+	var Page = (function() {
+		var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+		var orient = (width >= 1199) ? 'vertical' : 'horizontal'
+		var config = {
+			$bookBlock : $( '#bb-bookblock' ),
+			$navNext : $( '#bb-nav-next' ),
+			$navPrev : $( '#bb-nav-prev' )
+		},
+		init = function() {
+		config.$bookBlock.bookblock( {
+			speed : 800,
+			shadowSides : 0.8,
+			shadowFlip : 0.4,
+			orientation : orient
+			} );
+			initEvents();
+		},
+		initEvents = function() {
+			var $slides = config.$bookBlock.children();
+			config.$navNext.on( 'click touchstart', function() {
+				config.$bookBlock.bookblock( 'next' );
+				return false;
+			});
+			config.$navPrev.on( 'click touchstart', function() {
+				config.$bookBlock.bookblock( 'prev' );
+				return false;
+			});
+		};
+		return { init : init };
+	})();
+
+	Page.init();
 });
