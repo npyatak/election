@@ -101,7 +101,6 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
         </div>
       </div>
     </div>
-
     <a href="" id="bb-nav-next" class="btn btn-h50 btn-w200 btn-white nextQuestion continue-mobile-btn start-position">
       Начать
     </a>
@@ -113,9 +112,12 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
 <script src="/js/bookBlock/jquery.bookblock.js"></script>
 <script src="/js/bookBlock/jquerypp.custom.js"></script>
 <script src="/js/bookBlock/bookblock.js"></script>
+
 <script>
   var Page = (function() {
 
+  var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  var orient = (width >= 1199) ? 'vertical' : 'horizontal'
   var config = {
     $bookBlock : $( '#bb-bookblock' ),
     $navNext : $( '#bb-nav-next' ),
@@ -123,9 +125,10 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
   },
   init = function() {
       config.$bookBlock.bookblock( {
-      speed : 1000,
+      speed : 800,
       shadowSides : 0.8,
-      shadowFlip : 0.4
+      shadowFlip : 0.4,
+      orientation : orient
     } );
     initEvents();
   },
@@ -140,16 +143,6 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
       config.$bookBlock.bookblock( 'prev' );
       return false;
     } );
-    $slides.on( {
-      'swipeleft' : function( event ) {
-        config.$bookBlock.bookblock( 'next' );
-        return false;
-      },
-      'swiperight' : function( event ) {
-        config.$bookBlock.bookblock( 'prev' );
-        return false;
-      }
-    } );
   };
   return { init : init };
   })();
@@ -158,9 +151,7 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
       Page.init();
   </script>
 
-
 <style>
-
   .finish-buttons {
     position: absolute;
     bottom: 40px;
@@ -558,6 +549,81 @@ $this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\Jquery
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+
+@media screen and (min-width : 768px) and (max-width : 1199px) {
+  #test-img-blue {
+    display: none;
+  }
+  #test-img-white {
+    display: block;
+  }
+  .continue-desktop-btn {
+    display: none;
+  }
+  .continue-mobile-btn {
+    border-radius: 0;
+    height: 80px!important;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    justify-content: center;
+    width: 100%;
+    font-size: 24px;
+    left: 0;
+    bottom: 0;
+    top: inherit;
+  }
+  .continue-mobile-btn i {
+    display: initial;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    height: 100%;
+    line-height: 80px!important;
+  }
+  .test-container .right-part .test-wrap_img {
+    width: 200px;
+  }
+  .test-wrap {
+    background: #3e43c8;
+  }
+  .test-wrap .test-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .bb-custom-firstpage {
+    width: 100%;
+    height: auto;
+  }
+  .bb-custom-side {
+    width: 100%;
+    height: auto;
+  }
+  .right-part {
+    height: 360px;
+    padding-top: 160px;
+    background: #3e43c8;
+  }
+  .left-part {
+    height: auto;
+    padding: 60px 0 3px 0;
+    margin: -1px 0 0 0;
+    justify-content: flex-start;
+  }
+  #start-title {
+    align-self: initial;
+    margin: 0 0 40px 0!important;
+    width: 500px;
+    max-width: 500px;
+    text-align: -webkit-center;
+    text-align: center;
+  }
+  #start-text {
+    align-self: inherit;
+  }
+}
+
+
 @media screen and (max-width: 61.75em){
   .bb-custom-side {
     font-size: 70%;
