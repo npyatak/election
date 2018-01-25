@@ -31,11 +31,6 @@
 	</div>
 	<div class="bottom">
 		<div class="cover-up"></div>
-<<<<<<< HEAD
-		<!-- <div class="bottom__left-button"></div>
-		<div class="bottom__right-button"></div> -->
-=======
->>>>>>> 845fee8432723643ca636fa369c02bac1cf80455
 		<div id="calendar-dates" style="z-index:3;">
 			<?php foreach ($items as $item):?>
 				<div class="item slick-active" data-id=<?=$item->id;?>>
@@ -119,6 +114,9 @@
 
 
 <style>
+	.slick-initialized .slick-slide:focus {
+	    outline: none;
+	}
 	.bottom__left-button {
 		display: none;
 	}
