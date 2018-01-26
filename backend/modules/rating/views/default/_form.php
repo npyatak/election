@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
+use common\components\ElfinderInput;
 ?>
 
 <div class="add-form">

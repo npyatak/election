@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-	/*
-=======
-/*
 .bb-content {
 	background: #3e43c8;
 }
@@ -37,7 +33,6 @@
 .test-wrap {
     z-index: 3;
 }
->>>>>>> f83d499123cdee2c08bdf8bd0e8d2e6c2a4ce902
   .finish-buttons {
     position: absolute;
     bottom: 40px;
@@ -453,8 +448,6 @@
 }
 
 @media screen and (min-width : 320px) and (max-width : 1199px) {
-<<<<<<< HEAD
-=======
 	.result-container {
 		flex-direction: column!important;
 	}
@@ -479,7 +472,6 @@
 		text-align: center;
 		text-align: -webkit-center;
 	}
->>>>>>> f83d499123cdee2c08bdf8bd0e8d2e6c2a4ce902
 	#resultBlock {
 	    flex-direction: column;
 	}
@@ -584,11 +576,7 @@
 	display: flex;
   }
   .left-part {
-<<<<<<< HEAD
-    height: 41vh;
-=======
     height: 40vh;
->>>>>>> f83d499123cdee2c08bdf8bd0e8d2e6c2a4ce902
     align-items: flex-start;
   }
   .right-part {
@@ -761,13 +749,8 @@
 	.correct-background p {
 	    width: 280px;
 	    max-width:  280px;
-<<<<<<< HEAD
-	    font-size:  14px;
-	    line-height: 20px;
-=======
 	    font-size:  13px;
 	    line-height: 19px;
->>>>>>> f83d499123cdee2c08bdf8bd0e8d2e6c2a4ce902
 	    margin-top: 20px;
 	}
 
@@ -785,13 +768,8 @@
 	.incorrect-background p {
 	    width: 280px;
 	    max-width:  280px;
-<<<<<<< HEAD
-	    font-size:  14px;
-	    line-height: 20px;
-=======
 	    font-size:  13px;
 	    line-height: 19px;
->>>>>>> f83d499123cdee2c08bdf8bd0e8d2e6c2a4ce902
 	    margin-top: 20px;
 	}
 
@@ -801,11 +779,7 @@
 	}
 
 	.right-part .right {
-<<<<<<< HEAD
-	    margin-top: 20px;
-=======
 	    margin-top: 0px;
->>>>>>> f83d499123cdee2c08bdf8bd0e8d2e6c2a4ce902
 	}
 	.right-part .wrong {
 	    margin-top: 20px;
@@ -851,4 +825,3 @@
 	    right:  initial;
 	}
 }
-*/

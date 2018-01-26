@@ -58,8 +58,8 @@ AppAsset::register($this);
         <div class="main-menu">
             <div class="main-menu_inner">
                 <div class="pull-left">
-                    <a href="" class="logo"></a>
-                    <div class="slogan"><a href="">Выборы президента России</a></div>
+                    <a href="http://tass.ru" target="_blank" class="logo"></a>
+                    <div class="slogan"><a href="/">Выборы президента России</a></div>
                 </div>
                 <div class="pull-right">
                     <ul class="main-menu_buttons">
@@ -110,7 +110,6 @@ AppAsset::register($this);
     </div>
     
 
-
     <?php if(Yii::$app->controller->action->id !== 'test'):?>
     <footer>
         <div class="container">
@@ -131,7 +130,7 @@ AppAsset::register($this);
                             <p>Копирайты про ТАСС, откуда взяли данные рейтингов, фотки ну и вот это вот всё</p>
                         </div>
                         <div class="footer-logo">
-                            <a href=""></a>
+                            <a href="http://tass.ru" target="_blank"></a>
                         </div>
                     </div>
                 </div>

@@ -7,12 +7,8 @@ TestAsset::register($this);
 //$this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
 //$this->registerCssFile(Url::toRoute('css/test.css'));
 ?>
-<link href="/css/css-circular-prog-bar.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/js/bookBlock/bookblock.css" />
-<script src="/js/bookBlock/modernizr.custom.js"></script>
 <div class="no-js">
 	<div class="bb-custom-wrapper">
-
 		<div class="test-wrap height test-page bb-bookblock" id="bb-bookblock">
 			<div class="bb-item container test-container">
 				<div class="bb-custom-firstpage" id="start-page-bottomm">
