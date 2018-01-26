@@ -11,14 +11,14 @@ class TestAsset extends AssetBundle
     public $css = [
         'css/css-circular-prog-bar.css',
         'js/bookBlock/bookblock.css',
-        'css/test-page.css',
+        //'css/test-page.css',
     ];
     public $js = [
+        'js/bookBlock/modernizr.custom.js',
         'js/test.js',
         'js/bookBlock/jquery.bookblock.js',
         'js/bookBlock/jquerypp.custom.js',
         'js/bookBlock/bookblock.js',
-        'js/bookBlock/modernizr.custom.js',
     ];
     public $depends = [
         'frontend\assets\AppAsset',
