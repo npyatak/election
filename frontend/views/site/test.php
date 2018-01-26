@@ -153,8 +153,27 @@ TestAsset::register($this);
         transform: scale(1, 1);
     }
 }
+<<<<<<< HEAD
 #progress-circle-wrapper:before {
     -webkit-animation: zoom 1s ease-in-out infinite;
+=======
+/*@keyframes zoom {
+    from {
+        width: 140%;
+        height: 100%;
+    }
+    50% {
+        width: 145%;
+        height: 105%;
+    }
+    to {
+        width: 140%;
+        height: 100%;
+    }
+}*/
+#progress-circle-wrapper:before {
+    -webkit-animation: zoom 1s ease-in-out infinite; /* Chrome, Safari, Opera */
+>>>>>>> f83d499123cdee2c08bdf8bd0e8d2e6c2a4ce902
     animation: zoom 5s ease-in-out infinite;
 }
 .test-wrap {
