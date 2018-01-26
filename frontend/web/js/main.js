@@ -136,4 +136,8 @@ $(document).ready(function () {
         $('.video-modal').fadeOut(300);
     });
 
+    var url = document.location.href;
+    $.each($('#hidden-menu .container .left a'), function () {
+        if(this.href === url){$(this).addClass('active')}
+    })
 });

@@ -53,15 +53,26 @@
 $script = "
     $(document)
         .on('click', '.card-show', function () {
-            $(this).toggleClass('card-show card-hide');
-            $(this).parent().toggleClass('active');
-            $(this).parent().find('.card-text').slideDown(300);
-
-            if($(window).width() >= 768){
-                $('html,body').animate({scrollTop: $(this).offset().top - 80}, 500);
-            }else{
-                $('html,body').animate({scrollTop: $(this).offset().top - 40}, 500);
-            }            
+            var a = $(this)
+            if( $('.card-title').hasClass('card-hide') ){
+                $('.card-text').parent().find('.card-text').slideUp(10);
+                $('.card').removeClass('active');
+                $('.card-title').removeClass('card-hide');
+                $('.card-title').addClass('card-show');
+            }
+            
+            setTimeout(function(){
+                $(a).toggleClass('card-show card-hide');
+                $(a).parent().toggleClass('active');
+                $(a).parent().find('.card-text').slideDown(300);
+    
+                if($(window).width() >= 768){
+                    $('html,body').animate({scrollTop: $(a).offset().top - 80}, 500);
+                }else{
+                    $('html,body').animate({scrollTop: $(a).offset().top - 40}, 500);
+                }
+                
+            },10)
         })
         .on('click', '.card-hide', function () {
             $(this).toggleClass('card-show card-hide');
