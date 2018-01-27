@@ -18,7 +18,7 @@ class CandidateSearch extends Candidate
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'active'], 'integer'],
             [['name', 'second_name', 'surname', 'status'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class CandidateSearch extends Candidate
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'active' => $this->active,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

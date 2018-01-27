@@ -38,10 +38,13 @@ use common\models\CandidateQuotation;
 	</div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-2">
+            <?= $form->field($model, 'active')->dropDownList($model->getActiveArray()) ?>
+        </div>
+        <div class="col-md-5">
             <?= $form->field($model, 'video_list_1')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <?= $form->field($model, 'video_list_2')->textInput(['maxlength' => true]) ?>
         </div>
     </div>

@@ -3,6 +3,8 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
+use common\models\Candidate;
+
 $this->title = 'Кандидаты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -24,6 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'second_name',
                 'surname',
                 'status',
+                [
+                    'attribute' => 'active',
+                    'format' => 'raw',
+                    'value' => function($data) {
+                        return $data->getActiveArray()[$data->active];
+                    },
+                    'filter' => Html::activeDropDownList($searchModel, 'active', Candidate::getActiveArray(), ['prompt'=>''])
+                ],
                 [
                     'attribute' => 'image',
                     'header' => 'Изображение',

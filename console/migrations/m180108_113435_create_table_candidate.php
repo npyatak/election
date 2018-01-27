@@ -16,7 +16,7 @@ class m180108_113435_create_table_candidate extends Migration
             'id' => $this->primaryKey(),
             'alias' => $this->string(255)->notNull(),
             'name' => $this->string(100)->notNull(),
-            'second_name' => $this->string(100)->notNull(),
+            'second_name' => $this->string(100),
             'surname' => $this->string(100)->notNull(),
             'status' => $this->string()->notNull(),
             'image' => $this->string(255),
@@ -27,6 +27,7 @@ class m180108_113435_create_table_candidate extends Migration
             'facts' => $this->getDb()->getSchema()->createColumnSchemaBuilder('longtext'),
             'video_list_1' => $this->string(255),
             'video_list_2' => $this->string(255),
+            'active' => $this->integer(1)->notNull()->defaultValue(1),
 
             'share_title' => $this->string(255),
             'share_text' => $this->string(),

@@ -22,9 +22,10 @@ class Candidate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'second_name', 'surname', 'status', 'alias'], 'required'],
+            [['name', 'surname', 'status', 'alias', 'active'], 'required'],
             [['name', 'second_name', 'surname', 'video_list_1', 'video_list_2'], 'string', 'max' => 100],
             [['status', 'image', 'alias', 'share_title', 'share_text', 'share_image', 'share_twitter'], 'string', 'max' => 255],
+            ['active', 'integer'],
             [['bio_1', 'bio_2', 'bio_3', 'bio_4', 'facts'], 'safe'],
 
         ];
@@ -55,6 +56,7 @@ class Candidate extends \yii\db\ActiveRecord
             'share_text' => 'Текст поделиться',
             'share_image' => 'Изображение поделиться',
             'share_twitter' => 'Текст для twitter',
+            'active' => 'Активность',
         ];
     }
 
@@ -94,5 +96,12 @@ class Candidate extends \yii\db\ActiveRecord
 
     public function getImageUrl() {
         return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl($this->image);
+    }
+
+    public function getActiveArray() {
+        return [
+            1 => 'Активен',
+            5 => 'Выбыл из гонки',
+        ];
     }
 }
