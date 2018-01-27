@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 
 $this->registerJsFile(Url::toRoute('js/player/jwplayer.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
-$this->registerJsFile(Url::toRoute('js/player_setup.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
+
 $this->params['share'] = [
     'text' => $candidate->share_text, 'title' => $candidate->share_title, 'url' => Url::current([], true), 'image' => Url::to($candidate->share_image, true), 'twitter' => $candidate->share_twitter
 ];?>
@@ -181,3 +181,28 @@ $this->params['share'] = [
         <div id="candidate-video"></div>
     </div>
 </div>
+
+<?php 
+$script = "
+    $(document).ready(function () {
+        jwplayer.key='btTjXiuYZsRbqAVggNOhFFVcP3mvO2KkI2kx4w==';
+            jwplayer('candidate-video').setup({
+                'width': '100%',
+                'aspectratio': '16:9',
+                'bufferlength': '3',
+                'stretching': 'uniform',
+                'primary': 'flash',
+                'autostart': 'false',
+                'duration': '',
+                'playlist': [{
+                    'image': '/frontend/web/images/footer_gallery_img_new.jpg',
+                    'sources': [
+                        {file: '".$candidate->video_list_1."'},
+                        {file: '".$candidate->video_list_2."'},
+                    ]
+                }]
+            });
+    })
+";
+
+$this->registerJs($script, yii\web\View::POS_END);?>
