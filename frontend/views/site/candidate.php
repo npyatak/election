@@ -14,11 +14,27 @@ $this->params['share'] = [
                 <div class="inner">
                     <h1><?=$candidate->name;?> <br><?=$candidate->surname;?></h1>
                     <p class="intro"><?=$candidate->status;?></p>
+                    <div class="bottom">
+                        <div class="candidate-detail_info">
+                            <div class="candidate-percent">
+                                <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
+                                <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
+                            </div>
+                            <div class="candidate-rating">
+                                <p>Рейтинг кандидата по данным <?=$rating->subtitle;?></p>
+                                <span class="question-icon popup-open"></span>
+                                <div class="question-popup">
+                                    <p><?=$rating->text;?></p>
+                                    <!--                            <span class="popup-close">Закрыть</span>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="right">
                 <div class="inner">
-                    <img src="<?=$candidate->image;?>" width=440 alt="<?=$candidate->name;?> <?=$candidate->surname;?>">
+                    <img src="<?=$candidate->image;?>" alt="<?=$candidate->name;?> <?=$candidate->surname;?>">
                 </div>
                 <?php if($candidate->video_list_1 || $candidate->video_list_2):?>
                     <span class="play"><i class="fa fa-play"></i><span class="text">Видео</span></span>
@@ -55,13 +71,14 @@ $this->params['share'] = [
                 </div>
             </div>
             <div class="right">
+                <?php if($candidate->facts):?>
                 <div class="candidate-statistics">
                     <div class="inner">
                         <?=$candidate->facts;?>
                     </div>
                     <div class="right-sw"></div>
                 </div>
-
+                <?php endif;?>
                 <?php if($candidate->quotations):?>
                 <div class="candidate-quotes">
                     <div class="inner">
@@ -112,6 +129,7 @@ $this->params['share'] = [
                     <div class="right-sw"></div>
                 </div>
                 <?php endif;?>
+
             </div>
         </div>
     </div>
