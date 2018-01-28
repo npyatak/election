@@ -59,77 +59,160 @@ $this->params['share'] = [
         </div>
     </div>
     <div class="candidate-detail_middle">
-        <div class="container">
-            <div class="left">
-                <div class="inner">
+        <div class="desktop">
+            <div class="container">
+                <div class="left">
+                    <div class="inner">
+                        <div class="biography">
+                            <?=$candidate->bio_1;?>
+                            <?=$candidate->bio_2;?>
+                            <?=$candidate->bio_3;?>
+                            <?=$candidate->bio_4;?>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <?php if($candidate->facts):?>
+                        <div class="candidate-statistics">
+                            <div class="inner">
+                                <?=$candidate->facts;?>
+                            </div>
+                            <div class="right-sw"></div>
+                        </div>
+                    <?php endif;?>
+                    <?php if($candidate->quotations):?>
+                        <div class="candidate-quotes">
+                            <div class="inner">
+                                <h3 class="candidate-quotes_title">Известные цитаты</h3>
+                                <div id="candidate-quotes" class="owl-carousel">
+                                    <?php foreach ($candidate->quotations as $q):?>
+                                        <div class="item">
+                                            <h3 class="quotes-text"><?=$q->text;?></h3>
+                                            <p class="quotes-date"><?=$q->caption;?></p>
+                                        </div>
+                                    <?php endforeach;?>
+                                </div>
+                            </div>
+                            <div class="right-sw"></div>
+                        </div><div class="right-sw"></div>
+                    <?php endif;?>
+
+                    <?php if($candidate->perks):?>
+                        <div class="candidate-hobbies">
+                            <div class="inner">
+                                <h3 class="candidate-hobbies_title">Увлечения и таланты</h3>
+                                <div id="candidate-hobbies" class="owl-carousel">
+                                    <?php foreach ($candidate->perks as $key => $perk):?>
+                                        <?php if($key % 2 == 0):?>
+                                            <div class="item">
+                                            <div class="top">
+                                                <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
+                                                <?php if($perk->image):?>
+                                                    <div class="candidate-hobbies_img">
+                                                        <img src="<?=$perk->image;?>">
+                                                    </div>
+                                                <?php endif;?>
+                                            </div>
+                                        <?php else:?>
+                                            <div class="bottom">
+                                                <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
+                                                <?php if($perk->image):?>
+                                                    <div class="candidate-hobbies_img">
+                                                        <img src="<?=$perk->image;?>">
+                                                    </div>
+                                                <?php endif;?>
+                                            </div>
+                                            </div>
+                                        <?php endif;?>
+                                    <?php endforeach;?>
+                                </div>
+                            </div>
+                            <div class="right-sw"></div>
+                        </div>
+                    <?php endif;?>
+
+                </div>
+            </div>
+        </div>
+        <div class="mobile">
+            <div class="container left">
+                <div class="mobile-block">
                     <div class="biography">
                         <?=$candidate->bio_1;?>
+                    </div>
+                    <?php if($candidate->facts):?>
+                        <div class="candidate-statistics">
+                            <div class="inner">
+                                <?=$candidate->facts;?>
+                            </div>
+                            <div class="right-sw"></div>
+                        </div>
+                    <?php endif;?>
+                </div>
+                <div class="mobile-block">
+                    <div class="biography">
                         <?=$candidate->bio_2;?>
+                    </div>
+                    <?php if($candidate->quotations):?>
+                        <div class="candidate-quotes">
+                            <div class="inner">
+                                <h3 class="candidate-quotes_title">Известные цитаты</h3>
+                                <div id="candidate-quotes_mobile" class="owl-carousel">
+                                    <?php foreach ($candidate->quotations as $q):?>
+                                        <div class="item">
+                                            <h3 class="quotes-text"><?=$q->text;?></h3>
+                                            <p class="quotes-date"><?=$q->caption;?></p>
+                                        </div>
+                                    <?php endforeach;?>
+                                </div>
+                            </div>
+                            <div class="right-sw"></div>
+                        </div><div class="right-sw"></div>
+                    <?php endif;?>
+                </div>
+                <div class="mobile-block">
+                    <div class="biography">
                         <?=$candidate->bio_3;?>
+                    </div>
+                    <?php if($candidate->perks):?>
+                        <div class="candidate-hobbies">
+                            <div class="inner">
+                                <h3 class="candidate-hobbies_title">Увлечения и таланты</h3>
+                                <div id="candidate-hobbies_mobile">
+                                    <?php foreach ($candidate->perks as $key => $perk):?>
+                                        <?php if($key % 2 == 0):?>
+                                            <div class="item">
+                                            <div class="top">
+                                                <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
+                                                <?php if($perk->image):?>
+                                                    <div class="candidate-hobbies_img">
+                                                        <img src="<?=$perk->image;?>">
+                                                    </div>
+                                                <?php endif;?>
+                                            </div>
+                                        <?php else:?>
+                                            <div class="bottom">
+                                                <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
+                                                <?php if($perk->image):?>
+                                                    <div class="candidate-hobbies_img">
+                                                        <img src="<?=$perk->image;?>">
+                                                    </div>
+                                                <?php endif;?>
+                                            </div>
+                                            </div>
+                                        <?php endif;?>
+                                    <?php endforeach;?>
+                                </div>
+                            </div>
+                            <div class="right-sw"></div>
+                        </div>
+                    <?php endif;?>
+                </div>
+                <div class="mobile-block">
+                    <div class="biography">
                         <?=$candidate->bio_4;?>
                     </div>
                 </div>
-            </div>
-            <div class="right">
-                <?php if($candidate->facts):?>
-                <div class="candidate-statistics">
-                    <div class="inner">
-                        <?=$candidate->facts;?>
-                    </div>
-                    <div class="right-sw"></div>
-                </div>
-                <?php endif;?>
-                <?php if($candidate->quotations):?>
-                <div class="candidate-quotes">
-                    <div class="inner">
-                        <h3 class="candidate-quotes_title">Известные цитаты</h3>
-                        <div id="candidate-quotes" class="owl-carousel">
-                            <?php foreach ($candidate->quotations as $q):?>
-                                <div class="item">
-                                    <h3 class="quotes-text"><?=$q->text;?></h3>
-                                    <p class="quotes-date"><?=$q->caption;?></p>
-                                </div>
-                            <?php endforeach;?>
-                        </div>
-                    </div>
-                    <div class="right-sw"></div>
-                </div><div class="right-sw"></div>
-                <?php endif;?>
-
-                <?php if($candidate->perks):?>
-                <div class="candidate-hobbies">
-                    <div class="inner">
-                        <h3 class="candidate-hobbies_title">Увлечения и таланты</h3>
-                        <div id="candidate-hobbies" class="owl-carousel">
-                            <?php foreach ($candidate->perks as $key => $perk):?>
-                                <?php if($key % 2 == 0):?>
-                                <div class="item">
-                                    <div class="top">
-                                        <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
-                                        <?php if($perk->image):?>
-                                            <div class="candidate-hobbies_img">
-                                                <img src="<?=$perk->image;?>">
-                                            </div>
-                                        <?php endif;?>
-                                    </div>
-                                <?php else:?>
-                                    <div class="bottom">
-                                        <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
-                                        <?php if($perk->image):?>
-                                            <div class="candidate-hobbies_img">
-                                                <img src="<?=$perk->image;?>">
-                                            </div>
-                                        <?php endif;?>
-                                    </div>
-                                </div>
-                                <?php endif;?>
-                            <?php endforeach;?>
-                        </div>
-                    </div>
-                    <div class="right-sw"></div>
-                </div>
-                <?php endif;?>
-
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@ $(document).ready(function () {
     });
     $(window).trigger('resize');
 
-    $('#candidate-quotes').owlCarousel({
+    $('#candidate-quotes, #candidate-quotes_mobile').owlCarousel({
         items: 1,
         margin: 10,
         loop: true,
@@ -44,6 +44,7 @@ $(document).ready(function () {
         navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
         dots: true
     });
+
     $('#news-slider').owlCarousel({
         margin: 0,
         autoplay: false,
@@ -139,5 +140,52 @@ $(document).ready(function () {
     var url = document.location.href;
     $.each($('#hidden-menu .container .left a'), function () {
         if(this.href === url){$(this).addClass('active')}
+    });
+
+    $('.tab a').click(function (e) {
+        e.preventDefault();
+        $('.tab a').removeClass('active');
+        $(this).addClass('active');
+        if($(this).hasClass('show-rating-cat')){
+            $('#rating-cat').addClass('transform');
+        }else{
+            $('#rating-cat').removeClass('transform');
+        }
+    });
+
+    $('.tabs').owlCarousel({
+        loop: false,
+        autoplay: false,
+        dots: false,
+        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+        responsive: {
+            0: {
+                margin: 0,
+                items: 1,
+                nav: true,
+            },
+            1150: {
+                margin: 0,
+                items: 3,
+                touchDrag: false,
+                mouseDrag: false
+            }
+        }
+    });
+
+    $('#rating-cat').owlCarousel({
+        margin: 30,
+        loop: false,
+        autoplay: false,
+        dots: false,
+        nav: true,
+        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+        autoWidth:true,
+        items: 4
+    });
+
+    $('.rating-cat_el').click(function (e) {
+        e.preventDefault();
+        $(this).toggleClass('active');
     })
 });

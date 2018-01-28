@@ -562,8 +562,11 @@ footer .copyright p {
     background-size: 80px;
 }
 
+.candidate-detail_middle .mobile {
+    display: none;
+}
 .candidate-detail_top .container,
-.candidate-detail_middle .container {
+.candidate-detail_middle .desktop .container {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -1745,23 +1748,15 @@ a.all-news {
     padding-left: 0;
 }
 .rating-page_top {
+    position: relative;
     padding-top: 120px;
     background-color: #3e43c8;
-}
-.tabs {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: nowrap;
-}
-.tab {
-    width: 33.333%;
+    z-index: 4;
 }
 .tab a {
     display: block;
     width: 100%;
+    height: 150px;
     padding: 30px 40px 20px;
     background-color: transparent;
     color: #fff;
@@ -1776,14 +1771,35 @@ a.all-news {
     background-color: #252aa6;
     text-decoration: none;
 }
-.tab a h4 {
-    height: 80px;
-}
-.tab a h4 span {
+.tab a .question-icon_wrap {
+    position: relative;
     display: block;
-    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.tab a .tab-span {
+    display: inline-block;
+    margin-right: 10px;
     font: 16px 'FiraSans-Bold', sans-serif;
     line-height: 20px;
+}
+.tab a .question-icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -2px;
+    height: 20px;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+.tab:nth-child(1) a .question-popup {
+    left: 0;
+    right: auto;
+}
+.tab a h4 {
+    margin-bottom: 10px;
 }
 .tab a p {
     margin-bottom: 0;
@@ -1797,6 +1813,134 @@ a.all-news {
 .tab-content .container {
     padding-left: 0;
 }
+.rating-candidate {
+    position: relative;
+    margin-bottom: 30px;
+}
+.rating-candidate h4 {
+    margin-bottom: 10px;
+    font-family: 'FiraSans-Regular', sans-serif;
+    color: #fff;
+}
+.rating-candidate .rating-percent {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font: 24px 'FiraSans-Bold', sans-serif;
+    line-height: 30px;
+    color: #fff;
+}
+.rating-line {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    background-color: #3e43c8;
+}
+.rating-line span {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 5px;
+    background-color: #1fb38c;
+}
+#rating-cat {
+    width: 100%;
+    padding: 40px 40px 0;
+    margin-top: -105px;
+    opacity: 0;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+#rating-cat.transform {
+    margin-top: 0;
+    opacity: 1;
+}
+.rating-cat_title {
+    height: 25px;
+    font-size: 12px;
+    line-height: 15px;
+    white-space: nowrap;
+    color: #fff;
+    opacity: .5;
+}
+.rating-cat_els {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.rating-cat_els a {
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #383cbb;
+    color: #fff;
+}
+.rating-cat_els a:not(:first-child) {
+    -webkit-box-shadow: inset 1px 0 0 0 #3e43c8;
+    -moz-box-shadow: inset 1px 0 0 0 #3e43c8;
+    box-shadow: inset 1px 0 0 0 #3e43c8;
+}
+.rating-cat_els a:hover,
+.rating-cat_els a:active {
+    text-decoration: none;
+}
+.rating-cat_els a.active {
+    background-color: #fff;
+    color: #252aa6;
+    text-decoration: none;
+}
+#rating-cat .owl-prev {
+    position: absolute;
+    top: 46px;
+    right: calc(100% - 40px);
+    height: 80px;
+    font-size: 15px;
+    line-height: 80px;
+    color: #fff;
+    padding-right: 13px;
+    padding-left: 13px;
+    -webkit-box-shadow: inset -1px 0 0 0 #383cbb, 10px 0 25px 5px rgba(37,42,166,.5);
+    -moz-box-shadow: inset -1px 0 0 0 #383cbb, 10px 0 25px 5px rgba(37,42,166,.5);
+    box-shadow: inset -1px 0 0 0 #383cbb, 10px 0 25px 5px rgba(37,42,166,.5);
+}
+#rating-cat .owl-next {
+    position: absolute;
+    top: 46px;
+    left: calc(100% - 40px);
+    height: 80px;
+    font-size: 15px;
+    line-height: 80px;
+    color: #fff;
+    padding-right: 13px;
+    padding-left: 13px;
+    -webkit-box-shadow: inset 1px 0 0 0 #383cbb, -10px 0 25px 5px rgba(37,42,166,.5);
+    -moz-box-shadow: inset 1px 0 0 0 #383cbb, -10px 0 25px 5px rgba(37,42,166,.5);
+    box-shadow: inset 1px 0 0 0 #383cbb, -10px 0 25px 5px rgba(37,42,166,.5);
+}
+#rating-cat .owl-prev.disabled,
+#rating-cat .owl-next.disabled {
+    display: none;
+}
+/*#rating-cat .owl-next::before {*/
+    /*content: '';*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*right: 100%;*/
+    /*width: 40px;*/
+    /*background-color: rgba(37,42,166,.2);*/
+/*}*/
+/*#252aa6*/
+
 
 @media (max-width:1279px) {
     .container {
@@ -2013,6 +2157,12 @@ a.all-news {
         width: 260px;
         margin-left: 0;
     }
+    .candidate-detail_middle .desktop {
+        display: none;
+    }
+    .candidate-detail_middle .mobile {
+        display: block;
+    }
     .candidate-detail_middle .left,
     .candidate-detail_middle .right {
         width: 100%;
@@ -2048,23 +2198,26 @@ a.all-news {
         letter-spacing: 0;
     }
     .candidate-quotes {
+        margin-left: -80px;
+        margin-bottom: 40px;
+        width: calc(100% + 160px);
         padding: 40px 40px 0 40px;
     }
     .candidate-quotes_title {
         margin-bottom: 40px;
     }
-    #candidate-hobbies.owl-carousel .owl-stage {
-        width: 100% !important;
-    }
-    #candidate-hobbies.owl-carousel .owl-dots,
-    #candidate-hobbies.owl-carousel .owl-nav {
-        display: none !important;
-    }
     .candidate-hobbies {
+        margin-left: -80px;
+        margin-bottom: 40px;
+        width: calc(100% + 160px);
         padding: 0;
     }
+    .candidate-hobbies .right-sw,
+    .candidate-hobbies::before {
+        display: none;
+    }
     .candidate-hobbies .candidate-hobbies_title {
-        padding: 40px 40px 20px 40px;
+        padding: 0 40px 20px 40px;
         background-color: #fff;
         font-size: 30px;
         line-height: 40px;
@@ -2077,15 +2230,11 @@ a.all-news {
     }
     .candidate-hobbies .top,
     .candidate-hobbies .bottom {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        flex-wrap: nowrap;
         justify-content: space-between;
+        align-items: flex-start;
         padding: 40px;
         min-height: 200px;
+        height: auto;
     }
     .candidate-hobbies .top .candidate-hobbies_title,
     .candidate-hobbies .bottom .candidate-hobbies_title {
@@ -2100,6 +2249,11 @@ a.all-news {
     .candidate-hobbies .bottom .candidate-hobbies_img {
         position: static;
         width: 120px;
+    }
+    .candidate-hobbies .top .candidate-hobbies_img img,
+    .candidate-hobbies .bottom .candidate-hobbies_img img {
+        display: block;
+        width: 100%;
     }
     .candidate-hobbies .owl-carousel,
     .candidate-detail_middle .right {
@@ -2164,6 +2318,64 @@ a.all-news {
     header .right-title h4 .question-icon,
     header .right-title h4 .question-popup {
         right: 40px;
+    }
+    .candidate-statistics {
+        margin-left: -80px;
+        width: calc(100% + 160px);
+        margin-bottom: 40px;
+    }
+}
+@media (max-width:1150px) {
+    .tab a.active {
+        background-color: transparent;
+    }
+    .tabs .owl-nav {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .tabs .owl-prev,
+    .tabs .owl-next {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        color: #fff;
+    }
+    .tabs .owl-prev i,
+    .tabs .owl-next i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        font-size: 30px;
+    }
+    .tabs .owl-item:nth-child(1) .tab a .question-icon {
+        position: absolute;
+        top: -32px;
+        left: 240px;
+    }
+    .tabs .owl-item:nth-child(2) .tab a .question-icon {
+        position: absolute;
+        top: -32px;
+        left: 240px;
+    }
+    .tabs .owl-item:nth-child(3) .tab a .question-icon {
+        position: absolute;
+        top: -32px;
+        left: 295px;
+    }
+    .tab a .question-icon_wrap {
+
     }
 }
 @media (max-width:1125px) {
@@ -2692,6 +2904,12 @@ a.all-news {
     }
     .candidate-statistics {
         padding: 30px 20px;
+        margin-left: -20px;
+        width: calc(100% + 40px);
+        margin-bottom: 30px;
+    }
+    .candidate-statistics p {
+        margin-bottom: 0 !important;
     }
     .candidate-statistics_table {
         padding: 20px 0;
@@ -2803,6 +3021,27 @@ a.all-news {
     header .right-title h4 .question-popup {
         right: 20px;
     }
+    .candidate-detail_top>.container>.bottom {
+        padding: 15px 20px;
+    }
+    .candidate-quotes,
+    .candidate-hobbies {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+    }
+    .candidate-hobbies .top,
+    .candidate-hobbies .bottom {
+        min-height: 120px;
+    }
+    .candidate-hobbies .top .candidate-hobbies_img,
+    .candidate-hobbies .bottom .candidate-hobbies_img {
+        width: 80px;
+    }
+    .candidate-hobbies .top .candidate-hobbies_title,
+    .candidate-hobbies .bottom .candidate-hobbies_title {
+        width: calc(100% - 120px);
+        padding-right: 0;
+    }
 }
 @media (max-width:480px) {
     #news-slider .owl-item {
@@ -2843,10 +3082,12 @@ a.all-news {
         font-size: 12px;
         line-height: 15px;
     }
-    .candidate-detail_middle .left h4,
-    .candidate-detail_middle .left p,
+    .candidate-detail_middle .left h4 {
+        margin-bottom: 10px !important;
+    }
+    .candidate-detail_middle .left p:not(:last-child),
     .candidate-detail_middle .quote {
-        margin-bottom: 30px;
+        margin-bottom: 30px !important;
     }
     .candidate-detail_middle p {
         font-size: 14px;
@@ -2903,6 +3144,16 @@ a.all-news {
     .candidate-rating .question-popup {
         top: 35px;
         right: 0;
+    }
+    .candidate-quotes,
+    .candidate-hobbies {
+        margin-bottom: 30px;
+    }
+    #hidden-menu {
+        padding-left: 20px;
+    }
+    #hidden-menu .container .left {
+        padding: 105px 20px 105px 0;
     }
 }
 
