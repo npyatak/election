@@ -20,7 +20,7 @@
                                     <i class="fa fa-chevron-down"></i>
                                 </div>
                                 <div class="card-text" <?=$card->id == $id ? 'style="display: block;"' : '';?>>
-                                    <?=$card->text;?>
+                                    <p><?=$card->text;?></p>
                                 </div>
                             </div>
                         <?php endif;?>
@@ -36,7 +36,7 @@
                                     <i class="fa fa-chevron-down"></i>
                                 </div>
                                 <div class="card-text" <?=$card->id == $id ? 'style="display: block;"' : '';?>>
-                                    <?=$card->text;?>
+                                    <p><?=$card->text;?></p>
                                 </div>
                             </div>
                         <?php endif;?>
@@ -81,8 +81,12 @@ $script = "
         });
 
     if($('.card.active').length) {
-        $('html, body').animate({scrollTop:($('.card.active').offset().top)},500);
-        $('.card.active').toggleClass('card-show card-hide');
+        if($(window).width() >= 768){
+            $('html, body').animate({scrollTop:($('.card.active').offset().top) - 80},500);
+        }else{
+            $('html, body').animate({scrollTop:($('.card.active').offset().top) - 40},500);
+        }
+        $('.card.active').find('.card-title').toggleClass('card-show card-hide');
     }
     
 ";

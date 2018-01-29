@@ -88,20 +88,6 @@ AppAsset::register($this);
                             <li><a href="http://tass.ru/vybory-prezidenta-rf-2018" target="_blank">Новости ТАСС</a></li>
                         </ul>
                     </div>
-                    <div class="right">
-                        <ul>
-                            <?php $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();?>
-                            <?php foreach ($candidates as $c):?>
-                                <li>
-                                    <a href="<?=$c->url;?>">
-                                        <img src="<?=$c->image;?>">
-                                        <h4><?=$c->name;?> <br><?=$c->surname;?></h4>
-                                    </a>
-                                </li>
-                            <?php endforeach;?>
-                        </ul>
-                        <div class="right-sw"></div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -197,9 +197,9 @@
 #hidden-menu .container .left li {
     margin-bottom: 30px;
 }
-#hidden-menu .container .left li:nth-child(2) {
-    display: none;
-}
+/*#hidden-menu .container .left li:nth-child(2) {*/
+    /*display: none;*/
+/*}*/
 #hidden-menu .container .left a {
     display: block;
     font: 50px 'FiraSans-Bold', sans-serif;
@@ -917,6 +917,7 @@ footer .copyright p {
     padding-bottom: 80px;
 }
 .candidate-hobbies .candidate-hobbies_title {
+    position: relative;
     font-size: 24px;
     line-height: 30px;
     color: #000;
@@ -1113,6 +1114,10 @@ footer .copyright p {
     bottom: 0;
     left: 100%;
     background-color: #252AA6;
+}
+.slick-slider_caption a {
+    text-decoration: underline;
+    color: #fff;
 }
 
 .test-wrap {
@@ -1941,6 +1946,10 @@ a.all-news {
 /*}*/
 /*#252aa6*/
 
+.mobile-rating-cat {
+    display: none;
+}
+
 
 @media (max-width:1279px) {
     .container {
@@ -2376,6 +2385,80 @@ a.all-news {
     }
     .tab a .question-icon_wrap {
 
+    }
+    #rating-cat {
+        display: none;
+    }
+    .mobile-rating-cat {
+        display: block;
+        padding: 20px 40px;
+        background-color: #3e43c8;
+        margin-top: -80px;
+        -webkit-transition: .2s;
+        -moz-transition: .2s;
+        -ms-transition: .2s;
+        -o-transition: .2s;
+        transition: .2s;
+    }
+    .mobile-rating-cat.transform {
+        margin-top: 0;
+    }
+    .mobile-rating-cat .btn-group.bootstrap-select {
+        width: 100% !important;
+    }
+    .mobile-rating-cat .btn.dropdown-toggle {
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        background-color: #3e43c8;
+        border: solid 1px #5055d7;
+        font-size: 14px;
+        line-height: 40px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        color: #fff !important;
+        outline: none !important;
+    }
+    .mobile-rating-cat .dropdown-menu.open {
+        padding: 0;
+        margin: 0;
+        background-color: #3e43c8;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border: solid 1px #5055d7;
+        border-top: none;
+    }
+    .mobile-rating-cat .btn-group.dropup .dropdown-menu.open {
+        border-top: solid 1px #5055d7;
+        border-bottom: none;
+    }
+    .mobile-rating-cat .dropdown-menu > li:not(:last-child) {
+        border-bottom: solid 1px #5055d7 !important;
+    }
+    .mobile-rating-cat .dropdown-menu > li > a,
+    .mobile-rating-cat .dropdown-menu > li > a:hover,
+    .mobile-rating-cat .dropdown-menu > li > a:focus {
+        height: 40px;
+        padding: 0 10px;
+        background-color: #3e43c8;
+        color: #fff;
+        font-size: 14px;
+        line-height: 40px;
+        outline: none !important;
+        text-decoration: none !important;
+    }
+    .mobile-rating-cat .dropdown-menu > li.disabled > a,
+    .mobile-rating-cat .dropdown-menu > li.disabled > a:hover,
+    .mobile-rating-cat .dropdown-menu > li.disabled > a:focus {
+        color: rgba(255,255,255,.5);
     }
 }
 @media (max-width:1125px) {
@@ -3042,6 +3125,28 @@ a.all-news {
         width: calc(100% - 120px);
         padding-right: 0;
     }
+    .rating-page_top {
+        padding-top: 60px;
+    }
+    .tab a {
+        height: auto;
+        padding: 0 20px 20px;
+    }
+    .mobile-rating-cat {
+        padding: 0 20px 20px;
+    }
+    .tabs .owl-nav {
+        display: none !important;
+    }
+    .mobile-rating-cat {
+        margin-top: -60px;
+    }
+    .tab-content {
+        padding: 25px 20px;
+    }
+    .rating-candidate .rating-percent {
+        font-size: 18px;
+    }
 }
 @media (max-width:480px) {
     #news-slider .owl-item {
@@ -3154,6 +3259,26 @@ a.all-news {
     }
     #hidden-menu .container .left {
         padding: 105px 20px 105px 0;
+    }
+    .vertical-title {
+        font-size: 20px;
+    }
+    .rating-candidate {
+        margin-bottom: 20px;
+    }
+    .tabs .owl-item:nth-child(3) h4 {
+        max-width: 200px;
+    }
+    .rating-candidate h4,
+    .rating-candidate .rating-percent {
+        font-size: 16px;
+    }
+    .tabs .owl-item .tab a .question-icon {
+        left: auto !important;
+        right: 0;
+    }
+    .tabs .owl-item:nth-child(3) .tab a .question-icon {
+        top: -64px;
     }
 }
 

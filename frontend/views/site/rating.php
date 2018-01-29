@@ -42,12 +42,40 @@
         </div>
     </div>
     <div class="rating-page_bottom">
+        <div class="mobile-rating-cat">
+            <div class="container">
+                <select class="selectpicker" data-style="btn-white">
+                    <option value="">Мужчины</option>
+                    <option value="">Женщины</option>
+                    <option value="" disabled="disabled">Возраст:</option>
+                    <option value="">18-24</option>
+                    <option value="">60+</option>
+                    <option value="" disabled="disabled">Трудоустройство:</option>
+                    <option value="">Работающие</option>
+                    <option value="">Бюджетники</option>
+                    <option value="">Предприниматели</option>
+                    <option value="" disabled="disabled">Среднедушевой доход:</option>
+                    <option value="">До 5 000 ₽</option>
+                    <option value="">5 000 ₽ — 8 000 ₽</option>
+                    <option value="">8 000 ₽ — 10 000 ₽</option>
+                    <option value="">10 000 ₽ — 15 000 ₽</option>
+                    <option value="">15 000 ₽ +</option>
+                    <option value="" disabled="disabled">Населенные пункты:</option>
+                    <option value="">Москва и Санкт-Петербург</option>
+                    <option value="">Города-миллионники</option>
+                    <option value="">500 — 950 тыс. жит.</option>
+                    <option value="">100 — 500 тыс. жит.</option>
+                    <option value="">До 100 тыс. жит.</option>
+                    <option value="">Жители сельской местности</option>
+                </select>
+            </div>
+        </div>
         <div class="container">
             <div id="rating-cat" class="owl-carousel">
                 <div class="item">
                     <div class="rating-cat_title"></div>
                     <div class="rating-cat_els">
-                        <a href="" class="rating-cat_el">Мужчины</a>
+                        <a href="" class="rating-cat_el active">Мужчины</a>
                         <a href="" class="rating-cat_el">Женщины</a>
                     </div>
                 </div>

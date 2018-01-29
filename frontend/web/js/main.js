@@ -163,6 +163,7 @@ $(document).ready(function () {
                 margin: 0,
                 items: 1,
                 nav: true,
+                onDragged: callback
             },
             1150: {
                 margin: 0,
@@ -172,6 +173,15 @@ $(document).ready(function () {
             }
         }
     });
+
+    function callback(event){
+        var item = event.item.index;
+        if(item === 1){
+            $('body').find('.mobile-rating-cat').addClass('transform');
+        }else{
+            $('body').find('.mobile-rating-cat').removeClass('transform');
+        }
+    }
 
     $('#rating-cat').owlCarousel({
         margin: 30,
@@ -184,8 +194,29 @@ $(document).ready(function () {
         items: 4
     });
 
+    $(this)
+        .on('click', '.tabs .owl-prev', function () {
+            var act = $('.tabs .owl-item:nth-child(2)');
+            if(act.hasClass('active')){
+                $('body').find('.mobile-rating-cat').addClass('transform');
+            }else{
+                $('body').find('.mobile-rating-cat').removeClass('transform');
+            }
+        })
+        .on('click', '.tabs .owl-next', function () {
+            var act = $('.tabs .owl-item:nth-child(2)');
+            if(act.hasClass('active')){
+                $('body').find('.mobile-rating-cat').addClass('transform');
+            }else{
+                $('body').find('.mobile-rating-cat').removeClass('transform');
+            }
+        })
+
     $('.rating-cat_el').click(function (e) {
         e.preventDefault();
+        $('.rating-cat_el').removeClass('active');
         $(this).toggleClass('active');
-    })
+    });
+    
+    $('.selectpicker').selectpicker();
 });

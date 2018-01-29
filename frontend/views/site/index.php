@@ -109,7 +109,7 @@ use common\models\RatingItem;
 
 <div class="faq">
     <div class="container">
-        <div class="vertical-title">Что нужно знать</div>
+        <div class="vertical-title">Что нужно знать <span>о выборах</span></div>
         <div class="faq-inner">
             <?php foreach ($cards as $card):?>
 	            <a href="<?=$card->url;?>" class="faq-item">

@@ -12,6 +12,8 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/bootstrap.min.css',
+        'css/bootstrap-select.min.css',
         'css/font-awesome.min.css',
         'css/owl.carousel.min.css',
         'css/slick.css',
@@ -21,6 +23,8 @@ class AppAsset extends AssetBundle
         'css/main.css',
     ];
     public $js = [
+        'js/bootstrap.min.js',
+        'js/bootstrap-select.js',
         'js/owl.carousel.min.js',
         'js/slick.min.js',
         'js/main.js',
