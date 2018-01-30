@@ -4,18 +4,18 @@ Options -Indexes
 Options FollowSymlinks
 RewriteEngine on
 
-#AuthType Basic
-#AuthName "Password Protected Area"
-#AuthUserFile /home/promo-1/events2018.promo-group.org/docs/htpassword
-#Require valid-user
+AuthType Basic
+AuthName "Password Protected Area"
+AuthUserFile /home/promo-1/events2018.promo-group.org/docs/htpassword
+Require valid-user
 
-#RewriteCond %{HTTP_HOST} ^admin\.(.*)$ [NC]
-#RewriteRule ^(.*)$ /backend/web/$1 [L]
+RewriteCond %{HTTP_HOST} ^admin\.(.*)$ [NC]
+RewriteRule ^(.*)$ /backend/web/$1 [L]
 
-RewriteCond %{REQUEST_URI} ^/admin/$
-RewriteRule ^(admin)/$ /$1 [R=301,L]
-RewriteCond %{REQUEST_URI} ^/admin
-RewriteRule ^admin(/.+)?$ /backend/web/$1 [L,PT]
+#RewriteCond %{REQUEST_URI} ^/admin/$
+#RewriteRule ^(admin)/$ /$1 [R=301,L]
+#RewriteCond %{REQUEST_URI} ^/admin
+#RewriteRule ^admin(/.+)?$ /backend/web/$1 [L,PT]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} ^(.+)/$

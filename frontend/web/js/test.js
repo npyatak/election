@@ -40,8 +40,8 @@ $(document).ready(function () {
 		init = function() {
 		config.$bookBlock.bookblock( {
 				speed : 600,
-				shadowSides : 0.5,
-				shadowFlip : 0.3,
+				shadowSides : 0.6,
+				shadowFlip : 0.6,
 				orientation : orient
 			} );
 			initEvents();
@@ -53,6 +53,7 @@ $(document).ready(function () {
 				var questionsLength = $('.test-wrap').children('.t').length
 				buttonNext = $('.nextQuestion')
 				console.log('click');
+				console.log('orient', orient)
 				if (buttonNext.hasClass('start-position')) {
 					$('.nextQuestion').removeClass('start-position')
 					$('.nextQuestion').removeClass('btn-white')
@@ -85,7 +86,7 @@ $(document).ready(function () {
 						}
 						$('#result-text').html(rightAnswers) 
 
-					}, 900);
+					}, 1000);
 					
 				}
 				return false;
