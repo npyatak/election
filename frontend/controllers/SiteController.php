@@ -16,6 +16,7 @@ use common\models\Calendar;
 use common\models\TestText;
 use common\models\Rating;
 use common\models\RatingItem;
+use common\models\RatingGroup;
 use common\models\News;
 use common\models\Share;
 use common\models\TestResult;
@@ -146,9 +147,31 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionRating() {
+    public function actionRating($group = 1) {
+        return $this->redirect(['index']);
+        $rating = Rating::find()->orderBy('id DESC')->one();
+        $candidates = Candidate::find()->orderBy('surname')->all();
+        $ratingGroups = [];
+        foreach (RatingGroup::find()->where(['not', ['sub_category' => null]])->asArray()->all() as $g) {
+            $ratingGroups[$g['sub_category']][] = $g;
+        }
+        //print_r($ratingGroups);exit;
+        $results = [];
+        foreach (RatingItem::find()->where(['rating_id' => $rating->id])->asArray()->all() as $r) {
+            if($r['candidate_id']) {
+                $results[$r['rating_group_id']]['c'][$r['candidate_id']] = $r['score'];
+            } else {
+                $results[$r['rating_group_id']]['a'][$r['additional_id']] = $r['score'];
+            }
+        }
+        //print_r($ratingResults[1]);exit;
 
         return $this->render('rating', [
+            'group' => $group,
+            'rating' => $rating,
+            'ratingGroups' => $ratingGroups,
+            'candidates' => $candidates,
+            'results' => $results,
         ]);
     }
 }

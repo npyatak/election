@@ -1,41 +1,57 @@
+<?php
+use yii\helpers\Url;
+
+use common\models\RatingGroup;
+use common\models\RatingItem;
+?>
+
 <div class="rating-page">
     <div class="rating-page_top">
         <div class="container">
             <div class="tabs owl-carousel">
                 <div class="tab">
-                    <a href="" class="active">
+                    <a href="<?=Url::current(['group' => 1]);?>" class="r_group <?=$group == 1 ? 'active' : '';?>" data-group="1">
                         <h4>Рейтинг кандидатов</h4>
                         <div class="question-icon_wrap">
                             <span class="question-icon popup-open"></span>
                             <div class="question-popup">
-                                <p>Текст</p>
+                                <p>
+                                    Результаты ответа на вопрос: "Если бы президентские выборы проводились в ближайшее воскресенье, за кого бы вы проголосовали?" (В % от числа опрошенных, допускается один ответ.)
+                                    Опрос ВЦИОМ проводится методом ежедневного интервью 1000 респондентов в возрасте от 18 лет не менее чем в 80 регионах РФ. 40% номеров случайным образом отбираются из стационарных диапазонов, 60% — из мобильных. Максимальный размер ошибки для такой выборки с вероятностью 95% не превышает 3,2%.
+                                </p>
                             </div>
                         </div>
-                        <p>Опрос ВЦИОМ от 15-17 декабря 2017</p>
+                        <p>Опрос <?=$rating->subtitle;?></p>
                     </a>
                 </div>
                 <div class="tab">
-                    <a href="" class="show-rating-cat">
+                    <a id="groupsTab" href="<?=Url::current(['group' => 3]);?>" class="r_group show-rating-cat <?=!in_array($group, [1, 2]) ? 'active' : '';?>" data-group="3">
                         <h4>Рейтинг кандидатов</h4>
                         <div class="question-icon_wrap">
                             <span class="tab-span">среди отдельных социальных групп</span> <span class="question-icon popup-open"></span>
                             <div class="question-popup">
-                                <p>Текст</p>
+                                <p>
+                                    Результаты ответа на вопрос: "Если бы президентские выборы проводились в ближайшее воскресенье, за кого бы вы проголосовали?" (В % от числа опрошенных, допускается один ответ.)
+                                    Опрос ВЦИОМ проводится методом ежедневного интервью 1000 респондентов в возрасте от 18 лет не менее чем в 80 регионах РФ. 40% номеров случайным образом отбираются из стационарных диапазонов, 60% — из мобильных. Максимальный размер ошибки для такой выборки с вероятностью 95% не превышает 3,2%.
+                                </p>
                             </div>
                         </div>
-                        <p>Опрос ВЦИОМ от 15-17 декабря 2017</p>
+                        <p>Опрос <?=$rating->subtitle;?></p>
                     </a>
                 </div>
                 <div class="tab">
-                    <a href="">
+                    <a href="<?=Url::current(['group' => 2]);?>" class="r_group <?=$group == 2 ? 'active' : '';?>" data-group="2">
                         <h4>Антирейтинг кандидатов</h4>
                         <div class="question-icon_wrap">
                             <span class="question-icon popup-open"></span>
                             <div class="question-popup">
-                                <p>Текст</p>
+                                <p>
+                                    Результаты ответа на вопрос: "За кого вы не проголосуете ни при каких обстоятельствах?" (В % от числа опрошенных, допускается любое число ответов.)
+                                    Опрос ВЦИОМ проводится методом ежедневного интервью 1000 респондентов в возрасте от 18 лет не менее чем в 80 регионах РФ. 40% номеров случайным образом отбираются из стационарных диапазонов, 60% — из мобильных. Максимальный размер ошибки для такой выборки с вероятностью 95% не превышает 3,2%
+                                </p>
                             </div>
                         </div>
-                        <p>Опрос ВЦИОМ от 15-17 декабря 2017</p>
+                        <p>Опрос <?=$rating->subtitle;?></p>
                     </a>
                 </div>
             </div>
@@ -44,115 +60,95 @@
     <div class="rating-page_bottom">
         <div class="mobile-rating-cat">
             <div class="container">
-                <select class="selectpicker" data-style="btn-white">
-                    <option value="">Мужчины</option>
-                    <option value="">Женщины</option>
-                    <option value="" disabled="disabled">Возраст:</option>
-                    <option value="">18-24</option>
-                    <option value="">60+</option>
-                    <option value="" disabled="disabled">Трудоустройство:</option>
-                    <option value="">Работающие</option>
-                    <option value="">Бюджетники</option>
-                    <option value="">Предприниматели</option>
-                    <option value="" disabled="disabled">Среднедушевой доход:</option>
-                    <option value="">До 5 000 ₽</option>
-                    <option value="">5 000 ₽ — 8 000 ₽</option>
-                    <option value="">8 000 ₽ — 10 000 ₽</option>
-                    <option value="">10 000 ₽ — 15 000 ₽</option>
-                    <option value="">15 000 ₽ +</option>
-                    <option value="" disabled="disabled">Населенные пункты:</option>
-                    <option value="">Москва и Санкт-Петербург</option>
-                    <option value="">Города-миллионники</option>
-                    <option value="">500 — 950 тыс. жит.</option>
-                    <option value="">100 — 500 тыс. жит.</option>
-                    <option value="">До 100 тыс. жит.</option>
-                    <option value="">Жители сельской местности</option>
+                <select class="selectpicker" data-style="btn-white" id="groups-select">
+                    <?php $subcategoryLabels = RatingGroup::getSubCategoryArray();
+                    foreach ($ratingGroups as $key => $groups):?>
+                        <?php if($subcategoryLabels[$key] != ''):?>
+                            <option value="" disabled="disabled"><?=$subcategoryLabels[$key];?>:</option>
+                        <?php endif;?>
+                        <?php foreach ($groups as $g):?>
+                            <option data-group="<?=$g['id'];?>" value=""><?=$g['title'];?></option>
+                        <?php endforeach;?>
+                    <?php endforeach;?>
                 </select>
             </div>
         </div>
         <div class="container">
-            <div id="rating-cat" class="owl-carousel">
-                <div class="item">
-                    <div class="rating-cat_title"></div>
-                    <div class="rating-cat_els">
-                        <a href="" class="rating-cat_el active">Мужчины</a>
-                        <a href="" class="rating-cat_el">Женщины</a>
+            <div id="rating-cat" class="owl-carousel <?=!in_array($group, [1, 2]) ? 'transform' : '';?>">
+                <?php foreach ($ratingGroups as $key => $groups):?>
+                    <div class="item">
+                        <div class="rating-cat_title"><?=$subcategoryLabels[$key] != '' ? $subcategoryLabels[$key].':' : '';?></div>
+                        <div class="rating-cat_els">
+                            <?php foreach ($groups as $g):?>
+                                <a href="<?=Url::current(['group' => $g['id']]);?>" class="r_group rating-cat_el <?=$group == $g['id'] ? 'active' : '';?>" data-group="<?=$g['id'];?>">
+                                    <?=$g['title'];?>
+                                </a>
+                            <?php endforeach;?>
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="rating-cat_title">Возраст:</div>
-                    <div class="rating-cat_els">
-                        <a href="" class="rating-cat_el">18-24</a>
-                        <a href="" class="rating-cat_el">60+</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="rating-cat_title">Трудоустройство:</div>
-                    <div class="rating-cat_els">
-                        <a href="" class="rating-cat_el">Работающие</a>
-                        <a href="" class="rating-cat_el">Бюджетники</a>
-                        <a href="" class="rating-cat_el">Предприниматели</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="rating-cat_title">Среднедушевой доход:</div>
-                    <div class="rating-cat_els">
-                        <a href="" class="rating-cat_el">До 5 000 ₽</a>
-                        <a href="" class="rating-cat_el">5 000 ₽ — 8 000 ₽</a>
-                        <a href="" class="rating-cat_el">8 000 ₽ — 10 000 ₽</a>
-                        <a href="" class="rating-cat_el">10 000 ₽ — 15 000 ₽</a>
-                        <a href="" class="rating-cat_el">15 000 ₽ +</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="rating-cat_title">Населенные пункты:</div>
-                    <div class="rating-cat_els">
-                        <a href="" class="rating-cat_el">Москва и Санкт-Петербург</a>
-                        <a href="" class="rating-cat_el">Города-миллионники</a>
-                        <a href="" class="rating-cat_el">500 — 950 тыс. жит.</a>
-                        <a href="" class="rating-cat_el">100 — 500 тыс. жит.</a>
-                        <a href="" class="rating-cat_el">До 100 тыс. жит.</a>
-                        <a href="" class="rating-cat_el">Жители сельской местности</a>
-                    </div>
-                </div>
+                <?php endforeach;?>
             </div>
             <div class="tab-content">
-                <div class="rating-candidate">
-                    <h4>Владимир Путин</h4>
-                    <span class="rating-percent"><span class="percent">64.8</span>%</span>
-                    <div class="rating-line">
-                        <span style="width: 64.8%"></span>
+                <?php foreach ($candidates as $c):?>
+                    <?php $score = isset($results[$group]) && isset($results[$group]['c'][$c->id]) ? $results[$group]['c'][$c->id] : 0;?>
+                    <div class="rating-candidate" data-candidate="<?=$c['id'];?>">
+                        <a href="<?=$c->url;?>"><h4><?=$c->nameAndSurname;?></h4></a>
+                        <span class="rating-percent"><span class="percent"><?=$score;?></span>%</span>
+                        <div class="rating-line">
+                            <span style="width: <?=$score;?>%"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="rating-candidate">
-                    <h4>Павел Грудинин</h4>
-                    <span class="rating-percent"><span class="percent">6.2</span>%</span>
-                    <div class="rating-line">
-                        <span style="width: 6.2%"></span>
+                <?php endforeach;?>
+                <?php foreach (RatingItem::getAdditionalArray() as $key => $item):?>
+                    <?php $score = isset($results[$group]) && isset($results[$group]['a'][$key]) ? $results[$group]['a'][$key] : 0;?>
+                    <div class="rating-candidate" data-additional="<?=$key;?>">
+                        <h4><?=$item;?></h4>
+                        <span class="rating-percent"><span class="percent"><?=$score;?></span>%</span>
+                        <div class="rating-line">
+                            <span style="width: <?=$score;?>%"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="rating-candidate">
-                    <h4>Владимир Жириновский</h4>
-                    <span class="rating-percent"><span class="percent">5.2</span>%</span>
-                    <div class="rating-line">
-                        <span style="width: 5.2%"></span>
-                    </div>
-                </div>
-                <div class="rating-candidate">
-                    <h4>Ксения Собчак</h4>
-                    <span class="rating-percent"><span class="percent">3.1</span>%</span>
-                    <div class="rating-line">
-                        <span style="width: 3.1%"></span>
-                    </div>
-                </div>
-                <div class="rating-candidate">
-                    <h4>Борис Титов</h4>
-                    <span class="rating-percent"><span class="percent">0.0</span>%</span>
-                    <div class="rating-line">
-                        <span style="width: 0.0%"></span>
-                    </div>
-                </div>
+                <?php endforeach;?>
             </div>
         </div>
     </div>
 </div>
+
+<?php 
+$script = "
+    var results = ".json_encode($results).";
+    //console.log(results);
+
+    $('.r_group').on('click', function(e) {
+        group = $(this).attr('data-group');
+        showGroupValue(group);
+        if($(this).hasClass('rating-cat_el')) {
+            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+group);
+            $('#groupsTab').attr('data-group', group);
+        }
+    })
+    $('#groups-select').on('change', function(e) {
+        group = $(this).find('option:selected').data('group');
+        showGroupValue(group);
+    })
+
+    function showGroupValue(group) {
+        window.history.pushState(null, '', '".Url::toRoute(['site/rating'])."?group='+group);
+        if(typeof results[group] !== 'undefined') {
+            $.each($('.rating-candidate'), function(key, value) {
+                if(typeof $(this).data('candidate') !== 'undefined') {
+                    score = results[group]['c'][$(this).data('candidate')];
+                } else {
+                    score = results[group]['a'][$(this).data('additional')];
+                }
+                $(this).find('.percent').html(score);
+                $(this).find('.rating-line span').css({'width': score+'%'});
+            });
+        } else {
+            $('.rating-candidate').find('.percent').html('0');
+            $('.rating-candidate').find('.rating-line span').css({'width': '0'});
+        }
+    }
+";
+
+$this->registerJs($script, yii\web\View::POS_END);?>

@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'name',
                 'second_name',
                 'surname',
-                'status',
                 [
                     'attribute' => 'active',
                     'format' => 'raw',

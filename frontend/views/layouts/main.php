@@ -82,7 +82,7 @@ AppAsset::register($this);
                             <li><a href="<?=Url::home();?>">Главная</a></li>
                             <li><a href="#candidates">Кандидаты</a></li>
                             <li><a href="<?=Url::toRoute(['site/calendar']);?>">Календарь выборов</a></li>
-                            <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li>
+                            <!-- <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li> -->
                             <li><a href="<?=Url::toRoute(['site/cards']);?>">Что нужно знать</a></li>
                             <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
                             <li><a href="http://tass.ru/vybory-prezidenta-rf-2018" target="_blank">Новости ТАСС</a></li>
@@ -96,7 +96,7 @@ AppAsset::register($this);
     </div>
     
 
-    <?php if(Yii::$app->controller->action->id !== 'test'):?>
+    <?php if(!in_array(Yii::$app->controller->action->id, ['test', 'calendar'])):?>
     <footer>
         <div class="container">
             <div class="vertical-title">Будь в курсе</div>
@@ -113,7 +113,16 @@ AppAsset::register($this);
                 <div class="pull-right">
                     <div class="right">
                         <div class="copyright">
-                            <p>Копирайты про ТАСС, откуда взяли данные рейтингов, фотки ну и вот это вот всё</p>
+                            <p>Над проектом работали:</p>
+                            <ul>
+                                <li>Автор: Дмитрий Трунов</li>
+                                <li>Редактор: Александр Бычков</li>
+                                <li>Продюсер: Антон Дуковский</li>
+                                <li>Иллюстратор: Константин Каковкин</li>
+                                <li>Дизайнер: Илья Чикунов</li>
+                            </ul>
+                            <br>
+                            <p>Источники: ТАСС-Досье, 2018.yavlinsky.ru, cikrf.ru, duma.gov.ru, grudininkprf.ru, komros.info, kprf.ru, kremlin.ru, ldpr.ru, rost.ru, roststrategy.ru, sobchakprotivvseh.ru, sovhozlenina.ru, wciom.ru, yabloko.ru, yavlinsky.ru</p>
                         </div>
                         <div class="footer-logo">
                             <a href="http://tass.ru" target="_blank"></a>

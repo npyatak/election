@@ -14,6 +14,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'/*, 'assetsAutoCompress'*/],
     'controllerNamespace' => 'frontend\controllers',
+    'homeUrl' => '/',
     'components' => [
         'assetManager' => [
             'bundles' => [
@@ -57,6 +58,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'site/index',
                 'candidate/<alias:\w+>' => 'site/candidate',
                 '<action:\w+>/<id:\d>' => 'site/<action>',
                 '<action:\w+>' => 'site/<action>',
