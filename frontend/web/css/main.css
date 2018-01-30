@@ -606,9 +606,15 @@ footer .copyright p {
 .candidate-detail_middle .block {
     padding-bottom: 40px;
 }
-.candidate-detail_middle .quote {
-    margin-left: -40px;
+.candidate-detail_middle blockquote {
+    margin: 0 0 0-40px;
     width: calc(100% + 40px);
+    padding: 0;
+    border: none;
+}
+.candidate-detail_middle blockquote p {
+    font: 24px 'FiraSans-Bold', sans-serif;
+    line-height: 30px;
 }
 
 .candidate-detail_top .left {
@@ -855,13 +861,26 @@ footer .copyright p {
     font-size: 35px;
 }
 .candidate-quotes .owl-prev,
-.candidate-quotes .owl-next {
+.candidate-quotes .owl-next,
+.candidate-hobbies .owl-prev,
+.candidate-hobbies .owl-next {
     position: relative;
     width: 80px;
     height: 80px;
+    -webkit-transition: .15s;
+    -moz-transition: .15s;
+    -ms-transition: .15s;
+    -o-transition: .15s;
+    transition: .15s;
+}
+.candidate-quotes .owl-prev:hover,
+.candidate-quotes .owl-next:hover {
+    background-color: #1c9576;
 }
 .candidate-quotes .owl-prev i,
-.candidate-quotes .owl-next i {
+.candidate-quotes .owl-next i,
+.candidate-hobbies .owl-prev i,
+.candidate-hobbies .owl-next i {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -972,8 +991,8 @@ footer .copyright p {
 }
 .candidate-hobbies .owl-nav {
     position: absolute;
-    bottom: 20px;
-    right: 40px;
+    bottom: 0;
+    right: 0;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -981,9 +1000,12 @@ footer .copyright p {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    width: 95px;
     font-size: 35px;
     color: #252aa6;
+}
+.candidate-hobbies .owl-prev:hover,
+.candidate-hobbies .owl-next:hover {
+    background-color: #cccccc;
 }
 .candidate-hobbies .owl-dots {
     position: absolute;
