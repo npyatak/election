@@ -39,7 +39,7 @@ $(document).ready(function () {
 		},
 		init = function() {
 		config.$bookBlock.bookblock( {
-				speed : 600,
+				speed : 900,
 				shadowSides : 0.6,
 				shadowFlip : 0.6,
 				orientation : orient
@@ -52,8 +52,6 @@ $(document).ready(function () {
 				config.$bookBlock.bookblock( 'next' );
 				var questionsLength = $('.test-wrap').children('.t').length
 				buttonNext = $('.nextQuestion')
-				console.log('click');
-				console.log('orient', orient)
 				if (buttonNext.hasClass('start-position')) {
 					$('.nextQuestion').removeClass('start-position')
 					$('.nextQuestion').removeClass('btn-white')
@@ -65,29 +63,41 @@ $(document).ready(function () {
 				$("#bb-nav-next").html('Продолжить<i class="fa fa-angle-right"></i>')
 				if(step <= questionsLength) console.log('continue')
 				else {
-					setTimeout(function() { 
+					setTimeout(function() {
 
-						$('#questionBlock').addClass('hide')
-						$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
-						$('#resultBlock').removeClass('hide')
-
-						$('.result-container').removeClass('hide')
 						if (rightAnswers <= 4) {
+							$('#result-range').addClass('animate-fade')
 							$('#prgs-circle').addClass('p'+rightAnswers+'0')
 							$('#result-range-container').children('#result-range[data-start=0]').removeClass('hide')
+							$('#questionBlock').addClass('hide')
+							$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
+							$('#resultBlock').removeClass('hide')
+							$('.result-container').removeClass('hide')
+							$('#result-text').html(rightAnswers) 
 						} else if (rightAnswers >= 5 && rightAnswers <=8) {
+							$('#result-range').addClass('animate-fade')
 							$('#prgs-circle').addClass('p'+rightAnswers+'0')
 							$('#prgs-circle').addClass('over50')
 							$('#result-range-container').children('#result-range[data-start=5]').removeClass('hide')
+							$('#questionBlock').addClass('hide')
+							$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
+							$('#resultBlock').removeClass('hide')
+							$('.result-container').removeClass('hide')
+							$('#result-text').html(rightAnswers)
 						} else if (rightAnswers === 9 || rightAnswers === 10) {
+							$('#result-range').addClass('animate-fade')
 							$('#prgs-circle').addClass('p'+rightAnswers+'0')
 							$('#prgs-circle').addClass('over50')
 							$('#result-range-container').children('#result-range[data-start=9]').removeClass('hide')
+							$('#questionBlock').addClass('hide')
+							$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
+							$('#resultBlock').removeClass('hide')
+							$('.result-container').removeClass('hide')
+							$('#result-text').html(rightAnswers) 
 						}
-						$('#result-text').html(rightAnswers) 
-
-					}, 1000);
-					
+						$('#prgs-circle').addClass('animate-fade') 
+						$('#progress-circle-wrapper').addClass('animate-fade') 
+					}, 1100);
 				}
 				return false;
 			});

@@ -127,29 +127,41 @@ TestAsset::register($this);
 }
 @-webkit-keyframes zoom {
 	from {
-		-webkit-transform: scale(1.3, 1.3);
+		-webkit-transform: scale(1.6, 1.6);
 	}
-	50% {
-		-webkit-transform: scale(.9, .9);
-	}
+	40% {
+        -webkit-transform: scale(1.6, 1.6);
+    }
 	to {
-		-webkit-transform: scale(1.3, 1.3);
+		-webkit-transform: scale(1.0, 1.0);
 	}
 }
 @keyframes zoom {
 	from {
-		transform: scale(1.3, 1.3);
+		transform: scale(1.6, 1.6);
 	}
-	50% {
-		transform: scale(.9, .9);
-	}
+	20% {
+        transform: scale(1.6, 1.6);
+    }
 	to {
-		transform: scale(1.3, 1.3);
+		transform: scale(1.0, 1.0);
 	}
 }
-#progress-circle-wrapper:before {
-	-webkit-animation: zoom 2s ease-in-out infinite; /* Chrome, Safari, Opera */
-	animation: zoom 2s ease-in-out infinite;
+#prgs-circle {
+	opacity: 0;
+}
+#progress-circle-wrapper {
+	opacity: 0;
+}
+.animate-fade {
+	transition: all 1s ease-in-out;
+	opacity: 1!important;
+}
+#progress-circle-wrapper::before {
+	-webkit-animation: zoom 1s ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	animation: zoom 1s ease-in-out;
 }
 .test-wrap {
 	z-index: 3;
@@ -191,14 +203,15 @@ TestAsset::register($this);
   }
   #progress-circle-wrapper {
 	margin-top: -50px;
+	position: relative;
   }
   #progress-circle-wrapper:before {
     content: '';
     display: block;
     position: absolute;
-    top: 140px;
-    left: 30px;
-    width: 550px;
+    top: -30px;
+    right: -55%;
+    width: 500px;
     height: 300px;
     background: url(../images/icons/stars.svg) no-repeat center;
     -webkit-background-size: contain;
@@ -548,38 +561,38 @@ TestAsset::register($this);
 }
 /*circle styles*/
 .progress-circle {
-    width:  300px;
-    height: 300px;
-    line-height: 300px;
+    width:  200px;
+    height: 200px;
+    line-height: 200px;
     background: #252aa6;
 }
 .progress-circle span {
-    height:  300px;
-    width:  300px;
-    line-height: 300px;
+    height:  200px;
+    width:  200px;
+    line-height: 200px;
     top: 30px;
     color: #fff;
 }
 .left-half-clipper {
-    width:  300px;
-    height: 300px;
-    clip: rect(0, 300px, 300px, 150px);
+    width:  200px;
+    height: 200px;
+    clip: rect(0, 200px, 200px, 100px);
 }
 .value-bar {
-    width:  300px;
-    height: 300px;
-    clip: rect(0, 150px, 300px, 0);
+    width:  200px;
+    height: 200px;
+    clip: rect(0, 100px, 200px, 0);
     border: 15px solid #fff;
 }
 .progress-circle.over50 .first50-bar {
-    height:  300px;
-    width:  300px;
-    clip: rect(0, 300px, 300px, 150px);
+    height:  200px;
+    width:  200px;
+    clip: rect(0, 200px, 200px, 100px);
     background-color:  #fff;
 }
 .progress-circle:after {
-    width: 270px;
-    height: 270px;
+    width: 170px;
+    height: 170px;
     top: 15px;
     left: 15px;
     background-color: #3e43c8; 
@@ -716,7 +729,10 @@ TestAsset::register($this);
 		text-align: center;
 		text-align: -webkit-center;
 	}
-
+	#result-range {
+		opacity: 0;
+		transition: all 1s ease-in-out;
+	}
 	.finish-buttons {
 	  position: fixed;
 	  bottom: 0;
@@ -795,9 +811,9 @@ TestAsset::register($this);
 	line-height: 80px!important;
   }
   #progress-circle-wrapper:before {
-	top: 85px;
-    left: 0;
-    width: 100%;
+	top: -30px;
+    right: -55%;
+    width: 500px;
     height: 300px;
   }
   .test-container .right-part .test-wrap_img {
