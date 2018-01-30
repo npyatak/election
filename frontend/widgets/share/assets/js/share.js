@@ -1,5 +1,5 @@
 
-$('a.share, a.btn-share').click(function(e) {
+$('a.share').click(function(e) {
     url = getShareUrl($(this));
 
     window.open(url,'','toolbar=0,status=0,width=626,height=436');
