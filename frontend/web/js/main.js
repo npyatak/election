@@ -105,6 +105,10 @@ $(document).ready(function () {
         $('#hidden-menu').fadeOut(300);
         $('body').removeClass('overflow');
     });
+    $('#hidden-menu a').on('click', function(e) {
+        $('#hidden-menu').fadeOut(300);
+        $('body').removeClass('overflow');
+    });
 
     $(window).scroll(function () {
         if($(this).scrollTop() >= 10){
