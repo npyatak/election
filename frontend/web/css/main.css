@@ -489,7 +489,7 @@
     font-size: 28px;
 }
 footer {
-    height: 355px;
+    padding-bottom: 50px;
     background-color: #f3f3f3;
 }
 footer .container {
