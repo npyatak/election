@@ -82,11 +82,11 @@ use common\models\RatingItem;
                             <?php $title = $result['candidate_id'] ? $candidates[$result['candidate_id']]->surname : RatingItem::getAdditionalArray()[$result['additional_id']];?>
                             <li>
                                 <div class="left-li"><?=$title;?></div>
-                                <div class="right-li"><?//=$result['score'];?>0%</div>
+                                <div class="right-li"><?=$result['score'];?>%</div>
                             </li>
                         <?php endforeach;?>
                     </ul>
-                    <!-- <a href="<?=Url::toRoute(['site/rating']);?>" class="btn btn-h50 btn-w200 btn-purple">Подробнее</a> -->
+                    <a href="<?=Url::toRoute(['site/rating']);?>" class="btn btn-h50 btn-w200 btn-purple">Подробнее</a>
                 </div>
             </div>
             <div class="tests">

@@ -148,7 +148,6 @@ class SiteController extends Controller
     }
 
     public function actionRating($group = 1) {
-        return $this->redirect(['index']);
         $rating = Rating::find()->orderBy('id DESC')->one();
         $candidates = Candidate::find()->orderBy('surname')->all();
         $ratingGroups = [];

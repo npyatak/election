@@ -3,9 +3,6 @@ use yii\helpers\Url;
 use frontend\assets\TestAsset;
 
 TestAsset::register($this);
-
-//$this->registerJsFile(Url::toRoute('js/test.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
-//$this->registerCssFile(Url::toRoute('css/test.css'));
 ?>
 <div class="no-js">
 	<div class="bb-custom-wrapper">
