@@ -15,8 +15,8 @@ class m180108_115935_create_table_thesis extends Migration
         $this->createTable('{{%thesis}}', [
             'id' => $this->primaryKey(),
             'candidate_id' => $this->integer()->notNull(),
-            'title' => $this->string(255)->notNull(),
-            'text' => $this->string()->notNull(),
+            'title' => $this->string()->notNull(),
+            'text' => $this->text()->notNull(),
             'caption' => $this->string(),
         ], $tableOptions);
         

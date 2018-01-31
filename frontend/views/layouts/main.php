@@ -104,8 +104,8 @@ AppAsset::register($this);
                 <div class="pull-left">
                     <h4>ТАСС в социальных сетях</h4>
                     <div class="share-wrap">
-                        <a href="https://vk.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="https://www.facebook.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a href="https://vk.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a href="https://www.facebook.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-facebook"></i></a>
                         <a href="https://twitter.com/tass_agency" class="share-btn" target="_blank"><i class="fa fa-twitter"></i></a>
                         <a href="https://t.me/tass_agency" class="share-btn" target="_blank"><i class="fa fa-telegram"></i></a>
                     </div>

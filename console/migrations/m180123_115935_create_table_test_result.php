@@ -16,7 +16,7 @@ class m180123_115935_create_table_test_result extends Migration
             'id' => $this->primaryKey(),
             'range_start' => $this->integer()->notNull(),
             'range_end' => $this->integer()->notNull(),
-            'title' => $this->string(),
+            'title' => $this->text(),
         ], $tableOptions);
         
         $this->batchInsert('{{%test_result}}', ['range_start', 'range_end', 'title'], [

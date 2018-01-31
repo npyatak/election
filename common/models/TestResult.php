@@ -30,7 +30,7 @@ class TestResult extends \yii\db\ActiveRecord
         return [
             [['range_start', 'range_end', 'title'], 'required'],
             [['range_start', 'range_end'], 'integer'],
-            [['title'], 'string', 'max' => 255],
+            [['title'], 'safe'],
         ];
     }
 

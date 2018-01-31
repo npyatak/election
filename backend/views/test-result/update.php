@@ -1,9 +1,10 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = 'Изменить диапазон: от ' . $model->range_start.' до '.$model->range_end;
+$title = 'от ' . $model->range_start.' до '.$model->range_end;
+$this->title = 'Изменить диапазон: '.$title;
 $this->params['breadcrumbs'][] = ['label' => 'Диапазоны теста', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Изменить';
 ?>
 

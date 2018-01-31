@@ -231,7 +231,7 @@ $this->params['share'] = [
                             <h2 class="h1"><?=$thesis->text;?></h2>
                         </div>
                         <div class="slick-slider_caption">
-                            <a href=""><?=$thesis->caption;?></a>
+                            <?=$thesis->caption;?>
                         </div>
                     </div>
                 </div>
