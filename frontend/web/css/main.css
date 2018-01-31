@@ -6,14 +6,15 @@
     height: 80px;
     z-index: 8;
 }
-.main-menu.shadow {
+.main-menu.shadow,
+.main-menu.bg-white {
     background-color: #fff;
     -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .main-menu_inner {
-    padding-left: 20px;
+    padding-left: 40px;
 }
 .main-menu_inner::after,
 .main-menu_buttons::after {
@@ -46,10 +47,12 @@
 .main-menu .slogan a:hover {
     text-decoration: none;
 }
-.main-menu.shadow .slogan {
+.main-menu.shadow .slogan,
+.main-menu.bg-white .slogan {
     padding-top: 25px;
 }
-.main-menu.shadow .slogan a {
+.main-menu.shadow .slogan a,
+.main-menu.bg-white .slogan a {
     color: #252aa6;
 }
 .main-menu_buttons li {
@@ -348,7 +351,7 @@
 .test-image {
     position: absolute;
     bottom: 0;
-    left: 100%;
+    left: calc(100% - 45px);
     width: 240px;
     z-index: 1;
 }
@@ -407,6 +410,14 @@
     max-width: 100px;
     color: #000;
     text-transform: capitalize;
+}
+.candidate .out {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #636363;
 }
 .faq {
     background-color: #1fb38c;
@@ -489,7 +500,7 @@
     font-size: 28px;
 }
 footer {
-    height: 355px;
+    padding-bottom: 50px;
     background-color: #f3f3f3;
 }
 footer .container {
@@ -550,6 +561,12 @@ footer .copyright {
     width: 240px;
     margin-right: 40px;
 }
+footer .copyright:nth-child(1) {
+    margin-right: 160px;
+}
+footer .copyright a {
+    color: #636363;
+}
 footer .copyright p {
     line-height: 20px;
 }
@@ -606,9 +623,20 @@ footer .copyright p {
 .candidate-detail_middle .block {
     padding-bottom: 40px;
 }
-.candidate-detail_middle .quote {
-    margin-left: -40px;
+.candidate-detail_middle .block>.block {
+    padding-bottom: 0;
+}
+.candidate-detail_middle blockquote {
+    margin: 0 0 0-40px;
     width: calc(100% + 40px);
+    padding: 0;
+    border: none;
+}
+.candidate-detail_middle blockquote p {
+    margin-bottom: 40px !important;
+    font: 24px 'FiraSans-Bold', sans-serif;
+    line-height: 30px;
+    color: #000;
 }
 
 .candidate-detail_top .left {
@@ -835,7 +863,7 @@ footer .copyright p {
     margin-bottom: 80px;
 }
 .candidate-quotes .item {
-    height: 460px;
+    min-height: 460px;
     padding-bottom: 65px;
 }
 .candidate-quotes .quotes-text {
@@ -855,13 +883,26 @@ footer .copyright p {
     font-size: 35px;
 }
 .candidate-quotes .owl-prev,
-.candidate-quotes .owl-next {
+.candidate-quotes .owl-next,
+.candidate-hobbies .owl-prev,
+.candidate-hobbies .owl-next {
     position: relative;
     width: 80px;
     height: 80px;
+    -webkit-transition: .15s;
+    -moz-transition: .15s;
+    -ms-transition: .15s;
+    -o-transition: .15s;
+    transition: .15s;
+}
+.candidate-quotes .owl-prev:hover,
+.candidate-quotes .owl-next:hover {
+    background-color: #1c9576;
 }
 .candidate-quotes .owl-prev i,
-.candidate-quotes .owl-next i {
+.candidate-quotes .owl-next i,
+.candidate-hobbies .owl-prev i,
+.candidate-hobbies .owl-next i {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -972,8 +1013,8 @@ footer .copyright p {
 }
 .candidate-hobbies .owl-nav {
     position: absolute;
-    bottom: 20px;
-    right: 40px;
+    bottom: 0;
+    right: 0;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -981,9 +1022,12 @@ footer .copyright p {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    width: 95px;
     font-size: 35px;
     color: #252aa6;
+}
+.candidate-hobbies .owl-prev:hover,
+.candidate-hobbies .owl-next:hover {
+    background-color: #cccccc;
 }
 .candidate-hobbies .owl-dots {
     position: absolute;
@@ -1267,34 +1311,27 @@ footer .copyright p {
 .card-header {
     background-color: #1da783;
 }
-.card-header .container {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: wrap;
-}
 .card-header .container>div {
     position: relative;
     width: 50%;
 }
-.card-header .right::after {
+.card-header .left {
+    padding: 200px 0 80px;
+}
+.card-header .left::after {
     content: '';
     display: block;
     position: absolute;
     bottom: 0;
-    left: 80px;
-    width: 320px;
+    left: calc(100% + 80px);
+    width: 340px;
     height: 100%;
-    background: url('../images/icons/questions.svg') no-repeat bottom center;
+    background: url('../images/icons/znay.svg') no-repeat bottom center;
     -webkit-background-size: contain;
     background-size: contain;
 }
 .card-header h1 {
     max-width: 480px;
-    margin-top: 200px;
-    margin-bottom: 80px;
     color: #fff;
 }
 .card-content_inner {
@@ -2097,6 +2134,7 @@ a.all-news {
     }
     .candidate-detail_top>.container>.bottom {
         display: block;
+        float: left;
         width: 100%;
         position: relative;
         top: 0;
@@ -2105,7 +2143,8 @@ a.all-news {
         padding: 40px;
     }
     .candidate-detail_top .container {
-        flex-wrap: wrap;
+        display: block;
+        background-color: #f9f9f9;
     }
     .candidate-detail_info {
         position: relative;
@@ -2138,6 +2177,7 @@ a.all-news {
         margin-right: 0;
     }
     .candidate-detail_top .left {
+        float: left;
         width: calc(100% - 300px);
         padding-top: 160px;
         padding-bottom: 40px;
@@ -2150,6 +2190,7 @@ a.all-news {
         max-width: 400px;
     }
     .candidate-detail_top .right {
+        float: right;
         display: -webkit-box;
         display: -moz-box;
         display: -ms-flexbox;
@@ -2506,6 +2547,7 @@ a.all-news {
 @media (max-width:1100px) {
     footer {
         height: auto;
+        padding-bottom: 0;
     }
     .candidates-item {
         width: 50%;
@@ -2545,6 +2587,26 @@ a.all-news {
         width: 90% !important;
         height: 90% !important;
     }
+    footer .pull-right>.right::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    footer .pull-right>.right .copyright {
+        float: left;
+        margin-right: 40px;
+    }
+    footer .pull-right>.right .footer-logo {
+        float: right;
+    }
+    .card-header .left h1 {
+        position: relative;
+        z-index: 1;
+    }
+    .card-header .left::after {
+        left: auto;
+        right: 40px;
+    }
 }
 @media (max-width:999px) {
     .candidate-detail_top .left {
@@ -2567,6 +2629,9 @@ a.all-news {
     }
 }
 @media (max-width:767px) {
+    .candidate .out {
+        display: none;
+    }
     header {
         margin-top: 80px;
         background-color: #f9f9f9;
@@ -2595,6 +2660,9 @@ a.all-news {
         width: 40px;
         height: 40px;
         line-height: 40px;
+    }
+    .main-menu_inner {
+        padding-left: 20px;
     }
     header h1 {
         margin-top: 30px;
@@ -2853,13 +2921,26 @@ a.all-news {
         padding-bottom: 30px;
     }
     footer .pull-right {
+        position: relative;
         padding: 30px 20px;
     }
+    footer .pull-right>.right .footer-logo {
+        position: absolute;
+        right: 20px;
+        top: 30px;
+    }
+    footer .right {
+        display: block;
+    }
     footer .right .copyright {
-        width: calc(100% - 60px);
+        width: calc(100% - 60px) !important;
         margin-right: 20px;
     }
-    footer .copyright p {
+    footer .right .copyright:nth-child(1) {
+        margin-bottom: 30px;
+    }
+    footer .copyright li,
+    footer .copyright a {
         font-size: 12px;
         line-height: 15px;
     }
@@ -2881,22 +2962,19 @@ a.all-news {
     .header-timeLine_middle .dot {
         display: block;
     }
+    .card-header .left {
+        padding-top: 80px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+    }
+    .card-header .left::after {
+        width: 140px;
+    }
     .card-header h1 {
         max-width: 250px;
-        margin-top: 80px;
-        margin-bottom: 20px;
         font-size: 24px;
         line-height: 30px;
         letter-spacing: 2px;
-    }
-    .card-header .container .left {
-        padding-left: 20px;
-    }
-    .card-header .container .right {
-        width: 100%;
-    }
-    .card-header .right::after {
-        width: 125px;
     }
     .cards {
         padding-top: 30px;
@@ -2979,7 +3057,7 @@ a.all-news {
         width: 70px;
     }
     .candidate-detail_middle .left {
-        padding: 30px 20px;
+        padding: 30px 20px 0 20px;
     }
     .candidate-detail_middle .quote {
         margin-left: 0;
@@ -3026,7 +3104,8 @@ a.all-news {
     .main-menu .slogan {
         padding: 24px 0 0 10px;
     }
-    .main-menu.shadow .slogan {
+    .main-menu.shadow .slogan,
+    .main-menu.bg-white .slogan {
         padding-top: 10px;
     }
     .main-menu .slogan a {
@@ -3146,6 +3225,17 @@ a.all-news {
     }
     .rating-candidate .rating-percent {
         font-size: 18px;
+    }
+    .main-menu .slogan {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+    .candidate-detail_middle blockquote {
+        width: 100%;
+        margin: 0;
     }
 }
 @media (max-width:480px) {
@@ -3279,6 +3369,9 @@ a.all-news {
     }
     .tabs .owl-item:nth-child(3) .tab a .question-icon {
         top: -64px;
+    }
+    .candidate-detail_middle blockquote p {
+        margin-bottom: 30px !important;
     }
 }
 

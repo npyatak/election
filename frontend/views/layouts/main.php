@@ -121,8 +121,26 @@ AppAsset::register($this);
                                 <li>Иллюстратор: Константин Каковкин</li>
                                 <li>Дизайнер: Илья Чикунов</li>
                             </ul>
-                            <br>
-                            <p>Источники: ТАСС-Досье, 2018.yavlinsky.ru, cikrf.ru, duma.gov.ru, grudininkprf.ru, komros.info, kprf.ru, kremlin.ru, ldpr.ru, rost.ru, roststrategy.ru, sobchakprotivvseh.ru, sovhozlenina.ru, wciom.ru, yabloko.ru, yavlinsky.ru</p>
+                        </div>
+                        <div class="copyright">
+                            <p>Источники:</p>
+                            <p><a href="http://tass.ru/tass-dos-e-biografii" target="_blank">ТАСС-Досье</a>,
+                                <a href="https://2018.yavlinsky.ru/" target="_blank">2018.yavlinsky.ru</a>,
+                                <a href="http://cikrf.ru/" target="_blank">cikrf.ru</a>,
+                                <a href="http://www.duma.gov.ru/" target="_blank">duma.gov.ru</a>,
+                                <a href="http://grudininkprf.ru/" target="_blank">grudininkprf.ru</a>,
+                                <a href="http://komros.info/" target="_blank">komros.info</a>,
+                                <a href="https://kprf.ru/" target="_blank">kprf.ru</a>,
+                                <a href="http://kremlin.ru/" target="_blank">kremlin.ru</a>,
+                                <a href="https://ldpr.ru/" target="_blank">ldpr.ru</a>,
+                                <a href="https://rost.ru/" target="_blank">rost.ru</a>,
+                                <a href="http://roststrategy.ru/" target="_blank">roststrategy.ru</a>,
+                                <a href="https://sobchakprotivvseh.ru/" target="_blank">sobchakprotivvseh.ru</a>,
+                                <a href="http://sovhozlenina.ru/" target="_blank">sovhozlenina.ru</a>,
+                                <a href="https://wciom.ru/" target="_blank">wciom.ru</a>,
+                                <a href="https://www.yabloko.ru/" target="_blank">yabloko.ru</a>,
+                                <a href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>
+                            </p>
                         </div>
                         <div class="footer-logo">
                             <a href="http://tass.ru" target="_blank"></a>
