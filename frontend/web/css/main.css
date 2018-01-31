@@ -2083,13 +2083,36 @@ a.all-news {
     }
     header .left .left-block {
         width: calc(100% - 320px);
+        padding-bottom: 50px;
     }
     header .left img {
+        display: none;
         -webkit-transform: translateY(90px) translateX(40px);
         -moz-transform: translateY(90px) translateX(40px);
         -ms-transform: translateY(90px) translateX(40px);
         -o-transform: translateY(90px) translateX(40px);
         transform: translateY(90px) translateX(40px);
+    }
+    header .right-block {
+        position: relative;
+    }
+    header .right-block::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 90px;
+        right: -32px;
+        width: 320px;
+        height: 100%;
+        background: url('../images/icons/kremlin_mobile.svg') no-repeat center;
+        -webkit-background-size: contain;
+        background-size: contain;
+    }
+    .header-timeLine_middle .green-dot {
+        right: 97px;
+    }
+    .header-timeLine_middle .dotted {
+        right: 175px;
     }
     header .right {
         width: 100%;
@@ -2106,6 +2129,12 @@ a.all-news {
     }
     .test-image {
         bottom: -30px;
+        left: auto;
+        right: -40px;
+    }
+    .test-title,
+    .test-text {
+        width: calc(100% - 220px);
     }
     .card-header .container .left {
         padding-left: 40px;
@@ -2609,6 +2638,10 @@ a.all-news {
     }
 }
 @media (max-width:999px) {
+    .card-text .clearfix .pull-left,
+    .card-text .clearfix .pull-right {
+        width: 100%;
+    }
     .candidate-detail_top .left {
         padding-right: 40px;
     }
@@ -2628,7 +2661,21 @@ a.all-news {
         width: 250px;
     }
 }
+@media (max-width:809px) {
+    header .right-block::before {
+        right: -20px;
+    }
+    .header-timeLine_middle .green-dot {
+        right: 107px;
+    }
+    .header-timeLine_middle .dotted {
+        right: 185px;
+    }
+}
 @media (max-width:767px) {
+    header .right-block::before {
+        display: none;
+    }
     .candidate .out {
         display: none;
     }
@@ -2638,11 +2685,13 @@ a.all-news {
     }
     header .left .left-block {
         width: calc(100% - 135px);
+        padding-bottom: 0;
     }
     header .left .right-block {
         width: 135px;
     }
     header .left .right-block img {
+        display: block;
         width: 100%;
         -webkit-transform: translateY(-30px) translateX(20px);
         -moz-transform: translateY(-30px) translateX(20px);
@@ -2826,15 +2875,24 @@ a.all-news {
     .test-item {
         width: calc(100% - 30px);
         padding-bottom: 30px;
+        height: auto;
     }
     .test-item a.btn {
-        width: calc(100% - 100px);
+        position: relative;
+        z-index: 2;
+    }
+    .test-title,
+    .test-text {
+        width: calc(100% - 110px);
     }
     .test-text {
         margin-bottom: 20px;
     }
     .test-title {
         font-size: 20px;
+    }
+    .test-image {
+        right: -80px;
     }
     .candidates-item {
         width: 100%;
@@ -3236,6 +3294,15 @@ a.all-news {
     .candidate-detail_middle blockquote {
         width: 100%;
         margin: 0;
+    }
+}
+@media (max-width: 500px) {
+    .test-image {
+        width: 125px;
+        right: -110px;
+    }
+    .test-title, .test-text {
+        width: 100%;
     }
 }
 @media (max-width:480px) {

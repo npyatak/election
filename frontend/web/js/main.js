@@ -144,6 +144,13 @@ $(document).ready(function () {
             $('.question-popup').fadeOut(300);
         });
 
+    $(this).click(function (event) {
+        if (!$(event.target).closest('.popup-open').length) {
+            $('.question-popup').css({'display':'none'});
+        }
+    });
+
+
     $('.play').click(function () {
         $('body').addClass('overflow');
         $('.video-modal').fadeIn(300);
@@ -209,7 +216,7 @@ $(document).ready(function () {
         autoWidth:true,
         items: 4
     });
-
+    
     $(this)
         .on('click', '.tabs .owl-prev', function () {
             var act = $('.tabs .owl-item:nth-child(2)');
@@ -226,7 +233,7 @@ $(document).ready(function () {
             }else{
                 $('body').find('.mobile-rating-cat').removeClass('transform');
             }
-        })
+        });
 
     $('.rating-cat_el').click(function (e) {
         e.preventDefault();
