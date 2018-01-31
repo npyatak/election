@@ -1,3 +1,7 @@
+<?php
+use common\models\Candidate;
+?>
+
 <div class="candidates" id="candidates">
     <div class="container">
         <div class="vertical-title">Кандидаты</div>
@@ -9,7 +13,9 @@
                     </div>
                     <div class="candidate">
                         <h4><?=$c->nameAndSurname;?></h4>
-                        <div class="out">Выбыл(а) из президентской гонки</div>
+                        <?php if($c->active == Candidate::QUIT):?>
+                            <div class="out">Выбыл(а) из президентской гонки</div>
+                        <?php endif;?>
                     </div>
                 </a>
             <?php endforeach;?>

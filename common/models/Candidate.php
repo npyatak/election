@@ -7,6 +7,9 @@ use yii\helpers\Url;
 
 class Candidate extends \yii\db\ActiveRecord
 {
+    const ACTIVE = 1;
+    const QUIT = 5;
+
     public $quotationModels;
     /**
      * @inheritdoc
@@ -100,8 +103,8 @@ class Candidate extends \yii\db\ActiveRecord
 
     public function getActiveArray() {
         return [
-            1 => 'Активен',
-            5 => 'Выбыл из гонки',
+            self::ACTIVE => 'Активен',
+            self::QUIT => 'Выбыл из гонки',
         ];
     }
 }
