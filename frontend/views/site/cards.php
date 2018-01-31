@@ -1,10 +1,16 @@
+<?php
+use yii\helpers\Url;
+
+$this->registerJsFile(Url::toRoute('js/device.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
+
+;?>
+
 <div class="card-wrap">
     <div class="card-header">
         <div class="container">
             <div class="left">
                 <h1 class="tt-up">Что нужно знать о выборах</h1>
             </div>
-            <div class="right"></div>
         </div>
     </div>
     <div class="card-content">
@@ -55,7 +61,11 @@ $script = "
         .on('click', '.card-show', function () {
             var a = $(this)
             if( $('.card-title').hasClass('card-hide') ){
-                $('.card-text').parent().find('.card-text').slideUp(10);
+                if(device.ios == false){
+                    $('.card-text').parent().find('.card-text').slideUp(10);
+                }else{
+                    $('.card-text').parent().find('.card-text').css({'display':'none'});
+                }  
                 $('.card').removeClass('active');
                 $('.card-title').removeClass('card-hide');
                 $('.card-title').addClass('card-show');

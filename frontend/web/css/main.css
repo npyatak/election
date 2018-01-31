@@ -1311,24 +1311,19 @@ footer .copyright p {
 .card-header {
     background-color: #1da783;
 }
-.card-header .container {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex-wrap: wrap;
-}
 .card-header .container>div {
     position: relative;
     width: 50%;
 }
-.card-header .right::after {
+.card-header .left {
+    padding: 200px 0 80px;
+}
+.card-header .left::after {
     content: '';
     display: block;
     position: absolute;
     bottom: 0;
-    left: 80px;
+    left: calc(100% + 80px);
     width: 340px;
     height: 100%;
     background: url('../images/icons/znay.svg') no-repeat bottom center;
@@ -1337,8 +1332,6 @@ footer .copyright p {
 }
 .card-header h1 {
     max-width: 480px;
-    margin-top: 200px;
-    margin-bottom: 80px;
     color: #fff;
 }
 .card-content_inner {
@@ -2606,6 +2599,14 @@ a.all-news {
     footer .pull-right>.right .footer-logo {
         float: right;
     }
+    .card-header .left h1 {
+        position: relative;
+        z-index: 1;
+    }
+    .card-header .left::after {
+        left: auto;
+        right: 40px;
+    }
 }
 @media (max-width:999px) {
     .candidate-detail_top .left {
@@ -2961,22 +2962,19 @@ a.all-news {
     .header-timeLine_middle .dot {
         display: block;
     }
+    .card-header .left {
+        padding-top: 80px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+    }
+    .card-header .left::after {
+        width: 140px;
+    }
     .card-header h1 {
         max-width: 250px;
-        margin-top: 80px;
-        margin-bottom: 20px;
         font-size: 24px;
         line-height: 30px;
         letter-spacing: 2px;
-    }
-    .card-header .container .left {
-        padding-left: 20px;
-    }
-    .card-header .container .right {
-        width: 100%;
-    }
-    .card-header .right::after {
-        width: 125px;
     }
     .cards {
         padding-top: 30px;
