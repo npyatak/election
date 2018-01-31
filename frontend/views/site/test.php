@@ -33,9 +33,9 @@ TestAsset::register($this);
 					<div class="bb-item container t" id="questionBlock" data-key="<?=$key;?>">
 						<div class="bb-custom-side">
 							<div class="left-part">
-								<div class="test-wrapper-test">
+								<div class="test-wrapper-test" id="test-wrapper-test">
 									<h1 id="testID" data-value="<?=$key;?>" class="tt-up"><?=$key;?> / <?=count($questions);?></h1>
-									<h3>
+									<h3 id="testID2" data-value="<?=$key;?>">
 										<?=$q->title;?>
 									</h3>
 									<div class="check-block hide">
@@ -53,8 +53,9 @@ TestAsset::register($this);
 										<div class="form-group" data-right="<?=$answer->is_right;?>">
 											<div class="radio">
 												<input id="radio_<?=$i + 1;?>" type="radio" name="question">
-												<label for="radio_<?=$i + 1;?>"><?=$answer->title;?></label>
+												<div class="chckbox"></div>
 											</div>
+											<label for="radio_<?=$i + 1;?>"><?=$answer->title;?></label>
 										</div>
 										<?php endforeach;?>
 									</form>
@@ -65,8 +66,6 @@ TestAsset::register($this);
 								<div class="test-text hide right">
 									<?=$q->comment_right;?>
 								</div>
-								<div class="correct-icon hide"></div>
-								<div class="incorrect-icon hide"></div>
 							</div>
 						</div>
 					</div>
@@ -99,11 +98,19 @@ TestAsset::register($this);
 									</p>
 								<?php endforeach;?>
 								<div class="finish-buttons">
-									<a href="<?=Url::toRoute(['site/test']);?>" class="finish-button left-button next-btn again-position">
+									<a 
+										href="<?=Url::toRoute(['site/test']);?>"
+										class="finish-button left-button next-btn again-position"
+										id="finish-btn-left"
+									>
 										<i class="fa fa-refresh"></i>
 										Еще раз
 									</a>
-									<a href="<?=Url::toRoute(['site/index']);?>" class="finish-button right-button finish-position next-btn">
+									<a 
+										href="<?=Url::toRoute(['site/index']);?>"
+										class="finish-button right-button finish-position next-btn"
+										id="finish-btn-right"
+									>
 										Завершить
 										<i class="fa fa-angle-right"></i>
 									</a>
@@ -113,12 +120,141 @@ TestAsset::register($this);
 					</div>
 			<a href="" id="bb-nav-next" class="btn btn-h50 btn-w200 btn-white nextQuestion start-position continue-mobile-btn">
 			  Начать
+			  <i id="ic" class="fa fa-angle-right"></i>
 			</a>
 		</div> 
 		 
 	</div>
 </div>
 <style>
+	.hide-btn {
+		display: none!important;
+	}
+	.right-part .test-checkbox form {
+		margin-bottom: 10px;
+		padding-left: 50px;
+	}
+	.checkbox, .radio {
+		height: 40px;
+		line-height: 40px;
+	}
+	.chckbox {
+		width: 40px;
+		height: 40px;
+		border: solid 5px #3e43c8;
+	    left: -45px;
+	    z-index: 5;
+	    left: -45px;
+	    position: absolute;
+	}
+	.checkbox input[type="checkbox"], .radio input[type="radio"] {
+		top: 15px;
+		left: -25px;
+		width: 40px;
+		height: 40px;
+		z-index: 9;
+	}
+	.form-group {
+	    margin-bottom: 15px;
+	    position: relative;
+	}
+	.right-part label {
+	    z-index: -5;
+	    color: #fff;
+	    padding: 0!important;
+	    position: absolute!important;
+	    left: 40px!important;
+	    top: 0;
+	    font-size: 24px;
+	    letter-spacing: 1px;
+	}
+	.right-part label:before {
+		width: 40px;
+		height: 40px;
+		border: solid 5px #3e43c8;
+	    left: -85px;
+	    z-index: 5;
+	    display: none!important;
+	}
+	@media only screen and (min-width: 500px) and (max-width: 700px ) and (min-height: 320px) and (max-height: 520px) {
+		#testID {
+			margin-top: -45px!important;
+		}
+		#testID2 {
+			width: 100%!important;
+			max-width: 100%!important;
+			margin-top: -10px;
+		}
+	}
+	.custom-pos {
+		margin-top: -45px!important;
+	}
+	.custom-pos2 {
+		width: 100%!important;
+		max-width: 100%!important;
+		margin-top: -10px;
+	}
+/* answers */
+	.correct-background {
+		background: #1fb38c!important;
+	}
+	.correct-background h3 {
+		font-size: 30px;
+		line-height: 40px;
+		width: 500px;
+	}
+	.correct-background p {
+		font-size: 18px;
+		line-height: 30px;
+		max-width: 440px;
+		margin-top: 40px;
+		position: relative;
+	}
+	.correct-background p::after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: -40px;
+		right: -50px;
+		width: 160px;
+		height: 140px;
+		background: url(../images/icons/like.svg) no-repeat center;
+		-webkit-background-size: contain;
+		background-size: contain;
+		z-index: -1;
+	}
+	.incorrect-background {
+		background-color: #ea7d63!important;
+	}
+	.incorrect-background h3 {
+		font-size: 30px;
+		line-height: 40px;
+		width: 500px;
+	}
+	.incorrect-background p {
+		font-size: 18px;
+		line-height: 30px;
+		max-width: 440px;
+		margin-top: 40px;
+		position: relative;
+	}
+	.incorrect-background p::after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: -10px;
+		right: -50px;
+		width: 160px;
+		height: 140px;
+		background: url(../images/icons/dislike.svg) no-repeat center;
+		-webkit-background-size: contain;
+		background-size: contain;
+		z-index: -1;
+	}
+/* ___ answers */
+	#ic {
+		display: none;
+	}
 .bb-content {
 	background: #3e43c8;
 }
@@ -175,6 +311,7 @@ TestAsset::register($this);
 	display: flex;
 	justify-content: space-around;
 	left: 11%;
+	font-family: 'FiraSans', sans-serif;
   }
   .finish-buttons .left-button {
 	color: #fff;
@@ -189,11 +326,16 @@ TestAsset::register($this);
   }
   .result-container .left-part {
 	align-items: center!important;
+	/*justify-content: center;*/
 	width: 100%;
   }
   .result-container .right-part {
 	z-index: 5;
 	width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 80px;
+    position: relative;
   }
   .result-container .right-part p {
 	font-size: 30px;
@@ -237,13 +379,13 @@ TestAsset::register($this);
   .next-position {
 	position: fixed;
 	bottom: 40px;
-	right: 40px;
+	right: 140px;
 	z-index: 9;
   }
   .again-position {
-	position: fixed;
-	bottom: 40px;
-	right: 33%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 	z-index: 9;
   }
   .finish-position {
@@ -266,7 +408,8 @@ TestAsset::register($this);
 	font-size: 24px;
   }
   .next-btn i {
-	margin-left: 15px;
+	margin-left: 30px;
+	font-size: 30px;
   }
   .next-btn:hover {
 	color: #fff!important;
@@ -277,62 +420,10 @@ TestAsset::register($this);
   #test-img-white {
 	display: none;
   }
-  .correct-background {
-	background: #1fb38c!important;
-  }
-  .correct-background h3 {
-	font-size: 30px;
-	line-height: 40px;
-	width: 500px;
-  }
-  .correct-background p {
-	font-size: 18px;
-	line-height: 30px;
-	max-width: 440px;
-	margin-top: 40px;
-  }
-  .incorrect-background {
-	background-color: #ea7d63!important;
-  }
-  .incorrect-background h3 {
-	font-size: 30px;
-	line-height: 40px;
-	width: 500px;
-  }
-  .incorrect-background p {
-	font-size: 18px;
-	line-height: 30px;
-	max-width: 440px;
-	margin-top: 40px;
-  }
+
+
   .test-text {
 	z-index: 2;
-  }
-  .correct-icon {
-	content: '';
-	display: block;
-	position: absolute;
-	top: 30%;
-	right: 5%;
-	width: 160px;
-	height: 140px;
-	background: url(../images/icons/like.svg) no-repeat center;
-	-webkit-background-size: contain;
-	background-size: contain;
-	z-index: 0;
-  }
-  .incorrect-icon {
-	content: '';
-	display: block;
-	position: absolute;
-	top: 30%;
-	right: 5%;
-	width: 160px;
-	height: 140px;
-	background: url(../images/icons/dislike.svg) no-repeat center;
-	-webkit-background-size: contain;
-	background-size: contain;
-	z-index: 0;
   }
   .bb-content {
 	background: -moz-linear-gradient(left, rgba(62,67,200,0.85) 0%, rgba(37,42,166,0.85) 100%);
@@ -354,7 +445,7 @@ TestAsset::register($this);
 	flex-wrap: nowrap;
 	flex-direction: column;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	background: #3e43c8;
 	align-items: center;
   }
@@ -379,30 +470,10 @@ TestAsset::register($this);
 	display: flex;
 	background: #252aa6;
   }
-  .right-part .right {
-	margin-top: 55px;
-  }
-  .right-part .wrong {
-	margin-top: 55px;
-  }
   .right-part .test-checkbox {
 	min-height: 450px;
 	display: flex;
 	align-items: flex-end;
-  }
-  .right-part .test-checkbox form {
-	margin-bottom: 10px;
-  }
-  .checkbox input[type="checkbox"], .radio input[type="radio"] {
-	top: 15px;
-	left: 20px;
-	width: 40px;
-	height: 40px;
-  }
-  .right-part label:before {
-	width: 40px;
-	height: 40px;
-	border: solid 5px #3e43c8;
   }
   .right-part label {
 	color: #fff;
@@ -448,6 +519,7 @@ TestAsset::register($this);
   height: 100%;
   -webkit-perspective: 2000px;
   perspective: 2000px;
+  overflow: hidden;
 }
 
 .bb-custom-side {
@@ -494,7 +566,7 @@ TestAsset::register($this);
 }
 .bb-custom-firstpage p {
   font-size: 24px;
-  line-height: 30px;
+  line-height: 35px;
   margin: 0 0 80px 0px;
   width: 500px;
 }
@@ -607,107 +679,173 @@ TestAsset::register($this);
 	text-align: center;
 	font-size: 80px;
 }
-
+@media screen and (min-width: 1199px) {
+	.right-part {
+		overflow: auto;
+	  }
+	#progress-circle-wrapper {
+	    top: 25%;
+	}
+	.left-part {
+		padding-left: 140px;
+	}
+	.left-part .test-wrapper-test {
+		padding-top: 30px;
+	}
+	.right-part .right {
+		min-height: 450px;
+	    padding-top: 190px;
+	    align-self: flex-start;
+	}
+	.right-part .wrong {
+		min-height: 450px;
+	    padding-top: 190px;
+	    align-self: flex-start;
+	}
+	.correct-background p {
+		margin-top: 30px;
+	}
+	.incorrect-background p {
+		margin-top: 30px;
+	}
+	#start-title {
+		margin: 0 0 35px 0!important;
+	    padding-top: 35px;
+	}
+	#start-text {
+	    align-self: flex-start;
+	    width: 492px;
+	    padding-right: 20px;
+	    margin: 0!important;
+	}
+	.start-position {
+		left: 140px;
+	}
+	.right-part .test-checkbox {
+		min-height: 450px;
+		height: 450px;
+	    display: flex;
+	    align-items: flex-start;
+	    padding-top: 100px;
+	}
+}
 @media screen and (min-width: 768px) and (max-width: 1199px) {
 	.progress-circle {
-	    width:  200px;
-	    height: 200px;
-	    line-height: 200px;
+	    width:  300px;
+	    height: 300px;
+	    line-height: 300px;
 	}
 	.progress-circle span {
-	    height:  200px;
-	    width:  200px;
-	    line-height: 195px;
+	    height:  300px;
+	    width:  300px;
+        line-height: 340px;
 	}
 	.left-half-clipper {
-	    width:  200px;
-	    height: 200px;
-	    clip: rect(0, 200px, 200px, 100px);
+	    width:  300px;
+	    height: 300px;
+	    clip: rect(0, 300px, 300px, 150px);
 	}
 	.value-bar {
-	    width:  200px;
-	    height: 200px;
-	    clip: rect(0, 100px, 200px, 0);
-	    border: 15px solid #fff;
+	    width:  300px;
+	    height: 300px;
+	    clip: rect(0, 150px, 300px, 0);
+	    border: 25px solid #fff;
 	}
 	.progress-circle.over50 .first50-bar {
-	    height:  200px;
-	    width:  200px;
-	    clip: rect(0, 200px, 200px, 100px);
+	    height:  300px;
+	    width:  300px;
+	    clip: rect(0, 300px, 300px, 150px);
 	    background-color:  #fff;
 	}
 	.progress-circle:after {
-	    width: 170px;
-	    height: 170px;
-	    top: 15px;
-	    left: 15px;
+	    width: 250px;
+	    height: 250px;
+	    top: 25px;
+	    left: 25px;
 	}
 	#result-text {
 		top: -10px;
-		font-size: 70px;
+		font-size: 100px;
+	}
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	#ic {
+		display: initial;
 	}
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
 	.progress-circle {
-	    width:  100px;
-	    height: 100px;
+	    width:  150px;
+	    height: 150px;
         font-size: 15px;
 	    line-height: 75px;
 	}
 	.progress-circle span {
-	    height:  100px;
-	    width:  100px;
-	    line-height: 75px;
+	    height:  150px;
+	    width:  150px;
+	    line-height: 150px;
 	}
 	.left-half-clipper {
-	    width:  100px;
-	    height: 100px;
-	    clip: rect(0, 100px, 100px, 50px);
+	    width:  150px;
+	    height: 150px;
+	    clip: rect(0, 150px, 150px, 75px);
 	}
 	.value-bar {
-	    width:  100px;
-	    height: 100px;
-	    clip: rect(0, 50px, 100px, 0);
-	    border: 10px solid #fff;
+	    width:  150px;
+	    height: 150px;
+	    clip: rect(0, 75px, 150px, 0);
+	    border: 15px solid #fff;
 	}
 	.progress-circle.over50 .first50-bar {
-	    height:  100px;
-	    width:  100px;
-	    clip: rect(0, 100px, 100px, 50px);
+	    height:  150px;
+	    width:  150px;
+	    clip: rect(0, 150px, 150px, 75px);
 	    background-color:  #fff;
 	}
 	.progress-circle:after {
-	    width: 80px;
-	    height: 80px;
-	    top: 10px;
-	    left: 10px;
+	    width: 120px;
+	    height: 120px;
+	    top: 15px;
+	    left: 15px;
 	}
 	#result-text {
-		font-size: 45px;
-		top: 0;
+	    font-size: 60px;
+	    top: -10px;
+	    line-height: 150px;
 	}
 }
 /*circle styles*/
 @media screen and (min-width : 320px) and (max-width : 1199px) {
+	.right-part {
+		overflow: auto;
+	}
+	.left-part .test-wrapper-test .check-block {
+		display: none;
+	}
 	.result-container {
 		flex-direction: column!important;
+	}
+	#progress-circle-wrapper {
+	    margin-top: 90px;
 	}
 	.result-container #start-page-bottomm .left-part {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 50vh;
+		height: 47vh;
 		background: #3e43c8;
 	}
 	.result-container #start-page-topp {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 55vh;
+		height: 53vh;
 		background: #3e43c8;
 	}
 	.result-container #start-page-topp .right-part {
-		height: 55vh;
+		height: 53vh;
+		justify-content: center;
+	    background: #3e43c8;
 	}
 	.result-container .right-part p {
 		text-align: center;
@@ -782,7 +920,7 @@ TestAsset::register($this);
   #test-img-white {
 	display: block;
 	width: 200px;
-	margin: 140px 0 60px 0;
+	margin: 100px 0 60px 0;
   }
   .continue-desktop-btn {
 	display: none;
@@ -811,9 +949,9 @@ TestAsset::register($this);
 	line-height: 80px!important;
   }
   #progress-circle-wrapper:before {
-	top: -30px;
-    right: -55%;
-    width: 500px;
+	top: 0px;
+    right: -50%;
+    width: 700px;
     height: 300px;
   }
   .test-container .right-part .test-wrap_img {
@@ -832,16 +970,18 @@ TestAsset::register($this);
 	  overflow-y: auto;
   }
   .left-part {
-	height: 45vh;
+	height: 47vh;
 	align-items: flex-start;
+	justify-content: center;
   }
   .right-part {
-	height: 55vh;
+	height: 53vh;
 	align-items: flex-start;
 	padding-top: 40px;
   }
   .test-wrapper-test {
-	justify-content: center;
+	justify-content: flex-start;
+	margin-top: 180px;
   }
   .test-checkbox {
 	min-height: 300px!important;
@@ -918,7 +1058,7 @@ TestAsset::register($this);
 		width:  280px;
 		font-size:  24px;
 		max-width: 280px;
-		margin: 0 0 20px 0;
+		margin: 0 0 20px 0!important;
 		line-height: 30px;
 	}
 
@@ -928,20 +1068,51 @@ TestAsset::register($this);
 		width:  280px;
 		max-width: 280px;
 		margin: 0 20px!important;
+		padding-bottom: 60px;
+	    overflow: auto;
+	    height: 43vh;
+	}
+	.correct-background p::after {
+	    content: '';
+	    display: block;
+	    position: absolute;
+	    top: -40px;
+	    right: 0px;
+	    width: 100px;
+	    height: 140px;
+	    background: url(../images/icons/like.svg) no-repeat center;
+	    -webkit-background-size: contain;
+	    background-size: contain;
+	    z-index: -1;
+	}
+	.incorrect-background p::after {
+	    content: '';
+	    display: block;
+	    position: absolute;
+	    top: -30px;
+	    right: 0px;
+	    width: 100px;
+	    height: 140px;
+	    background: url(../images/icons/dislike.svg) no-repeat center;
+	    -webkit-background-size: contain;
+	    background-size: contain;
+	    z-index: -1;
 	}
 	.continue-mobile-btn {
 		height:  50px!important;
 		line-height: 50px!important;
 	}
 	.left-part h3 {
-		max-width:  280px;
-		width:  280px;
-		font-size:  18px;
-		line-height: 20px;
-	  height: 100px;
-	  display: flex;
-	  align-items: flex-start;
-	  overflow-y: auto;
+	    max-width: 280px;
+	    width: 280px;
+	    font-size: 18px;
+	    line-height: 20px;
+	    height: 100px;
+	    display: flex;
+	    align-items: flex-start;
+	    overflow-y: auto;
+	    font-weight: 100!important;
+	    font: 18px 'FiraSans', sans-serif;
 	}
 
 	.left-part h1 {
@@ -955,6 +1126,7 @@ TestAsset::register($this);
 
 	.left-part .test-wrapper-test {
 		min-height:  auto;
+		margin-top: 20px;
 	}
 	.continue-mobile-btn i {
 		line-height: 50px!important;
@@ -962,11 +1134,11 @@ TestAsset::register($this);
 
 	.right-part {
 		overflow-y:  auto;
-		padding: 20px 20px 60px 20px;
+	    padding: 20px 20px 50px 20px;
 	}
 	.right-part label {
 		font-size:  18px;
-		line-height: 20px;
+		line-height: 35px;
 	}
 
 	.checkbox input[type="checkbox"], .radio input[type="radio"] {
@@ -1045,8 +1217,7 @@ TestAsset::register($this);
 		margin-top: 20px;
 	}
 	#progress-circle-wrapper {
-		transform: scale(1.2);
-		margin-top: -20px
+		margin-top: 50px
 	}
 
 	.result-container .right-part p {
@@ -1085,11 +1256,47 @@ TestAsset::register($this);
 		right:  initial;
 	}
 	#progress-circle-wrapper:before {
-	    top: 0;
-	    left: -60px;
-	    width: 252px;
+        top: 15px;
+	    left: -40%;
+	    width: 335px;
 	    height: 150px;
 	  }
+		.result-container #start-page-topp .right-part {
+		    padding: 0 20px;
+		}
+
+		.finish-buttons .left-button i {
+		    right:  initial!important;
+		    left:  0!important;
+		    margin-left: 20px!important;
+		    font-size: 18px!important;
+		}
+
+		.finish-buttons .finish-button i {
+		    right: 0;
+		    left: initial;
+		    margin-right: 20px;
+		    font-size: 18px;
+		}
+		#result-range {
+		    margin: 25px 0!important;
+		}
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+ .chckbox {
+    width: 25px;
+    height:25px;
+    border: solid 2px #3e43c8;
+ }
+ .checkbox, .radio {
+    height:25px;
+    line-height:25px;
+}
+.right-part label {
+    left: 20px!important;
+    line-height:  25px;
+}
+
 }
 
 </style>
