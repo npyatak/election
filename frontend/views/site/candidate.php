@@ -64,10 +64,10 @@ $this->params['share'] = [
                 <div class="left">
                     <div class="inner">
                         <div class="biography">
-                            <?=$candidate->bio_1;?>
-                            <?=$candidate->bio_2;?>
-                            <?=$candidate->bio_3;?>
-                            <?=$candidate->bio_4;?>
+                            <div class="block"><?=$candidate->bio_1;?></div>
+                            <div class="block"><?=$candidate->bio_2;?></div>
+                            <div class="block"><?=$candidate->bio_3;?></div>
+                            <div class="block"><?=$candidate->bio_4;?></div>
                         </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@ $this->params['share'] = [
             <div class="container left">
                 <div class="mobile-block">
                     <div class="biography">
-                        <?=$candidate->bio_1;?>
+                        <div class="block"><?=$candidate->bio_1;?></div>
                     </div>
                     <?php if($candidate->facts):?>
                         <div class="candidate-statistics">
@@ -151,7 +151,7 @@ $this->params['share'] = [
                 </div>
                 <div class="mobile-block">
                     <div class="biography">
-                        <?=$candidate->bio_2;?>
+                        <div class="block"><?=$candidate->bio_2;?></div>
                     </div>
                     <?php if($candidate->quotations):?>
                         <div class="candidate-quotes">
@@ -172,7 +172,7 @@ $this->params['share'] = [
                 </div>
                 <div class="mobile-block">
                     <div class="biography">
-                        <?=$candidate->bio_3;?>
+                        <div class="block"><?=$candidate->bio_4;?></div>
                     </div>
                     <?php if($candidate->perks):?>
                         <div class="candidate-hobbies">
@@ -210,7 +210,7 @@ $this->params['share'] = [
                 </div>
                 <div class="mobile-block">
                     <div class="biography">
-                        <?=$candidate->bio_4;?>
+                        <div class="block"><?=$candidate->bio_4;?></div>
                     </div>
                 </div>
             </div>
@@ -251,7 +251,10 @@ $this->params['share'] = [
                     <div class="candidates-img">
                         <img src="<?=$c->image;?>" alt="<?=$c->nameAndSurname;?>">
                     </div>
-                    <div class="candidate"><h4><?=$c->nameAndSurname;?></h4></div>
+                    <div class="candidate">
+                        <h4><?=$c->nameAndSurname;?></h4>
+                        <div class="out">Выбыл(а) из президентской гонки</div>
+                    </div>
                 </a>
             <?php endforeach;?>
         </div>

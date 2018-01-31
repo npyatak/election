@@ -11,7 +11,7 @@
         <div class="container">
             <div class="card-content_inner">
                 <div class="cards">
-                    <h3>Как выбирают призедента</h3>
+                    <h3>Как выбирают президента</h3>
                     <?php foreach ($cards as $card):?>
                         <?php if($card->category == 1):?>
                             <div class="card <?=$card->id == $id ? 'active' : '';?>">

@@ -14,7 +14,7 @@ use common\models\RatingItem;
                     <a href="<?=Url::toRoute(['site/calendar']);?>" class="btn btn-green btn-h50 btn-w240">Календарь выборов</a>
                 </div>
                 <div class="right-block">
-                    <img src="/images/icons/kreml.svg" alt="Kreml">
+                    <img src="/images/icons/kremlin_general.svg" alt="Kremlin">
                 </div>
             </div>
             <div class="bottom">
@@ -130,5 +130,10 @@ use common\models\RatingItem;
     }
     .main-menu.shadow .slogan {
         display: block;
+    }
+    @media (max-width: 767px){
+        .main-menu .slogan {
+            display: block !important;
+        }
     }
 </style>

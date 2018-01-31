@@ -118,6 +118,18 @@ $(document).ready(function () {
         }
     });
 
+    if($(this).scrollTop() >= 10){
+        $('.main-menu').addClass('shadow');
+    }else {
+        $('.main-menu').removeClass('shadow');
+    }
+
+    if($(window).width() <= 767){
+        $('.main-menu').addClass('bg-white');
+    }else{
+        $('.main-menu').removeClass('bg-white');
+    }
+
     $(this)
         .on('click', '.main-share_btn', function (e) {
             e.preventDefault();

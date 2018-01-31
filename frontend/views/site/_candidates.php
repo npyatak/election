@@ -7,7 +7,10 @@
                     <div class="candidates-img">
                         <img src="<?=$c->image;?>" alt="<?=$c->nameAndSurname;?>">
                     </div>
-                    <div class="candidate"><h4><?=$c->nameAndSurname;?></h4></div>
+                    <div class="candidate">
+                        <h4><?=$c->nameAndSurname;?></h4>
+                        <div class="out">Выбыл(а) из президентской гонки</div>
+                    </div>
                 </a>
             <?php endforeach;?>
         </div>
