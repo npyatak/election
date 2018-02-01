@@ -452,7 +452,7 @@
     padding: 80px 40px 0;
 }
 .faq-item h4 {
-    padding-bottom: 40px;
+    padding-bottom: 80px;
     color: #fff;
     -webkit-box-shadow: inset 0 -1px 0 0 #30c49d;
     -moz-box-shadow: inset 0 -1px 0 0 #30c49d;
@@ -772,7 +772,6 @@ footer .copyright p {
 }
 .candidate-statistics {
     position: relative;
-    height: 900px;
     padding: 80px;
     background-color: #3e43c8;
     color: #fff;
@@ -860,14 +859,21 @@ footer .copyright p {
     background-color: #1fb38c;
 }
 .candidate-quotes_title {
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 }
 .candidate-quotes .item {
-    min-height: 460px;
     padding-bottom: 65px;
 }
 .candidate-quotes .quotes-text {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+.candidate-quotes .quotes-text h3 {
+    font-size: 20px;
+    line-height: 30px;
+}
+.candidate-quotes .quotes-date p {
+    font-size: 14px;
+    line-height: 20px;
 }
 .candidate-quotes .owl-nav {
     position: absolute;
@@ -1131,8 +1137,12 @@ footer .copyright p {
     max-width: 1040px;
 }
 .slick-slider_wrap .item {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
     padding-top: 80px;
-    min-height: 900px;
+    min-height: 700px;
     outline: none;
 }
 .slick-slider_title {
@@ -1140,6 +1150,11 @@ footer .copyright p {
 }
 .slick-slider_text {
     margin-bottom: 40px;
+}
+.slick-slider_text .h1 {
+    font-size: 30px;
+    line-height: 35px;
+    letter-spacing: 2px;
 }
 .slick-slider_wrap .slick-dots li {
     margin: 0 0 10px;
@@ -1987,6 +2002,9 @@ a.all-news {
     display: none;
 }
 
+.tabs.owl-carousel .owl-stage-outer {
+    overflow: visible;
+}
 
 @media (max-width:1279px) {
     .container {
