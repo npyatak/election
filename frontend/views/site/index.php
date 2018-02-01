@@ -71,10 +71,9 @@ use common\models\RatingItem;
                         <span class="question-icon popup-open"></span>
                         <div class="question-popup">
                             <p><?=$rating->text;?></p>
-<!--                            <span class="popup-close">Закрыть</span>-->
                         </div>
                     </h4>
-                    <p>Опрос <?=$rating->subtitle;?></p>
+                    <p>Опрос ВЦИОМ <?=$rating->date;?></p>
                 </div>
                 <div class="right-content">
                     <ul>
@@ -119,7 +118,7 @@ use common\models\RatingItem;
         </div>
         <div class="faq-bottom">
             <div>
-                <a href="<?=Url::toRoute(['site/cards']);?>">Все вопросы<i class="fa fa-angle-right"></i></a>
+                <a href="<?=Url::toRoute(['site/faq']);?>">Все вопросы<i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </div>

@@ -21,11 +21,10 @@ $this->params['share'] = [
                                 <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
                             </div>
                             <div class="candidate-rating">
-                                <p>Рейтинг кандидата по данным <?=$rating->subtitle;?></p>
+                                <p>Рейтинг кандидата по данным ВЦИОМ от <?=$rating->date;?></p>
                                 <span class="question-icon popup-open"></span>
                                 <div class="question-popup">
                                     <p><?=$rating->text;?></p>
-                                    <!--                            <span class="popup-close">Закрыть</span>-->
                                 </div>
                             </div>
                         </div>

@@ -32,6 +32,7 @@ class Share extends \yii\db\ActiveRecord
         return [
             ['uri', 'required'],
             [['uri', 'title', 'text', 'image', 'twitter'], 'string', 'max' => 255],
+            ['uri', 'unique'],
         ];
     }
 
@@ -42,7 +43,7 @@ class Share extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'uri' => 'Uri',
+            'uri' => 'Адрес',
             'title' => 'Заголовок',
             'text' => 'Текст',
             'image' => 'Изображение',

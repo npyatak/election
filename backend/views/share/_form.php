@@ -7,28 +7,29 @@ use common\components\ElfinderInput;
 
 <div class="add-form">
     <?php $form = ActiveForm::begin();?>
+    <?php $params = Yii::$app->params['defaultShare'];?>
 
     <div class="row">
         <div class="col-sm-6">
-            <?= $form->field($model, 'uri')->textInput() ?>
+            <?= $form->field($model, 'uri')->textInput(['placeholder' => '/uri']) ?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'title')->textInput() ?>
+            <?= $form->field($model, 'title')->textInput(['placeholder' => $params['title']]) ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'image')->widget(ElfinderInput::className());?>
+            <?= $form->field($model, 'image')->widget(ElfinderInput::className(['placeholder' => $params['image']]));?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'text')->textarea() ?>
+            <?= $form->field($model, 'text')->textarea(['placeholder' => $params['text']]) ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'twitter')->textarea();?>
+            <?= $form->field($model, 'twitter')->textarea(['placeholder' => $params['twitter']]);?>
         </div>
     </div>
 

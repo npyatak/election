@@ -21,25 +21,6 @@ use common\components\ElfinderInput;
     </div>
 
     <?= $form->field($model, 'text')->textarea() ?>
-    
-    <hr>
-    <div class="row">
-        <div class="col-md-6">
-            <?= $form->field($model, 'share_title')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-md-6">
-            <?= $form->field($model, 'share_image')->widget(ElfinderInput::className());?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-7">
-            <?= $form->field($model, 'share_text')->textarea() ?>
-        </div>
-        <div class="col-md-5">
-            <?= $form->field($model, 'share_twitter')->textInput();?>
-        </div>
-    </div>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -63,7 +63,7 @@ class SiteController extends Controller
         $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->all();
         $testText = TestText::find()->orderBy(new \yii\db\Expression('rand()'))->one();
         
-        $rating = Rating::find()->orderBy('id DESC')->one();
+        $rating = Rating::findOne(1);
         $ratingResults = RatingItem::find()->where(['rating_group_id' => 1])->andWhere(['not', ['candidate_id' => null]])->orderBy('score DESC')->limit(7)->asArray()->all();
 
         $news = News::find()->orderBy('date DESC')->limit(3)->all();
@@ -95,7 +95,7 @@ class SiteController extends Controller
 
         $candidates = Candidate::find()->where(['not', ['id' => $candidate->id]])->orderBy('surname')->all();
 
-        $rating = Rating::find()->orderBy('id DESC')->one();
+        $rating = Rating::findOne(1);
 
         $ratingResults = RatingItem::find()->select(['score', 'candidate_id'])->where(['not', ['candidate_id' => null]])->groupBy('candidate_id')->orderBy('score DESC')->indexBy('candidate_id')->asArray()->all();
         $candidatePlace = array_search($candidate->id, array_keys($ratingResults)) + 1;
