@@ -69,30 +69,30 @@ $(document).ready(function () {
         }
     });
 
-    $('#slick-slider').slick({
-        dots: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1279,
-                settings: {
-                    vertical: false,
-                    arrows: true,
-                    nextArrow: '<span class="next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>',
-                    prevArrow: '<span class="prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></span>',
-                }
-            },
-            {
-                breakpoint: 2560,
-                settings: {
-                    vertical: true,
-                    verticalSwiping: true,
-                    arrows: false
-                }
-            }
-        ]
-    });
+    // $('#slick-slider').slick({
+    //     dots: true,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     responsive: [
+    //         {
+    //             breakpoint: 1279,
+    //             settings: {
+    //                 vertical: false,
+    //                 arrows: true,
+    //                 nextArrow: '<span class="next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>',
+    //                 prevArrow: '<span class="prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></span>',
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 2560,
+    //             settings: {
+    //                 vertical: true,
+    //                 verticalSwiping: true,
+    //                 arrows: false
+    //             }
+    //         }
+    //     ]
+    // });
 
     $('.main-menu_btn').click(function (e) {
         e.preventDefault();
