@@ -45,7 +45,7 @@ class DefaultController extends \backend\controllers\CController
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $share->load(Yii::$app->request->post());
-            $share->url = $model->url;
+            $share->uri = '/rating';
             $share->save();
 
             return $this->redirect(['index']);

@@ -117,11 +117,11 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionCards($id = null) {
+    public function actionFaq($id = null) {
         $cards = Card::find()->all();
         $candidates = Candidate::find()->orderBy('name')->all();
 
-        return $this->render('cards', [
+        return $this->render('faq', [
             'cards' => $cards,
             'candidates' => $candidates,
             'id' => $id,
