@@ -176,7 +176,7 @@
 	.calendar-header .left {
 		width: 100%!important;
 		z-index: 1;
-		padding-bottom: 40px;
+		padding: 0 0 40px 0;
 	}
 	.calendar-header .left h1 {
 	    margin: 100px 0 40px 0;

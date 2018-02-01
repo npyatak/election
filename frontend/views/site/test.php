@@ -124,6 +124,153 @@ TestAsset::register($this);
 	</div>
 </div>
 <style>
+	.result-container .right-part {
+		z-index: 5;
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+		padding-left: 80px;
+		position: relative;
+		flex-direction: column;
+		overflow: auto;
+		padding-top: 80px;
+	}
+	.right-part .right {
+		position: relative;
+	}
+	.right-part .wrong {
+		position: relative;
+	}
+	.correct-background .right::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 150px;
+        right: -50px;
+        width: 160px;
+        height: 140px;
+        background: url(../images/icons/like.svg) no-repeat center;
+        -webkit-background-size: contain;
+        background-size: contain;
+        z-index: -1
+    }
+    .incorrect-background .wrong::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 150px;
+        right: -50px;
+        width: 160px;
+        height: 140px;
+        background: url(../images/icons/dislike.svg) no-repeat center;
+        -webkit-background-size: contain;
+        background-size: contain;
+        z-index: -1;
+    }
+    .incorrect-background p::after {
+        display: none!important;
+    }
+    .correct-background p::after {
+        display: none!important;
+    }
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+	#result-range-container {
+	    align-items: center;
+	}
+    .incorrect-background .wrong::after {
+        top: 50px;
+        right: -200px;
+    }
+    .correct-background .right::after {
+        top: 50px;
+        right: -200px;
+    }
+    .right-part {
+		justify-content: flex-start!important;
+    }
+    .incorrect-background p {
+        width: 100%!important;
+        max-width: 100%!important;
+    }
+    .correct-background p {
+        width: 100%!important;
+        max-width: 100%!important;
+    }
+    .correct-background .right::after {
+    	top: 0;
+    }
+    .incorrect-background .wrong::after {
+    	top: 0;
+    }
+    .result-container #start-page-topp .right-part {
+		padding-bottom: 100px;
+	}
+}    
+
+@media screen and (min-width: 320px) and (max-width: 1199px) {
+    
+
+    .right-part.incorrect-background {
+        justify-content: flex-start;
+    }
+
+    .incorrect-background p {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+
+    .right-part .correct-background {
+        justify-content: flex-start;
+    }
+
+    .correct-background p {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .incorrect-background .wrong::after {
+        top: 0px;
+        right: -0px;
+        width: 80px;
+
+    }
+    .correct-background .right::after {
+        top: 0px;
+        right: 0px;
+        width: 80px;
+    }
+    .result-container #start-page-topp .right-part {
+		padding-bottom: 60px;
+	}
+	.result-container .right-part p {
+		width: 280px!important;
+		max-width: 280px!important;
+	}
+	.right-part .test-checkbox {
+		margin-bottom: 0!important;
+	}
+	.result-container #start-page-topp .right-part {
+		height: 48vh!important;
+	    align-items: center;
+	}
+	.result-container #start-page-topp {
+		height: 48vh!important;
+	}
+	.result-container .left-part {
+		height: 45vh!important ;
+	}
+}
+
+
+
+
+
+
+
+
 	.hide-btn {
 		display: none!important;
 	}
@@ -335,8 +482,8 @@ TestAsset::register($this);
     position: relative;
   }
   .result-container .right-part p {
-	font-size: 30px;
-	line-height: 40px;
+	font-size: 25px;
+	line-height: 35px;
 	max-width: 500px;
 	width: 500px;
   }
@@ -680,9 +827,13 @@ TestAsset::register($this);
 	.right-part {
 		overflow: auto;
 	  }
-	#progress-circle-wrapper {
-	    top: 25%;
+	.result-container .right-part {
+		justify-content: center!important;
 	}
+	.result-container .left-part {
+		justify-content: center!important;
+	}
+	
 	.left-part {
 		padding-left: 140px;
 	}
@@ -723,7 +874,7 @@ TestAsset::register($this);
 		height: 450px;
 	    display: flex;
 	    align-items: flex-start;
-	    padding-top: 100px;
+	    padding-top: 130px;
 	}
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
@@ -843,6 +994,7 @@ TestAsset::register($this);
 		height: 53vh;
 		justify-content: center;
 	    background: #3e43c8;
+
 	}
 	.result-container .right-part p {
 		text-align: center;
@@ -864,7 +1016,7 @@ TestAsset::register($this);
 		text-align: center;
 		text-align: -webkit-center;
 	}
-	#result-range {
+	#result-range p {
 		opacity: 0;
 		transition: all 1s ease-in-out;
 	}
@@ -1275,9 +1427,6 @@ TestAsset::register($this);
 		    margin-right: 20px;
 		    font-size: 18px;
 		}
-		#result-range {
-		    margin: 25px 0!important;
-		}
 }
 @media screen and (max-width: 767px) and (min-width: 320px) {
  .chckbox {
@@ -1292,6 +1441,7 @@ TestAsset::register($this);
 .right-part label {
     left: 20px!important;
     line-height:  25px;
+    font-size: 16px;
 }
 
 }
