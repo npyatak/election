@@ -88,8 +88,8 @@ use common\models\RatingItem;
 
 <?php 
 $script = "
-    var results = ".json_encode($results).";
-    //console.log(results);
+    var ratingResults = ".json_encode($results).";
+    //console.log(ratingResults);
 
     $('.r_group').on('click', function(e) {
         group = $(this).attr('data-group');
@@ -110,12 +110,12 @@ $script = "
 
     function showGroupValue(group) {
         window.history.pushState(null, '', '".Url::toRoute(['site/rating'])."?group='+group);
-        if(typeof results[group] !== 'undefined') {
+        if(typeof ratingResults[group] !== 'undefined') {
             $.each($('.rating-candidate'), function(key, value) {
                 if(typeof $(this).data('candidate') !== 'undefined') {
-                    score = results[group]['c'][$(this).data('candidate')];
+                    score = ratingResults[group]['c'][$(this).data('candidate')];
                 } else {
-                    score = results[group]['a'][$(this).data('additional')];
+                    score = ratingResults[group]['a'][$(this).data('additional')];
                 }
                 $(this).find('.percent').html(score);
                 $(this).find('.rating-line span').css({'width': score+'%'});
