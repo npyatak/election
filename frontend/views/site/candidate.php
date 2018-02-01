@@ -102,8 +102,8 @@ $this->params['share'] = [
                                 <h3 class="candidate-hobbies_title">Увлечения и таланты</h3>
                                 <div id="candidate-hobbies" class="owl-carousel">
                                     <?php foreach ($candidate->perks as $key => $perk):?>
-                                            <div class="item">
                                         <?php if($key % 2 == 0):?>
+                                            <div class="item">
                                                 <div class="top">
                                                     <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
                                                     <?php if($perk->image):?>
@@ -121,9 +121,12 @@ $this->params['share'] = [
                                                         </div>
                                                     <?php endif;?>
                                                 </div>
-                                        <?php endif;?>
                                             </div>
+                                        <?php endif;?>
                                     <?php endforeach;?>
+                                    <?php if(count($candidate->perks) % 2 == 1):?>
+                                            </div>
+                                    <?php endif;?>
                                 </div>
                             </div>
                             <div class="right-sw"></div>
