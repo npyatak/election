@@ -65,6 +65,10 @@ class ShareWidget extends \yii\base\Widget
 		        'data-title' => $this->share['title'],
 		    ]);
 		echo $this->renderWrapClose();
+
+		echo $this->renderWrapOpen($soc = 'wa');
+			echo Html::a('<i class="fa fa-whatsapp"></i>', 'whatsapp://send?text='.$this->share['text'], ['class' => 'whatsapp-share', 'target' => '_blank']);
+		echo $this->renderWrapClose();
     }
 
     public function renderWrapOpen($soc = null) {
