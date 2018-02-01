@@ -2,8 +2,7 @@
 use yii\helpers\Url;
 
 $this->registerJsFile(Url::toRoute('js/device.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
-
-;?>
+?>
 
 <div class="card-wrap">
     <div class="card-header">

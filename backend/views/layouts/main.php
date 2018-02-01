@@ -45,14 +45,8 @@ AppAsset::register($this);
                 ['label' => 'Диапазоны теста', 'url' => ['/test-result']],
             ]
         ],
-        ['label' => 'Рейтинг', 'url' => ['/rating/default']],
+        ['label' => 'Рейтинги', 'url' => ['/rating']],
         ['label' => 'Шеринги', 'url' => ['/share']],
-        // ['label' => 'Рейтинги', 'items' => [
-        //         ['label' => 'Рейтинг', 'url' => ['/rating/default']],
-        //         ['label' => 'Группы', 'url' => ['/rating/group']],
-        //         ['label' => 'Значения', 'url' => ['/rating/item']],
-        //     ]
-        // ],
         //['label' => 'Настройки', 'url' => ['/settings']],
     ];
     if (Yii::$app->user->isGuest) {

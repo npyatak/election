@@ -14,11 +14,6 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [
-        'rating' => [
-            'class' => 'backend\modules\rating\Module',
-        ],
-    ],
     'components' => [
         'user' => [
             'identityClass' => 'backend\models\Admin',

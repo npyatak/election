@@ -9,11 +9,14 @@ use common\components\ElfinderInput;
     <?php $form = ActiveForm::begin();?>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <?= $form->field($model, 'title')->textInput() ?>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <?= $form->field($model, 'subtitle')->textInput() ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'date')->textInput() ?>
         </div>
     </div>
 

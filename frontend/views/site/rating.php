@@ -9,51 +9,23 @@ use common\models\RatingItem;
     <div class="rating-page_top">
         <div class="container">
             <div class="tabs owl-carousel">
-                <div class="tab">
-                    <a href="<?=Url::current(['group' => 1]);?>" class="r_group <?=$group == 1 ? 'active' : '';?>" data-group="1">
-                        <h4>Рейтинг кандидатов</h4>
-                        <div class="question-icon_wrap">
-                            <span class="question-icon popup-open"></span>
-                            <div class="question-popup">
-                                <p>
-                                    Результаты ответа на вопрос: "Если бы президентские выборы проводились в ближайшее воскресенье, за кого бы вы проголосовали?" (В % от числа опрошенных, допускается один ответ.)
-                                    Опрос ВЦИОМ проводится методом ежедневного интервью 1000 респондентов в возрасте от 18 лет не менее чем в 80 регионах РФ. 40% номеров случайным образом отбираются из стационарных диапазонов, 60% — из мобильных. Максимальный размер ошибки для такой выборки с вероятностью 95% не превышает 3,2%.
-                                </p>
+                <?php foreach ($ratings as $rating):?>
+                    <div class="tab">
+                        <a href="<?=Url::current(['group' => $rating->groupIds[0]]);?>" class="r_group <?=count($rating->groupIds) > 1 ? 'show-rating-cat' : '';?> <?=in_array($group, $rating->groupIds) ? 'active' : '';?>" data-group="<?=$rating->groupIds[0];?>">
+                            <h4><?=$rating->title;?></h4>
+                            <div class="question-icon_wrap">
+                                <?php if($rating->subtitle):?>
+                                    <span class="tab-span"><?=$rating->subtitle;?></span>
+                                <?php endif;?>
+                                <span class="question-icon popup-open"></span>
+                                <div class="question-popup">
+                                    <p><?=$rating->text;?></p>
+                                </div>
                             </div>
-                        </div>
-                        <p>Опрос <?=$rating->subtitle;?></p>
-                    </a>
-                </div>
-                <div class="tab">
-                    <a id="groupsTab" href="<?=Url::current(['group' => 3]);?>" class="r_group show-rating-cat <?=!in_array($group, [1, 2]) ? 'active' : '';?>" data-group="3">
-                        <h4>Рейтинг кандидатов</h4>
-                        <div class="question-icon_wrap">
-                            <span class="tab-span">среди отдельных социальных групп</span> <span class="question-icon popup-open"></span>
-                            <div class="question-popup">
-                                <p>
-                                    Результаты ответа на вопрос: "Если бы президентские выборы проводились в ближайшее воскресенье, за кого бы вы проголосовали?" (В % от числа опрошенных, допускается один ответ.)
-                                    Опрос ВЦИОМ проводится методом ежедневного интервью 1000 респондентов в возрасте от 18 лет не менее чем в 80 регионах РФ. 40% номеров случайным образом отбираются из стационарных диапазонов, 60% — из мобильных. Максимальный размер ошибки для такой выборки с вероятностью 95% не превышает 3,2%.
-                                </p>
-                            </div>
-                        </div>
-                        <p>Опрос <?=$rating->subtitle;?></p>
-                    </a>
-                </div>
-                <div class="tab">
-                    <a href="<?=Url::current(['group' => 2]);?>" class="r_group <?=$group == 2 ? 'active' : '';?>" data-group="2">
-                        <h4>Антирейтинг кандидатов</h4>
-                        <div class="question-icon_wrap">
-                            <span class="question-icon popup-open"></span>
-                            <div class="question-popup">
-                                <p>
-                                    Результаты ответа на вопрос: "За кого вы не проголосуете ни при каких обстоятельствах?" (В % от числа опрошенных, допускается любое число ответов.)
-                                    Опрос ВЦИОМ проводится методом ежедневного интервью 1000 респондентов в возрасте от 18 лет не менее чем в 80 регионах РФ. 40% номеров случайным образом отбираются из стационарных диапазонов, 60% — из мобильных. Максимальный размер ошибки для такой выборки с вероятностью 95% не превышает 3,2%
-                                </p>
-                            </div>
-                        </div>
-                        <p>Опрос <?=$rating->subtitle;?></p>
-                    </a>
-                </div>
+                            <p>Опрос ВЦИОМ <?=$rating->date;?></p>
+                        </a>
+                    </div>
+                <?php endforeach;?>
             </div>
         </div>
     </div>
@@ -74,7 +46,7 @@ use common\models\RatingItem;
             </div>
         </div>
         <div class="container">
-            <div id="rating-cat" class="owl-carousel <?=!in_array($group, [1, 2]) ? 'transform' : '';?>">
+            <div id="rating-cat" class="owl-carousel <?=in_array($group, $ratingGroupIds) ? 'transform' : '';?>">
                 <?php foreach ($ratingGroups as $key => $groups):?>
                     <div class="item">
                         <div class="rating-cat_title"><?=$subcategoryLabels[$key] != '' ? $subcategoryLabels[$key].':' : '';?></div>
@@ -125,12 +97,16 @@ $script = "
         if($(this).hasClass('rating-cat_el')) {
             $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+group);
             $('#groupsTab').attr('data-group', group);
+        } else {
+            if($(this).hasClass('show-rating-cat')) {
+                $('.rating-cat_el[data-group='+group+']').addClass('active');
+            }
         }
-    })
+    });
     $('#groups-select').on('change', function(e) {
         group = $(this).find('option:selected').data('group');
         showGroupValue(group);
-    })
+    });
 
     function showGroupValue(group) {
         window.history.pushState(null, '', '".Url::toRoute(['site/rating'])."?group='+group);

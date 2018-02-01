@@ -4,14 +4,6 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "rating_group".
- *
- * @property int $id
- * @property string $title
- *
- * @property RatingItem[] $ratingItems
- */
 class RatingGroup extends \yii\db\ActiveRecord
 {
 
@@ -29,9 +21,10 @@ class RatingGroup extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'category', 'sub_category'], 'required'],
+            [['title', 'category', 'sub_category', 'rating_id'], 'required'],
             [['title'], 'string', 'max' => 255],
-            [['category', 'sub_category'], 'integer'],
+            [['category', 'sub_category', 'rating_id'], 'integer'],
+            [['rating_id'], 'exist', 'skipOnError' => true, 'targetClass' => Rating::className(), 'targetAttribute' => ['rating_id' => 'id']],
         ];
     }
 
@@ -45,6 +38,7 @@ class RatingGroup extends \yii\db\ActiveRecord
             'title' => 'Заголовок',
             'category' => 'Категория', 
             'sub_category' => 'Подкатегория',
+            'rating_id' => 'Рейтинг',
         ];
     }
 
@@ -54,6 +48,14 @@ class RatingGroup extends \yii\db\ActiveRecord
     public function getRatingItems()
     {
         return $this->hasMany(RatingItem::className(), ['rating_group_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRating()
+    {
+        return $this->hasOne(Rating::className(), ['id' => 'rating_id']);
     }
 
     public function getSubCategoryArray() {

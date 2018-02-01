@@ -4,15 +4,6 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "rating".
- *
- * @property int $id
- * @property string $title
- * @property string $subtitle
- *
- * @property RatingItem[] $ratingItems
- */
 class Rating extends \yii\db\ActiveRecord
 {
     /**
@@ -29,8 +20,8 @@ class Rating extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'subtitle'], 'required'],
-            [['title', 'subtitle', 'share_title', 'share_text', 'share_image', 'share_twitter'], 'string', 'max' => 255],
+            [['title', 'date'], 'required'],
+            [['title', 'subtitle', 'date', 'share_title', 'share_text', 'share_image', 'share_twitter'], 'string', 'max' => 255],
             ['text', 'safe'],
         ];
     }
@@ -43,6 +34,7 @@ class Rating extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Заголовок',
+            'date' => 'Дата',
             'subtitle' => 'Подзаголовок',
             'text' => 'Текст',
             'share_title' => 'Заголовок поделиться',
@@ -55,8 +47,12 @@ class Rating extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRatingItems()
+    public function getRatingGroups()
     {
-        return $this->hasMany(RatingItem::className(), ['rating_id' => 'id']);
+        return $this->hasMany(RatingGroup::className(), ['rating_id' => 'id']);
+    }
+
+    public function getGroupIds() {
+        return RatingGroup::find()->select('id')->where(['rating_id' => $this->id])->groupBy('id')->column();
     }
 }

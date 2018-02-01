@@ -1,68 +1,85 @@
 <?php
 
-namespace backend\modules\rating\controllers;
+namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\widgets\ActiveForm;
 
-use common\models\Candidate;
 use common\models\Rating;
-use common\models\RatingItem;
 use common\models\RatingGroup;
-use common\models\search\RatingItemSearch;
+use common\models\RatingItem;
+use common\models\Share;
+use common\models\Candidate;
+use common\models\search\RatingSearch;
 
-class ItemController extends \backend\controllers\CController
+class RatingController extends CController
 {
     /**
-     * Lists all RatingItem models.
+     * Lists all Rating models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RatingItemSearch();
+        $searchModel = new RatingSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $groups = RatingGroup::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'groups' => $groups,
         ]);
     }
 
     /**
-     * Creates a new RatingItem model.
+     * Creates a new Rating model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($rating_id = null, $group_id = null)
-    {
-        $model = new RatingItem();
+    // public function actionCreate()
+    // {
+    //     $model = new Rating();
+    //     $share = new Share();
 
-        if ($model->load(Yii::$app->request->post())) {
-            if($rating_id) {
-                $model->rating_id = $rating_id;
-                $model->rating_group_id = $group_id;
-            }
-            if($model->save()) 
-                return $this->redirect(['index']);
+    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    //         $share->load(Yii::$app->request->post());
+    //         $share->uri = '/rating';
+    //         $share->save();
+
+    //         return $this->redirect(['index']);
+    //     } else {
+    //         return $this->render('create', [
+    //             'model' => $model,
+    //         ]);
+    //     }
+    // }
+
+    /**
+     * Updates an existing Rating model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
         } else {
-            return $this->render('create', [
+            return $this->render('update', [
                 'model' => $model,
-                'rating_id' => $rating_id,
-                'group_id' => $group_id,
             ]);
         }
     }
 
-    public function actionMultipleInput($rating_id, $group_id) {
-        $models = RatingItem::find()->where(['rating_id' => $rating_id, 'rating_group_id' => $group_id])->all();
+    public function actionMultipleInput($group_id) {
         $candidates = Candidate::find()->all();
         $additionalIds = RatingItem::getAdditionalArray();
 
-        $rating = Rating::findOne($rating_id);
         $group = RatingGroup::findOne($group_id);
-        if($rating === null || $group === null) {
+        if($group === null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
@@ -77,7 +94,6 @@ class ItemController extends \backend\controllers\CController
                     $item = new RatingItem;
                 }
                 $item->attributes = $postItem;
-                $item->rating_id = $rating_id;
                 $item->rating_group_id = $group_id;
                 $models[] = $item;
             }
@@ -111,22 +127,27 @@ class ItemController extends \backend\controllers\CController
         if(empty($models)) {
             $key = 0;
             foreach ($candidates as $candidate) {
-                $item = new RatingItem;
-                $item->candidate_id = $candidate->id;
+                $item = RatingItem::find()->where(['rating_group_id' => $group_id, 'candidate_id' => $candidate->id])->one();
+                if($item === null) {
+                    $item = new RatingItem;
+                    $item->candidate_id = $candidate->id;
+                }
                 $models[$key] = $item;
                 $key++;
             }
             foreach ($additionalIds as $additional_id => $title) {
-                $item = new RatingItem;
-                $item->additional_id = $additional_id;
+                $item = RatingItem::find()->where(['rating_group_id' => $group_id, 'additional_id' => $additional_id])->one();
+                if($item === null) {
+                    $item = new RatingItem;
+                    $item->additional_id = $additional_id;
+                }
                 $models[$key] = $item;
                 $key++;
             }
         }
 
         return $this->render('multiple-input', [
-            'models' => $models ? $models : [new RatingItem],
-            'rating' => $rating,
+            'models' => $models,
             'group' => $group,
             'candidates' => $candidates,
             'additionalIds' => $additionalIds,
@@ -134,47 +155,28 @@ class ItemController extends \backend\controllers\CController
     }
 
     /**
-     * Updates an existing RatingItem model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Deletes an existing RatingItem model.
+     * Deletes an existing Rating model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+    // public function actionDelete($id)
+    // {
+    //     $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
-    }
+    //     return $this->redirect(['index']);
+    // }
 
     /**
-     * Finds the RatingItem model based on its primary key value.
+     * Finds the Rating model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return RatingItem the loaded model
+     * @return Rating the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = RatingItem::findOne($id)) !== null) {
+        if (($model = Rating::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -4,20 +4,6 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "rating_item".
- *
- * @property int $id
- * @property int $candidate_id
- * @property int $additional_id
- * @property int $rating_group_id
- * @property int $rating_id
- * @property string $score
- *
- * @property Candidate $candidate
- * @property RatingGroup $ratingGroup
- * @property Rating $rating
- */
 class RatingItem extends \yii\db\ActiveRecord
 {
     /**
@@ -34,12 +20,11 @@ class RatingItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['candidate_id', 'additional_id', 'rating_group_id', 'rating_id'], 'integer'],
-            [['rating_group_id', 'rating_id', 'score'], 'required'],
+            [['candidate_id', 'additional_id', 'rating_group_id'], 'integer'],
+            [['rating_group_id', 'score'], 'required'],
             [['score'], 'number', 'min' => 0, 'max' => 99.9],
             [['candidate_id'], 'exist', 'skipOnError' => true, 'targetClass' => Candidate::className(), 'targetAttribute' => ['candidate_id' => 'id']],
             [['rating_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => RatingGroup::className(), 'targetAttribute' => ['rating_group_id' => 'id']],
-            [['rating_id'], 'exist', 'skipOnError' => true, 'targetClass' => Rating::className(), 'targetAttribute' => ['rating_id' => 'id']],
         ];
     }
 
@@ -53,7 +38,6 @@ class RatingItem extends \yii\db\ActiveRecord
             'candidate_id' => 'Кандидат',
             'additional_id' => 'Другое',
             'rating_group_id' => 'Группа',
-            'rating_id' => 'Рейтинг',
             'score' => 'Процент',
         ];
     }
@@ -72,14 +56,6 @@ class RatingItem extends \yii\db\ActiveRecord
     public function getRatingGroup()
     {
         return $this->hasOne(RatingGroup::className(), ['id' => 'rating_group_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRating()
-    {
-        return $this->hasOne(Rating::className(), ['id' => 'rating_id']);
     }
 
     public function getAdditionalArray() {

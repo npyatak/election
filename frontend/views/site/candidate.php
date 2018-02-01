@@ -242,24 +242,7 @@ $this->params['share'] = [
 </div>
 <?php endif;?>
 
-<div class="candidates">
-    <div class="container">
-        <div class="vertical-title">Кандидаты</div>
-        <div class="candidates-inner">
-            <?php foreach ($candidates as $c):?>
-                <a href="<?=$c->url;?>" class="candidates-item">
-                    <div class="candidates-img">
-                        <img src="<?=$c->image;?>" alt="<?=$c->nameAndSurname;?>">
-                    </div>
-                    <div class="candidate">
-                        <h4><?=$c->nameAndSurname;?></h4>
-                        <div class="out">Выбыл(а) из президентской гонки</div>
-                    </div>
-                </a>
-            <?php endforeach;?>
-        </div>
-    </div>
-</div>
+<?=$this->render('_candidates', ['candidates' => $candidates]);?>
 
 <div class="video-modal">
     <div class="play-close"><i class="fa fa-close"></i></div>

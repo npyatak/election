@@ -19,7 +19,7 @@ class RatingSearch extends Rating
     {
         return [
             [['id'], 'integer'],
-            [['title', 'subtitle'], 'safe'],
+            [['title', 'subtitle', 'date'], 'safe'],
         ];
     }
 
@@ -63,7 +63,8 @@ class RatingSearch extends Rating
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'subtitle', $this->subtitle]);
+            ->andFilterWhere(['like', 'subtitle', $this->subtitle])
+            ->andFilterWhere(['like', 'date', $this->date]);
 
         return $dataProvider;
     }
