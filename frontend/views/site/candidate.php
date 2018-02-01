@@ -87,7 +87,7 @@ $this->params['share'] = [
                                     <?php foreach ($candidate->quotations as $q):?>
                                         <div class="item">
                                             <h3 class="quotes-text"><?=$q->text;?></h3>
-                                            <p class="quotes-date"><?=$q->caption;?></p>
+                                            <div class="quotes-date"><?=$q->caption;?></div>
                                         </div>
                                     <?php endforeach;?>
                                 </div>
@@ -102,34 +102,33 @@ $this->params['share'] = [
                                 <h3 class="candidate-hobbies_title">Увлечения и таланты</h3>
                                 <div id="candidate-hobbies" class="owl-carousel">
                                     <?php foreach ($candidate->perks as $key => $perk):?>
-                                        <?php if($key % 2 == 0):?>
                                             <div class="item">
-                                            <div class="top">
-                                                <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
-                                                <?php if($perk->image):?>
-                                                    <div class="candidate-hobbies_img">
-                                                        <img src="<?=$perk->image;?>">
-                                                    </div>
-                                                <?php endif;?>
-                                            </div>
+                                        <?php if($key % 2 == 0):?>
+                                                <div class="top">
+                                                    <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
+                                                    <?php if($perk->image):?>
+                                                        <div class="candidate-hobbies_img">
+                                                            <img src="<?=$perk->image;?>">
+                                                        </div>
+                                                    <?php endif;?>
+                                                </div>
                                         <?php else:?>
-                                            <div class="bottom">
-                                                <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
-                                                <?php if($perk->image):?>
-                                                    <div class="candidate-hobbies_img">
-                                                        <img src="<?=$perk->image;?>">
-                                                    </div>
-                                                <?php endif;?>
-                                            </div>
-                                            </div>
+                                                <div class="bottom">
+                                                    <h3 class="candidate-hobbies_title"><?=$perk->text;?></h3>
+                                                    <?php if($perk->image):?>
+                                                        <div class="candidate-hobbies_img">
+                                                            <img src="<?=$perk->image;?>">
+                                                        </div>
+                                                    <?php endif;?>
+                                                </div>
                                         <?php endif;?>
+                                            </div>
                                     <?php endforeach;?>
                                 </div>
                             </div>
                             <div class="right-sw"></div>
                         </div>
                     <?php endif;?>
-
                 </div>
             </div>
         </div>
@@ -171,7 +170,7 @@ $this->params['share'] = [
                 </div>
                 <div class="mobile-block">
                     <div class="biography">
-                        <div class="block"><?=$candidate->bio_4;?></div>
+                        <div class="block"><?=$candidate->bio_3;?></div>
                     </div>
                     <?php if($candidate->perks):?>
                         <div class="candidate-hobbies">
