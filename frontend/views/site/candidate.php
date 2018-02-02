@@ -8,7 +8,6 @@ $this->registerJsFile(Url::toRoute('js/player/jwplayer.js'), ['depends' => [\yii
 $this->params['share'] = [
     'text' => $candidate->share_text, 'title' => $candidate->share_title, 'url' => Url::current([], true), 'image' => Url::to($candidate->share_image, true), 'twitter' => $candidate->share_twitter
 ];?>
-
 <div class="candidate-detail">
     <div class="candidate-detail_top">
         <div class="container">
@@ -28,9 +27,11 @@ $this->params['share'] = [
                             </div>
                             <div class="candidate-rating">
                                 <p>Рейтинг кандидата по данным ВЦИОМ от <?=$rating->date;?></p>
-                                <div class="question-icon popup-open">
+                                <div class="question-icon">
+                                    <i></i>
                                     <div class="question-popup">
                                         <p><?=$rating->text;?></p>
+                                        <span class="question-close">Закрыть</span>
                                     </div>
                                 </div>
                             </div>

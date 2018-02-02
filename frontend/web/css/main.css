@@ -205,8 +205,8 @@
 /*}*/
 #hidden-menu .container .left a {
     display: block;
-    font: 50px 'FiraSans-Bold', sans-serif;
-    line-height: 60px;
+    font: 40px 'FiraSans-Bold', sans-serif;
+    line-height: 50px;
     -webkit-transition: .15s;
     -moz-transition: .15s;
     -ms-transition: .15s;
@@ -578,6 +578,7 @@ footer .copyright a {
 }
 footer .copyright p {
     line-height: 20px;
+    color: #000;
 }
 .footer-logo a {
     display: block;
@@ -1420,7 +1421,7 @@ footer .copyright p {
 }
 .card-text {
     display: none;
-    padding: 80px 160px 80px 120px;
+    padding: 60px;
     background-color: #fff;
 }
 .card-text p {
@@ -1725,7 +1726,8 @@ header .left .left-block .btn {
 .header-timeLine .item a {
     display: inline-block;
     max-width: 105px;
-    font-size: 18px;
+    font-size: 15px;
+    line-height: 20px;
     color: #252aa6;
 }
 .header-timeLine_top .item::after {
@@ -1833,7 +1835,10 @@ a.all-news {
     -o-transition: .2s;
     transition: .2s;
 }
-.tab a:hover,
+.tab a:hover {
+    background-color: rgba(37,42,166,.5);
+    text-decoration: none;
+}
 .tab a.active {
     background-color: #252aa6;
     text-decoration: none;
@@ -1853,13 +1858,18 @@ a.all-news {
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    margin-top: -2px;
-    height: 20px;
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0);
+}
+.tab a .question-icon {
+    margin-top: -2px;
+    height: 20px;
+}
+.tab a .question-icon i {
+    height: 20px;
 }
 .tab:nth-child(1) a .question-popup {
     left: 0;
@@ -1883,6 +1893,10 @@ a.all-news {
 .rating-candidate {
     position: relative;
     margin-bottom: 30px;
+}
+.rating-candidate a:hover,
+.rating-candidate a:active {
+    text-decoration: none;
 }
 .rating-candidate h4 {
     margin-bottom: 10px;
@@ -1949,6 +1963,14 @@ a.all-news {
     font-size: 14px;
     background-color: #383cbb;
     color: #fff;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+}
+.rating-cat_els a:hover {
+    background-color: rgba(56,60,187,.7);
 }
 .rating-cat_els a:not(:first-child) {
     -webkit-box-shadow: inset 1px 0 0 0 #3e43c8;
@@ -2423,8 +2445,7 @@ a.all-news {
     .candidate-quotes .owl-nav {
         right: -40px;
     }
-    header .right-title h4 .question-icon,
-    header .right-title h4 .question-popup {
+    header .right-title h4 .question-icon {
         right: 40px;
     }
     .candidate-statistics {
@@ -3274,8 +3295,7 @@ a.all-news {
     .card:not(:last-child) {
         margin-bottom: 5px;
     }
-    header .right-title h4 .question-icon,
-    header .right-title h4 .question-popup {
+    header .right-title h4 .question-icon {
         right: 20px;
     }
     .candidate-detail_top>.container>.bottom {

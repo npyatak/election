@@ -17,9 +17,12 @@ use common\models\RatingItem;
                                 <?php if($rating->subtitle):?>
                                     <span class="tab-span"><?=$rating->subtitle;?></span>
                                 <?php endif;?>
-                                <span class="question-icon popup-open"></span>
-                                <div class="question-popup">
-                                    <p><?=$rating->text;?></p>
+                                <div class="question-icon">
+                                    <i></i>
+                                    <div class="question-popup">
+                                        <p><?=$rating->text;?></p>
+                                        <span class="question-close">Закрыть</span>
+                                    </div>
                                 </div>
                             </div>
                             <p>Опрос ВЦИОМ <?=$rating->date;?></p>
