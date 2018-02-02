@@ -90,12 +90,14 @@ $script = "
         });
 
     if($('.card.active').length) {
-        if($(window).width() >= 768){
-            $('html, body').animate({scrollTop:($('.card.active').offset().top) - 80},500);
-        }else{
-            $('html, body').animate({scrollTop:($('.card.active').offset().top) - 40},500);
-        }
-        $('.card.active').find('.card-title').toggleClass('card-show card-hide');
+        setTimeout(function(){
+            if($(window).width() >= 768){
+                $('html, body').animate({scrollTop:($('.card.active').offset().top) - 80},500);
+            }else{
+                $('html, body').animate({scrollTop:($('.card.active').offset().top) - 40},500);
+            }
+            $('.card.active').find('.card-title').toggleClass('card-show card-hide');
+        }, 500);
     }
     
 ";
