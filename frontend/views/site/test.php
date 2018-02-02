@@ -35,7 +35,7 @@ TestAsset::register($this);
 									<h3 id="testID2" data-value="<?=$key;?>">
 										<?=$q->title;?>
 									</h3>
-									<div class="check-block hide">
+									<div id="check-block" class="check-block hide">
 										<img src="/images/icons/check.svg" alt="Check icon">
 										<span></span>
 									</div>
@@ -83,7 +83,7 @@ TestAsset::register($this);
 							</div>
 						</div>
 						<div class="bb-custom-side" id="start-page-topp">
-							<div class="right-part" style="z-index: 2;" id="result-range-container">
+							<div class="right-part hide" style="z-index: 2;" id="result-range-container">
 								<?php foreach ($testResults as $result):?>
 									<p 
 										id="result-range"
@@ -124,6 +124,13 @@ TestAsset::register($this);
 	</div>
 </div>
 <style>
+	.nextQuestion {
+		transition: all .5s ease-in-out;
+	}
+	#check-block span {
+		margin-left: 20px!important;
+	    font-size: 22px;
+	}
 	.result-container .right-part {
 		z-index: 5;
 		width: 100%;
@@ -252,15 +259,23 @@ TestAsset::register($this);
 	.right-part .test-checkbox {
 		margin-bottom: 0!important;
 	}
-	.result-container #start-page-topp .right-part {
-		height: 48vh!important;
+	/*.result-container #start-page-topp .right-part {
+		height: 57vh!important;
 	    align-items: center;
-	}
+	}*/
 	.result-container #start-page-topp {
-		height: 48vh!important;
+		height: auto!important;
+		padding-bottom: 0!important;
+	}
+	#start-page-topp #result-range-container {
+	    height: 60vh;
+	    padding: 20px 20px 60px 20px!important;
+	    overflow-y: auto;
+	    align-items: center;
+	    justify-content: flex-start;
 	}
 	.result-container .left-part {
-		height: 45vh!important ;
+		height: 40vh!important ;
 	}
 }
 
@@ -445,6 +460,16 @@ TestAsset::register($this);
 }
 .test-wrap {
 	z-index: 3;
+	background: #252aa6;
+}
+.bb-custom-wrapper {
+	background: #252aa6;
+}
+.no-js {
+	background: #252aa6;
+}
+#start-page-topp {
+	background: #252aa6;
 }
   .finish-buttons {
 	position: absolute;
@@ -709,8 +734,8 @@ TestAsset::register($this);
   align-self: flex-start;
 }
 .bb-custom-firstpage p {
-  font-size: 24px;
-  line-height: 35px;
+  font-size: 22px;
+  line-height: 32px;
   margin: 0 0 80px 0px;
   width: 500px;
 }
@@ -1256,12 +1281,13 @@ TestAsset::register($this);
 	    width: 280px;
 	    font-size: 18px;
 	    line-height: 20px;
-	    height: 100px;
+        height: auto;
+	    max-height: 145px;
 	    display: flex;
 	    align-items: flex-start;
-	    overflow-y: auto;
+	    overflow-y: scroll;
 	    font-weight: 100!important;
-	    font: 18px 'FiraSans', sans-serif;
+	    font: 18px 'FiraSans-Bold', sans-serif;
 	}
 
 	.left-part h1 {
@@ -1270,7 +1296,7 @@ TestAsset::register($this);
 	}
 
 	.left-part {
-		padding: 60px 20px 20px 20px;
+		padding: 20px 20px 0 20px;
 	}
 
 	.left-part .test-wrapper-test {
@@ -1363,7 +1389,7 @@ TestAsset::register($this);
 		margin-top: 0px;
 	}
 	.right-part .wrong {
-		margin-top: 20px;
+		margin-top: 0px;
 	}
 	#progress-circle-wrapper {
 		margin-top: 50px

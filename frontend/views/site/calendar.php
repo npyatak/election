@@ -3,7 +3,10 @@
 		<div class="left">
 			<div id="calendar-date" style="z-index:3;">
 				<?php foreach ($items as $item):?>
-					<div class="item <?=$item->id == $id ? 'slick-active' : '';?>" data-id="<?=$item->id;?>">
+					<div 
+						class="item <?=$item->id == $id ? 'slick-active slick-current' : '';?>"
+						data-id="<?=$item->id;?>"
+					>
 		        		<h1>
 							<?=$item->viewDate;?>
 						</h1>
@@ -46,14 +49,17 @@
 </div>
 
 <?php 
-	$initial = $id ? $id : 0;
+	$initial = $id ? $id-1 : 0;
 	$script = "
+	console.log('$initial', $initial-1)
 		if ($initial !== 1) $('#calendar-date').find('.col-md-6').addClass('hide')
 	    $('#calendar-dates').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 			$(this).closest('#calendar-date').find('.col-md-6')
+			$('.slick-slide[data-id=21]').children('.item__title').css('width', '94px')
 			if (nextSlide === 1) {
 				$('#calendar-date').find('.col-md-6').removeClass('hide')
 				$('.slick-slide[data-id=2]').children('#item-text').children('span').addClass('change-line')
+
 			}
 			else {
 				$('#calendar-date').find('.col-md-6').addClass('hide')
