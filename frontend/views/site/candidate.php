@@ -56,7 +56,6 @@ $this->params['share'] = [
                         <span class="question-icon popup-open"></span>
                         <div class="question-popup">
                             <p><?=$rating->text;?></p>
-<!--                            <span class="popup-close">Закрыть</span>-->
                         </div>
                     </div>
                 </div>
@@ -138,6 +137,7 @@ $this->params['share'] = [
                             <div class="right-sw"></div>
                         </div>
                     <?php endif;?>
+
                 </div>
             </div>
         </div>
@@ -224,30 +224,6 @@ $this->params['share'] = [
         </div>
     </div>
 </div>
-<?php if(false && $candidate->theses):?>
-<div class="slick-slider_wrap">
-    <div class="container">
-        <div id="slick-slider" class="slick-slider">
-            <?php foreach ($candidate->theses as $thesis):?>
-                <div class="item">
-                    <div class="container-grid">
-                        <div class="slick-slider_title">
-                            <h3><?=$thesis->title;?></h3>
-                        </div>
-                        <div class="slick-slider_text">
-                            <h2 class="h1"><?=$thesis->text;?></h2>
-                        </div>
-                        <div class="slick-slider_caption">
-                            <?=$thesis->caption;?>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach;?>
-        </div>
-        <div class="right-sw"></div>
-    </div>
-</div>
-<?php endif;?>
 
 <?=$this->render('_candidates', ['candidates' => $candidates]);?>
 
