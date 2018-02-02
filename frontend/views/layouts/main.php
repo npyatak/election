@@ -82,7 +82,7 @@ AppAsset::register($this);
                             <li><a href="<?=Url::home();?>">Главная</a></li>
                             <li><a href="<?=Url::home();?>#candidates">Кандидаты</a></li>
                             <li><a href="<?=Url::toRoute(['site/calendar']);?>">Календарь выборов</a></li>
-                            <!-- <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li> -->
+                            <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li>
                             <li><a href="<?=Url::toRoute(['site/faq']);?>">Что нужно знать</a></li>
                             <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
                             <li><a href="http://tass.ru/vybory-prezidenta-rf-2018" target="_blank">Новости ТАСС</a></li>

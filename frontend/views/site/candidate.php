@@ -84,15 +84,15 @@ $this->params['share'] = [
                             <div class="right-sw"></div>
                         </div>
                     <?php endif;?>
-                    <?php if($candidate->quotations):?>
+                    <?php if($candidate->theses):?>
                         <div class="candidate-quotes">
                             <div class="inner">
-                                <h3 class="candidate-quotes_title">Известные цитаты</h3>
                                 <div id="candidate-quotes" class="owl-carousel">
-                                    <?php foreach ($candidate->quotations as $q):?>
+                                    <?php foreach ($candidate->theses as $t):?>
                                         <div class="item">
-                                            <h3 class="quotes-text"><?=$q->text;?></h3>
-                                            <div class="quotes-date"><?=$q->caption;?></div>
+                                            <h3 class="candidate-quotes_title"><?=$t->title;?></h3>
+                                            <h3 class="quotes-text"><?=$t->text;?></h3>
+                                            <div class="quotes-date"><?=$t->caption;?></div>
                                         </div>
                                     <?php endforeach;?>
                                 </div>

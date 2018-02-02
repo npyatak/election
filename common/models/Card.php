@@ -44,7 +44,7 @@ class Card extends \yii\db\ActiveRecord
     }
 
     public function getUrl() {
-        return Url::toRoute(['site/cards', 'id' => $this->id]);
+        return Url::toRoute(['site/faq', 'id' => $this->id]);
     }
 
     public function getCategoryArray() {
