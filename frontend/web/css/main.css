@@ -775,8 +775,7 @@ footer .copyright p {
     font-size: 18px;
     line-height: 30px;
 }
-.candidate-rating .question-icon,
-.candidate-rating .question-popup {
+.candidate-rating .question-icon {
     right: -40px;
 }
 .candidate-statistics {
@@ -868,10 +867,12 @@ footer .copyright p {
     background-color: #1fb38c;
 }
 .candidate-quotes_title {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    font-size: 24px;
+    line-height: 30px;
 }
 .candidate-quotes .item {
-    padding-bottom: 65px;
+    padding-bottom: 90px;
 }
 .candidate-quotes .quotes-text {
     margin-bottom: 20px;

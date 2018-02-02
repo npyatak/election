@@ -28,9 +28,10 @@ $this->params['share'] = [
                             </div>
                             <div class="candidate-rating">
                                 <p>Рейтинг кандидата по данным ВЦИОМ от <?=$rating->date;?></p>
-                                <span class="question-icon popup-open"></span>
-                                <div class="question-popup">
-                                    <p><?=$rating->text;?></p>
+                                <div class="question-icon popup-open">
+                                    <div class="question-popup">
+                                        <p><?=$rating->text;?></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

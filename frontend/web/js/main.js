@@ -136,19 +136,22 @@ $(document).ready(function () {
             $(this).toggleClass('show');
             $(this).parent().find('.share-buttons').toggleClass('show');
             $(this).find('i').toggleClass('fa fa-share-alt fa fa-close');
-        })
-        .on('mouseenter', '.popup-open', function () {
-            $(this).parent().find('.question-popup').fadeIn(300);
-        })
-        .on('mouseleave', '.popup-open', function () {
-            $('.question-popup').fadeOut(300);
         });
+    //
+    // $('.popup-open').mouseenter(function () {
+    //     $(this).parent().find('.question-popup').fadeIn(300);
+    //     return false;
+    // });
+    // $('.popup-open').mouseleave(function () {
+    //     $('.question-popup').fadeOut(300);
+    //     return false;
+    // });
 
-    $(this).click(function (event) {
-        if (!$(event.target).closest('.popup-open').length) {
-            $('.question-popup').css({'display':'none'});
-        }
-    });
+    // $(this).click(function (event) {
+    //     if (!$(event.target).closest('.popup-open').length) {
+    //         $('.question-popup').css({'display':'none'});
+    //     }
+    // });
 
 
     $('.play').click(function () {
