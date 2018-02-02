@@ -62,8 +62,8 @@ use common\models\RatingItem;
             </div>
             <div class="tab-content">
                 <?php foreach ($candidates as $c):?>
-                    <?php $score = isset($results[$group]) && isset($results[$group]['c'][$c->id]) ? $results[$group]['c'][$c->id] : 0;?>
-                    <div class="rating-candidate" data-candidate="<?=$c['id'];?>">
+                    <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['c'][$c->id]) ? $resultsArray[$group]['c'][$c->id] : 0;?>
+                    <div class="rating-candidate type-candidate" data-candidate="<?=$c['id'];?>">
                         <a href="<?=$c->url;?>"><h4><?=$c->nameAndSurname;?></h4></a>
                         <span class="rating-percent"><span class="percent"><?=$score;?></span>%</span>
                         <div class="rating-line">
@@ -72,8 +72,8 @@ use common\models\RatingItem;
                     </div>
                 <?php endforeach;?>
                 <?php foreach (RatingItem::getAdditionalArray() as $key => $item):?>
-                    <?php $score = isset($results[$group]) && isset($results[$group]['a'][$key]) ? $results[$group]['a'][$key] : 0;?>
-                    <div class="rating-candidate" data-additional="<?=$key;?>">
+                    <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['a'][$key]) ? $resultsArray[$group]['a'][$key] : 0;?>
+                    <div class="rating-candidate type-additional" data-additional="<?=$key;?>">
                         <h4><?=$item;?></h4>
                         <span class="rating-percent"><span class="percent"><?=$score;?></span>%</span>
                         <div class="rating-line">
@@ -88,7 +88,7 @@ use common\models\RatingItem;
 
 <?php 
 $script = "
-    var ratingResults = ".json_encode($results).";
+    var ratingResults = ".json_encode($resultsArray).";
     //console.log(ratingResults);
 
     $('.r_group').on('click', function(e) {
@@ -99,6 +99,7 @@ $script = "
             $('#groupsTab').attr('data-group', group);
         } else {
             if($(this).hasClass('show-rating-cat')) {
+                $('.rating-cat_el').removeClass('active');
                 $('.rating-cat_el[data-group='+group+']').addClass('active');
             }
         }
@@ -124,7 +125,21 @@ $script = "
             $('.rating-candidate').find('.percent').html('0');
             $('.rating-candidate').find('.rating-line span').css({'width': '0'});
         }
+        orderResults();
     }
+
+    function orderResults() {
+        var orderRatingsCandidates = $('.rating-candidate.type-candidate').sort(function (a, b) {
+            return parseInt($(a).find('.percent').text()) < parseInt($(b).find('.percent').text());
+        });
+        var orderRatingsAdditional = $('.rating-candidate.type-additional').sort(function (a, b) {
+            return parseInt($(a).find('.percent').text()) < parseInt($(b).find('.percent').text());
+        });
+        $('.tab-content').html(orderRatingsCandidates);
+        $('.tab-content').append(orderRatingsAdditional);
+    }
+    
+    orderResults();
 ";
 
 $this->registerJs($script, yii\web\View::POS_END);?>

@@ -1,6 +1,8 @@
 <?php 
 use yii\helpers\Url;
 
+use common\models\Candidate;
+
 $this->registerJsFile(Url::toRoute('js/player/jwplayer.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 $this->params['share'] = [
@@ -17,8 +19,12 @@ $this->params['share'] = [
                     <div class="bottom">
                         <div class="candidate-detail_info">
                             <div class="candidate-percent">
-                                <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
-                                <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
+                                <?php if($candidate->active == Candidate::QUIT):?>
+                                    <span class="">Выбыл(а) из президентской гонки</span>
+                                <?php else:?>
+                                    <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
+                                    <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
+                                <?php endif;?>
                             </div>
                             <div class="candidate-rating">
                                 <p>Рейтинг кандидата по данным ВЦИОМ от <?=$rating->date;?></p>
@@ -218,7 +224,7 @@ $this->params['share'] = [
         </div>
     </div>
 </div>
-<?php if($candidate->theses):?>
+<?php if(false && $candidate->theses):?>
 <div class="slick-slider_wrap">
     <div class="container">
         <div id="slick-slider" class="slick-slider">

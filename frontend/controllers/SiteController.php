@@ -57,14 +57,19 @@ class SiteController extends Controller
     }
     
     public function actionIndex() {
-        $timeNow = time();
         $calendar = Calendar::find()->orderBy('date ASC')->limit(2)->where(['>', 'date', time()])->orderBy('date') ->all();
         $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
-        $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->all();
+        $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
         $testText = TestText::find()->orderBy(new \yii\db\Expression('rand()'))->one();
         
         $rating = Rating::findOne(1);
-        $ratingResults = RatingItem::find()->where(['rating_group_id' => 1])->andWhere(['not', ['candidate_id' => null]])->orderBy('score DESC')->limit(7)->asArray()->all();
+        $ratingResults = RatingItem::find()
+            ->joinWith('candidate')
+            ->where(['rating_group_id' => 1])
+            ->andWhere(['not', ['candidate_id' => null]])
+            ->andWhere(['not', ['candidate.active' => Candidate::QUIT]])
+            ->orderBy('score DESC')
+            ->limit(7)->asArray()->all();
 
         $news = News::find()->orderBy('date DESC')->limit(3)->all();
         
@@ -97,7 +102,15 @@ class SiteController extends Controller
 
         $rating = Rating::findOne(1);
 
-        $ratingResults = RatingItem::find()->select(['score', 'candidate_id'])->where(['not', ['candidate_id' => null]])->groupBy('candidate_id')->orderBy('score DESC')->indexBy('candidate_id')->asArray()->all();
+        $ratingResults = RatingItem::find()
+            ->select(['score', 'candidate_id'])
+            ->joinWith('candidate')
+            ->where(['not', ['candidate_id' => null]])
+            ->andWhere(['not', ['candidate.active' => Candidate::QUIT]])
+            ->groupBy('candidate_id')
+            ->orderBy('score DESC')
+            ->indexBy('candidate_id')
+            ->asArray()->all();
         $candidatePlace = array_search($candidate->id, array_keys($ratingResults)) + 1;
 
         return $this->render('candidate', [
@@ -149,7 +162,7 @@ class SiteController extends Controller
 
     public function actionRating($group = 1) {
         $ratings = Rating::find()->all();
-        $candidates = Candidate::find()->orderBy('surname')->all();
+        $candidates = Candidate::find()->orderBy('surname')->where(['not', ['active' => Candidate::QUIT]])->all();
         $ratingGroups = [];
         $ratingGroupIds = [];
         foreach (RatingGroup::find()->where(['not', ['sub_category' => null]])->asArray()->all() as $g) {
@@ -157,12 +170,13 @@ class SiteController extends Controller
             $ratingGroupIds[] = $g['id'];
         }
         
-        $results = [];
-        foreach (RatingItem::find()->asArray()->all() as $r) {
+        $resultsArray = [];
+        $ratingItems = RatingItem::find()->orderBy('score DESC')->asArray()->all();
+        foreach ($ratingItems as $r) {
             if($r['candidate_id']) {
-                $results[$r['rating_group_id']]['c'][$r['candidate_id']] = $r['score'];
+                $resultsArray[$r['rating_group_id']]['c'][$r['candidate_id']] = $r['score'];
             } else {
-                $results[$r['rating_group_id']]['a'][$r['additional_id']] = $r['score'];
+                $resultsArray[$r['rating_group_id']]['a'][$r['additional_id']] = $r['score'];
             }
         }
 
@@ -171,7 +185,7 @@ class SiteController extends Controller
             'ratings' => $ratings,
             'ratingGroups' => $ratingGroups,
             'candidates' => $candidates,
-            'results' => $results,
+            'resultsArray' => $resultsArray,
             'ratingGroupIds' => $ratingGroupIds,
         ]);
     }
