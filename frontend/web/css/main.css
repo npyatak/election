@@ -532,7 +532,7 @@ footer .share-wrap a {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background-color: #252aa6;
+    background-color: #3e43c8;
     color: #fff;
     font-size: 18px;
     -webkit-transition: .15s;
@@ -541,9 +541,13 @@ footer .share-wrap a {
     -o-transition: .15s;
     transition: .15s;
 }
-.share-btn:hover,
+.share-btn:hover {
+    background-color: #383cb4;
+    text-decoration: none !important;
+    color: #fff;
+}
 .share-btn:active {
-    background-color: #3e43c8;
+    background-color: #3135a0;
     text-decoration: none !important;
     color: #fff;
 }
@@ -1821,6 +1825,9 @@ a.all-news {
     padding-top: 120px;
     background-color: #3e43c8;
     z-index: 4;
+}
+.tabs .owl-item:nth-child(2) {
+    z-index: 1;
 }
 .tab a {
     display: block;
@@ -3355,6 +3362,15 @@ a.all-news {
     .candidate-detail_middle .mobile-block:last-child .block {
         padding-bottom: 0;
     }
+    .candidate-quotes_title {
+        margin-bottom: 20px;
+    }
+    .candidate-quotes .quotes-text {
+        font-family: 'FiraSans-Regular', sans-serif;
+    }
+    .candidate-quotes .item {
+        padding-bottom: 50px;
+    }
 }
 @media (max-width: 500px) {
     .test-image {
@@ -3438,7 +3454,6 @@ a.all-news {
         line-height: 25px;
     }
     .candidate-quotes .quotes-text {
-        margin-bottom: 0;
         font-size: 18px;
         line-height: 25px;
     }

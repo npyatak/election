@@ -170,7 +170,7 @@ $this->params['share'] = [
                                     <?php foreach ($candidate->quotations as $q):?>
                                         <div class="item">
                                             <h3 class="quotes-text"><?=$q->text;?></h3>
-                                            <p class="quotes-date"><?=$q->caption;?></p>
+                                            <div class="quotes-date"><?=$q->caption;?></div>
                                         </div>
                                     <?php endforeach;?>
                                 </div>
