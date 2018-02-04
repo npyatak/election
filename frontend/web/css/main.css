@@ -2249,8 +2249,7 @@ a.all-news {
     .candidate-rating {
         width: calc(100% - 310px);
     }
-    .candidate-rating .question-icon,
-    .candidate-rating .question-popup {
+    .candidate-rating .question-icon {
         right: 0;
     }
     .candidate-percent .number {
@@ -3370,6 +3369,14 @@ a.all-news {
     }
     .candidate-quotes .item {
         padding-bottom: 70px;
+    }
+    .candidate-rating .question-icon {
+        top: 0;
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0);
     }
 }
 @media (max-width: 500px) {
