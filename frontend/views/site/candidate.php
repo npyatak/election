@@ -19,7 +19,7 @@ $this->params['share'] = [
                         <div class="candidate-detail_info">
                             <div class="candidate-percent <?php if(!$candidate->active == Candidate::QUIT):?>off<?php endif;?>">
                                 <?php if($candidate->active == Candidate::QUIT):?>
-                                    <span class="candidate-off">Выбыл(а) из президентской гонки</span>
+                                    <span class="candidate-off">Выбыл из президентской гонки</span>
                                 <?php else:?>
                                     <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
                                     <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
@@ -53,7 +53,7 @@ $this->params['share'] = [
                 <div class="candidate-detail_info">
                     <div class="candidate-percent <?php if($candidate->active == Candidate::QUIT):?>off<?php endif;?>">
                         <?php if($candidate->active == Candidate::QUIT):?>
-                            <span class="candidate-off">Выбыл(а) из президентской гонки</span>
+                            <span class="candidate-off">Выбыл из президентской гонки</span>
                         <?php else:?>
                             <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
                             <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
