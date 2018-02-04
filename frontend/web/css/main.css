@@ -3378,6 +3378,14 @@ a.all-news {
         -o-transform: translateY(0);
         transform: translateY(0);
     }
+    .share-buttons {
+        height: 40px;
+    }
+    .tab a .question-popup {
+        right: 0 !important;
+        left: auto !important;
+        width: 260px !important;
+    }
 }
 @media (max-width: 500px) {
     .test-image {
@@ -3521,6 +3529,9 @@ a.all-news {
     }
     .candidate-detail_middle blockquote p {
         margin-bottom: 30px !important;
+    }
+    .tab a .question-popup {
+        width: 320px !important;
     }
 }
 
