@@ -3534,7 +3534,11 @@ a.all-news {
         width: 320px !important;
     }
 }
-
+@media (max-width:360px){
+    .tab a .question-popup {
+        width: 280px !important;
+    }
+}
 
 @media (max-height:680px) {
     .test-wrap>.container .pull-left h1 {
