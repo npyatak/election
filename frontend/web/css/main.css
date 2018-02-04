@@ -577,7 +577,9 @@ footer .copyright {
 footer .copyright:nth-child(1) {
     margin-right: 160px;
 }
+footer .copyright span,
 footer .copyright a {
+    line-height: 20px;
     color: #636363;
 }
 footer .copyright p {
@@ -742,6 +744,12 @@ footer .copyright p {
 }
 .candidate-detail_top>.container>.bottom {
     display: none;
+}
+.candidate-percent .candidate-off {
+    position: relative;
+    font-size: 18px;
+    line-height: 30px;
+    z-index: 1;
 }
 .candidate-percent {
     position: relative;
@@ -2243,6 +2251,9 @@ a.all-news {
         vertical-align: top;
         margin-top: 0;
     }
+    .candidate-percent.off {
+        width: 100%;
+    }
     .candidate-percent {
         width: 270px;
     }
@@ -2733,7 +2744,9 @@ a.all-news {
         display: none;
     }
     .candidate .out {
-        display: none;
+        top: calc(100% + 5px);
+        font-size: 12px;
+        line-height: 15px;
     }
     header {
         margin-top: 80px;
@@ -2966,7 +2979,7 @@ a.all-news {
         height: 110px;
     }
     .candidate {
-        bottom: 20px;
+        bottom: 40px;
         left: 20px;
     }
     .candidate h4 {
@@ -3160,7 +3173,7 @@ a.all-news {
     .candidate-detail_top .intro {
         margin-bottom: 0;
     }
-    .candidate-percent {
+    .candidate-percent:not(.off) {
         width: 100%;
         margin-bottom: 10px;
     }
