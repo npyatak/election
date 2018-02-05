@@ -6,9 +6,9 @@ TestAsset::register($this);
 ?>
 <div class="no-js">
 	<div class="bb-custom-wrapper">
-		<div class="test-wrap height test-page bb-bookblock" id="bb-bookblock">
+		<div class="test-wrap height test-page bb-bookblock" id="bb-bookblock" >
 			<div class="bb-item container test-container">
-				<div class="bb-custom-firstpage" id="start-page-bottomm">
+				<div class="bb-custom-firstpage" id="start-page-bottomm" style="padding-bottom: 0px;">
 					<div class="left-part">
 						<img src="/images/icons/test-white.svg" alt="Test-white image" id="test-img-white">
 						<h1 class="tt-up" id="start-title">Политический диктант</h1>
@@ -57,10 +57,10 @@ TestAsset::register($this);
 										<?php endforeach;?>
 									</form>
 								</div>
-								<div class="test-text hide wrong">
+								<div class="test-text hidden-animated wrong">
 									<?=$q->comment_wrong;?>
 								</div>
-								<div class="test-text hide right">
+								<div class="test-text hidden-animated right">
 									<?=$q->comment_right;?>
 								</div>
 							</div>
@@ -268,7 +268,7 @@ TestAsset::register($this);
 		padding-bottom: 0!important;
 	}
 	#start-page-topp #result-range-container {
-	    height: 60vh;
+	    height: 50vh;
 	    padding: 20px 20px 60px 20px!important;
 	    overflow-y: auto;
 	    align-items: center;
@@ -276,6 +276,19 @@ TestAsset::register($this);
 	}
 	.result-container .left-part {
 		height: 40vh!important ;
+	}
+	.finish-buttons {
+	    height: 50px!important;
+	    line-height: 50px!important;
+	}
+	.finish-buttons .finish-button {
+	    height: 50px!important;
+	    font-size: 16px;
+	    line-height: 50px!important;
+	}
+	.finish-buttons .finish-button i {
+	    height: 50px!important;
+	    line-height: 50px!important;
 	}
 }
 
@@ -655,7 +668,7 @@ TestAsset::register($this);
 	align-content: flex-end;
   }
   .left-part .test-wrapper-test .check-block {
-	margin-top: 10px;
+	margin-top: 40px;
   }
   .left-part h3 {
 	max-width: 500px;
@@ -1144,21 +1157,28 @@ TestAsset::register($this);
 	  overflow-y: auto;
   }
   .left-part {
-	height: 47vh;
+	height: 50vh;
 	align-items: flex-start;
 	justify-content: center;
   }
   .right-part {
-	height: 53vh;
+	height: 50vh;
 	align-items: flex-start;
 	padding-top: 40px;
   }
+  .continue-mobile-btn {
+	    height: 50px;
+	    line-height: 50px;
+	}
   .test-wrapper-test {
 	justify-content: flex-start;
 	margin-top: 180px;
   }
   .test-checkbox {
 	min-height: 300px!important;
+  }
+  .test-wrap {
+    background: #3e43c8;
   }
   .test-wrap .test-container {
 	display: flex;
@@ -1227,7 +1247,16 @@ TestAsset::register($this);
 	#start-page-bottomm .left-part {
 		padding: 20px 0 3px 0;
 	}
-
+	.left-part {
+		height: 45vh;
+		align-items: flex-start;
+		justify-content: center;
+	  }
+	  .right-part {
+		height: 45vh;
+		align-items: flex-start;
+		padding-top: 40px;
+	  }
 	#start-title {
 		width:  280px;
 		font-size:  24px;
@@ -1302,6 +1331,7 @@ TestAsset::register($this);
 	.left-part .test-wrapper-test {
 		min-height:  auto;
 		margin-top: 20px;
+		height: 215px;
 	}
 	.continue-mobile-btn i {
 		line-height: 50px!important;
@@ -1309,7 +1339,7 @@ TestAsset::register($this);
 
 	.right-part {
 		overflow-y:  auto;
-	    padding: 20px 20px 50px 20px;
+	    padding: 20px 20px 30px 20px;
 	}
 	.right-part label {
 		font-size:  18px;
@@ -1455,21 +1485,133 @@ TestAsset::register($this);
 		}
 }
 @media screen and (max-width: 767px) and (min-width: 320px) {
- .chckbox {
-    width: 25px;
-    height:25px;
-    border: solid 2px #3e43c8;
- }
- .checkbox, .radio {
-    height:25px;
-    line-height:25px;
+	 .chckbox {
+	    width: 25px;
+	    height:25px;
+	    border: solid 2px #3e43c8;
+	 }
+	 .checkbox, .radio {
+	    height: 25px;
+	    line-height: 25px;
+	}
+	.right-part label {
+	    left: 20px!important;
+	    line-height:  25px;
+	    font-size: 16px;
+	}
+}
+/* new chnanges from client*/
+.left-part .test-wrapper-test h3 {
+    font: 20px 'FiraSans-Bold', sans-serif;
+    line-height: 30px;
+}
+.left-part .test-wrapper-test {
+    padding-top: 80px;
+}
+.right-part {
+	align-items: flex-start;
+}
+.right-part .test-checkbox {
+    padding-top: 240px;
+}
+.test-wrap .test-wrap_img {
+	align-self: center;
+}
+.correct-background p {
+	font-size: 20px;
+}
+.incorrect-background p {
+	font-size: 20px;
 }
 .right-part label {
-    left: 20px!important;
-    line-height:  25px;
-    font-size: 16px;
+	font-size:  20px;
+	line-height:  25px;
+	margin-top: 0;
+	margin-bottom: 0;
+	top: 8px;
 }
-
+.next-btn i {
+	font-size: 20px;
 }
-
+.next-btn {
+	font-size: 20px;
+    line-height: 25px;
+}
+@media screen and (min-width: 1199px) {
+	.right-part .right {
+	    padding-top: 150px;
+	    max-width: 600px;
+	}
+	.right-part .wrong {
+	    padding-top: 150px;
+	    max-width: 600px;
+	}
+}
+@media screen and (max-width: 1199px) and (min-width: 320px) {
+	.right-part .test-checkbox {
+		padding-top: 0;
+	}
+	.left-part .test-wrapper-test {
+		padding-top: 0;
+	}
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+	.incorrect-background p {
+		margin-top: 10px;
+	    margin-bottom: 0;
+	    font-size: 12px!important;
+	}
+	.correct-background p {
+	    margin-top: 10px;
+	    margin-bottom: 0;
+	    font-size: 12px!important;
+	}
+	.correct-background h2 {
+	    margin: 0;
+	    font: 18px 'FiraSans', sans-serif;
+	}
+	.incorrect-background h2 {
+	    margin: 0;
+	    font: 18px 'FiraSans', sans-serif;
+	}
+	.left-part h3 {
+		line-height: 19px!important;
+	    font: 17px 'FiraSans-Bold', sans-serif!important;
+	    max-width: 290px;
+	    width: 290px;
+	    max-height: 175px;
+	}
+	.right-part label {
+	    left: 20px!important;
+	    line-height: 25px!important;
+	    font-size: 16px!important;
+	    top: 0!important;
+	}
+}
+.hidden-animated {
+	opacity: 0!important;
+	transition: all .5s;
+	top: -100%!important;
+	position: absolute!important;
+	height: 1px!important;
+}
+.right-part .right {
+	opacity: 1;
+	transition: all .5s;
+	top: 0;
+	position: relative;
+	height: auto;
+}
+.right-part .wrong {
+	opacity: 1;
+	transition: all .5s;
+	top: 0;
+	position: relative;
+	height: auto;
+}
+.result-container .right-part p a {
+    color:  #fff;
+    text-decoration:  underline;
+}
+/* new chnanges from client*/
 </style>

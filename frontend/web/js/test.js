@@ -12,6 +12,7 @@ $(document).ready(function () {
 		questLength = 0;
 		step = 0;
 	})
+
 	$('input:radio[name="question"]').change(function(e) {
 		$(this).closest('.container').find('.check-block').removeClass('hide').find('span').html($(this).closest('.form-group').find('label').html());
 
@@ -21,7 +22,10 @@ $(document).ready(function () {
 	    	// adding correct background
 			$(this).closest('.hidden-container').addClass('correct-background');
 			$(this).closest('.right-part').addClass('correct-background');
-			$(this).closest('.right-part').find('.right').removeClass('hide');
+			// $(this).closest('.right-part').addClass('correct-background');
+			// $(this).closest('.right-part').attr('id','bb-nav-next');
+			$(this).closest('.right-part').children('.test-text.right').children('p').attr('id','bb-nav-next')
+			$(this).closest('.right-part').find('.right').removeClass('hidden-animated');
 
 			if ($(this).closest('.right-part').hasClass('correct-background') && !$(this).closest('.right-part').hasClass('hide')) {
 				$('.nextQuestion').removeClass('hide-btn')
@@ -31,7 +35,8 @@ $(document).ready(function () {
 			// adding incorrect background
 			$(this).closest('.hidden-container').addClass('incorrect-background');
 			$(this).closest('.right-part').addClass('incorrect-background');
-			$(this).closest('.right-part').find('.wrong').removeClass('hide');
+			$(this).closest('.right-part').children('.test-text.wrong').children('p').attr('id','bb-nav-next')
+			$(this).closest('.right-part').find('.wrong').removeClass('hidden-animated');
 			if ($(this).closest('.right-part').hasClass('incorrect-background') && !$(this).closest('.right-part').hasClass('hide')) {
 				$('.nextQuestion').removeClass('hide-btn')
 			}
@@ -63,8 +68,14 @@ $(document).ready(function () {
 			initEvents();
 		},
 		initEvents = function() {
-			var $slides = config.$bookBlock.children();
-			config.$navNext.on( 'click touchstart', function() {
+			var $slides = config.$bookBlock.children()
+			// $('#fire').click(function() {
+			// 	console.log('test');
+			// 	config.$bookBlock.bookblock( 'next' );
+			// })
+			console.log('test');
+			config.$navNext.on( 'click touchstart', function(e) {
+				console.log(e)
 
 				// config.$bookBlock.bookblock( 'next' );
 				var questionsLength = $('.test-wrap').children('.t').length
@@ -74,6 +85,8 @@ $(document).ready(function () {
 					$('.nextQuestion').removeClass('btn-white')
 					$('.nextQuestion').addClass('next-position')
 					$('.nextQuestion').addClass('next-btn')
+					$('.test-wrap').css('background' ,'#3e43c8')
+					
 					step = 1
 
 				} else step++
@@ -81,6 +94,7 @@ $(document).ready(function () {
 				$('.nextQuestion').removeClass('next-position')
 				$('.nextQuestion').addClass('next-position')
 				$('.nextQuestion').addClass('hide-btn')
+				$('.test-wrap').css('background' ,'#252aa6')
 				$("#bb-nav-next").html('Продолжить<i class="fa fa-angle-right"></i>')
 				config.$bookBlock.bookblock( 'next' );
 				if (step === questionsLength) {
