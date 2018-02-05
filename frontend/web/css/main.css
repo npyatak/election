@@ -570,22 +570,44 @@ footer .right {
     display: flex;
     flex-wrap: nowrap;
 }
-footer .copyright {
-    width: 240px;
+
+footer .copyright-blocks {
+    width: 640px;
     margin-right: 40px;
 }
-footer .copyright:nth-child(1) {
-    margin-right: 160px;
-}
-footer .copyright span,
-footer .copyright a {
-    line-height: 20px;
-    color: #636363;
+footer .copyright:not(:last-child) {
+    margin-bottom: 20px;
 }
 footer .copyright p {
+    margin-bottom: 0;
+}
+footer .copyright span {
+    font-size: 14px;
     line-height: 20px;
     color: #000;
 }
+footer .copyright a {
+    font-size: 14px;
+    line-height: 20px;
+    color: #636363;
+}
+/*footer .copyright {*/
+    /*width: 240px;*/
+    /*margin-right: 40px;*/
+/*}*/
+/*footer .copyright:nth-child(1) {*/
+    /*margin-right: 160px;*/
+/*}*/
+/*footer .copyright span,*/
+/*footer .copyright a {*/
+    /*line-height: 20px;*/
+    /*color: #636363;*/
+/*}*/
+/*footer .copyright p {*/
+    /*line-height: 20px;*/
+    /*color: #000;*/
+/*}*/
+
 .footer-logo a {
     display: block;
     width: 80px;
@@ -2639,14 +2661,9 @@ a.all-news {
     .faq-bottom>div a i {
         display: none;
     }
-}
-@media (max-width:1100px) {
     footer {
         height: auto;
         padding-bottom: 0;
-    }
-    .candidates-item {
-        width: 50%;
     }
     footer .pull-left {
         width: 100%;
@@ -2660,11 +2677,16 @@ a.all-news {
     footer .right {
         justify-content: space-between;
     }
-    footer .right .copyright {
-        width: calc(100% - 120px);
-    }
     .footer-inner {
         padding: 0;
+    }
+    footer .copyright-blocks {
+        width: calc(100% - 120px);
+    }
+}
+@media (max-width:1100px) {
+    .candidates-item {
+        width: 50%;
     }
 }
 @media (max-width:1000px) {
@@ -2682,18 +2704,6 @@ a.all-news {
     .video-modal iframe {
         width: 90% !important;
         height: 90% !important;
-    }
-    footer .pull-right>.right::after {
-        content: '';
-        display: block;
-        clear: both;
-    }
-    footer .pull-right>.right .copyright {
-        float: left;
-        margin-right: 40px;
-    }
-    footer .pull-right>.right .footer-logo {
-        float: right;
     }
     .card-header .left h1 {
         position: relative;
@@ -3051,22 +3061,17 @@ a.all-news {
         position: relative;
         padding: 30px 20px;
     }
-    footer .pull-right>.right .footer-logo {
-        position: absolute;
-        right: 20px;
-        top: 30px;
+    /*footer .pull-right>.right .footer-logo {*/
+        /*position: absolute;*/
+        /*right: 20px;*/
+        /*top: 30px;*/
+    /*}*/
+    footer .copyright-blocks {
+        width: calc(100% - 60px);
+        margin-right: 0;
     }
-    footer .right {
-        display: block;
-    }
-    footer .right .copyright {
-        width: calc(100% - 60px) !important;
-        margin-right: 20px;
-    }
-    footer .right .copyright:nth-child(1) {
-        margin-bottom: 30px;
-    }
-    footer .copyright li,
+    footer .copyright p,
+    footer .copyright span,
     footer .copyright a {
         font-size: 12px;
         line-height: 15px;

@@ -209,6 +209,10 @@
 	    padding-right: 10px;
 	    width: 50%;
 	}
+	.calendar-header .left ul a {
+		color: #fff;
+		text-decoration: underline;
+	}
 	.calendar-header .row {
 	    justify-content: flex-start;
 	    display: flex;
@@ -719,6 +723,9 @@
 		    left: inherit;
 		    position: absolute;
 		    right: -15px;
+		}
+		.cover-up {
+			display: none;
 		}
 	}
 ::-webkit-scrollbar-track {

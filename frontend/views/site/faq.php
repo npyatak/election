@@ -25,7 +25,7 @@ $this->registerJsFile(Url::toRoute('js/device.js'), ['depends' => [\yii\web\Jque
                                     <i class="fa fa-chevron-down"></i>
                                 </div>
                                 <div class="card-text" <?=$card->id == $id ? 'style="display: block;"' : '';?>>
-                                    <p><?=$card->text;?></p>
+                                    <?=$card->text;?>
                                 </div>
                             </div>
                         <?php endif;?>
