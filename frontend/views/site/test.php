@@ -85,7 +85,7 @@ TestAsset::register($this);
 						<div class="bb-custom-side" id="start-page-topp">
 							<div class="right-part hide" style="z-index: 2;" id="result-range-container">
 								<?php foreach ($testResults as $result):?>
-									<div class="hide" data-start="<?=$result->range_start;?>" data-end="<?=$result->range_end;?>">
+									<div class="result-range-item hide" data-start="<?=$result->range_start;?>" data-end="<?=$result->range_end;?>">
 										<?=$result->title;?>
 									</div>
 								<?php endforeach;?>
@@ -103,8 +103,8 @@ TestAsset::register($this);
 						</div>
 					</div>
 			<a href="" id="bb-nav-next" class="btn btn-h50 btn-w200 btn-white nextQuestion start-position continue-mobile-btn">
-			  Начать
-			  <i id="ic" class="fa fa-angle-right"></i>
+				Начать
+				<i id="ic" class="fa fa-angle-right"></i>
 			</a>
 		</div> 
 		 

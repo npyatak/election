@@ -22,8 +22,6 @@ $(document).ready(function () {
 	    	// adding correct background
 			$(this).closest('.hidden-container').addClass('correct-background');
 			$(this).closest('.right-part').addClass('correct-background');
-			// $(this).closest('.right-part').addClass('correct-background');
-			// $(this).closest('.right-part').attr('id','bb-nav-next');
 			$(this).closest('.right-part').children('.test-text.right').children('p').attr('id','bb-nav-next')
 			$(this).closest('.right-part').find('.right').removeClass('hidden-animated');
 
@@ -69,15 +67,7 @@ $(document).ready(function () {
 		},
 		initEvents = function() {
 			var $slides = config.$bookBlock.children()
-			// $('#fire').click(function() {
-			// 	console.log('test');
-			// 	config.$bookBlock.bookblock( 'next' );
-			// })
-			console.log('test');
 			config.$navNext.on( 'click touchstart', function(e) {
-				console.log(e)
-
-				// config.$bookBlock.bookblock( 'next' );
 				var questionsLength = $('.test-wrap').children('.t').length
 				buttonNext = $('.nextQuestion')
 				if (buttonNext.hasClass('start-position')) {
@@ -103,45 +93,22 @@ $(document).ready(function () {
 				} else if (step > questionsLength) {
 					$('#finish-btn-left').addClass('hide-btn')
 					$('#finish-btn-right').addClass('hide-btn')
-					var pLength = $('#result-range-container').children('p').length
 					var percentage = parseInt(((rightAnswers * 100) / 8).toFixed())
 					setTimeout(function() {
-						if (rightAnswers >= 0 && rightAnswers <= 3) {
-							$('#result-range').addClass('animate-fade')
-							$('#prgs-circle').addClass('p'+percentage)
-							$('#result-range-container').children('#result-range[data-start=0]').removeClass('hide')
-							$('#questionBlock').addClass('hide')
-							$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
-							$('#resultBlock').removeClass('hide')
-							$('.result-container').removeClass('hide')
-							$('#finish-btn-left').removeClass('hide-btn')
-							$('#finish-btn-right').removeClass('hide-btn')
-							$('#result-text').html(rightAnswers) 
-						} else if (rightAnswers === 4 || rightAnswers === 5) {
-							$('#result-range').addClass('animate-fade')
-							$('#prgs-circle').addClass('p'+percentage)
-							$('#result-range-container').children('#result-range[data-start=4]').removeClass('hide')
-							$('#questionBlock').addClass('hide')
-							$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
-							$('#resultBlock').removeClass('hide')
-							$('.result-container').removeClass('hide')
-							$('#finish-btn-left').removeClass('hide-btn')
-							$('#finish-btn-right').removeClass('hide-btn')
-							$('#prgs-circle').addClass('over50')
-							$('#result-text').html(rightAnswers)
-						} else if (rightAnswers >= 6 && rightAnswers <= 8) {
-							$('#result-range').addClass('animate-fade')
-							$('#prgs-circle').addClass('p'+percentage)
-							$('#prgs-circle').addClass('over50')
-							$('#result-range-container').children('#result-range[data-start=6]').removeClass('hide')
-							$('#questionBlock').addClass('hide')
-							$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide')
-							$('#resultBlock').removeClass('hide')
-							$('.result-container').removeClass('hide')
-							$('#finish-btn-left').removeClass('hide-btn')
-							$('#finish-btn-right').removeClass('hide-btn')
-							$('#result-text').html(rightAnswers) 
-						}
+						$('.result-range-item').each(function(index) {
+							if($(this).data('start') <= rightAnswers && $(this).data('end') >= rightAnswers) {
+								$(this).removeClass('hide');
+							}
+						});
+						$('#result-range').addClass('animate-fade');
+						$('#prgs-circle').addClass('p'+percentage);
+						$('#questionBlock').addClass('hide');
+						$('#questionBlock[data-key="'+questionsLength+'"]').addClass('hide');
+						$('#resultBlock').removeClass('hide');
+						$('.result-container').removeClass('hide');
+						$('#finish-btn-left').removeClass('hide-btn');
+						$('#finish-btn-right').removeClass('hide-btn');
+						$('#result-text').html(rightAnswers) ;
 						$('#result-range-container').removeClass('hide')
 						$('#prgs-circle').addClass('animate-fade') 
 						$('#progress-circle-wrapper').addClass('animate-fade') 
