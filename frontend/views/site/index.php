@@ -68,9 +68,12 @@ use common\models\RatingItem;
                 <div class="right-title">
                     <h4>
                         <?=$rating->title;?>
-                        <span class="question-icon popup-open"></span>
-                        <div class="question-popup">
-                            <p><?=$rating->text;?></p>
+                        <div class="question-icon">
+                            <i></i>
+                            <div class="question-popup">
+                                <p><?=$rating->text;?></p>
+                                <span class="question-close">Закрыть</span>
+                            </div>
                         </div>
                     </h4>
                     <p>Опрос ВЦИОМ <?=$rating->date;?></p>

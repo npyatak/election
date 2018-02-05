@@ -6,9 +6,9 @@ TestAsset::register($this);
 ?>
 <div class="no-js">
 	<div class="bb-custom-wrapper">
-		<div class="test-wrap height test-page bb-bookblock" id="bb-bookblock">
+		<div class="test-wrap height test-page bb-bookblock" id="bb-bookblock" >
 			<div class="bb-item container test-container">
-				<div class="bb-custom-firstpage" id="start-page-bottomm">
+				<div class="bb-custom-firstpage" id="start-page-bottomm" style="padding-bottom: 0px;">
 					<div class="left-part">
 						<img src="/images/icons/test-white.svg" alt="Test-white image" id="test-img-white">
 						<h1 class="tt-up" id="start-title">Политический диктант</h1>
@@ -35,7 +35,7 @@ TestAsset::register($this);
 									<h3 id="testID2" data-value="<?=$key;?>">
 										<?=$q->title;?>
 									</h3>
-									<div class="check-block hide">
+									<div id="check-block" class="check-block hide">
 										<img src="/images/icons/check.svg" alt="Check icon">
 										<span></span>
 									</div>
@@ -57,10 +57,10 @@ TestAsset::register($this);
 										<?php endforeach;?>
 									</form>
 								</div>
-								<div class="test-text hide wrong">
+								<div class="test-text hidden-animated wrong">
 									<?=$q->comment_wrong;?>
 								</div>
-								<div class="test-text hide right">
+								<div class="test-text hidden-animated right">
 									<?=$q->comment_right;?>
 								</div>
 							</div>
@@ -83,7 +83,7 @@ TestAsset::register($this);
 							</div>
 						</div>
 						<div class="bb-custom-side" id="start-page-topp">
-							<div class="right-part" style="z-index: 2;" id="result-range-container">
+							<div class="right-part hide" style="z-index: 2;" id="result-range-container">
 								<?php foreach ($testResults as $result):?>
 									<div class="hide" data-start="<?=$result->range_start;?>" data-end="<?=$result->range_end;?>">
 										<?=$result->title;?>

@@ -8,7 +8,6 @@ $this->registerJsFile(Url::toRoute('js/player/jwplayer.js'), ['depends' => [\yii
 $this->params['share'] = [
     'text' => $candidate->share_text, 'title' => $candidate->share_title, 'url' => Url::current([], true), 'image' => Url::to($candidate->share_image, true), 'twitter' => $candidate->share_twitter
 ];?>
-
 <div class="candidate-detail">
     <div class="candidate-detail_top">
         <div class="container">
@@ -18,21 +17,26 @@ $this->params['share'] = [
                     <p class="intro"><?=$candidate->status;?></p>
                     <div class="bottom">
                         <div class="candidate-detail_info">
-                            <div class="candidate-percent">
+                            <div class="candidate-percent <?php if(!$candidate->active == Candidate::QUIT):?>off<?php endif;?>">
                                 <?php if($candidate->active == Candidate::QUIT):?>
-                                    <span class="">Выбыл(а) из президентской гонки</span>
+                                    <span class="candidate-off">Выбыл из президентской гонки</span>
                                 <?php else:?>
                                     <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
                                     <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
                                 <?php endif;?>
                             </div>
+                            <?php if ($candidate->active != Candidate::QUIT):?>
                             <div class="candidate-rating">
                                 <p>Рейтинг кандидата по данным ВЦИОМ от <?=$rating->date;?></p>
-                                <span class="question-icon popup-open"></span>
-                                <div class="question-popup">
-                                    <p><?=$rating->text;?></p>
+                                <div class="question-icon">
+                                    <i></i>
+                                    <div class="question-popup">
+                                        <p><?=$rating->text;?></p>
+                                        <span class="question-close">Закрыть</span>
+                                    </div>
                                 </div>
                             </div>
+                            <?php endif;?>
                         </div>
                     </div>
                 </div>
@@ -47,17 +51,26 @@ $this->params['share'] = [
             </div>
             <div class="bottom">
                 <div class="candidate-detail_info">
-                    <div class="candidate-percent">
-                        <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
-                        <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
+                    <div class="candidate-percent <?php if($candidate->active == Candidate::QUIT):?>off<?php endif;?>">
+                        <?php if($candidate->active == Candidate::QUIT):?>
+                            <span class="candidate-off">Выбыл из президентской гонки</span>
+                        <?php else:?>
+                            <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
+                            <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
+                        <?php endif;?>
                     </div>
+                    <?php if ($candidate->active != Candidate::QUIT):?>
                     <div class="candidate-rating">
-                        <p>Рейтинг кандидата по данным <?=$rating->subtitle;?></p>
-                        <span class="question-icon popup-open"></span>
-                        <div class="question-popup">
-                            <p><?=$rating->text;?></p>
+                        <p>Рейтинг кандидата по данным ВЦИОМ от <?=$rating->date;?></p>
+                        <div class="question-icon">
+                            <i></i>
+                            <div class="question-popup">
+                                <p><?=$rating->text;?></p>
+                                <span class="question-close">Закрыть</span>
+                            </div>
                         </div>
                     </div>
+                    <?php endif;?>
                 </div>
             </div>
         </div>
@@ -168,7 +181,7 @@ $this->params['share'] = [
                                     <?php foreach ($candidate->quotations as $q):?>
                                         <div class="item">
                                             <h3 class="quotes-text"><?=$q->text;?></h3>
-                                            <p class="quotes-date"><?=$q->caption;?></p>
+                                            <div class="quotes-date"><?=$q->caption;?></div>
                                         </div>
                                     <?php endforeach;?>
                                 </div>

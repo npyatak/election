@@ -3,7 +3,10 @@
 		<div class="left">
 			<div id="calendar-date" style="z-index:3;">
 				<?php foreach ($items as $item):?>
-					<div class="item <?=$item->id == $id ? 'slick-active' : '';?>" data-id="<?=$item->id;?>">
+					<div 
+						class="item <?=$item->id == $id ? 'slick-active slick-current' : '';?>"
+						data-id="<?=$item->id;?>"
+					>
 		        		<h1>
 							<?=$item->viewDate;?>
 						</h1>
@@ -46,14 +49,17 @@
 </div>
 
 <?php 
-	$initial = $id ? $id : 0;
+	$initial = $id ? $id-1 : 0;
 	$script = "
+	console.log('$initial', $initial-1)
 		if ($initial !== 1) $('#calendar-date').find('.col-md-6').addClass('hide')
 	    $('#calendar-dates').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 			$(this).closest('#calendar-date').find('.col-md-6')
+			$('.slick-slide[data-id=21]').children('.item__title').css('width', '94px')
 			if (nextSlide === 1) {
 				$('#calendar-date').find('.col-md-6').removeClass('hide')
 				$('.slick-slide[data-id=2]').children('#item-text').children('span').addClass('change-line')
+
 			}
 			else {
 				$('#calendar-date').find('.col-md-6').addClass('hide')
@@ -120,6 +126,11 @@
 
 
 <style>
+ 	/*@media screen and (min-height: 550px) and (max-height: 767px) {
+		.calendar-header .left {
+			margin-bottom: 30vh;
+		}
+ 	}*/
 	.slick-initialized .slick-slide:focus {
 	    outline: none;
 	}
@@ -152,6 +163,7 @@
 	}	
 	.calendar-header {
 		background-color: #1fb38c;
+		height: 100%;
 	}
 	.calendar-header .right {
     position: absolute!important;
@@ -176,7 +188,9 @@
 	.calendar-header .left {
 		width: 100%!important;
 		z-index: 1;
-		padding: 0 0 40px 0;
+		padding: 0;
+		min-height: 80vh;
+		margin-bottom: 20vh;
 	}
 	.calendar-header .left h1 {
 	    margin: 100px 0 40px 0;
@@ -185,29 +199,29 @@
 	}
 	.calendar-header .left ul {
 		color: #ffffff;
-    line-height: 1.67;
-    font-size: 18px;
-    margin: 0;
-    text-transform: initial;
-    margin-bottom: 15%;
-    height: auto;
-    overflow: auto;
-    padding-right: 10px;
-    width: 50%;
+	    line-height: 1.67;
+	    font-size: 18px;
+	    margin: 0;
+	    text-transform: initial;
+	    margin-bottom: 0;
+	    height: auto;
+	    overflow: auto;
+	    padding-right: 10px;
+	    width: 50%;
 	}
 	.calendar-header .row {
-    justify-content: space-around;
-    display: flex;
-    align-items: flex-start;
+	    justify-content: flex-start;
+	    display: flex;
+	    align-items: flex-start;
 	}
 	.calendar-header .col-md-6 {
-    color: #ffffff;
-    line-height: 1.67;
-    font-size: 18px;
-    margin: 0;
-    text-transform: initial;
-    float: none;
-    width: 50%;
+	    color: #ffffff;
+	    line-height: 1.67;
+	    font-size: 18px;
+	    margin: 0;
+	    text-transform: initial;
+	    float: none;
+	    width: 620px!important;
 	}
 /*timeline styles*/
 	.calendar__line {
@@ -218,7 +232,7 @@
 	#calendar-timeline {
 		position: absolute;
 		width: 100%;
-		top: 15px;
+		top: -23px;
 	}
 	#calendar-timeline .header-timeLine_middle .green-dot {
 		left: -5px;
@@ -338,11 +352,17 @@
 /*main slider*/
 	.dates-wrapper {
 		background: #f9f9f9;
-		padding-bottom: 30px;
-		position: relative;
+	    padding-bottom: 0;
+	    position: fixed;
+	    max-height: 180px;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    z-index: 7;
+	    min-height: 20vh;
 	}
 	#calendar-dates .item {
-    margin: 20px 0 0 -1px;
+    margin: 10px 0 0 -1px;
     width: 325px;
     padding-left: 40px;
 	}
@@ -353,7 +373,7 @@
 		cursor: pointer;
 	}
 	#calendar-dates .item__title {
-		max-width: 110px;
+		max-width: 100%;
 		color: #252aa6;
 		font-size: 18px;
 		line-height: 1.39;
@@ -367,14 +387,14 @@
     margin: 50px 0 0 0;
     position: relative;
     padding-left: 105px;
-    width: 255px;
+    width: 300px;
 	}
 	#calendar-dates .item__text::before {
 	    content: '';
 	    display: block;
 	    position: absolute;
-	    top: -30px;
-	    right: 130px;
+	    top: -28px;
+	    right: 172px;
 	    height: 10px;
 	    width: 25px;
 	    background: #f9f9f9 url(../images/icons/dot.svg) no-repeat center;
@@ -385,8 +405,8 @@
 	    content: '_______';
 	    display: block;
 	    position: absolute;
-	    top: -40px;
-	    right: 75px;
+	    top: -38px;
+	    right: 116px;
 	    height: 20px;
 	    width: 55px;
 	    z-index: 2;
@@ -395,8 +415,8 @@
 	    content: '';
 	    display: block;
 	    position: absolute;
-	    top: -37px;
-	    right: 53px;
+	    top: -35px;
+	    right: 93px;
 	    height: 25px;
 	    width: 25px;
 	    background: #f9f9f9 url(../images/icons/green-dot.svg) no-repeat center;
@@ -437,7 +457,7 @@
 			margin-left: 0;
 		}
 		#calendar-dates .item__text {
-			margin: 35px 0 0 -1px;
+			margin: 40px 0 0 -1px;
 		    padding-left: 0;
 			width: 160px;
 		}
@@ -547,10 +567,11 @@
 			display: none;
 		}
 		.dates-wrapper {
-	    z-index: 5;
-	    bottom: 0;
-      height: 10vh;
-      padding: 0;
+			z-index: 5;
+			bottom: 0;
+			height: 10vh;
+			min-height: 10vh;
+			padding: 0;
 		}
 		#calendar-dates .item {
 	    margin: 0;
@@ -635,14 +656,14 @@
 /*@media___*/
 @media screen and (min-width: 1199px) {
 		.calendar-header .left h1 {
-		    margin: 160px 0 40px 0!important;
+		    margin: 130px 0 40px 0!important;
 		}
 		.calendar-header .col-md-6 {
 		    width: 57%;
 		    padding-right: 30px;
 		}
 		#calendar-dates .item__text {
-			margin: 50px 0 0 -1px;
+			margin: 45px 0 0 -1px;
 		}
 	}
 	@media screen and (min-width: 768px) and (max-width: 1198px) {
