@@ -11,7 +11,11 @@ use common\models\RatingItem;
             <div class="tabs owl-carousel">
                 <?php foreach ($ratings as $rating):?>
                     <div class="tab">
-                        <a href="<?=Url::current(['group' => $rating->groupIds[0]]);?>" class="r_group <?=count($rating->groupIds) > 1 ? 'show-rating-cat' : '';?> <?=in_array($group, $rating->groupIds) ? 'active' : '';?>" data-group="<?=$rating->groupIds[0];?>">
+                        <a href="<?=Url::current(['group' => in_array($group, $rating->groupIds) ? $group : $rating->groupIds[0]]);?>" 
+                            class="r_group <?=count($rating->groupIds) > 1 ? 'show-rating-cat' : '';?> <?=in_array($group, $rating->groupIds) ? 'active' : '';?>" 
+                            id="<?=count($rating->groupIds) > 1 ? 'groupsTab' : '';?>"
+                            data-group="<?=in_array($group, $rating->groupIds) ? $group : $rating->groupIds[0];?>"
+                        >
                             <h4><?=$rating->title;?></h4>
                             <div class="question-icon_wrap">
                                 <?php if($rating->subtitle):?>
