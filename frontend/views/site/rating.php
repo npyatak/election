@@ -72,7 +72,7 @@ use common\models\RatingItem;
                     <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['c'][$c->id]) ? $resultsArray[$group]['c'][$c->id] : 0;?>
                     <div class="rating-candidate type-candidate" data-candidate="<?=$c['id'];?>">
                         <a href="<?=$c->url;?>"><h4><?=$c->nameAndSurname;?></h4></a>
-                        <span class="rating-percent"><span class="percent"><?=$score;?></span>%</span>
+                        <span class="rating-percent"><span class="percent"><?=$score;?></span></span>
                         <div class="rating-line">
                             <span style="width: <?=$score;?>%"></span>
                         </div>
@@ -82,7 +82,7 @@ use common\models\RatingItem;
                     <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['a'][$key]) ? $resultsArray[$group]['a'][$key] : 0;?>
                     <div class="rating-candidate type-additional" data-additional="<?=$key;?>">
                         <h4><?=$item;?></h4>
-                        <span class="rating-percent"><span class="percent"><?=$score;?></span>%</span>
+                        <span class="rating-percent"><span class="percent"><?=$score;?></span></span>
                         <div class="rating-line">
                             <span style="width: <?=$score;?>%"></span>
                         </div>
@@ -111,6 +111,7 @@ $script = "
             }
         }
     });
+    
     $('#groups-select').on('change', function(e) {
         group = $(this).find('option:selected').data('group');
         showGroupValue(group);
@@ -127,6 +128,8 @@ $script = "
                 margin: 0,
                 items: 1,
                 nav: true,
+                touchDrag: true,
+                mouseDrag: true,
                 onDragged: callback
             },
             1150: {
@@ -145,11 +148,10 @@ $script = "
         }else{
             $('body').find('.mobile-rating-cat').removeClass('transform');
         }
-    }
-    
-    owl.on('changed.owl.carousel', function(property) {
-        var item = property.target;
-        var r_group = $(item).find('.r_group'); 
+        
+        var cur_item = event;
+        console.log(cur_item)
+        var r_group = $(cur_item).find('.r_group'); 
         var group = $(r_group).attr('data-group');
         showGroupValue(group);
         if($(r_group).hasClass('rating-cat_el')) {
@@ -161,7 +163,7 @@ $script = "
                 $('.rating-cat_el[data-group='+group+']').addClass('active');
             }
         }
-    })
+    }
 
     function showGroupValue(group) {
         window.history.pushState(null, '', '".Url::toRoute(['site/rating'])."?group='+group);

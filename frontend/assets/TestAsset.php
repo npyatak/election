@@ -11,11 +11,11 @@ class TestAsset extends AssetBundle
     public $css = [
         'css/css-circular-prog-bar.css',
         'js/bookBlock/bookblock.css',
-        'css/test-page.css',
+        'css/test-page.css?v=060218',
     ];
     public $js = [
         'js/bookBlock/modernizr.custom.js',
-        'js/test.js',
+        'js/test.js?v=060218',
         'js/bookBlock/jquery.bookblock.js',
         'js/bookBlock/jquerypp.custom.js',
         'js/bookBlock/bookblock.js',

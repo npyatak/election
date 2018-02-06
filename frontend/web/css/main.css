@@ -205,8 +205,8 @@
 /*}*/
 #hidden-menu .container .left a {
     display: block;
-    font: 40px 'FiraSans-Bold', sans-serif;
-    line-height: 50px;
+    font: 30px 'FiraSans-Bold', sans-serif;
+    line-height: 40px;
     -webkit-transition: .15s;
     -moz-transition: .15s;
     -ms-transition: .15s;
@@ -580,6 +580,15 @@ footer .copyright:not(:last-child) {
 }
 footer .copyright p {
     margin-bottom: 0;
+}
+footer .copyright b {
+    display: inline-block;
+    -webkit-transform: scale(1.2) translateY(2px);
+    -moz-transform: scale(1.2) translateY(2px);
+    -ms-transform: scale(1.2) translateY(2px);
+    -o-transform: scale(1.2) translateY(2px);
+    transform: scale(1.2) translateY(2px);
+    font-weight: normal;
 }
 footer .copyright span {
     font-size: 14px;
