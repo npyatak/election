@@ -183,6 +183,18 @@
 		transition: background-color .2s; 
 		cursor: pointer;
 	}
+	.prev-arrow::before,
+	.next-arrow::before {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%,-50%);
+		-moz-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+		-o-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+	}
 	.prev-arrow {
     position: absolute;
     right: 230px;

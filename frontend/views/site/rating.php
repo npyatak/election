@@ -128,6 +128,8 @@ $script = "
                 margin: 0,
                 items: 1,
                 nav: true,
+                touchDrag: true,
+                mouseDrag: true,
                 onDragged: callback
             },
             1150: {
@@ -146,11 +148,10 @@ $script = "
         }else{
             $('body').find('.mobile-rating-cat').removeClass('transform');
         }
-    }
-    
-    owl.on('drag.owl.carousel', function(property) {
-        var item = property.target;
-        var r_group = $(item).find('.r_group'); 
+        
+        var cur_item = event;
+        console.log(cur_item)
+        var r_group = $(cur_item).find('.r_group'); 
         var group = $(r_group).attr('data-group');
         showGroupValue(group);
         if($(r_group).hasClass('rating-cat_el')) {
@@ -162,7 +163,7 @@ $script = "
                 $('.rating-cat_el[data-group='+group+']').addClass('active');
             }
         }
-    })
+    }
 
     function showGroupValue(group) {
         window.history.pushState(null, '', '".Url::toRoute(['site/rating'])."?group='+group);
