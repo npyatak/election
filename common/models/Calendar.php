@@ -7,6 +7,7 @@ use yii\helpers\Url;
 
 class Calendar extends \yii\db\ActiveRecord
 {
+    public $closestDate;
     /**
      * @inheritdoc
      */

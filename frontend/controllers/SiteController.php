@@ -142,11 +142,13 @@ class SiteController extends Controller
     }
 
     public function actionCalendar($id = null) {
-        $items = Calendar::find()->orderBy('date ASC')/*->where(['>', 'date', time()])*/->orderBy('date') ->all();
+        $items = Calendar::find()->orderBy('date ASC')->orderBy('date')->all();
+        $closest = Calendar::find()->select(['*', "ABS(date - ".time().") as closestDate"])->orderBy('closestDate')->one();
 
         return $this->render('calendar', [
             'items' => $items,
             'id' => $id,
+            'closestId' => $closest->id,
         ]);
     }
 
