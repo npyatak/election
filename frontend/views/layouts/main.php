@@ -80,7 +80,7 @@ AppAsset::register($this);
                     <div class="left">
                         <ul>
                             <li><a href="<?=Url::home();?>">Главная</a></li>
-                            <li><a href="<?=Url::home();?>#candidates">Кандидаты</a></li>
+                            <li><a href="<?=Url::toRoute(['site/candidates'])?>">Кандидаты</a></li>
                             <li><a href="<?=Url::toRoute(['site/calendar']);?>">Календарь выборов</a></li>
                             <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li>
                             <li><a href="<?=Url::toRoute(['site/faq']);?>">Что нужно знать</a></li>
