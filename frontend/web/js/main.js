@@ -48,7 +48,7 @@ $(document).ready(function () {
     $('#candidate-hobbies').owlCarousel({
         items: 1,
         margin: 10,
-        loop: false,
+        loop: true,
         autoplay: false,
         nav: true,
         navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
@@ -188,36 +188,7 @@ $(document).ready(function () {
             $('#rating-cat').removeClass('transform');
         }
     });
-
-    $('.tabs').owlCarousel({
-        loop: false,
-        autoplay: false,
-        dots: false,
-        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                margin: 0,
-                items: 1,
-                nav: true,
-                onDragged: callback
-            },
-            1150: {
-                margin: 0,
-                items: 3,
-                touchDrag: false,
-                mouseDrag: false
-            }
-        }
-    });
-
-    function callback(event){
-        var item = event.item.index;
-        if(item === 1){
-            $('body').find('.mobile-rating-cat').addClass('transform');
-        }else{
-            $('body').find('.mobile-rating-cat').removeClass('transform');
-        }
-    }
+    
 
     $('#rating-cat').owlCarousel({
         margin: 30,

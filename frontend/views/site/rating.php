@@ -115,6 +115,53 @@ $script = "
         group = $(this).find('option:selected').data('group');
         showGroupValue(group);
     });
+    
+    var owl = $('.tabs');
+    owl.owlCarousel({
+        loop: false,
+        autoplay: false,
+        dots: false,
+        navText: ['<i class=\"fa fa-angle-left\"></i>','<i class=\"fa fa-angle-right\"></i>'],
+        responsive: {
+            0: {
+                margin: 0,
+                items: 1,
+                nav: true,
+                onDragged: callback
+            },
+            1150: {
+                margin: 0,
+                items: 3,
+                touchDrag: false,
+                mouseDrag: false
+            }
+        }
+    });
+
+    function callback(event){
+        var item = event.item.index;
+        if(item === 1){
+            $('body').find('.mobile-rating-cat').addClass('transform');
+        }else{
+            $('body').find('.mobile-rating-cat').removeClass('transform');
+        }
+    }
+    
+    owl.on('changed.owl.carousel', function(property) {
+        var item = property.target;
+        var r_group = $(item).find('.r_group'); 
+        var group = $(r_group).attr('data-group');
+        showGroupValue(group);
+        if($(r_group).hasClass('rating-cat_el')) {
+            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+group);
+            $('#groupsTab').attr('data-group', group);
+        } else {
+            if($(r_group).hasClass('show-rating-cat')) {
+                $('.rating-cat_el').removeClass('active');
+                $('.rating-cat_el[data-group='+group+']').addClass('active');
+            }
+        }
+    })
 
     function showGroupValue(group) {
         window.history.pushState(null, '', '".Url::toRoute(['site/rating'])."?group='+group);
