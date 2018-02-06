@@ -112,36 +112,68 @@ AppAsset::register($this);
                 </div>
                 <div class="pull-right">
                     <div class="right">
-                        <div class="copyright">
-                            <p>Над проектом работали:</p>
-                            <ul>
-                                <li><span>Автор: Дмитрий Трунов</span></li>
-                                <li><span>Редактор: Александр Бычков</span></li>
-                                <li><span>Продюсер: Антон Дуковский</span></li>
-                                <li><span>Иллюстратор: Константин Каковкин</span></li>
-                                <li><span>Дизайнер: Илья Чикунов</span></li>
-                            </ul>
+                        <div class="copyright-blocks">
+                            <div class="copyright">
+                                <p>
+                                    <span class="title">Над проектом работали:</span> автор: Дмитрий Трунов, редактор: Александр Бычков, продюсер: Антон Дуковский, иллюстратор: Константин Каковкин, дизайнер: Илья Чикунов.<br>
+                                    Проект подготовлен при участии редакции ТАСС-Досье.
+                                </p>
+                            </div>
+                            <div class="copyright">
+                                <p>
+                                    <span>Источники:</span>
+                                    <a href="http://tass.ru/tass-dos-e-biografii" target="_blank">ТАСС-Досье</a>,
+                                    <a href="https://2018.yavlinsky.ru/" target="_blank">2018.yavlinsky.ru</a>,
+                                    <a href="http://cikrf.ru/" target="_blank">cikrf.ru</a>,
+                                    <a href="http://www.duma.gov.ru/" target="_blank">duma.gov.ru</a>,
+                                    <a href="http://grudininkprf.ru/" target="_blank">grudininkprf.ru</a>,
+                                    <a href="http://komros.info/" target="_blank">komros.info</a>,
+                                    <a href="https://kprf.ru/" target="_blank">kprf.ru</a>,
+                                    <a href="http://kremlin.ru/" target="_blank">kremlin.ru</a>,
+                                    <a href="https://ldpr.ru/" target="_blank">ldpr.ru</a>,
+                                    <a href="https://rost.ru/" target="_blank">rost.ru</a>,
+                                    <a href="http://roststrategy.ru/" target="_blank">roststrategy.ru</a>,
+                                    <a href="https://sobchakprotivvseh.ru/" target="_blank">sobchakprotivvseh.ru</a>,
+                                    <a href="http://sovhozlenina.ru/" target="_blank">sovhozlenina.ru</a>,
+                                    <a href="https://wciom.ru/" target="_blank">wciom.ru</a>,
+                                    <a href="https://www.yabloko.ru/" target="_blank">yabloko.ru</a>,
+                                    <a href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>
+                                </p>
+                            </div>
+                            <div class="copyright">
+                                <p>ТАСС информационное агентство (св-во о регистрации СМИ № 03247 выдано 02 апреля 1999 г. Государственным комитетом Российской Федерации по печати). Отдельные публикации могут содержать информацию, не предназначенную для пользователей до 16 лет.</p>
+                            </div>
                         </div>
-                        <div class="copyright">
-                            <p>Источники:</p>
-                            <p><a href="http://tass.ru/tass-dos-e-biografii" target="_blank">ТАСС-Досье</a>,
-                                <a href="https://2018.yavlinsky.ru/" target="_blank">2018.yavlinsky.ru</a>,
-                                <a href="http://cikrf.ru/" target="_blank">cikrf.ru</a>,
-                                <a href="http://www.duma.gov.ru/" target="_blank">duma.gov.ru</a>,
-                                <a href="http://grudininkprf.ru/" target="_blank">grudininkprf.ru</a>,
-                                <a href="http://komros.info/" target="_blank">komros.info</a>,
-                                <a href="https://kprf.ru/" target="_blank">kprf.ru</a>,
-                                <a href="http://kremlin.ru/" target="_blank">kremlin.ru</a>,
-                                <a href="https://ldpr.ru/" target="_blank">ldpr.ru</a>,
-                                <a href="https://rost.ru/" target="_blank">rost.ru</a>,
-                                <a href="http://roststrategy.ru/" target="_blank">roststrategy.ru</a>,
-                                <a href="https://sobchakprotivvseh.ru/" target="_blank">sobchakprotivvseh.ru</a>,
-                                <a href="http://sovhozlenina.ru/" target="_blank">sovhozlenina.ru</a>,
-                                <a href="https://wciom.ru/" target="_blank">wciom.ru</a>,
-                                <a href="https://www.yabloko.ru/" target="_blank">yabloko.ru</a>,
-                                <a href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>
-                            </p>
-                        </div>
+<!--                        <div class="copyright">-->
+<!--                            <p>Над проектом работали:</p>-->
+<!--                            <ul>-->
+<!--                                <li><span>Автор: Дмитрий Трунов</span></li>-->
+<!--                                <li><span>Редактор: Александр Бычков</span></li>-->
+<!--                                <li><span>Продюсер: Антон Дуковский</span></li>-->
+<!--                                <li><span>Иллюстратор: Константин Каковкин</span></li>-->
+<!--                                <li><span>Дизайнер: Илья Чикунов</span></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                        <div class="copyright">-->
+<!--                            <p>Источники:</p>-->
+<!--                            <p><a href="http://tass.ru/tass-dos-e-biografii" target="_blank">ТАСС-Досье</a>,-->
+<!--                                <a href="https://2018.yavlinsky.ru/" target="_blank">2018.yavlinsky.ru</a>,-->
+<!--                                <a href="http://cikrf.ru/" target="_blank">cikrf.ru</a>,-->
+<!--                                <a href="http://www.duma.gov.ru/" target="_blank">duma.gov.ru</a>,-->
+<!--                                <a href="http://grudininkprf.ru/" target="_blank">grudininkprf.ru</a>,-->
+<!--                                <a href="http://komros.info/" target="_blank">komros.info</a>,-->
+<!--                                <a href="https://kprf.ru/" target="_blank">kprf.ru</a>,-->
+<!--                                <a href="http://kremlin.ru/" target="_blank">kremlin.ru</a>,-->
+<!--                                <a href="https://ldpr.ru/" target="_blank">ldpr.ru</a>,-->
+<!--                                <a href="https://rost.ru/" target="_blank">rost.ru</a>,-->
+<!--                                <a href="http://roststrategy.ru/" target="_blank">roststrategy.ru</a>,-->
+<!--                                <a href="https://sobchakprotivvseh.ru/" target="_blank">sobchakprotivvseh.ru</a>,-->
+<!--                                <a href="http://sovhozlenina.ru/" target="_blank">sovhozlenina.ru</a>,-->
+<!--                                <a href="https://wciom.ru/" target="_blank">wciom.ru</a>,-->
+<!--                                <a href="https://www.yabloko.ru/" target="_blank">yabloko.ru</a>,-->
+<!--                                <a href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>-->
+<!--                            </p>-->
+<!--                        </div>-->
                         <div class="footer-logo">
                             <a href="http://tass.ru" target="_blank"></a>
                         </div>
