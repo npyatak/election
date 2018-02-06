@@ -1,9 +1,15 @@
 
  	/*@media screen and (min-height: 550px) and (max-height: 767px) {
-		.calendar-header .left {
+		.calendar-header.card-header .left {
 			margin-bottom: 30vh;
 		}
  	}*/
+ 	.calendar-header.card-header .left {
+ 		padding: 0;
+ 	}
+ 	.calendar-header.card-header .left::after {
+		display: none;
+ 	}
 	.slick-initialized .slick-slide:focus {
 	    outline: none;
 	}
@@ -35,7 +41,7 @@
 		display: none;		
 	}	
 	.calendar-header {
-		background-color: #1fb38c;
+		background-color: #1fb38c!important;
 		height: 100%;
 	}
 	.calendar-header .right {
@@ -79,8 +85,8 @@
 	    margin-bottom: 0;
 	    height: auto;
 	    overflow: auto;
-	    padding-right: 10px;
-	    width: 50%;
+	    padding-right: 20px;
+	    width: 770px;
 	}
 	.calendar-header .left ul a {
 		color: #fff;
@@ -98,7 +104,7 @@
 	    margin: 0;
 	    text-transform: initial;
 	    float: none;
-	    width: 620px!important;
+	    width: 770px!important;
 	}
 /*timeline styles*/
 	.calendar__line {
@@ -148,7 +154,7 @@
     width: 80px;
     height: 80px;
     transition: background-color .2s;
-    display: flex;
+    display: flex!important;
     align-items: center;
     justify-content: center;
     z-index: 4;
@@ -163,7 +169,7 @@
     font-size: 30px;
     align-self: center;
     height: 10vh;
-    display: flex;
+    display: flex!important;
     justify-content: center;
     width: 50px;
     background: #f3f3f3;
@@ -191,7 +197,7 @@
     font-size: 40px;
     width: 80px;
     height: 80px;
-    display: flex;
+    display: flex!important;
     align-items: center;
     justify-content: center;
     transition: background-color .2s;
@@ -205,7 +211,7 @@
     font-size: 30px;
     align-self: center;
     height: 10vh;
-    display: flex;
+    display: flex!important;
     justify-content: center;
     width: 50px;
     background: #f9f9f9;
@@ -343,11 +349,11 @@
 			left: -3px;
 		}
 		#calendar-dates .item__text span::before {
-			top: -32px;
+			top: -39px;
 	    left: 72px;
 		}
 		#calendar-dates .item__text span::after {
-			top: -35px;
+			top: -41px;
 	    right: 85px;
 		}
 		.next-arrow {
@@ -383,7 +389,7 @@
 	    flex-direction: column;
 		}
 		.calendar-header .col-md-6 {
-	    width: 100%;
+	    width: 100%!important;
 		}
 		.calendar-header .col-md-6:not(:last-child) {
 			margin-bottom: 20px;
@@ -600,6 +606,24 @@
 		.cover-up {
 			display: none;
 		}
+	}
+	#calendar-dates .item__title {
+		width: 170px!important;
+	}
+	.calendar-header .left ul a:hover {
+	    text-decoration:  none;
+	}
+	.kremlin {
+		content: '';
+	    display: block;
+	    position: absolute;
+	    bottom: 0;
+	    left: 80px;
+	    width: 360px;
+	    height: 100%;
+	    background: url(../images/icons/kremlin.svg) no-repeat bottom center;
+	    -webkit-background-size: contain;
+	    background-size: contain;
 	}
 ::-webkit-scrollbar-track {
 	border-radius: 10px;

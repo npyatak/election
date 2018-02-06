@@ -100,6 +100,9 @@ $(document).ready(function () {
 								$(this).removeClass('hide');
 							}
 						});
+						if (rightAnswers > 4) {
+							$('#prgs-circle').addClass('over50');
+						}
 						$('#result-range').addClass('animate-fade');
 						$('#prgs-circle').addClass('p'+percentage);
 						$('#questionBlock').addClass('hide');
