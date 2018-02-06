@@ -111,6 +111,7 @@ $script = "
             }
         }
     });
+    
     $('#groups-select').on('change', function(e) {
         group = $(this).find('option:selected').data('group');
         showGroupValue(group);
@@ -147,7 +148,7 @@ $script = "
         }
     }
     
-    owl.on('changed.owl.carousel', function(property) {
+    owl.on('drag.owl.carousel', function(property) {
         var item = property.target;
         var r_group = $(item).find('.r_group'); 
         var group = $(r_group).attr('data-group');
