@@ -84,7 +84,7 @@ use common\models\RatingItem;
                             <?php $title = $result['candidate_id'] ? $candidates[$result['candidate_id']]->surname : RatingItem::getAdditionalArray()[$result['additional_id']];?>
                             <li>
                                 <div class="left-li"><?=$title;?></div>
-                                <div class="right-li"><?=$result['score'];?>%</div>
+                                <div class="right-li"><?=$result['no_poll'] ? 'Опрос не проводился' : $result['score'].'%';?></div>
                             </li>
                         <?php endforeach;?>
                     </ul>

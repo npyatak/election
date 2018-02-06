@@ -14,10 +14,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <hr>
 
     <?php $form = ActiveForm::begin();?>
+        <div class="row">
+            <div class="col-sm-4"><h4>Кандидат</h4></div>
+            <div class="col-sm-4"><h4>Процент</h4></div>
+            <div class="col-sm-4"><h4>Опрос не проводился</h4></div>
+        </div>
+        <hr>
         <?php $candidatesArray = ArrayHelper::map($candidates, 'id', 'surname');
         foreach ($models as $key => $model):?>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <h4 class="right">
                     <?php if($model->candidate_id) {
                         echo $candidatesArray[$model->candidate_id];
@@ -31,10 +37,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         echo Html::activeHiddenInput($model, "[$key]id");
                     }?>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group <?=$model->hasErrors("score") ? 'has-error' : '';?>">
                         <?= Html::activeTextInput($model, "[$key]score", ['class' => 'form-control']) ?>
                         <?= Html::error($model, "[$key]score", ['class' => 'help-block']);?>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group <?=$model->hasErrors("no_poll") ? 'has-error' : '';?>">
+                        <?= Html::activeCheckbox($model, "[$key]no_poll", ['class' => 'form-control', 'label' => false]) ?>
+                        <?= Html::error($model, "[$key]no_poll", ['class' => 'help-block']);?>
                     </div>
                 </div>
             </div>

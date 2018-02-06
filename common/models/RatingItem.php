@@ -20,7 +20,7 @@ class RatingItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['candidate_id', 'additional_id', 'rating_group_id'], 'integer'],
+            [['candidate_id', 'additional_id', 'rating_group_id', 'no_poll'], 'integer'],
             [['rating_group_id', 'score'], 'required'],
             [['score'], 'number', 'min' => 0, 'max' => 99.9],
             [['candidate_id'], 'exist', 'skipOnError' => true, 'targetClass' => Candidate::className(), 'targetAttribute' => ['candidate_id' => 'id']],
@@ -39,6 +39,7 @@ class RatingItem extends \yii\db\ActiveRecord
             'additional_id' => 'Другое',
             'rating_group_id' => 'Группа',
             'score' => 'Процент',
+            'no_poll' => 'Опрос не проводился',
         ];
     }
 

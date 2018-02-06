@@ -62,16 +62,16 @@ $this->registerCssFile(Url::toRoute('css/calendar.css'));
 	if ($initial !== 1) $('#calendar-date').find('.col-md-6').addClass('hide');
     $('#calendar-dates').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 		$(this).closest('#calendar-date').find('.col-md-6')
-		$('.slick-slide[data-id=21]').children('.item__title').css('width', '94px')
+		$('.slick-slide[data-id=21]').children('.item__title').css('width', '94px');
 		if (nextSlide === 1) {
-			$('#calendar-date').find('.col-md-6').removeClass('hide')
-			$('.slick-slide[data-id=2]').children('#item-text').children('span').addClass('change-line')
-
+			$('#calendar-date').find('.col-md-6').removeClass('hide');
+			$('.slick-slide[data-id=2]').children('#item-text').children('span').addClass('change-line');
+		} else {
+			$('#calendar-date').find('.col-md-6').addClass('hide');
+			$('.slick-slide[data-id=2]').children('#item-text').children('span').removeClass('change-line');
 		}
-		else {
-			$('#calendar-date').find('.col-md-6').addClass('hide')
-			$('.slick-slide[data-id=2]').children('#item-text').children('span').removeClass('change-line')
-		}
+		nextId = $('.slick-slide[data-slick-index='+nextSlide+']').data('id');
+    	window.history.pushState(null, '', '".Url::toRoute(['site/calendar'])."/'+nextId);
     });
 
 	$('#calendar-date').slick({

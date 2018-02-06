@@ -17,6 +17,7 @@ class m180115_161527_create_table_rating_item extends Migration {
             'additional_id' => $this->integer(1),
             'rating_group_id' => $this->integer()->notNull(),
             'score' => $this->decimal(3, 1)->notNull(),
+            'no_poll' => $this->integer(1),
         ], $tableOptions);
         
         $this->addForeignKey("{rating_item}_candidate_id_fkey", '{{%rating_item}}', 'candidate_id', '{{%candidate}}', 'id', 'CASCADE', 'CASCADE');

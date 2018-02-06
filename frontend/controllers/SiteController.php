@@ -103,7 +103,7 @@ class SiteController extends Controller
         $rating = Rating::findOne(1);
 
         $ratingResults = RatingItem::find()
-            ->select(['score', 'candidate_id'])
+            ->select(['score', 'candidate_id', 'no_poll'])
             ->joinWith('candidate')
             ->where(['not', ['candidate_id' => null]])
             ->andWhere(['not', ['candidate.active' => Candidate::QUIT]])
@@ -112,6 +112,9 @@ class SiteController extends Controller
             ->indexBy('candidate_id')
             ->asArray()->all();
         $candidatePlace = array_search($candidate->id, array_keys($ratingResults)) + 1;
+        if($ratingResults[$candidate->id]['no_poll']) {
+            $candidatePlace = false;
+        }
 
         return $this->render('candidate', [
             'candidate' => $candidate,
@@ -175,10 +178,11 @@ class SiteController extends Controller
         $resultsArray = [];
         $ratingItems = RatingItem::find()->orderBy('score DESC')->asArray()->all();
         foreach ($ratingItems as $r) {
+            $score = $r['no_poll'] ? 'Опрос не проводился' : $r['score'].'%';
             if($r['candidate_id']) {
-                $resultsArray[$r['rating_group_id']]['c'][$r['candidate_id']] = $r['score'];
+                $resultsArray[$r['rating_group_id']]['c'][$r['candidate_id']] = $score;
             } else {
-                $resultsArray[$r['rating_group_id']]['a'][$r['additional_id']] = $r['score'];
+                $resultsArray[$r['rating_group_id']]['a'][$r['additional_id']] = $score;
             }
         }
 
