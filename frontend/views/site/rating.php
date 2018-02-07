@@ -72,10 +72,10 @@ use common\models\RatingItem;
                     <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['c'][$c->id]) ? $resultsArray[$group]['c'][$c->id] : 0;?>
                     <div class="rating-candidate type-candidate" data-candidate="<?=$c['id'];?>">
                         <a href="<?=$c->url;?>"><h4><?=$c->nameAndSurname;?></h4></a>
-                        <span class="rating-percent <?php if($score == false):?>off<?php endif;?>"">
-                            <span class="percent <?php if($score == false):?>off<?php endif;?>">
-                                <?php if($score == true):?>
-                                    <?=$score;?>
+                        <span class="rating-percent <?=$score ? '' : 'off';?>">
+                            <span class="percent" data-score="<?=$score;?>">
+                                <?php if($score):?>
+                                    <?=$score;?>%
                                 <?php else:?>
                                     <div class="question-icon">
                                         <i></i>
@@ -96,18 +96,20 @@ use common\models\RatingItem;
                     <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['a'][$key]) ? $resultsArray[$group]['a'][$key] : 0;?>
                     <div class="rating-candidate type-additional" data-additional="<?=$key;?>">
                         <h4><?=$item;?></h4>
-                        <span class="rating-percent <?php if($score == false):?>off<?php endif;?>">
-                            <?php if($score == true):?>
-                                <?=$score;?>
-                            <?php else:?>
-                                <div class="question-icon">
-                                    <i></i>
-                                    <div class="question-popup">
-                                        <p>Опрос не проводился</p>
-                                        <span class="question-close">Закрыть</span>
+                        <span class="rating-percent <?=$score ? '' : 'off';?>">
+                            <span class="percent" data-score="<?=$score;?>">
+                                <?php if($score):?>
+                                    <?=$score;?>%
+                                <?php else:?>
+                                    <div class="question-icon">
+                                        <i></i>
+                                        <div class="question-popup">
+                                            <p>Опрос не проводился</p>
+                                            <span class="question-close">Закрыть</span>
+                                        </div>
                                     </div>
-                                </div>
-                            <?php endif;?>
+                                <?php endif;?>
+                            </span>
                         </span>
                         <div class="rating-line">
                             <span style="width: <?=$score;?>"></span>
@@ -141,6 +143,8 @@ $script = "
     $('#groups-select').on('change', function(e) {
         group = $(this).find('option:selected').data('group');
         showGroupValue(group);
+        $('#groupsTab').attr('data-group', group);
+        $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+group);
     });
     
     var owl = $('.tabs');
@@ -164,28 +168,15 @@ $script = "
                 mouseDrag: false
             }
         }
-    });
-
-    
+    });   
     
     owl.on('changed.owl.carousel', function(event) {
-        var item = event.item.index;
-        if(item === 1){
-            $('body').find('.mobile-rating-cat').addClass('transform');
-            showGroupValue(3);
-            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+3);
-            $('#groupsTab').attr('data-group', 3);
-        }else if(item == 0){
-            $('body').find('.mobile-rating-cat').removeClass('transform');
-            showGroupValue(1);
-            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+1);
-            $('#groupsTab').attr('data-group', 1);
-        }else if(item == 2){
-            $('body').find('.mobile-rating-cat').removeClass('transform');
-            showGroupValue(2);
-            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+2);
-            $('#groupsTab').attr('data-group', 2);
-        }    
+        var index = event.item.index;
+        group = $('.tab:eq('+index+')').find('a').data('group');
+        $('body').find('.mobile-rating-cat').removeClass('transform');
+
+        showGroupValue(group);
+        $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+group);
     });
 
     function showGroupValue(group) {
@@ -198,11 +189,18 @@ $script = "
                     score = ratingResults[group]['a'][$(this).data('additional')];
                 }
                 if(score) {
-                    $(this).find('.percent').html(score);
+                    $(this).find('.percent').html(score+'%');
                     $(this).find('.rating-line span').css({'width': score+'%'});
                 } else {
-                    console.log('не проводился');
+                    $(this).find('.percent').html('<div class=\"question-icon\">'+
+                            '<i></i>'+
+                            '<div class=\"question-popup\">'+
+                                '<p>Опрос не проводился</p>'+
+                                '<span class=\"question-close\">Закрыть</span>'+
+                            '</div>'+
+                        '</div>');
                 }
+                $(this).find('.percent').attr('data-score', score);
             });
         } else {
             $('.rating-candidate').find('.percent').html('0');
@@ -210,14 +208,12 @@ $script = "
         }
         orderResults();
     }
-    
-    
 
     function orderResults() {
         var orderRatingsCandidates = $('.rating-candidate.type-candidate').sort(function (a, b) {
-            valueA = isNaN(parseInt($(a).find('.percent').text())) ? -1 : parseInt($(b).find('.percent').text());
-            valueB = isNaN(parseInt($(b).find('.percent').text())) ? -1 : parseInt($(b).find('.percent').text());
-
+            valueA = isNaN(parseInt($(a).find('.percent').data('score'))) ? 0 : parseInt($(a).find('.percent').data('score'));
+            valueB = isNaN(parseInt($(b).find('.percent').data('score'))) ? 0 : parseInt($(b).find('.percent').data('score'));
+            
             return valueA < valueB;
         });
         var orderRatingsAdditional = $('.rating-candidate.type-additional').sort(function (a, b) {
