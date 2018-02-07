@@ -88,7 +88,7 @@ use common\models\RatingItem;
                             </span>
                         </span>
                         <div class="rating-line">
-                            <span style="width: <?=$score;?>"></span>
+                            <span style="width: <?=$score;?>%"></span>
                         </div>
                     </div>
                 <?php endforeach;?>
@@ -112,7 +112,7 @@ use common\models\RatingItem;
                             </span>
                         </span>
                         <div class="rating-line">
-                            <span style="width: <?=$score;?>"></span>
+                            <span style="width: <?=$score;?>%"></span>
                         </div>
                     </div>
                 <?php endforeach;?>
