@@ -211,13 +211,16 @@ $script = "
 
     function orderResults() {
         var orderRatingsCandidates = $('.rating-candidate.type-candidate').sort(function (a, b) {
-            valueA = isNaN(parseInt($(a).find('.percent').data('score'))) ? 0 : parseInt($(a).find('.percent').data('score'));
-            valueB = isNaN(parseInt($(b).find('.percent').data('score'))) ? 0 : parseInt($(b).find('.percent').data('score'));
+            valueA = isNaN(parseFloat($(a).find('.percent').data('score'))) ? 0 : parseFloat($(a).find('.percent').data('score'));
+            valueB = isNaN(parseFloat($(b).find('.percent').data('score'))) ? 0 : parseFloat($(b).find('.percent').data('score'));
             
             return valueA < valueB;
         });
         var orderRatingsAdditional = $('.rating-candidate.type-additional').sort(function (a, b) {
-            return parseInt($(a).find('.percent').text()) < parseInt($(b).find('.percent').text());
+            valueA = isNaN(parseFloat($(a).find('.percent').data('score'))) ? 0 : parseFloat($(a).find('.percent').data('score'));
+            valueB = isNaN(parseFloat($(b).find('.percent').data('score'))) ? 0 : parseFloat($(b).find('.percent').data('score'));
+            
+            return valueA < valueB;
         });
         $('.tab-content').html(orderRatingsCandidates);
         $('.tab-content').append(orderRatingsAdditional);

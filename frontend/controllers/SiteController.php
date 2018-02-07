@@ -67,7 +67,7 @@ class SiteController extends Controller
             ->andWhere(['not', ['candidate_id' => null]])
             ->andWhere(['not', ['candidate.active' => Candidate::QUIT]])
             ->orderBy('no_poll, score DESC')
-            ->limit(7)->asArray()->all();
+            ->limit(8)->asArray()->all();
 
         $news = News::find()->orderBy('date DESC')->limit(3)->all();
         
