@@ -146,59 +146,40 @@ $script = "
         if(item === 1){
             $('body').find('.mobile-rating-cat').addClass('transform');
             showGroupValue(3);
-            if($(r_group).hasClass('rating-cat_el')) {
-                $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+3);
-                $('#groupsTab').attr('data-group', group);
-            } else {
-                if($(r_group).hasClass('show-rating-cat')) {
-                    $('.rating-cat_el').removeClass('active');
-                    $('.rating-cat_el[data-group='+group+']').addClass('active');
-                }
-            }
+            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+3);
+            $('#groupsTab').attr('data-group', 3);
         }else if(item == 0){
             $('body').find('.mobile-rating-cat').removeClass('transform');
             showGroupValue(1);
-            if($(r_group).hasClass('rating-cat_el')) {
-                $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+1);
-                $('#groupsTab').attr('data-group', group);
-            } else {
-                if($(r_group).hasClass('show-rating-cat')) {
-                    $('.rating-cat_el').removeClass('active');
-                    $('.rating-cat_el[data-group='+group+']').addClass('active');
-                }
-            }
+            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+1);
+            $('#groupsTab').attr('data-group', 1);
         }else if(item == 2){
             $('body').find('.mobile-rating-cat').removeClass('transform');
             showGroupValue(2);
-            if($(r_group).hasClass('rating-cat_el')) {
-                $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+2);
-                $('#groupsTab').attr('data-group', group);
-            } else {
-                if($(r_group).hasClass('show-rating-cat')) {
-                    $('.rating-cat_el').removeClass('active');
-                    $('.rating-cat_el[data-group='+group+']').addClass('active');
-                }
-            }
+            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+2);
+            $('#groupsTab').attr('data-group', 2);
         }
     }
     
-    $(document)
-        .on('click', '.tabs .owl-prev', function () {
-            var act = $('.tabs .owl-item:nth-child(2)');
-            if(act.hasClass('active')){
-                $('body').find('.mobile-rating-cat').addClass('transform');
-            }else{
-                $('body').find('.mobile-rating-cat').removeClass('transform');
-            }
-        })
-        .on('click', '.tabs .owl-next', function () {
-            var act = $('.tabs .owl-item:nth-child(2)');
-            if(act.hasClass('active')){
-                $('body').find('.mobile-rating-cat').addClass('transform');
-            }else{
-                $('body').find('.mobile-rating-cat').removeClass('transform');
-            }
-        });
+    owl.on('changed.owl.carousel', function(event) {
+        var item = event.item.index;
+        if(item === 1){
+            $('body').find('.mobile-rating-cat').addClass('transform');
+            showGroupValue(3);
+            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+3);
+            $('#groupsTab').attr('data-group', 3);
+        }else if(item == 0){
+            $('body').find('.mobile-rating-cat').removeClass('transform');
+            showGroupValue(1);
+            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+1);
+            $('#groupsTab').attr('data-group', 1);
+        }else if(item == 2){
+            $('body').find('.mobile-rating-cat').removeClass('transform');
+            showGroupValue(2);
+            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+2);
+            $('#groupsTab').attr('data-group', 2);
+        }    
+    });
 
     function showGroupValue(group) {
         window.history.pushState(null, '', '".Url::toRoute(['site/rating'])."?group='+group);
