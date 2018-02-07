@@ -72,7 +72,7 @@ use common\models\RatingItem;
                     <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['c'][$c->id]) ? $resultsArray[$group]['c'][$c->id] : 0;?>
                     <div class="rating-candidate type-candidate" data-candidate="<?=$c['id'];?>">
                         <a href="<?=$c->url;?>"><h4><?=$c->nameAndSurname;?></h4></a>
-                        <span class="rating-percent"><span class="percent"><?=$score;?></span></span>
+                        <span class="rating-percent"><span class="percent"><?=$score ? $score : 'Опрос не проводился';?></span></span>
                         <div class="rating-line">
                             <span style="width: <?=$score;?>%"></span>
                         </div>
@@ -82,7 +82,7 @@ use common\models\RatingItem;
                     <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['a'][$key]) ? $resultsArray[$group]['a'][$key] : 0;?>
                     <div class="rating-candidate type-additional" data-additional="<?=$key;?>">
                         <h4><?=$item;?></h4>
-                        <span class="rating-percent"><span class="percent"><?=$score;?></span></span>
+                        <span class="rating-percent"><span class="percent"><?=$score ? $score : 'Опрос не проводился';?></span></span>
                         <div class="rating-line">
                             <span style="width: <?=$score;?>%"></span>
                         </div>
@@ -174,8 +174,12 @@ $script = "
                 } else {
                     score = ratingResults[group]['a'][$(this).data('additional')];
                 }
-                $(this).find('.percent').html(score);
-                $(this).find('.rating-line span').css({'width': score+'%'});
+                if(score) {
+                    $(this).find('.percent').html(score);
+                    $(this).find('.rating-line span').css({'width': score+'%'});
+                } else {
+                    console.log('не проводился');
+                }
             });
         } else {
             $('.rating-candidate').find('.percent').html('0');

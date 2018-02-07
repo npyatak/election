@@ -176,7 +176,7 @@ class SiteController extends Controller
         $resultsArray = [];
         $ratingItems = RatingItem::find()->orderBy('score DESC')->asArray()->all();
         foreach ($ratingItems as $r) {
-            $score = $r['no_poll'] ? 'Опрос не проводился' : $r['score'].'%';
+            $score = $r['no_poll'] ? false : $r['score'].'%';
             if($r['candidate_id']) {
                 $resultsArray[$r['rating_group_id']]['c'][$r['candidate_id']] = $score;
             } else {
