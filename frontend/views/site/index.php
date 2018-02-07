@@ -84,7 +84,19 @@ use common\models\RatingItem;
                             <?php $title = $result['candidate_id'] ? $candidates[$result['candidate_id']]->surname : RatingItem::getAdditionalArray()[$result['additional_id']];?>
                             <li>
                                 <div class="left-li"><?=$title;?></div>
-                                <div class="right-li"><?=$result['no_poll'] ? 'Опрос не проводился' : $result['score'].'%';?></div>
+                                <div class="right-li <?php if($result['no_poll']):?>off<?php endif;?>">
+                                    <?php if($result['no_poll']):?>
+                                        <div class="question-icon">
+                                            <i></i>
+                                            <div class="question-popup">
+                                                <p>Опрос не проводился</p>
+                                                <span class="question-close">Закрыть</span>
+                                            </div>
+                                        </div>
+                                    <?php else:?>
+                                        <?=$result['score'].'%';?>
+                                    <?php endif;?>
+                                </div>
                             </li>
                         <?php endforeach;?>
                     </ul>
