@@ -1980,7 +1980,6 @@ a.all-news {
 }
 .rating-candidate .rating-percent.off .percent {
     display: block;
-    width: 20px;
     height: 20px;
 }
 .rating-line {
