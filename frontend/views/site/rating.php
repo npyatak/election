@@ -72,9 +72,23 @@ use common\models\RatingItem;
                     <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['c'][$c->id]) ? $resultsArray[$group]['c'][$c->id] : 0;?>
                     <div class="rating-candidate type-candidate" data-candidate="<?=$c['id'];?>">
                         <a href="<?=$c->url;?>"><h4><?=$c->nameAndSurname;?></h4></a>
-                        <span class="rating-percent"><span class="percent"><?=$score ? $score : 'Опрос не проводился';?></span></span>
+                        <span class="rating-percent <?php if($score == false):?>off<?php endif;?>"">
+                            <span class="percent <?php if($score == false):?>off<?php endif;?>">
+                                <?php if($score == true):?>
+                                    <?=$score;?>
+                                <?php else:?>
+                                    <div class="question-icon">
+                                        <i></i>
+                                        <div class="question-popup">
+                                            <p>Опрос не проводился</p>
+                                            <span class="question-close">Закрыть</span>
+                                        </div>
+                                    </div>
+                                <?php endif;?>
+                            </span>
+                        </span>
                         <div class="rating-line">
-                            <span style="width: <?=$score;?>%"></span>
+                            <span style="width: <?=$score;?>"></span>
                         </div>
                     </div>
                 <?php endforeach;?>
@@ -82,9 +96,21 @@ use common\models\RatingItem;
                     <?php $score = isset($resultsArray[$group]) && isset($resultsArray[$group]['a'][$key]) ? $resultsArray[$group]['a'][$key] : 0;?>
                     <div class="rating-candidate type-additional" data-additional="<?=$key;?>">
                         <h4><?=$item;?></h4>
-                        <span class="rating-percent"><span class="percent"><?=$score ? $score : 'Опрос не проводился';?></span></span>
+                        <span class="rating-percent <?php if($score == false):?>off<?php endif;?>">
+                            <?php if($score == true):?>
+                                <?=$score;?>
+                            <?php else:?>
+                                <div class="question-icon">
+                                    <i></i>
+                                    <div class="question-popup">
+                                        <p>Опрос не проводился</p>
+                                        <span class="question-close">Закрыть</span>
+                                    </div>
+                                </div>
+                            <?php endif;?>
+                        </span>
                         <div class="rating-line">
-                            <span style="width: <?=$score;?>%"></span>
+                            <span style="width: <?=$score;?>"></span>
                         </div>
                     </div>
                 <?php endforeach;?>

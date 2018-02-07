@@ -1641,8 +1641,14 @@ header .right-li {
     text-align: right;
     z-index: 1;
 }
-header .right-li.off {
-    width: 30px;
+header .right-li.off::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 23px;
+    height: 2px;
+    width: 15px;
+    background-color: #fff;
 }
 header .right-li .question-popup {
     text-align: left;
@@ -1968,6 +1974,14 @@ a.all-news {
     font: 24px 'FiraSans-Bold', sans-serif;
     line-height: 30px;
     color: #fff;
+}
+.rating-candidate .rating-percent.off {
+    top: 5px;
+}
+.rating-candidate .rating-percent.off .percent {
+    display: block;
+    width: 20px;
+    height: 20px;
 }
 .rating-line {
     position: relative;
@@ -3557,6 +3571,9 @@ a.all-news {
     }
     .tabs .owl-item:nth-child(3) h4 {
         max-width: 200px;
+    }
+    .rating-candidate h4 {
+        margin-right: 50px;
     }
     .rating-candidate h4,
     .rating-candidate .rating-percent {
