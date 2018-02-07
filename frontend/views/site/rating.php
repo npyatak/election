@@ -186,7 +186,10 @@ $script = "
 
     function orderResults() {
         var orderRatingsCandidates = $('.rating-candidate.type-candidate').sort(function (a, b) {
-            return parseInt($(a).find('.percent').text()) < parseInt($(b).find('.percent').text());
+            valueA = isNaN(parseInt($(a).find('.percent').text())) ? -1 : parseInt($(b).find('.percent').text());
+            valueB = isNaN(parseInt($(b).find('.percent').text())) ? -1 : parseInt($(b).find('.percent').text());
+
+            return valueA < valueB;
         });
         var orderRatingsAdditional = $('.rating-candidate.type-additional').sort(function (a, b) {
             return parseInt($(a).find('.percent').text()) < parseInt($(b).find('.percent').text());

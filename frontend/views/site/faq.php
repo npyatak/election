@@ -19,7 +19,7 @@ $this->registerJsFile(Url::toRoute('js/device.js'), ['depends' => [\yii\web\Jque
                     <h3>Как выбирают президента</h3>
                     <?php foreach ($cards as $card):?>
                         <?php if($card->category == 1):?>
-                            <div class="card <?=$card->id == $id ? 'active' : '';?>">
+                            <div class="card <?=$card->id == $id ? 'active' : '';?>" data-id="<?=$card->id;?>">
                                 <div class="card-title card-show">
                                     <h4><?=$card->title;?></h4>
                                     <i class="fa fa-chevron-down"></i>
@@ -35,7 +35,7 @@ $this->registerJsFile(Url::toRoute('js/device.js'), ['depends' => [\yii\web\Jque
                     <h3>Как голосовать</h3>
                     <?php foreach ($cards as $card):?>
                         <?php if($card->category == 2):?>
-                            <div class="card <?=$card->id == $id ? 'active' : '';?>">
+                            <div class="card <?=$card->id == $id ? 'active' : '';?>" data-id="<?=$card->id;?>">
                                 <div class="card-title card-show">
                                     <h4><?=$card->title;?></h4>
                                     <i class="fa fa-chevron-down"></i>
@@ -58,6 +58,7 @@ $this->registerJsFile(Url::toRoute('js/device.js'), ['depends' => [\yii\web\Jque
 $script = "
     $(document)
         .on('click', '.card-show', function () {
+            window.history.pushState(null, '', '".Url::toRoute(['site/faq'])."/'+$(this).closest('.card').data('id'));
             var a = $(this)
             if( $('.card-title').hasClass('card-hide') ){
                 if(device.ios == false){
@@ -87,6 +88,7 @@ $script = "
             $(this).toggleClass('card-show card-hide');
             $(this).parent().toggleClass('active');
             $(this).parent().find('.card-text').slideUp(300);
+            window.history.pushState(null, '', '".Url::toRoute(['site/faq'])."');
         });
 
     if($('.card.active').length) {

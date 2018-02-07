@@ -47,8 +47,6 @@ class SiteController extends Controller
         if($share === null) {
             $share = Yii::$app->params['defaultShare'];
         }
-        $share['url'] = Url::current([], true);
-        $share['image'] = Url::to([$share['image']], true);
 
         $view = $this->getView();
         $view->params['share'] = $share;
@@ -68,7 +66,7 @@ class SiteController extends Controller
             ->where(['rating_group_id' => 1])
             ->andWhere(['not', ['candidate_id' => null]])
             ->andWhere(['not', ['candidate.active' => Candidate::QUIT]])
-            ->orderBy('score DESC')
+            ->orderBy('no_poll, score DESC')
             ->limit(7)->asArray()->all();
 
         $news = News::find()->orderBy('date DESC')->limit(3)->all();
@@ -108,7 +106,7 @@ class SiteController extends Controller
             ->where(['not', ['candidate_id' => null]])
             ->andWhere(['not', ['candidate.active' => Candidate::QUIT]])
             ->groupBy('candidate_id')
-            ->orderBy('score DESC')
+            ->orderBy('no_poll, score DESC')
             ->indexBy('candidate_id')
             ->asArray()->all();
         $candidatePlace = array_search($candidate->id, array_keys($ratingResults)) + 1;

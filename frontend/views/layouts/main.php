@@ -37,7 +37,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-    <?php $share = isset($this->params['share']) ? $this->params['share'] : ['text' => '', 'title' => 'title', 'url' => Url::current([], true), 'image' => '', 'twitter' => ''];?>
+    <?php $share = isset($this->params['share']) ? $this->params['share'] : Yii::$app->params['defaultShare'];?>
 
     <?php if($_SERVER['HTTP_HOST'] !== 'election.local'):?>
     <!-- Google Tag Manager (noscript) -->

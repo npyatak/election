@@ -50,4 +50,8 @@ class Share extends \yii\db\ActiveRecord
             'twitter' => 'Текст для твиттера',
         ];
     }
+    
+    public function getImageSrcPath() {
+        return __DIR__ . '/../../frontend/web';
+    }
 }
