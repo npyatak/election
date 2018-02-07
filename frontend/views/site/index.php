@@ -89,7 +89,7 @@ use common\models\RatingItem;
                                         <div class="question-icon">
                                             <i></i>
                                             <div class="question-popup">
-                                                <p><?=$rating->text;?></p>
+                                                <p>Опрос не проводился</p>
                                                 <span class="question-close">Закрыть</span>
                                             </div>
                                         </div>

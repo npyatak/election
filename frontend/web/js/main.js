@@ -200,24 +200,6 @@ $(document).ready(function () {
         autoWidth:true,
         items: 4
     });
-    
-    $(this)
-        .on('click', '.tabs .owl-prev', function () {
-            var act = $('.tabs .owl-item:nth-child(2)');
-            if(act.hasClass('active')){
-                $('body').find('.mobile-rating-cat').addClass('transform');
-            }else{
-                $('body').find('.mobile-rating-cat').removeClass('transform');
-            }
-        })
-        .on('click', '.tabs .owl-next', function () {
-            var act = $('.tabs .owl-item:nth-child(2)');
-            if(act.hasClass('active')){
-                $('body').find('.mobile-rating-cat').addClass('transform');
-            }else{
-                $('body').find('.mobile-rating-cat').removeClass('transform');
-            }
-        });
 
     $('.rating-cat_el').click(function (e) {
         e.preventDefault();

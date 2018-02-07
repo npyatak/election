@@ -181,6 +181,24 @@ $script = "
             }
         }
     }
+    
+    $(document)
+        .on('click', '.tabs .owl-prev', function () {
+            var act = $('.tabs .owl-item:nth-child(2)');
+            if(act.hasClass('active')){
+                $('body').find('.mobile-rating-cat').addClass('transform');
+            }else{
+                $('body').find('.mobile-rating-cat').removeClass('transform');
+            }
+        })
+        .on('click', '.tabs .owl-next', function () {
+            var act = $('.tabs .owl-item:nth-child(2)');
+            if(act.hasClass('active')){
+                $('body').find('.mobile-rating-cat').addClass('transform');
+            }else{
+                $('body').find('.mobile-rating-cat').removeClass('transform');
+            }
+        });
 
     function showGroupValue(group) {
         window.history.pushState(null, '', '".Url::toRoute(['site/rating'])."?group='+group);
@@ -200,6 +218,8 @@ $script = "
         }
         orderResults();
     }
+    
+    
 
     function orderResults() {
         var orderRatingsCandidates = $('.rating-candidate.type-candidate').sort(function (a, b) {
