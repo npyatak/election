@@ -145,22 +145,39 @@ $script = "
         var item = event.item.index;
         if(item === 1){
             $('body').find('.mobile-rating-cat').addClass('transform');
-        }else{
+            showGroupValue(3);
+            if($(r_group).hasClass('rating-cat_el')) {
+                $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+3);
+                $('#groupsTab').attr('data-group', group);
+            } else {
+                if($(r_group).hasClass('show-rating-cat')) {
+                    $('.rating-cat_el').removeClass('active');
+                    $('.rating-cat_el[data-group='+group+']').addClass('active');
+                }
+            }
+        }else if(item == 0){
             $('body').find('.mobile-rating-cat').removeClass('transform');
-        }
-        
-        var cur_item = event;
-        console.log(cur_item)
-        var r_group = $(cur_item).find('.r_group'); 
-        var group = $(r_group).attr('data-group');
-        showGroupValue(group);
-        if($(r_group).hasClass('rating-cat_el')) {
-            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+group);
-            $('#groupsTab').attr('data-group', group);
-        } else {
-            if($(r_group).hasClass('show-rating-cat')) {
-                $('.rating-cat_el').removeClass('active');
-                $('.rating-cat_el[data-group='+group+']').addClass('active');
+            showGroupValue(1);
+            if($(r_group).hasClass('rating-cat_el')) {
+                $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+1);
+                $('#groupsTab').attr('data-group', group);
+            } else {
+                if($(r_group).hasClass('show-rating-cat')) {
+                    $('.rating-cat_el').removeClass('active');
+                    $('.rating-cat_el[data-group='+group+']').addClass('active');
+                }
+            }
+        }else if(item == 2){
+            $('body').find('.mobile-rating-cat').removeClass('transform');
+            showGroupValue(2);
+            if($(r_group).hasClass('rating-cat_el')) {
+                $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+2);
+                $('#groupsTab').attr('data-group', group);
+            } else {
+                if($(r_group).hasClass('show-rating-cat')) {
+                    $('.rating-cat_el').removeClass('active');
+                    $('.rating-cat_el[data-group='+group+']').addClass('active');
+                }
             }
         }
     }

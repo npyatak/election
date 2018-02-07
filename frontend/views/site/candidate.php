@@ -17,7 +17,7 @@ $this->params['share'] = [
                     <p class="intro"><?=$candidate->status;?></p>
                     <div class="bottom">
                         <div class="candidate-detail_info">
-                            <div class="candidate-percent <?php if(!$candidate->active == Candidate::QUIT):?>off<?php endif;?>">
+                            <div class="candidate-percent <?php if(!$candidate->active == Candidate::QUIT || !$candidatePlace):?>off<?php endif;?>">
                                 <?php if($candidate->active == Candidate::QUIT):?>
                                     <span class="candidate-off">Выбыл из президентской гонки</span>
                                 <?php elseif(!$candidatePlace):?>
@@ -53,15 +53,17 @@ $this->params['share'] = [
             </div>
             <div class="bottom">
                 <div class="candidate-detail_info">
-                    <div class="candidate-percent <?php if($candidate->active == Candidate::QUIT):?>off<?php endif;?>">
+                    <div class="candidate-percent <?php if($candidate->active != Candidate::QUIT || !$candidatePlace):?>off<?php endif;?>">
                         <?php if($candidate->active == Candidate::QUIT):?>
                             <span class="candidate-off">Выбыл из президентской гонки</span>
+                        <?php elseif(!$candidatePlace):?>
+                            <span class="candidate-off">Опрос не проводился</span>
                         <?php else:?>
                             <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
                             <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
                         <?php endif;?>
                     </div>
-                    <?php if ($candidate->active != Candidate::QUIT):?>
+                    <?php if ($candidate->active != Candidate::QUIT && $candidatePlace):?>
                     <div class="candidate-rating">
                         <p>Рейтинг кандидата по данным ВЦИОМ от <?=$rating->date;?></p>
                         <div class="question-icon">

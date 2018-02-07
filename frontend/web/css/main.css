@@ -1598,6 +1598,10 @@ header .right-content li {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    z-index: 0;
+}
+header .right-content li:hover {
+    z-index: 1;
 }
 header .right-content li::before {
     content: '';
@@ -1636,6 +1640,13 @@ header .right-li {
     font: 20px 'FiraSans-Bold', sans-serif;
     text-align: right;
     z-index: 1;
+}
+header .right-li.off {
+    width: 30px;
+}
+header .right-li .question-popup {
+    text-align: left;
+    z-index: 8;
 }
 header .left .left-block {
     width: 400px;
@@ -2102,10 +2113,12 @@ a.all-news {
     #news-slider {
     }
     .tests {
+        position: relative;
         width: 100%;
         height: auto;
         min-height: 300px;
         padding-top: 40px;
+        z-index: 0;
     }
     .test-item {
         width: 100%;
@@ -2218,6 +2231,8 @@ a.all-news {
         padding-top: 40px;
     }
     header .right-content {
+        position: relative;
+        z-index: 2;
         padding-right: 40px;
     }
     header .right-content a.btn {
