@@ -112,7 +112,7 @@ class SiteController extends Controller
             ->indexBy('candidate_id')
             ->asArray()->all();
         $candidatePlace = array_search($candidate->id, array_keys($ratingResults)) + 1;
-        if($ratingResults[$candidate->id]['no_poll']) {
+        if(!isset($ratingResults[$candidate->id]) || $ratingResults[$candidate->id]['no_poll']) {
             $candidatePlace = false;
         }
 
