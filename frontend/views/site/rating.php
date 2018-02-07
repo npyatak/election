@@ -156,7 +156,6 @@ $script = "
                 nav: true,
                 touchDrag: true,
                 mouseDrag: true,
-                onDragged: callback
             },
             1150: {
                 margin: 0,
@@ -167,25 +166,7 @@ $script = "
         }
     });
 
-    function callback(event){
-        var item = event.item.index;
-        if(item === 1){
-            $('body').find('.mobile-rating-cat').addClass('transform');
-            showGroupValue(3);
-            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+3);
-            $('#groupsTab').attr('data-group', 3);
-        }else if(item == 0){
-            $('body').find('.mobile-rating-cat').removeClass('transform');
-            showGroupValue(1);
-            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+1);
-            $('#groupsTab').attr('data-group', 1);
-        }else if(item == 2){
-            $('body').find('.mobile-rating-cat').removeClass('transform');
-            showGroupValue(2);
-            $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+2);
-            $('#groupsTab').attr('data-group', 2);
-        }
-    }
+    
     
     owl.on('changed.owl.carousel', function(event) {
         var item = event.item.index;
