@@ -90,7 +90,7 @@ $('#calendar-dates').slick({
     arrows: true,
     variableWidth: true,
     slidesToScroll: 1,
-    infinite: true,
+    infinite: false,
 
     asNavFor: '#calendar-date',
 
