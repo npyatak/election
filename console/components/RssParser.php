@@ -38,9 +38,6 @@ class RssParser extends Model
 		        $newsTitleObject = $codeOneItem->getElementsByTagName('title');
 		        $titleText = $newsTitleObject->item(0)->nodeValue;
 		        $title = htmlspecialchars($titleText);
-		        //Получаем description
-		        $newsDescriptionObject = $codeOneItem->getElementsByTagName('description');
-		        $description = htmlspecialchars($newsDescriptionObject->item(0)->nodeValue);
 		        //Получаем ссылку на новость
 		        $newsLinkObject = $codeOneItem->getElementsByTagName('link');
 		        $link = htmlspecialchars($newsLinkObject->item(0)->nodeValue);
@@ -49,9 +46,9 @@ class RssParser extends Model
 		        $publicationDate = htmlspecialchars($newsDateObject->item(0)->nodeValue);
 		        $date = new \DateTime(trim($publicationDate));
 				$publicationDate = $date->getTimestamp();
-		        $rssData[] = ['title' => $title, 'description' => $description, 'link' => $link, 'publicationDate' => $publicationDate];
+		        $rssData[] = ['title' => $title, 'link' => $link, 'publicationDate' => $publicationDate];
 	    	}
-	    	unset($url, $domDoc, $loadFlag, $items, $newsTitleObject, $titleText, $title, $newsDescriptionObject, $description);
+	    	unset($url, $domDoc, $loadFlag, $items, $newsTitleObject, $titleText, $title, $newsDescriptionObject);
 	    	unset($newsLinkObject, $link, $newsDateObject, $codeOneItem, $publicationDate, $explodeDate, $day, $month, $year);
 	    	unset($explodeTime, $hours, $minuts, $seconds, $publicationDate);
 
