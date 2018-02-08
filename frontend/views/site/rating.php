@@ -168,12 +168,17 @@ $script = "
                 mouseDrag: false
             }
         }
-    });   
+    });
     
     owl.on('changed.owl.carousel', function(event) {
         var index = event.item.index;
         group = $('.tab:eq('+index+')').find('a').data('group');
-        $('body').find('.mobile-rating-cat').removeClass('transform');
+
+        if(index === 1){
+            $('body').find('.mobile-rating-cat').addClass('transform');
+        }else{
+            $('body').find('.mobile-rating-cat').removeClass('transform');
+        }
 
         showGroupValue(group);
         $('#groupsTab').attr('href', '".Url::toRoute(['site/rating'])."?group='+group);

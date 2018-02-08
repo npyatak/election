@@ -3455,6 +3455,9 @@ a.all-news {
     .tab-content .question-icon.popup-open {
         z-index: 3;
     }
+    .tab a:hover {
+        background-color: transparent;
+    }
 }
 @media (max-width: 500px) {
     .test-image {
