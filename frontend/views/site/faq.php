@@ -112,6 +112,7 @@ $script = "
             data: {url: url},
             success: function(data) {
                 if(data) {
+                    $('.share').attr('href', url);
                     $('.share').attr('data-url', data.uri);
                     $('.share').attr('data-title', data.title);
                     $('.share').attr('data-image', data.image);
