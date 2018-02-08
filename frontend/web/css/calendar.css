@@ -249,12 +249,12 @@
 		background: #f9f9f9;
 	    padding-bottom: 0;
 	    position: fixed;
-	    max-height: 180px;
+	    max-height: 160px;
 	    bottom: 0;
 	    left: 0;
 	    right: 0;
 	    z-index: 7;
-	    min-height: 20vh;
+	    min-height: 160px;
 	}
 	#calendar-dates .item {
     margin: 10px 0 0 -1px;
