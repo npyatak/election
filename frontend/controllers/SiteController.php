@@ -8,6 +8,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
+use yii\web\Response;
 
 use common\models\Candidate;
 use common\models\Question;
@@ -40,6 +41,10 @@ class SiteController extends Controller
     }
 
     public function beforeAction($action) {
+        if(Yii::$app->controller->action->id == 'candidate') {
+            return parent::beforeAction($action);
+        }
+
         $share = Share::find()->where(['uri' => $_SERVER['REQUEST_URI']])->asArray()->one();
         if($share === null) {
             $share = Share::find()->where(['uri' => '/'.$action->controller->action->id])->asArray()->one();
@@ -132,6 +137,13 @@ class SiteController extends Controller
     }
 
     public function actionFaq($id = null) {
+        if (Yii::$app->request->isAjax && isset($_GET['url'])) {
+            $share = Share::find()->where(['uri' => $_GET['url']])->asArray()->one();
+            $share['uri'] = Url::to($_GET['url'], true);
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            return $share;
+        }
+
         $cards = Card::find()->all();
         $candidates = Candidate::find()->orderBy('name')->all();
 

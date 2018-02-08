@@ -58,7 +58,10 @@ $this->registerJsFile(Url::toRoute('js/device.js'), ['depends' => [\yii\web\Jque
 $script = "
     $(document)
         .on('click', '.card-show', function () {
-            window.history.pushState(null, '', '".Url::toRoute(['site/faq'])."/'+$(this).closest('.card').data('id'));
+            url = '".Url::toRoute(['site/faq'])."/'+$(this).closest('.card').data('id');
+            window.history.pushState(null, '', url);
+            updateShare(url);
+
             var a = $(this)
             if( $('.card-title').hasClass('card-hide') ){
                 if(device.ios == false){
@@ -88,7 +91,9 @@ $script = "
             $(this).toggleClass('card-show card-hide');
             $(this).parent().toggleClass('active');
             $(this).parent().find('.card-text').slideUp(300);
-            window.history.pushState(null, '', '".Url::toRoute(['site/faq'])."');
+            url = '".Url::toRoute(['site/faq'])."';
+            window.history.pushState(null, '', url);
+            updateShare(url);
         });
 
     if($('.card.active').length) {
@@ -100,6 +105,25 @@ $script = "
             }
             $('.card.active').find('.card-title').toggleClass('card-show card-hide');
         }, 500);
+    }
+
+    function updateShare(url) {   
+        $.ajax({
+            data: {url: url},
+            success: function(data) {
+                if(data) {
+                    $('.share').attr('data-url', data.uri);
+                    $('.share').attr('data-title', data.title);
+                    $('.share').attr('data-image', data.image);
+                    $('.share').attr('data-text', data.text);
+
+                    $('meta[property=\"og:url\"]').attr('content', data.uri);
+                    $('meta[property=\"og:title\"]').attr('content', data.title);
+                    $('meta[property=\"og:image\"]').attr('content', data.image);
+                    $('meta[property=\"og:description\"]').attr('content', data.text);
+                }
+            }
+        });
     }
     
 ";

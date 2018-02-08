@@ -6,7 +6,7 @@ use common\models\Candidate;
 $this->registerJsFile(Url::toRoute('js/player/jwplayer.js'), ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 $this->params['share'] = [
-    'text' => $candidate->share_text, 'title' => $candidate->share_title, 'url' => Url::current([], true), 'image' => Url::to($candidate->share_image, true), 'twitter' => $candidate->share_twitter
+    'text' => $candidate->share_text, 'title' => $candidate->share_title, 'image' => $candidate->share_image, 'twitter' => $candidate->share_twitter
 ];?>
 <div class="candidate-detail">
     <div class="candidate-detail_top">
