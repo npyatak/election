@@ -2552,6 +2552,15 @@ a.all-news {
         width: 80px;
         height: 80px;
         color: #fff;
+        -webkit-transition: .2s;
+        -moz-transition: .2s;
+        -ms-transition: .2s;
+        -o-transition: .2s;
+        transition: .2s;
+    }
+    .tabs .owl-prev:hover,
+    .tabs .owl-next:hover {
+        background-color: #383cb4;
     }
     .tabs .owl-prev i,
     .tabs .owl-next i {
@@ -3400,6 +3409,10 @@ a.all-news {
         height: 40px;
         background-color: #fff;
         color: #252aa6;
+    }
+    .tabs .owl-prev:hover,
+    .tabs .owl-next:hover {
+        background-color: #e6e6e6;
     }
     .tabs .owl-prev i,
     .tabs .owl-next i {
