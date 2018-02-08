@@ -25,11 +25,12 @@ $(document).ready(function () {
 
         if($(window).width() <= 767){
             $('.question-icon i').click(function () {
+                $('.question-icon').removeClass('popup-open');
                 $(this).parent().addClass('popup-open');
             });
 
             $('.question-close').click(function () {
-                $(this).parent().parent().removeClass('popup-open');
+                $('.question-icon').removeClass('popup-open');
             });
         }
     });
