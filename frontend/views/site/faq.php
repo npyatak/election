@@ -113,10 +113,11 @@ $script = "
             success: function(data) {
                 if(data) {
                     $('.share').attr('href', url);
-                    $('.share').attr('data-url', data.uri);
-                    $('.share').attr('data-title', data.title);
-                    $('.share').attr('data-image', data.image);
-                    $('.share').attr('data-text', data.text);
+                    $('.share').data('url', data.uri);
+                    $('.share').data('title', data.title);
+                    $('.share').data('image', data.image);
+                    $('.share').data('text', data.text);
+                    $('.share[data-type=\"tg\"]').data('title', data.twitter);
 
                     $('meta[property=\"og:url\"]').attr('content', data.uri);
                     $('meta[property=\"og:title\"]').attr('content', data.title);
