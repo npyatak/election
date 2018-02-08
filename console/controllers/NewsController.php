@@ -16,8 +16,8 @@ class NewsController extends Controller {
         $count = 0;
 
         foreach ($rssData as $data) {
-            $n = News::find()->where(['url' => $data['link']])->count();
-            if($n == 0) {
+            $exists = News::find()->where(['url' => $data['link']])->exists();
+            if(!$exists) {
                 $news = new News;
                 $news->url = $data['link'];
                 $news->title = $data['title'];
