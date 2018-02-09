@@ -22,8 +22,8 @@ class ShareWidget extends \yii\base\Widget
     }
 
     public function run() {
-        $this->share['url'] = Url::current([], true);
-        $this->share['imageUrl'] = Url::to([$this->share['image']], true);
+        $this->share['url'] = Url::current([], $_SERVER['REQUEST_SCHEME']);
+        $this->share['imageUrl'] = $this->share['image'] ? Url::to([$this->share['image']], $_SERVER['REQUEST_SCHEME']) : null;
 
         $view = $this->getView();
 		$view->registerMetaTag(['property' => 'og:description', 'content' => $this->share['text']], 'og:description');

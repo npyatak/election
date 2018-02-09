@@ -139,7 +139,8 @@ class SiteController extends Controller
     public function actionFaq($id = null) {
         if (Yii::$app->request->isAjax && isset($_GET['url'])) {
             $share = Share::find()->where(['uri' => $_GET['url']])->asArray()->one();
-            $share['uri'] = Url::to($_GET['url'], true);
+            $share['uri'] = Url::to($_GET['url'], $_SERVER['REQUEST_SCHEME']);
+            $share['image'] = $share['image'] ? Url::to($share['image'], $_SERVER['REQUEST_SCHEME']) : '';
             Yii::$app->response->format = Response::FORMAT_JSON;
             return $share;
         }
