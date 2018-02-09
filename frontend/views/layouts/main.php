@@ -104,10 +104,10 @@ AppAsset::register($this);
                 <div class="pull-left">
                     <h4>ТАСС в социальных сетях</h4>
                     <div class="share-wrap">
-                        <a href="https://vk.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-vk"></i></a>
-                        <a href="https://www.facebook.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="https://twitter.com/tass_agency" class="share-btn" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="https://t.me/tass_agency" class="share-btn" target="_blank"><i class="fa fa-telegram"></i></a>
+                        <a rel="nofollow" href="https://vk.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a rel="nofollow" href="https://www.facebook.com/tassagency" class="share-btn" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a rel="nofollow" href="https://twitter.com/tass_agency" class="share-btn" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a rel="nofollow" href="https://t.me/tass_agency" class="share-btn" target="_blank"><i class="fa fa-telegram"></i></a>
                     </div>
                 </div>
                 <div class="pull-right">
@@ -122,21 +122,21 @@ AppAsset::register($this);
                             <div class="copyright">
                                 <p>
                                     <span>Источники:</span>
-                                    <a href="https://2018.yavlinsky.ru/" target="_blank">2018.yavlinsky.ru</a>,
-                                    <a href="http://cikrf.ru/" target="_blank">cikrf.ru</a>,
-                                    <a href="http://www.duma.gov.ru/" target="_blank">duma.gov.ru</a>,
-                                    <a href="http://grudininkprf.ru/" target="_blank">grudininkprf.ru</a>,
-                                    <a href="http://komros.info/" target="_blank">komros.info</a>,
-                                    <a href="https://kprf.ru/" target="_blank">kprf.ru</a>,
-                                    <a href="http://kremlin.ru/" target="_blank">kremlin.ru</a>,
-                                    <a href="https://ldpr.ru/" target="_blank">ldpr.ru</a>,
-                                    <a href="https://rost.ru/" target="_blank">rost.ru</a>,
-                                    <a href="http://roststrategy.ru/" target="_blank">roststrategy.ru</a>,
-                                    <a href="https://sobchakprotivvseh.ru/" target="_blank">sobchakprotivvseh.ru</a>,
-                                    <a href="http://sovhozlenina.ru/" target="_blank">sovhozlenina.ru</a>,
-                                    <a href="https://wciom.ru/" target="_blank">wciom.ru</a>,
-                                    <a href="https://www.yabloko.ru/" target="_blank">yabloko.ru</a>,
-                                    <a href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>
+                                    <a rel="nofollow" href="https://2018.yavlinsky.ru/" target="_blank">2018.yavlinsky.ru</a>,
+                                    <a rel="nofollow" href="http://cikrf.ru/" target="_blank">cikrf.ru</a>,
+                                    <a rel="nofollow" href="http://www.duma.gov.ru/" target="_blank">duma.gov.ru</a>,
+                                    <a rel="nofollow" href="http://grudininkprf.ru/" target="_blank">grudininkprf.ru</a>,
+                                    <a rel="nofollow" href="http://komros.info/" target="_blank">komros.info</a>,
+                                    <a rel="nofollow" href="https://kprf.ru/" target="_blank">kprf.ru</a>,
+                                    <a rel="nofollow" href="http://kremlin.ru/" target="_blank">kremlin.ru</a>,
+                                    <a rel="nofollow" href="https://ldpr.ru/" target="_blank">ldpr.ru</a>,
+                                    <a rel="nofollow" href="https://rost.ru/" target="_blank">rost.ru</a>,
+                                    <a rel="nofollow" href="http://roststrategy.ru/" target="_blank">roststrategy.ru</a>,
+                                    <a rel="nofollow" href="https://sobchakprotivvseh.ru/" target="_blank">sobchakprotivvseh.ru</a>,
+                                    <a rel="nofollow" href="http://sovhozlenina.ru/" target="_blank">sovhozlenina.ru</a>,
+                                    <a rel="nofollow" href="https://wciom.ru/" target="_blank">wciom.ru</a>,
+                                    <a rel="nofollow" href="https://www.yabloko.ru/" target="_blank">yabloko.ru</a>,
+                                    <a rel="nofollow" href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>
                                 </p>
                             </div>
                             <div class="copyright">
@@ -147,7 +147,7 @@ AppAsset::register($this);
                             </div>
                         </div>
                         <div class="footer-logo">
-                            <a href="http://tass.ru" target="_blank"></a>
+                            <a rel="nofollow" href="http://tass.ru" target="_blank"></a>
                         </div>
                     </div>
                 </div>

@@ -50,6 +50,7 @@ class ShareWidget extends \yii\base\Widget
 		        'data-title' => $this->share['title'],
 		        'data-image' => $this->share['imageUrl'],
 		        'data-text' => $this->share['text'],
+		        'rel' => 'nofollow',
 		    ]);
 		echo $this->renderWrapClose();
 
@@ -61,6 +62,7 @@ class ShareWidget extends \yii\base\Widget
 		        'data-title' => $this->share['title'],
 		        'data-image' => $this->share['imageUrl'],
 		        'data-text' => $this->share['text'],
+		        'rel' => 'nofollow',
 		    ]);
 		echo $this->renderWrapClose();
 
@@ -70,6 +72,7 @@ class ShareWidget extends \yii\base\Widget
 				'data-type' => 'tw',
 				'data-url' => $this->share['url'],
 				'data-title' => $this->share['twitter'],
+		        'rel' => 'nofollow',
 			]);
 		echo $this->renderWrapClose();
 
@@ -79,11 +82,16 @@ class ShareWidget extends \yii\base\Widget
 		        'data-type' => 'tg',
 		        'data-url' => $this->share['url'],
 		        'data-title' => $this->share['title'],
+		        'rel' => 'nofollow',
 		    ]);
 		echo $this->renderWrapClose();
 
 		echo $this->renderWrapOpen($soc = 'wa');
-			echo Html::a('<i class="fa fa-whatsapp"></i>', 'whatsapp://send?text='.$this->share['text'], ['class' => 'whatsapp-share', 'target' => '_blank']);
+			echo Html::a('<i class="fa fa-whatsapp"></i>', 'whatsapp://send?text='.$this->share['text'], [
+				'class' => 'whatsapp-share', 
+				'target' => '_blank',
+		        'rel' => 'nofollow',
+		    ]);
 		echo $this->renderWrapClose();
     }
 
