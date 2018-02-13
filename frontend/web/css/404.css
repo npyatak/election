@@ -93,6 +93,9 @@ body {
 	margin: 0;
 	margin-bottom: 40px;
 }
+.main-menu .slogan a {
+    color: #252aa6 !important;
+}
 @media screen and (min-width: 1199px) {
 	.not-found {
 		padding: 0 160px;
