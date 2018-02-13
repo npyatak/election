@@ -96,7 +96,7 @@ AppAsset::register($this);
     </div>
     
 
-    <?php if(!in_array(Yii::$app->controller->action->id, ['test', 'calendar'])):?>
+    <?php if(!in_array(Yii::$app->controller->action->id, ['test', 'calendar', 'error'])):?>
     <footer>
         <div class="container">
             <div class="vertical-title">Будь в курсе</div>

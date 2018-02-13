@@ -10,9 +10,9 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 $this->title = $name;
-$this->context->layout = 'error';
+//$this->context->layout = 'error';
 
-$this->registerCssFile(Url::toRoute('css/404.css'));
+$this->registerCssFile(Url::toRoute('/css/404.css'));
 ?>
 
 <div class="not-found">

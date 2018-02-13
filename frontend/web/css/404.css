@@ -1,13 +1,5 @@
-@font-face {
-    font-family: 'FiraSansRegular';
-    src: url('fonts/Fira/FiraSans-Regular.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'FiraSansBold';
-    src: url('fonts/Fira/8163.ttf') format('truetype');
-}
 h1, p, a {
-	font-family: 'FiraSansRegular';
+	font-family: 'FiraSans-Regular';
 }
 .btn {
     display: inline-block;
@@ -73,7 +65,7 @@ body {
     flex-direction: column;
 }
 .not-found__title {
-	font-family: 'FiraSansBold';
+	font-family: 'FiraSans-Bold';
 	width: 280px;
 	height: 50px;
 	font-size: 25px;
