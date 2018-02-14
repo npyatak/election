@@ -20,7 +20,7 @@ $this->registerCssFile(Url::toRoute('/css/404.css'));
     <p class="not-found__subtitle">
         Такой страницы не существует. Возможно неверно указан адрес или страница удалена.
     </p>
-    <a href="<?=Url::home();?>" class="btn btn-green btn-h40 btn-w200" style="font-size: 16px;">
+    <a href="<?=Url::home();?>" class="btn btn-green back-btn">
         На главную
     </a>
 </div>
