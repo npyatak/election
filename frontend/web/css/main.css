@@ -205,8 +205,8 @@
 /*}*/
 #hidden-menu .container .left a {
     display: block;
-    font: 30px 'FiraSans-Bold', sans-serif;
-    line-height: 40px;
+    font: 40px 'FiraSans-Bold', sans-serif;
+    line-height: 50px;
     -webkit-transition: .15s;
     -moz-transition: .15s;
     -ms-transition: .15s;
