@@ -154,7 +154,7 @@
     width: 80px;
     height: 80px;
     transition: background-color .2s;
-    display: flex!important;
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 4;
@@ -169,7 +169,7 @@
     font-size: 30px;
     align-self: center;
     height: 10vh;
-    display: flex!important;
+    display: flex;
     justify-content: center;
     width: 50px;
     background: #f3f3f3;
@@ -209,7 +209,7 @@
     font-size: 36px!important;
     width: 80px;
     height: 80px;
-    display: flex!important;
+    display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color .2s;
@@ -223,7 +223,7 @@
     font-size: 30px;
     align-self: center;
     height: 10vh;
-    display: flex!important;
+    display: flex;
     justify-content: center;
     width: 50px;
     background: #f9f9f9;

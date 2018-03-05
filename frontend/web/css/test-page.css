@@ -1,32 +1,44 @@
+#start-page-topp .test-wrap_img {
+    align-self: center;
+}
+.finish-buttons a {
+    font-family:  'FiraSans-Regular', sans-serif;
+    font-size: 20px;
+    line-height: 25px;
+}
+.test-wrapper-test .check-block span {
+    margin-left: 20px;
+    font-size: 20px;
+}
 .result-container .right-part {
-	z-index: 5;
-	width: 100%;
-	display: flex;
-	justify-content: flex-start;
-	padding-left: 80px;
-	position: relative;
-	flex-direction: column;
-	overflow: auto;
-	padding-top: 80px;
+    z-index: 5;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 80px;
+    position: relative;
+    flex-direction: column;
+    overflow: auto;
+    padding-top: 80px;
 }
 .hidden-animated {
-	opacity: 0!important;
-	transition: all .5s;
-	top: -100%!important;
-	position: absolute!important;
-	height: 1px!important;
+    opacity: 0!important;
+    transition: all .5s;
+    top: -100%!important;
+    position: absolute!important;
+    height: 1px!important;
 }
 .right-part .right {
-	position: relative;
+    position: relative;
 }
 .right-part .wrong {
-	position: relative;
+    position: relative;
 }
 .correct-background .right::after {
     content: '';
     display: block;
     position: absolute;
-    top: 150px;
+    top: 200px;
     right: -25px;
     width: 140px;
     height: 140px;
@@ -39,7 +51,7 @@
     content: '';
     display: block;
     position: absolute;
-    top: 150px;
+    top: 200px;
     right: -25px;
     width: 140px;
     height: 140px;
@@ -424,7 +436,7 @@
 }
 .next-btn i {
     margin-left: 30px;
-    font-size: 30px;
+    font-size: 20px;
 }
 .next-btn:hover {
     color: #fff!important;
@@ -453,7 +465,7 @@ nav {
 .left-part {
     width: 100%;
     height: 100vh;
-    padding: 80px 25px 0 40px;
+    padding: 120px 25px 0 40px;
     float: none;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -479,7 +491,7 @@ nav {
     height: 100vh;
     padding: 0 40px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     background: #252aa6;
 }
@@ -499,10 +511,12 @@ nav {
     align-content: flex-end;
 }
 .left-part .test-wrapper-test .check-block {
-    margin-top: 10px;
+    margin-top: 40px;
 }
 .left-part h3 {
     max-width: 500px;
+    font-size:  20px;
+    line-height: 30px;
 }
 .bb-custom-wrapper {
     width: 100%;
@@ -708,7 +722,7 @@ nav {
     }
     .right-part .right {
         min-height: 450px;
-        padding-top: 140px;
+        padding-top: 210px;
         align-self: flex-start;
     }
     .right-part .wrong {
@@ -740,46 +754,46 @@ nav {
         height: 450px;
         display: flex;
         align-items: flex-start;
-        padding-top: 130px;
+        padding-top: 220px;
     }
 }
 @media screen and (min-width: 768px) and (max-width: 1199px) {
     .progress-circle {
-        width:  300px;
-        height: 300px;
-        line-height: 300px;
+        width:  200px;
+        height: 200px;
+        line-height: 200px;
     }
     .progress-circle span {
-        height: 300px;
-        width: 300px;
-        line-height: 340px;
+        height: 200px;
+        width: 200px;
+        line-height: 240px;
     }
     .left-half-clipper {
-        width: 300px;
-        height: 300px;
-        clip: rect(0, 300px, 300px, 150px);
+        width: 200px;
+        height: 200px;
+        clip: rect(0, 200px, 200px, 75px);
     }
     .value-bar {
-        width: 300px;
-        height: 300px;
-        clip: rect(0, 150px, 300px, 0);
+        width: 200px;
+        height: 200px;
+        clip: rect(0, 75px, 200px, 0);
         border: 25px solid #fff;
     }
     .progress-circle.over50 .first50-bar {
-        height: 300px;
-        width: 300px;
-        clip: rect(0, 300px, 300px, 150px);
+        height: 200px;
+        width: 200px;
+        clip: rect(0, 200px, 200px, 75px);
         background-color:  #fff;
     }
     .progress-circle:after {
-        width: 250px;
-        height: 250px;
-        top: 25px;
-        left: 25px;
+        width: 170px;
+        height: 170px;
+        top: 15px;
+        left: 15px;
     }
     #result-text {
         top: -10px;
-        font-size: 100px;
+        font-size: 80px;
     }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -963,10 +977,13 @@ nav {
         line-height: 80px!important;
     }
     #progress-circle-wrapper:before {
-        top: 0px;
+        top: -40px;
         right: -50%;
-        width: 700px;
+        width: 500px;
         height: 300px;
+    }
+    .result-container .bb-custom-side {
+        height: 45vh!important;
     }
     .test-container .right-part .test-wrap_img {
         width: 200px;
@@ -984,15 +1001,20 @@ nav {
         overflow-y: auto;
     }
     .left-part {
-        height: 44vh;
+        height: 50vh;
         align-items: flex-start;
         justify-content: center;
     }
     .right-part {
-        height: 45vh;
+        height: 50vh;
         align-items: flex-start;
         padding-top: 40px;
     }
+    .bb-custom-side {
+        width: 100%;
+        height: 50vh;
+    }
+    /*HERE*/
     .test-wrapper-test {
         justify-content: flex-start;
         margin-top: 180px;
@@ -1019,10 +1041,6 @@ nav {
         max-width: 80%;
     }
     .bb-custom-firstpage {
-        width: 100%;
-        height: auto;
-    }
-    .bb-custom-side {
         width: 100%;
         height: auto;
     }
@@ -1220,7 +1238,7 @@ nav {
         margin-top: 20px;
     }
     #progress-circle-wrapper {
-        margin-top: 30px
+        margin-top: 15px
     }
     .result-container .right-part p {
         font-size: 16px;
@@ -1337,6 +1355,11 @@ nav {
     }
     .left-part .test-wrapper-test {
         margin-top: 0;
+    }
+    /*HERE*/
+    .bb-custom-side {
+        width: 100%;
+        height: auto!important;
     }
 }
 @media screen and (orientation:landscape) and (max-device-width: 1199px) and (min-device-width: 768px) {

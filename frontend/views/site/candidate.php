@@ -8,10 +8,38 @@ $this->registerJsFile(Url::toRoute('js/player/jwplayer.js'), ['depends' => [\yii
 $this->params['share'] = [
     'text' => $candidate->share_text, 'title' => $candidate->share_title, 'image' => $candidate->share_image, 'twitter' => $candidate->share_twitter
 ];?>
+<style>
+@media screen and (min-width: 1280px) {
+ .stickydiv {
+        position: fixed!important;
+        top: 0;
+        z-index: 6;
+        margin-top: 12px;
+        right: 0;
+    }
+    .candidate-quotes {
+        max-width: 600px;
+    }
+    .candidate-quotes .owl-nav {
+        /*right: -100px;*/
+        right: 0px;
+    }
+    .candidate-hobbies {
+        max-width: 600px;
+    }
+    .candidate-hobbies .owl-nav {
+        /*right: -50px;*/
+        right: 0px;
+    } 
+}
+   
+</style>
+<!-- <script src="/frontend/web/js/jquery-3.2.1.min.js" type="text/javascript"></script> -->
+<!-- <script src="/frontend/web/js/jquery.scrollorama.js" type="text/javascript"></script> -->
 <div class="candidate-detail">
     <div class="candidate-detail_top">
         <div class="container">
-            <div class="left">
+            <div class="left" id="left_top_offset">
                 <div class="inner">
                     <h1><?=$candidate->name;?> <br><?=$candidate->surname;?></h1>
                     <p class="intro"><?=$candidate->status;?></p>
@@ -83,18 +111,18 @@ $this->params['share'] = [
         <div class="desktop">
             <div class="container">
                 <div class="left">
-                    <div class="inner">
+                    <div class="inner" id="end">
                         <div class="biography">
-                            <div class="block"><?=$candidate->bio_1;?></div>
-                            <div class="block"><?=$candidate->bio_2;?></div>
-                            <div class="block"><?=$candidate->bio_3;?></div>
-                            <div class="block"><?=$candidate->bio_4;?></div>
+                            <div class="block" id="left_1"><?=$candidate->bio_1;?></div>
+                            <div class="block" id="left_2"><?=$candidate->bio_2;?></div>
+                            <div class="block" id="left_3"><?=$candidate->bio_3;?></div>
+                            <div class="block" id="left_4"><?=$candidate->bio_4;?></div>
                         </div>
                     </div>
                 </div>
-                <div class="right">
+                <div class="right" id="right_1">
                     <?php if($candidate->facts):?>
-                        <div class="candidate-statistics">
+                        <div class="candidate-statistics" >
                             <div class="inner">
                                 <?=$candidate->facts;?>
                             </div>
@@ -270,6 +298,119 @@ $script = "
                         {file: '".$candidate->video_list_2."'},
                     ]
                 }]
+            });
+            var left_top_offset = $('#left_top_offset').height() + 150;
+            var left = $('#end');
+            var left_height = left.height();
+            var left_offset = left.offset().top;
+
+            var right = $('#right_1');
+            var right_height = right.height();
+
+            var right_side_height = 0;
+
+            right.children().each(function () {
+                if (!$(this).hasClass('right-sw')) {
+                    right_side_height = right_side_height + $(this).height();
+                }
+            });
+            var lastScrollTop = 0;
+            $(window).scroll(function() {
+                var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+                var pos = $(window).scrollTop();
+
+                if (width >= 1280) {
+
+                    var top_1 = $('#left_1').offset().top
+                    var h_1 = $('.candidate-statistics').height() + 90
+                    var top_2 = $('#left_2').offset().top
+                    var h_2 = $('.candidate-quotes').height() + 90
+                    if ($('#left_3')) {
+                        var top_3 = $('#left_3').offset().top
+                        var h_3 = $('.candidate-hobbies').height() + 90
+                    }
+                    if ($('#left_4')) {
+                        var top_3 = $('#left_3').offset().top
+                        var h_3 = $('.candidate-hobbies').height() + 90
+                        var top_4 = $('#left_4').offset().top
+                    }
+                    if ($('.candidate-hobbies').length === 0) {
+                        console.log('1');
+                        $('#right_1').css('transition', 'all ease-in .5s');
+
+                        var end2 = $('.candidate-quotes').offset().top + $('.candidate-quotes').height() + 50
+
+                        var end = $('#candidates').offset().top
+                        if (pos >= top_1 && pos < top_4) {
+
+                            $('#right_1').css('transition', 'all ease-in .5s');
+                            $('#right_1').css('z-index', '0');
+                            $('#right_1').addClass('stickydiv');
+
+                        } else if (pos >= top_1 && pos >= top_4) {
+
+                            $('#right_1').css('z-index', '0');
+                            $('#right_1').css('transform', 'translateY(-' + ( h_1) + 'px)');
+
+                        } else {
+
+                            $('#right_1').css('z-index', '0');
+                            $('#right_1').removeClass('stickydiv');
+                            $('#right_1').css('transform', 'translateY(0px)');
+
+                        }
+                        if (end2 >= end) {
+
+                            $('#right_1').css('z-index', '-1');
+                            
+                        } else $('#right_1').css('z-index', '0');
+
+
+                    } else if ($('.candidate-hobbies').length !== 0) {
+                        console.log('2');
+
+                        $('#right_1').css('transition', 'all ease-in .5s');
+
+                        var end2 = $('.candidate-hobbies').offset().top + $('.candidate-hobbies').height() + 50
+
+                        var end = $('#candidates').offset().top
+                        if (pos >= top_1 && pos < top_2 && pos < top_3 && pos < top_4) {
+
+                            $('#right_1').css('z-index', '0');
+                            $('#right_1').addClass('stickydiv');
+
+                        } else if (pos >= top_1 && pos >= top_2 && pos < top_3 && pos < top_4) {
+
+                            $('#right_1').css('z-index', '0');
+                            $('#right_1').css('transform', 'translateY(-' + h_1 + 'px)');
+
+                        } else if (pos >= top_1 && pos >= top_2 && pos >= top_3 && pos < top_4) {
+
+                            $('#right_1').css('z-index', '0');
+                            $('#right_1').css('transform', 'translateY(-' + (h_1 + h_2) + 'px)');
+
+                        } else if (pos >= top_1 && pos >= top_2 && pos >= top_3 && pos >= top_4) {
+
+                            $('#right_1').css('transform', 'translateY(-' + (h_1 + h_2 + h_3) + 'px)');
+
+                        } else {
+
+                            $('#right_1').css('z-index', '0');
+                            $('#right_1').removeClass('stickydiv');
+                            $('#right_1').css('transform', 'translateY(0px)');
+
+                        }
+                        if (end2 >= end) {
+
+                            $('#right_1').css('z-index', '-1');
+                            
+                        } else $('#right_1').css('z-index', '0');
+
+
+                    }
+                    
+                   
+                }
             });
     })
 ";

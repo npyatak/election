@@ -60,7 +60,30 @@ $this->registerCssFile(Url::toRoute('css/calendar.css'));
 
 <?php $script = "
 	if ($initial !== 1) $('#calendar-date').find('.col-md-6').addClass('hide');
+	var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
     $('#calendar-dates').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+		if ($('.slick-slide[data-id=21]').hasClass('slick-current')) {
+			$('.next-arrow').css('display', 'none')
+		} else {
+			$('.next-arrow').css('display', 'flex')
+		}
+		if ($('.slick-slide[data-id=1]').hasClass('slick-current')) {
+			$('.prev-arrow').css('display', 'none')
+		} else {
+			$('.prev-arrow').css('display', 'flex')
+		}
+		if (width < 650) {
+			if ($('.slick-slide[data-id=21]').hasClass('slick-current')) {
+				$('.next-arrow-mobile').css('display', 'none')
+			} else {
+				$('.next-arrow-mobile').css('display', 'flex')
+			}
+			if ($('.slick-slide[data-id=1]').hasClass('slick-current')) {
+				$('.prev-arrow-mobile').css('display', 'none')
+			} else {
+				$('.prev-arrow-mobile').css('display', 'flex')
+			}	
+		}
 		$(this).closest('#calendar-date').find('.col-md-6')
 		$('.slick-slide[data-id=21]').children('.item__title').css('width', '94px');
 		if (nextSlide === 1) {
@@ -73,6 +96,30 @@ $this->registerCssFile(Url::toRoute('css/calendar.css'));
 		nextId = $('.slick-slide[data-slick-index='+nextSlide+']').data('id');
     	window.history.pushState(null, '', '".Url::toRoute(['site/calendar'])."/'+nextId);
     });
+    $('#calendar-dates').on('afterChange', function(event, slick, currentSlide, nextSlide){
+		if ($('.slick-slide[data-id=21]').hasClass('slick-current')) {
+			$('.next-arrow').css('display', 'none')
+		} else {
+			$('.next-arrow').css('display', 'flex')
+		}
+		if ($('.slick-slide[data-id=1]').hasClass('slick-current')) {
+			$('.prev-arrow').css('display', 'none')
+		} else {
+			$('.prev-arrow').css('display', 'flex')
+		}
+		if (width < 650) {
+			if ($('.slick-slide[data-id=21]').hasClass('slick-current')) {
+				$('.next-arrow-mobile').css('display', 'none')
+			} else {
+				$('.next-arrow-mobile').css('display', 'flex')
+			}
+			if ($('.slick-slide[data-id=1]').hasClass('slick-current')) {
+				$('.prev-arrow-mobile').css('display', 'none')
+			} else {
+				$('.prev-arrow-mobile').css('display', 'flex')
+			}	
+		}
+	});
 
 	$('#calendar-date').slick({
 		slidesToShow: 1,
