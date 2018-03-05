@@ -205,8 +205,8 @@
 /*}*/
 #hidden-menu .container .left a {
     display: block;
-    font: 30px 'FiraSans-Bold', sans-serif;
-    line-height: 40px;
+    font: 40px 'FiraSans-Bold', sans-serif;
+    line-height: 50px;
     -webkit-transition: .15s;
     -moz-transition: .15s;
     -ms-transition: .15s;
@@ -1899,7 +1899,7 @@ a.all-news {
     transition: .2s;
 }
 .tab a:hover {
-    background-color: rgba(37,42,166,.5);
+    background-color: #383CB4;
     text-decoration: none;
 }
 .tab a.active {
@@ -2040,7 +2040,7 @@ a.all-news {
     transition: .2s;
 }
 .rating-cat_els a:hover {
-    background-color: rgba(56,60,187,.7);
+    background-color: rgba(0,0,0,.1);
 }
 .rating-cat_els a:not(:first-child) {
     -webkit-box-shadow: inset 1px 0 0 0 #3e43c8;
