@@ -206,4 +206,14 @@ class SiteController extends Controller
             'ratingGroupIds' => $ratingGroupIds,
         ]);
     }
+
+    public function actionOnline() {
+        $candidates = Candidate::find()->orderBy('surname')->all();
+        $news = News::find()->orderBy('date DESC')->limit(3)->all();
+
+        return $this->render('online', [
+            'candidates' => $candidates,
+            'news' => $news,
+        ]);
+    }
 }
