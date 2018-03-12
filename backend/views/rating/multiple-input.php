@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
-$this->title = 'Добавить значения. Группа: '.$group->title;
+$this->title = 'Добавить значения. '.$relatedModel->title;
 $this->params['breadcrumbs'][] = ['label' => 'Рейтинги', 'url' => Url::toRoute(['/rating/index'])];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -48,6 +48,7 @@ AppAsset::register($this);
         ['label' => 'Рейтинги', 'url' => ['/rating']],
         ['label' => 'Шеринги', 'url' => ['/share']],
         //['label' => 'Настройки', 'url' => ['/settings']],
+        ['label' => 'Регионы', 'url' => ['/region']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Войти', 'url' => ['/site/login']];

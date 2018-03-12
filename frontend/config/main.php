@@ -60,8 +60,8 @@ return [
             'rules' => [
                 '/' => 'site/index',
                 'candidate/<alias:\w+>' => 'site/candidate',
-                '<action:\w+>/<id:\d+>' => 'site/<action>',
-                '<action:\w+>' => 'site/<action>',
+                '<action>/<id:\d+>' => 'site/<action>',
+                '<action>' => 'site/<action>',
                 //'<action:\w+>/<alias>' => 'site/<action>',
                 // 'page/<alias>' => 'site/page',
                 // 'preview/<alias>' => 'site/preview',

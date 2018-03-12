@@ -11,6 +11,7 @@ use common\models\RatingGroup;
 use common\models\RatingItem;
 use common\models\Share;
 use common\models\Candidate;
+use common\models\Region;
 use common\models\search\RatingSearch;
 
 class RatingController extends CController
@@ -74,12 +75,15 @@ class RatingController extends CController
         }
     }
 
-    public function actionMultipleInput($group_id) {
+    public function actionMultipleInput($group_id = null, $region_id = null) {
         $candidates = Candidate::find()->all();
         $additionalIds = RatingItem::getAdditionalArray();
 
-        $group = RatingGroup::findOne($group_id);
-        if($group === null) {
+        if($group_id !== null) {
+            $relatedModel = RatingGroup::findOne($group_id);
+        } elseif($region_id !== null) {
+            $relatedModel = Region::findOne($region_id);
+        } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
@@ -94,7 +98,11 @@ class RatingController extends CController
                     $item = new RatingItem;
                 }
                 $item->attributes = $postItem;
-                $item->rating_group_id = $group_id;
+                if($group_id !== null) {
+                    $item->rating_group_id = $group_id;
+                } elseif ($region_id !== null) {
+                    $item->region_id = $region_id;
+                }
                 $models[] = $item;
             }
 
@@ -148,7 +156,7 @@ class RatingController extends CController
 
         return $this->render('multiple-input', [
             'models' => $models,
-            'group' => $group,
+            'relatedModel' => $relatedModel,
             'candidates' => $candidates,
             'additionalIds' => $additionalIds,
         ]);
