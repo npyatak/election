@@ -36,7 +36,8 @@ class Region extends \yii\db\ActiveRecord
             [['title'], 'required'],
             [['data'], 'string'],
             [['status'], 'integer'],
-            [['title'], 'string', 'max' => 255],
+            [['title', 'text'], 'string', 'max' => 255],
+            [['voter_participation'], 'number', 'min' => 0, 'max' => 99.9],
         ];
     }
 
@@ -50,6 +51,8 @@ class Region extends \yii\db\ActiveRecord
             'title' => 'Заголовок',
             'data' => 'Данные для карты',
             'status' => 'Избирательные участки',
+            'voter_participation' => 'Явка',
+            'text' => 'Подпись',
         ];
     }
 

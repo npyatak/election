@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => [
                 'id',
                 'title',
+                'voter_participation',
                 [
                     'attribute' => 'status',
                     'format' => 'raw',

@@ -14,11 +14,20 @@ use common\models\Region;
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-sm-6">
+            <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <?= $form->field($model, 'voter_participation')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-6">
             <?= $form->field($model, 'status')->dropDownList(Region::getStatusArray(), ['prompt' => 'Выберите...']) ?>
         </div>
     </div>
 
-    <?= $form->field($model, 'data')->textarea();?>
+    <?//= $form->field($model, 'data')->textarea();?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

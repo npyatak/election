@@ -17,6 +17,8 @@ class m180305_115935_create_table_region extends Migration
             'title' => $this->string(255)->notNull(),
             'data' => $this->text(),
             'status' => $this->integer(1)->notNull()->defaultValue(0),
+            'voter_participation' => $this->decimal(3, 1)->notNull()->defaultValue(0),
+            'text' => $this->string(255),
         ], $tableOptions);
 
         $this->batchInsert('{{%region}}', ['id', 'title', 'data'], [

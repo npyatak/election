@@ -131,3 +131,13 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
+
+<?php
+
+$script = "
+    var regionResultsArr = '".json_encode($regionResultsArr)."';
+    console.log(regionResultsArr);
+";
+
+$this->registerJs($script, yii\web\View::POS_HEAD);
+?>

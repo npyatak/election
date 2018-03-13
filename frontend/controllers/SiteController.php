@@ -123,7 +123,6 @@ class SiteController extends Controller
             foreach ($regionResults as $rr) {
                 $regionResultsArr[$rr['region_id']][$rr['candidate_id']] = $rr['score'];
             }
-            //print_r($regionResultsArr);exit;
             
             return $this->render('index_first_results', [
                 'candidates' => $candidates,
@@ -134,6 +133,13 @@ class SiteController extends Controller
                 'regionResultsArr' => $regionResultsArr,
             ]);
         } elseif($mainPageType == Settings::INDEX_FINAL_RESULTS) {
+            // $regions = Region::find()->indexBy('id')->asArray()->all();
+            
+            // $regionResults = RatingItem::find()->select(['candidate_id', 'region_id', 'score'])->where(['not', ['region_id' => null]])->andWhere(['not', ['candidate_id' => null]])->asArray()->all();
+            // $regionResultsArr = [];
+            // foreach ($regionResults as $rr) {
+            //     $regionResultsArr[$rr['region_id']][$rr['candidate_id']] = $rr['score'];
+            // }
 
             return $this->render('index_final_results', [
 
