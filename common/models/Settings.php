@@ -8,10 +8,16 @@ use yii\helpers\ArrayHelper;
 class Settings extends \yii\db\ActiveRecord
 {
     const TYPE_TEXT = 1;
+    const TYPE_DROPDOWN_LIST = 2;
     const TYPE_IMAGE = 5;
+    const TYPE_EDITOR = 6;
 
     const SECTION_MAIN = 1;
     const SECTION_TEST = 2;
+
+    const MAIN_PAGE_ORIGINAL = 1;
+    const MAIN_PAGE_FIRST_HOURS = 2;
+    const MAIN_PAGE_FIRST_RESULTS = 5;
 
     public $imageFile;
     /**
@@ -69,5 +75,15 @@ class Settings extends \yii\db\ActiveRecord
 
     public function getImageSrcPath() {
         return __DIR__ . '/../../frontend/web/uploads/';
+    }
+
+    public function getMainPageArray() {
+        return [
+            self::MAIN_PAGE_ORIGINAL => 'Обычная главная',
+            2 => 'Голосование еще не началось',
+            3 => 'Ход голосования',
+            4 => 'Ход голосования',
+            5 => 'Предварительные итоги голосования',
+        ];
     }
 }

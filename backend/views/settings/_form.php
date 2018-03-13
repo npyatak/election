@@ -16,7 +16,7 @@ use common\models\Settings;
 
     <?= $form->field($model, 'title')->textInput() ?>
 
-    <?php if($model->type == Settings::TYPE_FOOTER) {
+    <?php if($model->type == Settings::TYPE_EDITOR) {
         echo $form->field($model, 'value')->widget(CKEditor::classname(), [
             'editorOptions' => \mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', [
                 'allowedContent' => true,
@@ -25,6 +25,9 @@ use common\models\Settings;
         ]);
     } elseif($model->type == Settings::TYPE_IMAGE) {
         echo $form->field($model, 'imageFile')->fileInput();
+    } elseif($model->type == Settings::TYPE_DROPDOWN_LIST) {
+        $attr = $model->key.'Array';
+        echo $form->field($model, 'value')->dropDownList($model->$attr);
     } else {
         echo $form->field($model, 'value')->textInput();
     }

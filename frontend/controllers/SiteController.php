@@ -22,6 +22,7 @@ use common\models\News;
 use common\models\Share;
 use common\models\TestResult;
 use common\models\Region;
+use common\models\Settings;
 
 /**
  * Site controller
@@ -61,31 +62,62 @@ class SiteController extends Controller
     }
     
     public function actionIndex() {
-        $calendar = Calendar::find()->orderBy('date ASC')->limit(2)->where(['>', 'date', time()])->orderBy('date') ->all();
-        $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
-        $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
-        $testText = TestText::find()->orderBy(new \yii\db\Expression('rand()'))->one();
-        
-        $rating = Rating::findOne(1);
-        $ratingResults = RatingItem::find()
-            ->joinWith('candidate')
-            ->where(['rating_group_id' => 1])
-            ->andWhere(['not', ['candidate_id' => null]])
-            ->andWhere(['not', ['candidate.active' => Candidate::QUIT]])
-            ->orderBy('no_poll, score DESC')
-            ->limit(8)->asArray()->all();
+        $mainPageType = Yii::$app->settings->get('mainPage');
 
-        $news = News::find()->orderBy('date DESC')->limit(3)->all();
-        
-        return $this->render('index', [
-            'calendar' => $calendar,
-            'candidates' => $candidates,
-            'cards' => $cards,
-            'testText' => $testText,
-            'rating' => $rating,
-            'ratingResults' => $ratingResults,
-            'news' => $news,
-        ]);
+        if($mainPageType == Settings::MAIN_PAGE_ORIGINAL) {
+            $calendar = Calendar::find()->orderBy('date ASC')->limit(2)->where(['>', 'date', time()])->orderBy('date') ->all();
+            $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
+            $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
+            $testText = TestText::find()->orderBy(new \yii\db\Expression('rand()'))->one();
+            
+            $rating = Rating::findOne(1);
+            $ratingResults = RatingItem::find()
+                ->joinWith('candidate')
+                ->where(['rating_group_id' => 1])
+                ->andWhere(['not', ['candidate_id' => null]])
+                ->andWhere(['not', ['candidate.active' => Candidate::QUIT]])
+                ->orderBy('no_poll, score DESC')
+                ->limit(8)->asArray()->all();
+
+            $news = News::find()->orderBy('date DESC')->limit(3)->all();
+            
+            return $this->render('index', [
+                'calendar' => $calendar,
+                'candidates' => $candidates,
+                'cards' => $cards,
+                'testText' => $testText,
+                'rating' => $rating,
+                'ratingResults' => $ratingResults,
+                'news' => $news,
+            ]);
+        } elseif($mainPageType == Settings::MAIN_PAGE_FIRST_HOURS) {
+
+            return $this->render('first-hours', [
+                'cards' => $cards,
+            ]);
+        } elseif($mainPageType == Settings::MAIN_PAGE_FIRST_RESULTS) {
+            $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
+            $news = News::find()->orderBy('date DESC')->limit(5)->all();
+            $candidateResults = RatingItem::find()->where(['rating_group_id' => 21])->andWhere(['not', ['candidate_id' => null]])->orderBy('score DESC')->asArray()->all();
+            $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
+            $regions = Region::find()->indexBy('id')->asArray()->all();
+            
+            $regionResults = RatingItem::find()->select(['candidate_id', 'region_id', 'score'])->where(['not', ['region_id' => null]])->andWhere(['not', ['candidate_id' => null]])->asArray()->all();
+            $regionResultsArr = [];
+            foreach ($regionResults as $rr) {
+                $regionResultsArr[$rr['region_id']][$rr['candidate_id']] = $rr['score'];
+            }
+            //print_r($regionResultsArr);exit;
+            
+            return $this->render('first-results', [
+                'candidates' => $candidates,
+                'cards' => $cards,
+                'news' => $news,
+                'candidateResults' => $candidateResults,
+                'regions' => $regions,
+                'regionResultsArr' => $regionResultsArr,
+            ]);
+        }
     }
 
     public function actionCandidate($alias = null) {

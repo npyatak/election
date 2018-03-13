@@ -9,6 +9,14 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'cacheBackend' => [
+            'class' => 'yii\caching\FileCache',
+            'cachePath' => Yii::getAlias('@backend') . '/runtime/cache'
+        ],
+        'cacheFrontend' => [
+            'class' => 'yii\caching\FileCache',
+            'cachePath' => Yii::getAlias('@frontend') . '/runtime/cache'
+        ],
         'urlManagerFrontEnd' => [
             'class' => 'yii\web\urlManager',
             'enablePrettyUrl' => true,
@@ -25,6 +33,9 @@ return [
             'attributes' => [
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));",
             ],
+        ],  
+        'settings' => [
+            'class' => 'common\components\Settings',
         ],
     ],
 
