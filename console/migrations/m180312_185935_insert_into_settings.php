@@ -42,6 +42,8 @@ class m180312_185935_insert_into_settings extends Migration
 
     public function safeDown()
     {
+        $this->delete('{{%rating_group}}', ['id' => 21]);
+        $this->delete('{{%rating}}', ['id' => 4]);
         $this->truncateTable('{{settings}}');
     }
 }
