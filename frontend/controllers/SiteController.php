@@ -64,7 +64,7 @@ class SiteController extends Controller
     public function actionIndex() {
         $mainPageType = Yii::$app->settings->get('mainPage');
 
-        if($mainPageType == Settings::MAIN_PAGE_ORIGINAL) {
+        if($mainPageType == Settings::INDEX_ORIGINAL) {
             $calendar = Calendar::find()->orderBy('date ASC')->limit(2)->where(['>', 'date', time()])->orderBy('date') ->all();
             $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
             $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
@@ -90,12 +90,28 @@ class SiteController extends Controller
                 'ratingResults' => $ratingResults,
                 'news' => $news,
             ]);
-        } elseif($mainPageType == Settings::MAIN_PAGE_FIRST_HOURS) {
+        } elseif($mainPageType == Settings::INDEX_FIRST_HOURS) {
+            $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
 
-            return $this->render('first-hours', [
+            return $this->render('index_first_hours', [
                 'cards' => $cards,
             ]);
-        } elseif($mainPageType == Settings::MAIN_PAGE_FIRST_RESULTS) {
+        
+        } elseif($mainPageType == Settings::INDEX_VOTER_PARTICIPATION) {
+            $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
+
+            $candidates = Candidate::find()->orderBy('surname')->all();
+            $news = News::find()->orderBy('date DESC')->limit(3)->all();
+
+            $regionStatusArr = Region::find()->select(['status'])->indexBy('id')->column();
+            
+            return $this->render('index_voter_participation', [
+                'cards' => $cards,
+                'candidates' => $candidates,
+                'news' => $news,
+                'regionStatusArr' => $regionStatusArr,
+            ]);
+        } elseif($mainPageType == Settings::INDEX_FIRST_RESULTS) {
             $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
             $news = News::find()->orderBy('date DESC')->limit(5)->all();
             $candidateResults = RatingItem::find()->where(['rating_group_id' => 21])->andWhere(['not', ['candidate_id' => null]])->orderBy('score DESC')->asArray()->all();
@@ -109,13 +125,18 @@ class SiteController extends Controller
             }
             //print_r($regionResultsArr);exit;
             
-            return $this->render('first-results', [
+            return $this->render('index_first_results', [
                 'candidates' => $candidates,
                 'cards' => $cards,
                 'news' => $news,
                 'candidateResults' => $candidateResults,
                 'regions' => $regions,
                 'regionResultsArr' => $regionResultsArr,
+            ]);
+        } elseif($mainPageType == Settings::INDEX_FINAL_RESULTS) {
+
+            return $this->render('index_final_results', [
+
             ]);
         }
     }
@@ -237,27 +258,6 @@ class SiteController extends Controller
             'candidates' => $candidates,
             'resultsArray' => $resultsArray,
             'ratingGroupIds' => $ratingGroupIds,
-        ]);
-    }
-
-    public function actionOnline() {
-        $candidates = Candidate::find()->orderBy('surname')->all();
-        $news = News::find()->orderBy('date DESC')->limit(3)->all();
-
-        $regionStatusArr = Region::find()->select(['status'])->indexBy('id')->column();
-
-        return $this->render('online', [
-            'candidates' => $candidates,
-            'news' => $news,
-            'regionStatusArr' => $regionStatusArr,
-        ]);
-    }
-
-    public function actionFirstResults() {
-        $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
-
-        return $this->render('first-results', [
-            'cards' => $cards,
         ]);
     }
 }

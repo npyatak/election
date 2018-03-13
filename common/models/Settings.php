@@ -15,9 +15,11 @@ class Settings extends \yii\db\ActiveRecord
     const SECTION_MAIN = 1;
     const SECTION_TEST = 2;
 
-    const MAIN_PAGE_ORIGINAL = 1;
-    const MAIN_PAGE_FIRST_HOURS = 2;
-    const MAIN_PAGE_FIRST_RESULTS = 5;
+    const INDEX_ORIGINAL = 1;
+    const INDEX_FIRST_HOURS = 2;
+    const INDEX_VOTER_PARTICIPATION = 3;
+    const INDEX_FIRST_RESULTS = 4;
+    const INDEX_FINAL_RESULTS = 5;
 
     public $imageFile;
     /**
@@ -79,11 +81,11 @@ class Settings extends \yii\db\ActiveRecord
 
     public function getMainPageArray() {
         return [
-            self::MAIN_PAGE_ORIGINAL => 'Обычная главная',
-            2 => 'Голосование еще не началось',
-            3 => 'Ход голосования',
-            4 => 'Ход голосования',
-            5 => 'Предварительные итоги голосования',
+            self::INDEX_ORIGINAL => 'Обычная главная',
+            self::INDEX_FIRST_HOURS => 'Первые часы',
+            self::INDEX_VOTER_PARTICIPATION => 'Явка',
+            self::INDEX_FIRST_RESULTS => 'Первые результаты',
+            self::INDEX_FINAL_RESULTS => 'Итоги голосования',
         ];
     }
 }
