@@ -281,4 +281,28 @@ $(document).ready(function () {
     // $(function(){
     //   $('[data-scroll-speed]').moveIt();
     // });
+
+    $.each($('.first-results polygon'), function () {
+        $(this)
+            .mouseenter(function () {
+                $('.popup-candidates').addClass('active');
+            })
+            .mouseleave(function () {
+                $('.popup-candidates').removeClass('active');
+            })
+    });
+});
+
+$('.result-map').mousemove(function(e){
+    var X = e.pageX; // положения по оси X
+    var Y = e.pageY; // положения по оси Y
+    var popup_candidates = $('.popup-candidates');
+    if(window.popup_candidates != 0){
+        if((X - 320) === $(window).width()){
+            popup_candidates.css({left: 'auto', right: X + 15, top: Y + 15});
+        }else{
+            popup_candidates.css({left: X + 15, right: 'auto', top: Y + 15});
+        }
+        console.log($(window).width(), (X + 320))
+    }
 });
