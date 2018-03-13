@@ -133,9 +133,15 @@ use yii\helpers\Url;
 </div>
 
 <?php
+$regionIdsArr = [];
+foreach ($regions as $region) {
+    $regionIdsArr[$region['id']] = $region['title'];
+}
 
 $script = "
+    var regionIdsArr = '".json_encode($regionIdsArr)."';
     var regionResultsArr = '".json_encode($regionResultsArr)."';
+    console.log(regionIdsArr);
     console.log(regionResultsArr);
 ";
 
