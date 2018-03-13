@@ -15,14 +15,17 @@ class m180312_185935_insert_into_settings extends Migration
         $this->batchInsert('{{%settings}}', ['key', 'value', 'title', 'type', 'section'], [
             ['mainPage', 1, 'Главная страница', 2, 1],
 
-            ['mainPageOnlineTitle', 'Первые избирательные участки открылись на камчатке', 'Заголовок главной', 1, 1],
-            ['mainPageOnlineText', 'В Москве поздняя ночь', 'Текст главной', 1, 1],
-            ['mainPageOnlineBlockText', 'В Москве поздняя ночь', 'Онлайн текст главной', 1, 1],
-            ['mainPageOnlineImage', '', 'Изображение главной', 5, 1],
+            ['mainPageFirstResultsTitle', 'Первые избирательные участки открылись на камчатке', 'Заголовок главной', 1, 1],
+            ['mainPageFirstResultsText', 'В Москве поздняя ночь', 'Текст главной', 1, 1],
+            ['mainPageFirstResultsBlockText', 'В Москве поздняя ночь', 'Онлайн текст главной', 1, 1],
+            ['mainPageFirstResultsImage', '', 'Изображение главной', 5, 1],
 
-            ['mainPageFirstResultsTitle', '', 'Подпись к данным', 1, 1],
+            ['mainPageFirstResultsText', '', 'Подпись к данным', 1, 1],
             ['mainPageFirstResultsVoterParticipation', 0, 'Общая явка', 1, 1],
             ['mainPageFirstResultsVotingCardsCount', 0, 'Количество обработанных бюллетеней', 1, 1],
+
+            ['mainPageVoterParticipationText', '', 'Подпись к данным', 1, 1],
+            ['mainPageVoterParticipationScore', '', 'Общая явка', 1, 1],
 
         ]);
 

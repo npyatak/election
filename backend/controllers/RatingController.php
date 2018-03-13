@@ -137,9 +137,9 @@ class RatingController extends CController
             foreach ($candidates as $candidate) {
                 $query = RatingItem::find()->where(['candidate_id' => $candidate->id]);
                 if($group_id !== null) {
-                    $query->where(['rating_group_id' => $group_id]);
+                    $query->andWhere(['rating_group_id' => $group_id]);
                 } elseif($region_id !== null) {
-                    $query->where(['region_id' => $region_id]);
+                    $query->andWhere(['region_id' => $region_id]);
                 }
                 $item = $query->one();
 
@@ -154,9 +154,9 @@ class RatingController extends CController
             foreach ($additionalIds as $additional_id => $title) {
                 $query = RatingItem::find()->where(['additional_id' => $additional_id]);
                 if($group_id !== null) {
-                    $query->where(['rating_group_id' => $group_id]);
+                    $query->andWhere(['rating_group_id' => $group_id]);
                 } elseif($region_id !== null) {
-                    $query->where(['region_id' => $region_id]);
+                    $query->andWhere(['region_id' => $region_id]);
                 }
                 $item = $query->one();
                 
