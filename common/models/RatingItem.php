@@ -20,11 +20,17 @@ class RatingItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['candidate_id', 'additional_id', 'rating_group_id', 'no_poll'], 'integer'],
-            [['rating_group_id', 'score'], 'required'],
+            [['candidate_id', 'additional_id', 'rating_group_id', 'no_poll', 'region_id'], 'integer'],
+            [['score'], 'required'],
             [['score'], 'number', 'min' => 0, 'max' => 99.9],
             [['candidate_id'], 'exist', 'skipOnError' => true, 'targetClass' => Candidate::className(), 'targetAttribute' => ['candidate_id' => 'id']],
             [['rating_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => RatingGroup::className(), 'targetAttribute' => ['rating_group_id' => 'id']],
+            [['rating_group_id',], 'required', 'when' => function($model) {
+                return $this->region_id === null;
+            }],
+            [['region_id',], 'required', 'when' => function($model) {
+                return $this->rating_group_id === null;
+            }],
         ];
     }
 
@@ -40,6 +46,7 @@ class RatingItem extends \yii\db\ActiveRecord
             'rating_group_id' => 'Группа',
             'score' => 'Процент',
             'no_poll' => 'Опрос не проводился',
+            'region_id' => 'Регион',
         ];
     }
 

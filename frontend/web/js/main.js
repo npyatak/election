@@ -72,6 +72,29 @@ $(document).ready(function () {
             }
         }
     });
+    $('#news-slider').owlCarousel({
+        margin: 0,
+        autoplay: false,
+        nav: false,
+        responsive: {
+            0: {
+                loop: false,
+                margin: 0,
+                items: 1,
+                autoWidth:true,
+                dots: true,
+                mouseDrag: true
+            },
+            768: {
+                loop: false,
+                margin: 40,
+                items: 3,
+                dots: false,
+                mouseDrag: false,
+                touchDrag: false
+            }
+        }
+    });
 
     // $('#slick-slider').slick({
     //     dots: true,

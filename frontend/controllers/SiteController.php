@@ -21,6 +21,7 @@ use common\models\RatingGroup;
 use common\models\News;
 use common\models\Share;
 use common\models\TestResult;
+use common\models\Region;
 
 /**
  * Site controller
@@ -187,7 +188,7 @@ class SiteController extends Controller
         }
         
         $resultsArray = [];
-        $ratingItems = RatingItem::find()->orderBy('score DESC')->asArray()->all();
+        $ratingItems = RatingItem::find()->where(['not', ['rating_group_id' => null]])->orderBy('score DESC')->asArray()->all();
         foreach ($ratingItems as $r) {
             $score = $r['no_poll'] ? false : $r['score'];
             if($r['candidate_id']) {
@@ -211,9 +212,20 @@ class SiteController extends Controller
         $candidates = Candidate::find()->orderBy('surname')->all();
         $news = News::find()->orderBy('date DESC')->limit(3)->all();
 
+        $regionStatusArr = Region::find()->select(['status'])->indexBy('id')->column();
+
         return $this->render('online', [
             'candidates' => $candidates,
             'news' => $news,
+            'regionStatusArr' => $regionStatusArr,
+        ]);
+    }
+
+    public function actionFirstResults() {
+        $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
+
+        return $this->render('first-results', [
+            'cards' => $cards,
         ]);
     }
 }
