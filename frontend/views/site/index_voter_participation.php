@@ -1,9 +1,9 @@
 <?php
-use frontend\assets\OnlineAsset;
+use frontend\assets\IndexVoterParticipationAsset;
 
 use common\models\Candidate;
 
-OnlineAsset::register($this);
+IndexVoterParticipationAsset::register($this);
 ?>
 <!-- <link href="tooltip-helper.min.css" rel="stylesheet">
 <link href="first_hours.css" rel="stylesheet">
@@ -330,3 +330,28 @@ OnlineAsset::register($this);
         </div>
     </div>        
 </div>
+
+<?php 
+$script = "
+    $(document).ready(function() {
+        $('.tooltip').tooltipster({
+            theme: 'tooltipster-punk',
+            'maxWidth': 270,
+            contentAsHTML: true,
+            trigger: 'custom',
+            triggerOpen: {
+                click: true,
+                tap: true,
+                mouseenter: true
+            },
+            triggerClose: {
+                click: true,
+                scroll: false,
+                tap: true,
+                mouseleave: true
+            }
+        });
+    });
+";
+
+$this->registerJs($script, yii\web\View::POS_END);?>
