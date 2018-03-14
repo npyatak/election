@@ -1,10 +1,9 @@
-
 .map {
-    padding-top: 80px;
+    padding: 80px 120px 40px 120px;
 }
-polygon:hover {
+/*polygon:hover {
     fill: red;
-}
+}*/
 @keyframes pulse {
     0%   { transform: scale( 1 ); }
     50% { transform: scale( 1.4 ); }
@@ -41,6 +40,9 @@ polygon:hover {
     position: relative;
     padding-left: 160px;
 }
+.custom-left-part-text {
+    padding-left: 0!important;
+}
 .left-part .text .text__title {
     width: 420px;
     margin-bottom: 20px;
@@ -56,6 +58,96 @@ polygon:hover {
     font-size: 14px;
     line-height: 20px;
     font-family: 'FiraSans-Regular';
+}
+.left-part .text .text__number {
+    width: 400px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    color: #fff;
+    font-size: 100px;
+    line-height: 100px;
+    font-family: 'FiraSans-Medium'; 
+    text-align: left;
+    text-align: -webkit-left;   
+}
+.left-part .text .text__middle {
+    width: 400px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    color: #fff;
+    font-size: 28px;
+    line-height: 35px;
+    font-family: 'FiraSans-Medium';
+    text-align: left;
+    text-align: -webkit-left;    
+}
+.left-part .text .text__bottom {
+    width: 400px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: 'FiraSans-Regular';
+    text-align: left;
+    text-align: -webkit-left;    
+}
+.online-parent {
+    padding: 0!important;
+}
+.right-part__content {
+    padding: 40px 0 40px 40px;
+}
+.custom-candidates {
+    width: calc(100% - 640px)!important;
+}
+.map-bottom {
+    position: absolute;
+    bottom: 40px;
+    left: 160px;
+}
+.map-bottom-colors {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    padding-left: 200px;
+}
+.color-block {
+    width: 185px;
+    height: auto;
+    display: inline-block;
+}
+.color-block .text {
+    width: 130px;
+    height: 45px;
+    font-family: 'FiraSans';
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    display: inline-block;
+}
+.color-box {
+    width: 30px;
+    height: 20px;
+    display: block;
+    display: inline-block;
+    float: left;
+}
+.color-1 {
+    background-color: #6569db;
+}
+.color-2 {
+    background-color: #1fb38c;
+}
+.color-3 {
+    background-color: #4a90e2;
 }
 .bottom__part .right-part {
     width: 520px;
@@ -232,6 +324,65 @@ polygon:hover {
     margin: 0;
     left: 0;
     bottom: 5px;
+}
+.tooltipster-sidetip.tooltipster-punk .tooltipster-box {
+    border-radius: 0px;
+    border: none;
+    background: #fff;
+    height: 135px;
+    width: 350px;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-top .tooltipster-box {
+    margin-bottom: 7px;
+}
+.tooltipster-sidetip.tooltipster-punk .tooltipster-content {
+    color:#000;
+    padding: 8px 16px;
+}
+.tooltipster-sidetip.tooltipster-punk .tooltipster-arrow-background {
+    display:none;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-bottom .tooltipster-arrow-border {
+    border-bottom-color:#2a2a2a;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-left .tooltipster-arrow-border {
+    border-left-color:#2a2a2a;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-right .tooltipster-arrow-border {
+    border-right-color:#2a2a2a;
+}
+.tooltipster-sidetip.tooltipster-punk.tooltipster-top .tooltipster-arrow-border {
+    border-top-color:#f71169;
+    display: none;
+}
+.tooltip__top {
+    height: 25px;
+    font-family: 'FiraSans';
+    font-size: 20px;
+    line-height: 1.25;
+    color: #000000;
+    margin: 15px 0 10px 0;
+    padding: 0;
+}
+.tooltip__middle {
+    height: 30px;
+    font-family: 'FiraSans';
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1;
+    color: #000000;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+.tooltip__bottom {
+    height: 20px;
+    font-family: 'FiraSans';
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.43;
+    color: #636363;
+    margin: 0;
+    padding: 0;
 }
 @media screen and (min-width: 1200px) {
     .hide-desktop {
