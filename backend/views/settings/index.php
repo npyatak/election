@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
-use backend\models\Admin;
+use common\models\Settings;
 
 $this->title = 'Настройки';
 $this->params['breadcrumbs'][] = $this->title;
@@ -25,7 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'value',
                     'contentOptions' => [
                         'style' => 'max-width: 300px; overflow: hidden;'
-                    ]
+                    ],
+                    'value' => function($data) {
+                        if($data->type == Settings::TYPE_DROPDOWN_LIST) {
+                            $attr = $data->key.'Array';
+                            return $data->$attr[$data->value];
+                        }
+                        return $data->value;
+                    }
                 ],
                 [
                     'class' => 'yii\grid\ActionColumn',

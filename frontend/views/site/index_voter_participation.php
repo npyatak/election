@@ -387,6 +387,9 @@ $script = "
             }
         });
     });
+ 
+    var regionStatusArr = '".json_encode($regionStatusArr)."';
+    console.log(regionStatusArr);
 ";
 
 $this->registerJs($script, yii\web\View::POS_END);?>
