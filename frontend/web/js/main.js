@@ -291,6 +291,7 @@ $(document).ready(function () {
                 $('.popup-candidates').removeClass('active');
             })
     });
+    
 });
 
 $('.result-map').mousemove(function(e){

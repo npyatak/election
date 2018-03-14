@@ -30,10 +30,15 @@ IndexVoterParticipationAsset::register($this);
         });
     });
 </script> -->
+<style>
+    #russian_map polygon:hover {
+        fill: #1BA07D;
+    }
+</style>
 <div class="fh-page">
     <div class="fh-page__header">
         <div class="top__part">
-            <div class="map">
+            <div class="map" id="russian_map">
                 <svg
                     viewbox="0 0 1200 650"
                     xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +77,8 @@ IndexVoterParticipationAsset::register($this);
                     <!-- пример => красноярский край -->
                     <polygon
                         id="reg_26"
-                        class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e tooltip"
+                        class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e"
+                        fill="black"
                         title="<h1 class='tooltip__top'>Красноярский край</h1><h2 class='tooltip__middle'>42,4%</h2><h1 class='tooltip__bottom'>По данным ЦИК от 18 марта, 17:45</h1>"
                         points="540 385 540 390 545 395 550 395 555 395 560 400 560 405 565 410 570 410 570 415 565 415 560 420 560 425 565 430 570 430 570 435 565 440 560 440 560 445 560 450 560 455 560 460 560 465 555 470 560 475 565 475 570 480 575 485 575 490 575 500 575 505 580 510 575 510 570 515 570 520 565 520 560 525 560 530 565 530 570 530 575 535 580 535 585 535 590 530 595 525 600 520 605 515 610 515 615 515 620 515 625 510 620 505 615 500 620 495 625 500 625 495 625 485 630 480 630 475 635 470 640 470 640 465 635 460 635 455 640 450 640 445 645 445 650 450 655 445 660 445 665 450 665 455 670 450 670 445 675 440 680 435 680 430 685 425 690 430 695 430 700 435 705 430 705 425 705 420 700 420 705 415 705 410 700 405 700 395 705 390 710 385 715 380 715 375 715 370 710 365 715 360 715 355 720 350 725 350 725 345 720 345 715 340 710 340 710 335 710 330 715 325 715 320 710 315 710 310 710 305 710 300 710 295 715 295 715 270 710 265 710 260 715 260 720 255 725 255 730 250 730 245 730 240 735 235 740 235 745 230 740 225 740 215 735 215 735 210 730 205 730 200 730 195 725 200 720 200 715 200 710 205 710 200 715 195 720 195 720 190 725 185 730 180 735 175 740 170 740 165 740 160 735 155 735 150 730 145 725 150 715 150 710 155 710 150 715 145 705 145 705 135 695 135 690 140 685 145 685 150 680 150 675 155 670 155 665 160 665 155 665 150 660 155 655 155 650 160 630 160 625 165 620 165 615 165 615 170 615 175 615 180 600 180 595 175 590 175 585 175 585 180 580 185 580 190 585 195 585 200 585 205 580 200 580 195 575 190 570 190 570 195 575 195 575 200 570 200 565 205 570 210 570 215 570 220 565 220 560 225 560 235 565 240 570 240 570 255 565 260 560 260 560 265 560 275 565 280 560 285 565 290 560 295 565 300 565 305 560 310 565 310 565 315 570 315 570 325 565 330 560 335 560 345 555 350 550 355 550 360 555 365 555 370 550 370 545 375 540 375 545 380 540 385"
                     />
@@ -201,7 +207,8 @@ IndexVoterParticipationAsset::register($this);
 
 
                     <polygon id="reg_80" 
-                        class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e tooltip"
+                        class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e"
+                        fill="black"
                         title="<h1 class='tooltip__top'>Красноярский край</h1><h2 class='tooltip__middle'>42,4%</h2><h1 class='tooltip__bottom'>По данным ЦИК от 18 марта, 17:45</h1>"
                         points="465 375 470 375 475 370 480 370 480 365 485 360 490 355 495 360 500 360 505 365 510 365 515 365 520 370 525 375 530 370 535 370 540 375 545 375 550 370 555 370 555 365 550 360 550 355 545 350 540 345 540 340 535 340 530 335 530 330 525 330 520 335 515 335 510 335 505 330 500 325 500 320 495 320 490 315 485 315 485 310 480 310 480 305 475 305 470 305 470 300 470 295 465 290 470 285 465 280 465 275 460 280 455 275 450 275 445 270 450 265 445 260 440 260 435 260 430 260 425 255 425 250 430 245 435 240 435 235 440 230 430 230 425 235 420 235 415 230 405 240 405 245 400 250 395 250 390 255 390 260 380 270 385 275 385 280 390 285 390 290 395 295 390 300 390 310 390 315 385 320 385 325 390 330 390 335 390 340 395 345 400 350 405 345 410 345 415 345 420 345 425 340 430 340 435 345 440 350 440 355 445 360 445 365 445 370 450 375 455 375 460 380 465 380 465 375"
                     />
@@ -257,6 +264,9 @@ IndexVoterParticipationAsset::register($this);
                         <span class="text">Избирательные участки завершили работу</span>
                     </div>
                 </div>
+                <div class="popup-candidates">
+                    <div class="region">Красноярский край</div>
+                </div>
             </div>
         </div>
         <div class="news-part online-parent">
@@ -300,9 +310,6 @@ IndexVoterParticipationAsset::register($this);
             </div>
         </div>
     </div>
-    <div class="news-part">
-        
-    </div>
     <div class="fh-page__middle">
         <div class="left-part">
             <div class="left-part__content">
@@ -331,24 +338,52 @@ IndexVoterParticipationAsset::register($this);
     </div>        
 </div>
 
-<?php 
+ 
+<!-- $regionIdsArr = [];
+foreach ($regions as $region) {
+    $regionIdsArr[$region['id']] = $region['title'];
+} -->
+<?php
 $script = "
+    // var regionIdsArr = '".json_encode($regionIdsArr)."';
+    // var regionResultsArr = '".json_encode($regionResultsArr)."';
+    // console.log(regionIdsArr);
+    // console.log(regionResultsArr);
     $(document).ready(function() {
-        $('.tooltip').tooltipster({
-            theme: 'tooltipster-punk',
-            'maxWidth': 270,
-            contentAsHTML: true,
-            trigger: 'custom',
-            triggerOpen: {
-                click: true,
-                tap: true,
-                mouseenter: true
-            },
-            triggerClose: {
-                click: true,
-                scroll: false,
-                tap: true,
-                mouseleave: true
+        // $('.tooltip').tooltipster({
+        //     theme: 'tooltipster-punk',
+        //     'maxWidth': 270,
+        //     contentAsHTML: true,
+        //     trigger: 'custom',
+        //     triggerOpen: {
+        //         click: true,
+        //         tap: true,
+        //         mouseenter: true
+        //     },
+        //     triggerClose: {
+        //         click: true,
+        //         scroll: false,
+        //         tap: true,
+        //         mouseleave: true
+        //     }
+        // });
+        $.each($('#russian_map polygon'), function () {
+            console.log('here')
+            $(this)
+                .mouseenter(function () {
+                    $('.popup-candidates').addClass('active');
+                })
+                .mouseleave(function () {
+                    $('.popup-candidates').removeClass('active');
+                })
+        });
+        $('#russian_map').mousemove(function(e) {
+            var X = e.pageX;
+            var Y = e.pageY;
+            var popup_candidates = $('.popup-candidates');
+            if(window.popup_candidates != 0) {
+                if ((X - 320) === $(window).width()) popup_candidates.css({left: 'auto', right: X + 15, top: Y + 15});
+                else popup_candidates.css({left: X + 15, right: 'auto', top: Y + 15});
             }
         });
     });
