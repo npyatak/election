@@ -103,7 +103,7 @@ class SiteController extends Controller
             $candidates = Candidate::find()->orderBy('surname')->all();
             $news = News::find()->orderBy('date DESC')->limit(3)->all();
 
-            $regionStatusArr = Region::find()->select(['status'])->indexBy('id')->column();
+            $regionStatusArr = Region::find()->select(['id', 'title', 'status', 'voter_participation', 'text'])->indexBy('id')->asArray()->all();
             
             return $this->render('index_voter_participation', [
                 'cards' => $cards,
