@@ -9,6 +9,42 @@
     50% { transform: scale( 1.4 ); }
     100%  { transform: scale( 1 ); }
 }
+.reg_id {
+    width: 280px;
+    font-family: 'FiraSans';
+    font-size: 30px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+.reg_title {
+    width: 280px;
+    font-family: 'FiraSans';
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+.reg_desc {
+    width: 280px;
+    font-family: 'FiraSans';
+    font-size: 14px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: left;
+    color: #636363;
+}
 .top__oval {
     animation: pulse 2s infinite;
 }
@@ -435,6 +471,90 @@
     }
 
 }
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .map {
+        padding: 80px 20px 40px 20px;
+    }
+    .left-part .text .text__number {
+        font-size: 50px;
+        line-height: 50px;
+        width: 100%;
+    }
+    .left-part .text .text__middle {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        color: #fff;
+        font-size: 20px;
+        line-height: 25px;
+        font-family: 'FiraSans-Medium';
+        text-align: left;
+        text-align: -webkit-left;
+    }
+    .left-part .text .text__bottom {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 0px;
+        color: #fff;
+        font-size: 12px;
+        line-height: 15px;
+        font-family: 'FiraSans-Regular';
+        text-align: left;
+        text-align: -webkit-left;
+    }
+    .map-bottom-colors {
+        display: none;
+    }
+    .left-part .text {
+        padding-left: 0;
+        width: 100%;
+        height: 100%;
+        left: 0!important;
+    }
+    .color-block .text {
+        margin-left: 10px;
+    }
+    .fh-page__header .left-part.map-bottom {
+        position: relative;
+        padding: 0!important;
+        float: none;
+        text-align: left;
+        text-align: -webkit-left;
+        left: initial;
+        bottom: initial;
+        margin-top: 0;
+        margin-bottom: 0px;
+        margin-left: 10px;
+    }
+    .news-part {
+        width:  100%!important;
+    }
+    .btn-yavka {
+        font-size: 16px!important;
+        line-height: 20px!important;
+        margin: 20px 0 10px 0!important;
+    }
+    .online-btn {
+        height: 40px!important;
+        line-height: 40px!important;
+        font-size: 16px!important;
+    }
+    .bottom__part .online-block {
+        padding: 20px!important;
+    }
+    .online-block .top .top__title {
+        font-size: 20px!important;
+        line-height: 25px!important;
+    }
+    .online-block .bottom .bottom__text {
+        font-size: 12px!important;
+        line-height: 15px!important;
+    }
+    .fh-page__middle .candidates-item {
+        width: 100%!important;
+    }
+
+}
 @media screen and (min-width: 320px) and (max-width: 1199px) {
     .hide-desktop {
         display: block;
@@ -456,6 +576,15 @@
         position: relative;
         width: 100%;
         height: auto;
+    }
+    .right-part__content {
+        padding: 40px 0 40px 40px;
+        width: 100%;
+        background: #fff;
+    }
+    .btn-yavka {
+        color: #2724ad;
+        margin: 20px 0 30px 0;
     }
     .left-part .text {
         left: 40px;
