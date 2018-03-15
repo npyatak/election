@@ -290,14 +290,10 @@ $(document).ready(function () {
                 $('.popup-candidates').addClass('active');
                 var region_name = JSON.parse(regionIdsArr)[new_reg];
                 $('.popup-candidates').find('.region').html(region_name);
-                $('.candidate_id_1').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][1]);
-                $('.candidate_id_2').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][2]);
-                $('.candidate_id_3').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][3]);
-                $('.candidate_id_4').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][4]);
-                $('.candidate_id_5').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][5]);
-                $('.candidate_id_6').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][6]);
-                $('.candidate_id_7').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][7]);
-                $('.candidate_id_8').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][8]);
+                $.each($('.candidate_id'), function () {
+                    var key = $(this).attr('data-id');
+                    $(this).find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][key]);
+                });
             })
             .mouseleave(function () {
                 $('.popup-candidates').removeClass('active');
