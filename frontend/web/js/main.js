@@ -283,15 +283,27 @@ $(document).ready(function () {
     // });
 
     $.each($('.first-results polygon'), function () {
+        var reg = $(this).attr('id');
+        var new_reg = reg.replace(/[^-0-9]/gim,'');
         $(this)
-            .mouseenter(function () {
+            .mouseenter(function (e) {
                 $('.popup-candidates').addClass('active');
+                var region_name = JSON.parse(regionIdsArr)[new_reg];
+                $('.popup-candidates').find('.region').html(region_name);
+                $('.candidate_id_1').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][1]);
+                $('.candidate_id_2').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][2]);
+                $('.candidate_id_3').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][3]);
+                $('.candidate_id_4').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][4]);
+                $('.candidate_id_5').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][5]);
+                $('.candidate_id_6').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][6]);
+                $('.candidate_id_7').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][7]);
+                $('.candidate_id_8').find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][8]);
             })
             .mouseleave(function () {
                 $('.popup-candidates').removeClass('active');
             })
     });
-    
+
 });
 
 $('.result-map').mousemove(function(e){
@@ -299,11 +311,11 @@ $('.result-map').mousemove(function(e){
     var Y = e.pageY; // положения по оси Y
     var popup_candidates = $('.popup-candidates');
     if(window.popup_candidates != 0){
-        if((X - 320) === $(window).width()){
-            popup_candidates.css({left: 'auto', right: X + 15, top: Y + 15});
+        if($(window).width() <= (X + 350)){
+            popup_candidates.addClass('p-left');
         }else{
-            popup_candidates.css({left: X + 15, right: 'auto', top: Y + 15});
+            popup_candidates.removeClass('p-left');
         }
-        console.log($(window).width(), (X + 320))
+        popup_candidates.css({left: X + 15, right: 'auto', top: Y + 15});
     }
 });

@@ -353,7 +353,7 @@ use yii\helpers\Url;
 <div class="popup-candidates">
     <div class="region">Красноярский край</div>
     <?php foreach ($candidates as $c):?>
-        <div class="clearfix" data-id="<?=$c->id;?>">
+        <div class="candidate_id_<?=$c->id;?> clearfix">
             <div class="pull-left"><span><?=$c->nameAndSurname;?></span></div>
             <div class="pull-right"><span class="popup-percent">65,3</span>%</div>
         </div>
@@ -367,10 +367,8 @@ foreach ($regions as $region) {
 }
 
 $script = "
-    var regionIdsArr = '".json_encode($regionIdsArr)."';
-    var regionResultsArr = '".json_encode($regionResultsArr)."';
-    console.log(regionIdsArr);
-    console.log(regionResultsArr);
+    window.regionIdsArr = '".json_encode($regionIdsArr)."';
+    window.regionResultsArr = '".json_encode($regionResultsArr)."'; 
 ";
 
 $this->registerJs($script, yii\web\View::POS_HEAD);

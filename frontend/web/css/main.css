@@ -2489,6 +2489,9 @@ a.all-news {
 .popup-candidates.active {
     display: block;
 }
+.popup-candidates.p-left {
+    margin-left: -340px;
+}
 .popup-candidates .region {
     font: 20px 'FiraSans-Medium', sans-serif;
     color: #000;
