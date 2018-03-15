@@ -240,13 +240,13 @@ IndexVoterParticipationAsset::register($this);
                 <div class="left-part map-bottom">
                     <div class="text custom-left-part-text">
                         <h1 class="text__number">
-                            68%
+                            <?=Yii::$app->settings->get('mainPageVoterParticipationScore');?>
                         </h1>
                         <p class="text__middle">
                             Общая явка избирателей
                         </p>
                         <p class="text__bottom">
-                            По данным ЦИК от 18 марта, 17:45
+                            <?=Yii::$app->settings->get('mainPageVoterParticipationText');?>
                         </p>
                     </div>
                 </div>
@@ -276,7 +276,7 @@ IndexVoterParticipationAsset::register($this);
                     </div>
                     <div class="region">
                         <p class="reg_desc">
-                            По данным от 18 марта, 17:45
+                            <?=Yii::$app->settings->get('mainPageVoterParticipationText');?>
                         </p>
                     </div>
                 </div>
@@ -285,24 +285,26 @@ IndexVoterParticipationAsset::register($this);
         <div class="news-part online-parent">
             <div class="bottom__part">
                 <div class="right-part">
-                    <div class="online-block">
-                        <div class="top">
-                            <h1 class="top__title">
-                                Онлайн
-                                <div class="top__oval">
-                                    <div class="oval-inner"></div>
-                                </div>
-                            </h1>
+                    <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
+                        <div class="online-block">
+                            <div class="top">
+                                <h1 class="top__title">
+                                    Онлайн
+                                    <div class="top__oval">
+                                        <div class="oval-inner"></div>
+                                    </div>
+                                </h1>
+                            </div>
+                            <div class="bottom">
+                                <p class="bottom__text">
+                                    <?=Yii::$app->settings->get('mainPageOnlineBlockText');?>
+                                </p>
+                            </div>
+                            <button class="online-btn hide-desktop">
+                                Читать трансляцию
+                            </button>
                         </div>
-                        <div class="bottom">
-                            <p class="bottom__text">
-                                Следите за выборами вместе с нами в прямом эфире 24 на 7, 2к18. Заголовок трансляции и все такое.
-                            </p>
-                        </div>
-                        <button class="online-btn hide-desktop">
-                            Читать трансляцию
-                        </button>
-                    </div>
+                    <?php endif;?>
                 </div>
             </div>
             <div class="right-part__content">
