@@ -345,10 +345,6 @@ foreach ($regions as $region) {
 } -->
 <?php
 $script = "
-    // var regionIdsArr = '".json_encode($regionIdsArr)."';
-    // var regionResultsArr = '".json_encode($regionResultsArr)."';
-    // console.log(regionIdsArr);
-    // console.log(regionResultsArr);
     $(document).ready(function() {
         // $('.tooltip').tooltipster({
         //     theme: 'tooltipster-punk',

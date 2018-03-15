@@ -4,16 +4,6 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%region}}".
- *
- * @property int $id
- * @property string $title
- * @property string $data
- * @property int $status
- *
- * @property RatingItem[] $ratingItems
- */
 class Region extends \yii\db\ActiveRecord
 {
     const STATUS_WAITING = 0;
