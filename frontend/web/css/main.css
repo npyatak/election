@@ -3292,6 +3292,19 @@ a.all-news {
     .first-results .top__part {
         display: none;
     }
+    .first-results .mobile-rating-cat .dropdown-menu > li > a {
+        line-height: normal;
+    }
+    .first-results .bootstrap-select.btn-group .dropdown-menu li a {
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        white-space: normal;
+    }
+    .first-results .dropup .dropdown-menu {
+        top: 100% !important;
+        bottom: auto !important;
+    }
 }
 @media (max-width:999px) {
     .card-text .clearfix .pull-left,
