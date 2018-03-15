@@ -96,16 +96,18 @@ use yii\helpers\Url;
                         </div>
                     </div>
                 <?php endif;?>
-
                 <?php if($news):?>
                     <div class="news">
-                    <h4>Новости</h4>
+                        <h4>Новости</h4>
                         <?php foreach ($news as $n):?>
                             <div class="block">
                                 <div class="date"><?=$n->viewDate;?></div>
                                 <a href=""><?=$n->title;?></a>
                             </div>
                         <?php endforeach;?>
+                        <div class="more-news">
+                            <a href="http://tass.ru/vybory-prezidenta-rf-2018" class="btn btn-h50 btn-w200 btn-purple">Ещё новости</a>
+                        </div>
                         <div class="mobile-news">
                             <div id="news-slider" class="owl-carousel">
                                 <div class="news-item">
