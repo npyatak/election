@@ -140,7 +140,7 @@ IndexVoterParticipationAsset::register($this);
                      <polygon id="reg_51" points="100 385 105 390 110 385 115 385 120 385 115 380 110 375 110 370 115 370 120 365 125 370 125 365 130 360 130 355 130 340 130 330 125 335 120 330 115 330 110 330 115 335 110 340 105 340 100 345 95 340 95 335 90 330 85 325 80 325 80 330 85 335 90 335 90 345 95 350 90 355 95 360 95 370 95 375 100 380 100 385" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e" fill="black"/>
                      <polygon id="reg_8" points="175 320 170 320 165 315 160 310 165 310 165 305 165 300 160 295 155 295 155 290 155 285 150 280 145 280 140 275 135 280 130 285 130 295 125 300 125 305 120 310 115 310 110 305 110 320 105 325 110 330 115 330 120 330 125 335 130 330 135 335 140 335 145 335 145 340 150 345 155 340 160 335 165 335 170 330 170 325 175 320" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e" fill="black"/>
 
-                     <polygon class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e" id="71" points="75 325 70 320 65 325 65 330 65 335 60 340 60 345 65 350 60 355 60 360 65 365 70 365 70 370 75 375 75 380 80 380 85 375 90 375 95 375 95 370 95 360 90 355 95 350 90 345 90 335 85 335 80 330 80 325 75 325" fill="black"/>
+                     <polygon class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e" id="reg_71" points="75 325 70 320 65 325 65 330 65 335 60 340 60 345 65 350 60 355 60 360 65 365 70 365 70 370 75 375 75 380 80 380 85 375 90 375 95 375 95 370 95 360 90 355 95 350 90 345 90 335 85 335 80 330 80 325 75 325" fill="black"/>
 
                      <polygon class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e" id="reg_62" points="80 325 85 325 90 330 95 335 95 340 100 345 105 340 110 340 115 335 110 330 105 325 110 320 110 305 115 310 120 310 125 305 125 300 130 295 130 285 120 285 115 280 110 280 105 285 100 285 95 290 90 290 85 285 80 285 80 280 75 280 70 285 75 290 80 295 75 295 70 290 70 295 75 300 80 305 75 310 75 315 75 320 75 325 80 325" fill="black"/>
 
@@ -264,8 +264,21 @@ IndexVoterParticipationAsset::register($this);
                         <span class="text">Избирательные участки завершили работу</span>
                     </div>
                 </div>
+                <button class="online-btn hide-desktop btn-yavka">
+                    Явка по регионам
+                </button>
                 <div class="popup-candidates">
-                    <div class="region">Красноярский край</div>
+                    <div class="region">
+                        <h3 class="reg_title">1</h3>
+                    </div>
+                    <div class="region">
+                        <h2 class="reg_id">1</h2>
+                    </div>
+                    <div class="region">
+                        <p class="reg_desc">
+                            По данным от 18 марта, 17:45
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -339,53 +352,153 @@ IndexVoterParticipationAsset::register($this);
 </div>
 
  
-<!-- $regionIdsArr = [];
-foreach ($regions as $region) {
-    $regionIdsArr[$region['id']] = $region['title'];
-} -->
 <?php
 $script = "
     $(document).ready(function() {
-        // $('.tooltip').tooltipster({
-        //     theme: 'tooltipster-punk',
-        //     'maxWidth': 270,
-        //     contentAsHTML: true,
-        //     trigger: 'custom',
-        //     triggerOpen: {
-        //         click: true,
-        //         tap: true,
-        //         mouseenter: true
-        //     },
-        //     triggerClose: {
-        //         click: true,
-        //         scroll: false,
-        //         tap: true,
-        //         mouseleave: true
-        //     }
-        // });
-        $.each($('#russian_map polygon'), function () {
-            console.log('here')
-            $(this)
-                .mouseenter(function () {
-                    $('.popup-candidates').addClass('active');
-                })
-                .mouseleave(function () {
-                    $('.popup-candidates').removeClass('active');
-                })
-        });
-        $('#russian_map').mousemove(function(e) {
-            var X = e.pageX;
-            var Y = e.pageY;
-            var popup_candidates = $('.popup-candidates');
-            if(window.popup_candidates != 0) {
-                if ((X - 320) === $(window).width()) popup_candidates.css({left: 'auto', right: X + 15, top: Y + 15});
-                else popup_candidates.css({left: X + 15, right: 'auto', top: Y + 15});
-            }
-        });
+        var regionStatusArr = '".json_encode($regionStatusArr)."';
+        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        console.log(width);
+        if (width > 1199) {
+            $.each($('#russian_map polygon'), function () {
+                var temp = this.id.split('_');
+                var region_temp = JSON.parse(regionStatusArr);
+                if (temp[0] === 'reg') {
+                    var region = region_temp[temp[1]];
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                }
+                $(this).hover(function() { 
+                    if (region.status == 0) {
+                        $(this).css('fill', 'rgba(101, 106, 219, 0.7)');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', 'rgba(31, 179, 140, 0.7)');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', 'rgba(74, 144, 226, 0.7)');
+                    }
+                }, function() {     
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                });
+                $(this)
+                    .mouseenter(function (e) {
+                        $('.popup-candidates').addClass('active');
+                        var temp = e.currentTarget.id.split('_');
+                        if (temp[0] === 'reg') {
+                            console.clear();
+                            console.log(JSON.parse(regionStatusArr))
+                            var region_temp = JSON.parse(regionStatusArr);
+                            var region = region_temp[temp[1]];
+                            console.log(region);
+                            $('.reg_id').html(region.voter_participation + ' %');
+                            $('.reg_title').html(region.title);
+                        }
+                    })
+                    .mouseleave(function () {
+                        $('.popup-candidates').removeClass('active');
+                    })
+            });
+            $.each($('#russian_map path#reg_25'), function () {
+                var temp = this.id.split('_');
+                var region_temp = JSON.parse(regionStatusArr);
+                if (temp[0] === 'reg') {
+                    var region = region_temp[temp[1]];
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                }
+                $(this).hover(function() { 
+                    if (region.status == 0) {
+                        $(this).css('fill', 'rgba(101, 106, 219, 0.7)');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', 'rgba(31, 179, 140, 0.7)');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', 'rgba(74, 144, 226, 0.7)');
+                    }
+                }, function() {     
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                });
+                $(this)
+                    .mouseenter(function (e) {
+                        $('.popup-candidates').addClass('active');
+                        var temp = e.currentTarget.id.split('_');
+                        if (temp[0] === 'reg') {
+                            console.clear();
+                            console.log(JSON.parse(regionStatusArr))
+                            var region_temp = JSON.parse(regionStatusArr);
+                            var region = region_temp[temp[1]];
+                            console.log(region);
+                            $('.reg_id').html(region.voter_participation + ' %');
+                            $('.reg_title').html(region.title);
+                        }
+                    })
+                    .mouseleave(function () {
+                        $('.popup-candidates').removeClass('active');
+                    })
+            });
+            $('#russian_map').mousemove(function(e) {
+                var X = e.pageX;
+                var Y = e.pageY;
+                var popup_candidates = $('.popup-candidates');
+                if(window.popup_candidates != 0) {
+                    if ((X - 320) === $(window).width()) {
+                        popup_candidates.css({left: 'auto', right: X + 15, top: Y + 15});
+                    }
+                    else {
+                        popup_candidates.css({left: X + 15, right: 'auto', top: Y + 15});
+                    }
+                }
+            });
+        }
+            $.each($('#russian_map polygon'), function () {
+                var temp = this.id.split('_');
+                var region_temp = JSON.parse(regionStatusArr);
+                if (temp[0] === 'reg') {
+                    var region = region_temp[temp[1]];
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                }
+            });
+            $.each($('#russian_map path#reg_25'), function () {
+                var temp = this.id.split('_');
+                var region_temp = JSON.parse(regionStatusArr);
+                if (temp[0] === 'reg') {
+                    var region = region_temp[temp[1]];
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                }
+            });
     });
- 
-    var regionStatusArr = '".json_encode($regionStatusArr)."';
-    console.log(regionStatusArr);
+
 ";
 
 $this->registerJs($script, yii\web\View::POS_END);?>
