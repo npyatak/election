@@ -15,6 +15,8 @@ class m180316_185935_insert_into_settings extends Migration
         $this->batchInsert('{{%settings}}', ['key', 'value', 'title', 'type', 'section'], [
             ['mainPageOnlineBlockLink', 'http://tass.ru', 'Онлайн текст ссылка', 1, 1],
         ]);
+
+        Region::updateAll(['text' => 'Избирательные участки еще не открылись']);
     }
 
     public function safeDown()

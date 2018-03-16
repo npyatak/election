@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\components\CKEditor;
+use common\components\ElfinderInput;
 
 use common\models\Settings;
 ?>
@@ -24,7 +25,7 @@ use common\models\Settings;
             ])
         ]);
     } elseif($model->type == Settings::TYPE_IMAGE) {
-        echo $form->field($model, 'imageFile')->fileInput();
+        echo $form->field($model, 'value')->widget(ElfinderInput::className());
     } elseif($model->type == Settings::TYPE_DROPDOWN_LIST) {
         $attr = $model->key.'Array';
         echo $form->field($model, 'value')->dropDownList($model->$attr);

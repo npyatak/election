@@ -108,11 +108,8 @@ class SiteController extends Controller
             $candidates = Candidate::find()->orderBy('surname')->all();
             $news = News::find()->orderBy('date DESC')->limit(3)->all();
 
-            $regionStatusArr = [];
-            foreach (Region::find()->all() as $r) {
-                $regionStatusArr[$r->id] = ['id'=>$r->id, 'title'=>$r->title, 'status'=>$r->statusFromTime, 'voter_participation'=>$r->voter_participation, 'text'=>$r->text];
-            }
-            
+            $regionStatusArr = Region::find()->select(['id', 'title', 'status', 'voter_participation', 'text'])->indexBy('id')->asArray()->all();
+           
             return $this->render('index_voter_participation', [
                 'cards' => $cards,
                 'candidates' => $candidates,
@@ -122,7 +119,7 @@ class SiteController extends Controller
         } elseif($mainPageType == Settings::INDEX_FIRST_RESULTS) {
             $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
             $news = News::find()->orderBy('date DESC')->limit(5)->all();
-            $candidateResults = RatingItem::find()->where(['rating_group_id' => 21])->andWhere(['not', ['candidate_id' => null]])->orderBy('score DESC')->asArray()->all();
+            $candidateResults = RatingItem::find()->where(['rating_group_id' => 21])->andWhere(['not', ['candidate_id' => null]])->orderBy('score DESC')->indexBy('candidate_id')->asArray()->all();
             $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
             $regions = Region::find()->indexBy('id')->asArray()->all();
             

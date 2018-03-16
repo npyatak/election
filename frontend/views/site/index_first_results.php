@@ -56,7 +56,7 @@ use yii\helpers\Url;
                         </h4>
                         <p><?=Yii::$app->settings->get('mainPageOnlineBlockText');?></p>
                         <div class="more-online">
-                            <a href="" class="btn btn-h50 btn-w200 btn-white">Читать трансляцию</a>
+                            <a href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" class="btn btn-h50 btn-w200 btn-white">Читать трансляцию</a>
                         </div>
                     </div>
                 <?php endif;?>
