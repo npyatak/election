@@ -289,8 +289,9 @@ $(document).ready(function () {
             .mouseenter(function (e) {
                 var reg = $(this).attr('data-id');
                 var popup_c = $('.popup-candidates');
-                popup_c.addClass('active');
                 var region_name = JSON.parse(regionIdsArr)[reg];
+
+                popup_c.addClass('active');
                 popup_c.find('.region').html(region_name['title']);
                 popup_c.find('.caption').html(region_name['text']);
 
@@ -298,6 +299,7 @@ $(document).ready(function () {
                 $.each(same, function () {
                     $(this).css({fill:'#1BA07D'});
                 });
+
                 $.each($('.candidate_id'), function () {
                     var key = $(this).attr('data-id');
                     if(JSON.parse(regionResultsArr)[reg]){
@@ -307,6 +309,7 @@ $(document).ready(function () {
                         $(this).css({display:'none'});
                     }
                 });
+
             })
             .mouseleave(function () {
                 $('.popup-candidates').removeClass('active');
