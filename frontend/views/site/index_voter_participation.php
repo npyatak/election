@@ -5,36 +5,156 @@ use common\models\Candidate;
 
 IndexVoterParticipationAsset::register($this);
 ?>
-<!-- <link href="tooltip-helper.min.css" rel="stylesheet">
-<link href="first_hours.css" rel="stylesheet">
-<script src="jquery.min.js"></script>
-<script src="tooltip-helper.min.js"></script> -->
-<!-- <script>
-    $(document).ready(function() {
-        $('.tooltip').tooltipster({
-            theme: 'tooltipster-punk',
-            'maxWidth': 270,
-            contentAsHTML: true,
-            trigger: 'custom',
-            triggerOpen: {
-                click: true,
-                tap: true,
-                mouseenter: true
-            },
-            triggerClose: {
-                click: true,
-                scroll: false,
-                tap: true,
-                mouseleave: true
-            }
-        });
-    });
-</script> -->
+
 <style>
     #russian_map polygon:hover {
         fill: #1BA07D;
     }
 </style>
+<div class="voters-block hide-desktop">
+    <a href="http://tass.ru" target="_blank" id="logo"></a>
+    <div class="cls" id="hidden-menu_cls">
+        <i class="fa fa-close"></i>
+    </div>
+    <h2 class="voters-block__title">
+        Явка избирателей в регионах
+    </h2>
+    <h4 class="voters-block__subtitle">
+        По данным от 18 марта, 17:45
+    </h4>
+    <div class="items first-items">
+        <div class="content">
+            <div class="content__left">
+                <span>Москва</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">56%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Питер</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">26%</span>
+            </div>
+        </div>
+    </div>
+    <div class="items first-items">
+        <div class="content">
+            <div class="content__left">
+                <span>Алтайский край</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">96%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Амерская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">27%</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content__left">
+                <span>Иркутская область</span>
+            </div>
+            <div class="content__right">
+                <span class="percent">87%</span>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="fh-page">
     <div class="fh-page__header">
         <div class="top__part">
@@ -275,9 +395,7 @@ IndexVoterParticipationAsset::register($this);
                         <h2 class="reg_id">1</h2>
                     </div>
                     <div class="region">
-                        <p class="reg_desc">
-                            <?=Yii::$app->settings->get('mainPageVoterParticipationText');?>
-                        </p>
+                        <p class="reg_desc">1</p>
                     </div>
                 </div>
             </div>
@@ -285,26 +403,23 @@ IndexVoterParticipationAsset::register($this);
         <div class="news-part online-parent">
             <div class="bottom__part">
                 <div class="right-part">
-                    <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
-                        <div class="online-block">
-                            <div class="top">
-                                <h1 class="top__title">
-                                    Онлайн
-                                    <div class="top__oval">
-                                        <div class="oval-inner"></div>
-                                    </div>
-                                </h1>
-                            </div>
-                            <div class="bottom">
-                                <p class="bottom__text">
-                                    <?=Yii::$app->settings->get('mainPageOnlineBlockText');?>
-                                </p>
-                            </div>
-                            <button class="online-btn hide-desktop">
-                                Читать трансляцию
-                            </button>
+                    <div class="online-block">
+                        <div class="top">
+                            <h1 class="top__title">
+                                Онлайн
+                                <div class="top__oval">
+                                    <div class="oval-inner"></div>
+                                </div>
+                            </h1>
                         </div>
-                    <?php endif;?>
+                        <div class="bottom">
+                            <p class="bottom__text">
+                            </p>
+                        </div>
+                        <button class="online-btn hide-desktop">
+                            Читать трансляцию
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="right-part__content">
@@ -358,14 +473,451 @@ IndexVoterParticipationAsset::register($this);
 $script = "
     $(document).ready(function() {
         var regionStatusArr = '".json_encode($regionStatusArr)."';
+        var obj = JSON.parse(regionStatusArr);
         var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-        console.log(width);
+        $('.btn-yavka').click(function(e) {
+            e.preventDefault();
+            // $('.voters-block').fadeIn(300);
+            $('.voters-block').toggleClass('active-modal');
+            // $('.voters-block').css('padding', '120px 40px 40px 40px!important');
+            $('#hidden-menu_cls').fadeIn(300);
+        });
+        $('.cls').click(function(e) {
+            e.preventDefault();
+            $('.voters-block').toggleClass('active-modal');
+            // $('.voters-block').css('padding', '0!important')
+            $('#hidden-menu_cls').fadeOut(300);
+        });
         if (width > 1199) {
+            $(document).ready(function() {
+
+            function chechStatus(_id) {
+                return obj[_id].status;
+            }
+            function colorIt (_array, _color) {
+                _array.forEach( function(id) {
+                    $('#russian_map polygon#' + id).css('fill', _color);
+                });
+            }
+            function objectsStatic(_id) {
+                var type = _id[0];
+                var id = _id[1];
+                if (type === 'reg') {
+                    var ids = [id];
+                    if (id === '26') {
+                        // Красноярский край
+                        var ids = ['reg_26', 'svg_24', 'svg_25', 'svg_26', 'svg_27', 'svg_28'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    } else if (id === '67') {
+                        // Сахалин
+                        var ids = ['svg_4', 'svg_3', 'svg_5', 'svg_6', 'svg_16', 'reg_67'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    } else if (id === '34') {
+                        // Ненецкий А.О.
+                        var ids = ['svg_64', 'svg_66', 'reg_34'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    } else if (id === '3') {
+                        // Архангельская область
+                        var ids = ['svg_65', 'svg_67', 'svg_68', 'svg_69', 'svg_70', 'svg_71', 'svg_72', 'svg_73', 'reg_3'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    } else if (id === '57') {
+                        // Caxa
+                        var ids = ['svg_23', 'svg_22', 'svg_21', 'svg_20', 'svg_19', 'reg_57'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    } else if (id === '84') {
+                        // Чукотка
+                        var ids = ['svg_12', 'reg_84'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    } else if (id === '20') {
+                        // Камчатка
+                        var ids = ['svg_10', 'svg_8', 'svg_7', 'reg_20'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    } else if (id === '85') {
+                        // Ямало-Ненецкий
+                        var ids = ['svg_33', 'svg_34', 'reg_85'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    } else if (id === '54') {
+                        // Крым
+                        var ids = ['svg_121', 'reg_54'];
+                        switch (chechStatus(id)) {
+                            case '0': colorIt(ids, '#6569db'); break;
+                            case '5': colorIt(ids, '#1fb38c'); break;
+                            case '9': colorIt(ids, '#4a90e2'); break;
+                            default: break;
+                        }
+                    }
+                }
+            }
+            function objectHover(_obj, _action) {
+                var temp = _obj.id.split('_');
+                var type = temp[0];
+                var id = temp[1];
+
+                if (type === 'reg') {
+                    // Main objects
+                    var ids = [_obj.id];
+                    if (_action === 'hover') {
+                        if (id === '26') {
+                            // Красноярский край
+                            var ids = ['reg_26', 'svg_24', 'svg_25', 'svg_26', 'svg_27', 'svg_28'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (id === '67') {
+                            // Сахалин
+                            var ids = ['svg_4', 'svg_3', 'svg_5', 'svg_6', 'svg_16', 'reg_67'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (id === '34') {
+                            // Ненецкий А.О.
+                            var ids = ['svg_64', 'svg_66', 'reg_34'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (id === '3') {
+                            // Архангельская область
+                            console.log('!!!!!');
+                            var ids = ['svg_65', 'svg_67', 'svg_68', 'svg_69', 'svg_70', 'svg_71', 'svg_72', 'svg_73', 'reg_3'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (id === '57') {
+                            // Caxa
+                            var ids = ['svg_23', 'svg_22', 'svg_21', 'svg_20', 'svg_19', 'reg_57'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (id === '84') {
+                            // Чукотка
+                            var ids = ['svg_12', 'reg_84'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (id === '20') {
+                            // Камчатка
+                            var ids = ['svg_10', 'svg_8', 'svg_7', 'reg_20'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (id === '85') {
+                            // Ямало-Ненецкий
+                            var ids = ['svg_33', 'svg_34', 'reg_85'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else {
+                            // Other regions
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        }
+                    } else if (_action === 'unhover') {
+                        if (id === '26') {
+                            // Красноярский край
+                            var ids = ['reg_26', 'svg_24', 'svg_25', 'svg_26', 'svg_27', 'svg_28'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        } else if (id === '67') {
+                            // Сахалин
+                            var ids = ['svg_4', 'svg_3', 'svg_5', 'svg_6', 'svg_16', 'reg_67'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }   else if (id === '34') {
+                            // Ненецкий А.О.
+                            var ids = ['svg_64', 'svg_66', 'reg_34'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        } else if (id === '3') {
+                            // Архангельская область
+                            var ids = ['svg_65', 'svg_67', 'svg_68', 'svg_69', 'svg_70', 'svg_71', 'svg_72', 'svg_73', 'reg_3'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        } else if (id === '57') {
+                            // Caxa
+                            var ids = ['svg_23', 'svg_22', 'svg_21', 'svg_20', 'svg_19', 'reg_57'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        } else if (id === '84') {
+                            // Чукотка
+                            var ids = ['svg_12', 'reg_84'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        } else if (id === '20') {
+                            // Камчатка
+                            var ids = ['svg_10', 'svg_8', 'svg_7', 'reg_20'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        } else if (id === '85') {
+                            // Ямало-Ненецкий
+                            var ids = ['svg_33', 'svg_34', 'reg_85'];
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        } else {
+                            // Other regions
+                            switch (chechStatus(id)) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    }
+                } else if (type === 'svg') {
+                    // Small islands
+                    if (id == 24 || id == 25 || id == 26 || id == 27 || id == 28) {
+                        // Красноярский край
+                        var ids = ['reg_26', 'svg_24', 'svg_25', 'svg_26', 'svg_27', 'svg_28'];
+                        if (_action === 'hover') {
+                            switch (chechStatus('26')) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (_action === 'unhover') {
+                            switch (chechStatus('26')) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    } else if (id == 4 || id == 3 || id == 5 || id == 5) {
+                        // Сахалин
+                        var ids = ['svg_4', 'svg_3', 'svg_5', 'svg_6', 'svg_16', 'reg_67'];
+                        if (_action === 'hover') {
+                            switch (chechStatus('67')) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (_action === 'unhover') {
+                            switch (chechStatus('67')) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    } else if (id == 64 || id == 66) {
+                        // Ненецкий А.О.
+                        var ids = ['svg_64', 'svg_66', 'reg_34'];
+                        if (_action === 'hover') {
+                            switch (chechStatus('34')) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (_action === 'unhover') {
+                            switch (chechStatus('34')) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    } else if (id == 65 || id == 67 || id == 68 || id == 69 || id == 70 || id == 71 || id == 72 || id == 73) {
+                        // Архангельская область
+                        var ids = ['svg_65', 'svg_67', 'svg_68', 'svg_69', 'svg_70', 'svg_71', 'svg_72', 'svg_73', 'reg_3'];
+                        if (_action === 'hover') {
+                            switch (chechStatus('3')) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (_action === 'unhover') {
+                            switch (chechStatus('3')) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    } else if (id == 23 || id == 22 || id == 21 || id == 20 || id == 19) {
+                        // Caxa
+                        var ids = ['svg_23', 'svg_22', 'svg_21', 'svg_20', 'svg_19', 'reg_57'];
+                        if (_action === 'hover') {
+                            switch (chechStatus('57')) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (_action === 'unhover') {
+                            switch (chechStatus('57')) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    } else if (id == 12) {
+                        // Чукотка
+                        var ids = ['svg_12', 'reg_84'];
+                        if (_action === 'hover') {
+                            switch (chechStatus('84')) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (_action === 'unhover') {
+                            switch (chechStatus('84')) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    } else if (id == 10 || id == 8 || id == 7) {
+                        // Камчатка
+                        var ids = ['svg_10', 'svg_8', 'svg_7', 'reg_20'];
+                        if (_action === 'hover') {
+                            switch (chechStatus('20')) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (_action === 'unhover') {
+                            switch (chechStatus('20')) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    } else if (id == 10 || id == 8 || id == 7) {
+                        // Ямало-Ненецкий
+                        var ids = ['svg_33', 'svg_34', 'reg_85'];
+                        if (_action === 'hover') {
+                            switch (chechStatus('85')) {
+                                case '0': colorIt(ids, 'rgba(101, 106, 219, 0.7)'); break;
+                                case '5': colorIt(ids, 'rgba(31, 179, 140, 0.7)'); break;
+                                case '9': colorIt(ids, 'rgba(74, 144, 226, 0.7)'); break;
+                                default: break;
+                            }
+                        } else if (_action === 'unhover') {
+                            switch (chechStatus('85')) {
+                                case '0': colorIt(ids, '#6569db'); break;
+                                case '5': colorIt(ids, '#1fb38c'); break;
+                                case '9': colorIt(ids, '#4a90e2'); break;
+                                default: break;
+                            }
+                        }
+                    }  
+                }
+            }
+
+            
             $.each($('#russian_map polygon'), function () {
                 var temp = this.id.split('_');
-                var region_temp = JSON.parse(regionStatusArr);
+                objectsStatic(temp);
                 if (temp[0] === 'reg') {
-                    var region = region_temp[temp[1]];
+                    var region = obj[temp[1]];
                     if (region.status == 0) {
                         $(this).css('fill', '#6569db');
                     } else if (region.status == 5) {
@@ -375,45 +927,89 @@ $script = "
                     }
                 }
                 $(this).hover(function() { 
-                    if (region.status == 0) {
-                        $(this).css('fill', 'rgba(101, 106, 219, 0.7)');
-                    } else if (region.status == 5) {
-                        $(this).css('fill', 'rgba(31, 179, 140, 0.7)');
-                    } else if (region.status == 9) {
-                        $(this).css('fill', 'rgba(74, 144, 226, 0.7)');
-                    }
+                    objectHover(this, 'hover');
                 }, function() {     
-                    if (region.status == 0) {
-                        $(this).css('fill', '#6569db');
-                    } else if (region.status == 5) {
-                        $(this).css('fill', '#1fb38c');
-                    } else if (region.status == 9) {
-                        $(this).css('fill', '#4a90e2');
-                    }
+                    objectHover(this, 'unhover');
                 });
                 $(this)
                     .mouseenter(function (e) {
                         $('.popup-candidates').addClass('active');
                         var temp = e.currentTarget.id.split('_');
+                        var id = temp[1];
                         if (temp[0] === 'reg') {
-                            console.clear();
-                            console.log(JSON.parse(regionStatusArr))
-                            var region_temp = JSON.parse(regionStatusArr);
-                            var region = region_temp[temp[1]];
-                            console.log(region);
+                            var region = obj[temp[1]];
                             $('.reg_id').html(region.voter_participation + ' %');
                             $('.reg_title').html(region.title);
+                            $('.reg_desc').html(region.text);
+                            
+                        } else if (temp[0] === 'svg') {
+                            // Small islands tooltip
+                            if (id == 24 || id == 25 || id == 26 || id == 27 || id == 28) {
+                                // Красноярский край
+                                var region = obj[26];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.text);
+                            } else if (id == 4 || id == 3 || id == 5 || id == 5) {
+                                // Сахалин
+                                var region = obj[67];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.title);
+                            } else if (id == 64 || id == 66) {
+                                // Ненецкий А.О.
+                                var region = obj[34];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.text);
+                            } else if (id == 65 || id == 67 || id == 68 || id == 69 || id == 70 || id == 71 || id == 72 || id == 73) {
+                                // Архангельская область
+                                var region = obj[3];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.text);
+                            } else if (id == 23 || id == 22 || id == 21 || id == 20 || id == 19) {
+                                // Caxa
+                                var region = obj[57];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.text);
+                            } else if (id == 12) {
+                                // Чукотка
+                                var region = obj[84];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.text);
+                            } else if (id == 10 || id == 8 || id == 7) {
+                                // Камчатка
+                                var region = obj[20];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.text);
+                            }  else if (id == 33 || id == 34) {
+                                // Ямало-Ненецкий
+                                var region = obj[85];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.text);
+                            }   else if (id == 121) {
+                                // Крым
+                                var region = obj[54];
+                                $('.reg_id').html(region.voter_participation + ' %');
+                                $('.reg_title').html(region.title);
+                                $('.reg_desc').html(region.text);
+                            }
                         }
                     })
                     .mouseleave(function () {
                         $('.popup-candidates').removeClass('active');
                     })
             });
+            // Краснодраский край
             $.each($('#russian_map path#reg_25'), function () {
                 var temp = this.id.split('_');
-                var region_temp = JSON.parse(regionStatusArr);
                 if (temp[0] === 'reg') {
-                    var region = region_temp[temp[1]];
+                    var region = obj[temp[1]];
                     if (region.status == 0) {
                         $(this).css('fill', '#6569db');
                     } else if (region.status == 5) {
@@ -444,13 +1040,100 @@ $script = "
                         $('.popup-candidates').addClass('active');
                         var temp = e.currentTarget.id.split('_');
                         if (temp[0] === 'reg') {
-                            console.clear();
-                            console.log(JSON.parse(regionStatusArr))
-                            var region_temp = JSON.parse(regionStatusArr);
-                            var region = region_temp[temp[1]];
-                            console.log(region);
+                            var region = obj[temp[1]];
                             $('.reg_id').html(region.voter_participation + ' %');
                             $('.reg_title').html(region.title);
+                            $('.reg_desc').html(region.text);
+                        }
+                    })
+                    .mouseleave(function () {
+                        $('.popup-candidates').removeClass('active');
+                    })
+            });
+            // Севастополь
+            $.each($('#russian_map path#reg_69'), function () {
+                var temp = this.id.split('_');
+                if (temp[0] === 'reg') {
+                    var region = obj[temp[1]];
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                }
+                $(this).hover(function() { 
+                    if (region.status == 0) {
+                        $(this).css('fill', 'rgba(101, 106, 219, 0.7)');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', 'rgba(31, 179, 140, 0.7)');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', 'rgba(74, 144, 226, 0.7)');
+                    }
+                }, function() {     
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                });
+                $(this)
+                    .mouseenter(function (e) {
+                        $('.popup-candidates').addClass('active');
+                        var temp = e.currentTarget.id.split('_');
+                        if (temp[0] === 'reg') {
+                            var region = obj[temp[1]];
+                            $('.reg_id').html(region.voter_participation + ' %');
+                            $('.reg_title').html(region.title);
+                            $('.reg_desc').html(region.text);
+                        }
+                    })
+                    .mouseleave(function () {
+                        $('.popup-candidates').removeClass('active');
+                    })
+            });
+            // Питер
+            $.each($('#russian_map path#reg_65'), function () {
+                var temp = this.id.split('_');
+                if (temp[0] === 'reg') {
+                    var region = obj[temp[1]];
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                }
+                $(this).hover(function() { 
+                    if (region.status == 0) {
+                        $(this).css('fill', 'rgba(101, 106, 219, 0.7)');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', 'rgba(31, 179, 140, 0.7)');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', 'rgba(74, 144, 226, 0.7)');
+                    }
+                }, function() {     
+                    if (region.status == 0) {
+                        $(this).css('fill', '#6569db');
+                    } else if (region.status == 5) {
+                        $(this).css('fill', '#1fb38c');
+                    } else if (region.status == 9) {
+                        $(this).css('fill', '#4a90e2');
+                    }
+                });
+                $(this)
+                    .mouseenter(function (e) {
+                        $('.popup-candidates').addClass('active');
+                        var temp = e.currentTarget.id.split('_');
+                        if (temp[0] === 'reg') {
+                            var region = obj[temp[1]];
+                            $('.reg_id').html(region.voter_participation + ' %');
+                            $('.reg_title').html(region.title);
+                            $('.reg_desc').html(region.text);
                         }
                     })
                     .mouseleave(function () {
@@ -470,35 +1153,36 @@ $script = "
                     }
                 }
             });
+        });
         }
-            $.each($('#russian_map polygon'), function () {
-                var temp = this.id.split('_');
-                var region_temp = JSON.parse(regionStatusArr);
-                if (temp[0] === 'reg') {
-                    var region = region_temp[temp[1]];
-                    if (region.status == 0) {
-                        $(this).css('fill', '#6569db');
-                    } else if (region.status == 5) {
-                        $(this).css('fill', '#1fb38c');
-                    } else if (region.status == 9) {
-                        $(this).css('fill', '#4a90e2');
-                    }
+        $.each($('#russian_map polygon'), function () {
+            var temp = this.id.split('_');
+            var region_temp = JSON.parse(regionStatusArr);
+            if (temp[0] === 'reg') {
+                var region = region_temp[temp[1]];
+                if (region.status == 0) {
+                    $(this).css('fill', '#6569db');
+                } else if (region.status == 5) {
+                    $(this).css('fill', '#1fb38c');
+                } else if (region.status == 9) {
+                    $(this).css('fill', '#4a90e2');
                 }
-            });
-            $.each($('#russian_map path#reg_25'), function () {
-                var temp = this.id.split('_');
-                var region_temp = JSON.parse(regionStatusArr);
-                if (temp[0] === 'reg') {
-                    var region = region_temp[temp[1]];
-                    if (region.status == 0) {
-                        $(this).css('fill', '#6569db');
-                    } else if (region.status == 5) {
-                        $(this).css('fill', '#1fb38c');
-                    } else if (region.status == 9) {
-                        $(this).css('fill', '#4a90e2');
-                    }
+            }
+        });
+        $.each($('#russian_map path#reg_25'), function () {
+            var temp = this.id.split('_');
+            var region_temp = JSON.parse(regionStatusArr);
+            if (temp[0] === 'reg') {
+                var region = region_temp[temp[1]];
+                if (region.status == 0) {
+                    $(this).css('fill', '#6569db');
+                } else if (region.status == 5) {
+                    $(this).css('fill', '#1fb38c');
+                } else if (region.status == 9) {
+                    $(this).css('fill', '#4a90e2');
                 }
-            });
+            }
+        });
     });
 
 ";
