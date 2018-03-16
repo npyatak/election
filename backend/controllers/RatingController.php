@@ -151,21 +151,23 @@ class RatingController extends CController
                 $models[$key] = $item;
                 $key++;
             }
-            foreach ($additionalIds as $additional_id => $title) {
-                $query = RatingItem::find()->where(['additional_id' => $additional_id]);
-                if($group_id !== null) {
-                    $query->andWhere(['rating_group_id' => $group_id]);
-                } elseif($region_id !== null) {
-                    $query->andWhere(['region_id' => $region_id]);
+            if($group_id != 21) {
+                foreach ($additionalIds as $additional_id => $title) {
+                    $query = RatingItem::find()->where(['additional_id' => $additional_id]);
+                    if($group_id !== null) {
+                        $query->andWhere(['rating_group_id' => $group_id]);
+                    } elseif($region_id !== null) {
+                        $query->andWhere(['region_id' => $region_id]);
+                    }
+                    $item = $query->one();
+                    
+                    if($item === null) {
+                        $item = new RatingItem;
+                        $item->additional_id = $additional_id;
+                    }
+                    $models[$key] = $item;
+                    $key++;
                 }
-                $item = $query->one();
-                
-                if($item === null) {
-                    $item = new RatingItem;
-                    $item->additional_id = $additional_id;
-                }
-                $models[$key] = $item;
-                $key++;
             }
         }
 

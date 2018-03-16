@@ -163,7 +163,8 @@ class SiteController extends Controller
 
         $candidates = Candidate::find()->where(['not', ['id' => $candidate->id]])->orderBy('surname')->all();
 
-        $rating = Rating::findOne(1);
+        $index = Yii::$app->settings->get('mainPage') != Settings::INDEX_ORIGINAL ? 4 : 1;
+        $rating = Rating::findOne($index);
 
         $ratingResults = RatingItem::find()
             ->select(['score', 'candidate_id', 'no_poll'])
@@ -173,7 +174,12 @@ class SiteController extends Controller
             ->groupBy('candidate_id')
             ->orderBy('no_poll, score DESC')
             ->indexBy('candidate_id')
-            ->asArray()->all();
+            ->asArray();
+        if(Yii::$app->settings->get('mainPage') != Settings::INDEX_ORIGINAL) {
+            $ratingResults->andWhere(['rating_group_id' => 21]);
+        }
+        $ratingResults = $ratingResults->all();
+
         $candidatePlace = array_search($candidate->id, array_keys($ratingResults)) + 1;
         if(!isset($ratingResults[$candidate->id]) || $ratingResults[$candidate->id]['no_poll']) {
             $candidatePlace = false;

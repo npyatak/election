@@ -1,17 +1,14 @@
 <?php
-
-/* @var $this \yii\web\View */
-
-/* @var $content string */
-
 use yii\helpers\Url;
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 
 use common\models\Candidate;
+use common\models\Settings;
 
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -82,7 +79,9 @@ AppAsset::register($this);
                             <li><a href="<?=Url::home();?>">Главная</a></li>
                             <li><a href="<?=Url::toRoute(['site/candidates'])?>">Кандидаты</a></li>
                             <li><a href="<?=Url::toRoute(['site/calendar']);?>">Календарь выборов</a></li>
+                            <?php if(Yii::$app->settings->get('mainPage') != Settings::INDEX_ORIGINAL):?>
                             <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li>
+                            <?php endif;?>
                             <li><a href="<?=Url::toRoute(['site/faq']);?>">Что нужно знать</a></li>
                             <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
                             <li><a href="http://tass.ru/vybory-prezidenta-rf-2018" target="_blank">Новости</a></li>
