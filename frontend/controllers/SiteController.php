@@ -243,7 +243,7 @@ class SiteController extends Controller
     }
 
     public function actionRating($group = 1) {
-        $ratings = Rating::find()->all();
+        $ratings = Rating::find()->where(['not', ['id' => 4]])->all();
         $candidates = Candidate::find()->orderBy('surname')->where(['not', ['active' => Candidate::QUIT]])->all();
         $ratingGroups = [];
         $ratingGroupIds = [];

@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\ActiveForm;
+use kartik\datetime\DateTimePicker;
 
 use common\models\Region;
 ?>
@@ -10,11 +11,25 @@ use common\models\Region;
     <?php $form = ActiveForm::begin();?>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-4">
+            <?= $form->field($model, 'timeFormatted')->widget(
+                DateTimePicker::className(), [
+                    'removeButton' => false,
+                    'pluginOptions' => [
+                        // 'startView'=>'year',
+                        //'minViewMode'=>'months',
+                        'format' => 'dd.mm.yyyy hh.ii',
+                        'todayHighlight' => true,
+                        'autoclose' => true
+                    ]
+                ]
+            );?>
         </div>
     </div>
 

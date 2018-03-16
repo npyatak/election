@@ -79,7 +79,7 @@ AppAsset::register($this);
                             <li><a href="<?=Url::home();?>">Главная</a></li>
                             <li><a href="<?=Url::toRoute(['site/candidates'])?>">Кандидаты</a></li>
                             <li><a href="<?=Url::toRoute(['site/calendar']);?>">Календарь выборов</a></li>
-                            <?php if(Yii::$app->settings->get('mainPage') != Settings::INDEX_ORIGINAL):?>
+                            <?php if(Yii::$app->settings->get('mainPage') == Settings::INDEX_ORIGINAL):?>
                             <li><a href="<?=Url::toRoute(['site/rating']);?>">Рейтинги</a></li>
                             <?php endif;?>
                             <li><a href="<?=Url::toRoute(['site/faq']);?>">Что нужно знать</a></li>

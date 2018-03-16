@@ -9,6 +9,8 @@ class Region extends \yii\db\ActiveRecord
     const STATUS_WAITING = 0;
     const STATUS_OPENED = 5;
     const STATUS_CLOSED = 9;
+
+    public $timeFormatted;
     /**
      * @inheritdoc
      */
@@ -23,9 +25,9 @@ class Region extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'timeFormatted'], 'required'],
             [['data'], 'string'],
-            [['status'], 'integer'],
+            [['status', 'time'], 'integer'],
             [['title', 'text'], 'string', 'max' => 255],
             [['voter_participation'], 'number', 'min' => 0, 'max' => 99.9],
         ];
@@ -43,7 +45,19 @@ class Region extends \yii\db\ActiveRecord
             'status' => 'Избирательные участки',
             'voter_participation' => 'Явка',
             'text' => 'Подпись',
+            'timeFormatted' => 'Время открытия',
         ];
+    }
+
+    public function beforeSave($insert) {
+        //print_r($this->timeFormatted);exit;
+        $this->time = \DateTime::createFromFormat('!d.m.Y H.i', $this->timeFormatted)->format('U');
+
+        return parent::beforeSave($insert);
+    }
+
+    public function afterFind() {
+        $this->timeFormatted = date('d.m.Y H.i', $this->time);
     }
 
     /**
@@ -60,5 +74,9 @@ class Region extends \yii\db\ActiveRecord
             self::STATUS_OPENED => 'Открыты',
             self::STATUS_CLOSED => 'Закрыты',
         ];
+    }
+
+    public function getStatusFromTime() {
+
     }
 }

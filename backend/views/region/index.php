@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'id',
                 'title',
                 'voter_participation',
+                'timeFormatted',
                 [
                     'attribute' => 'status',
                     'format' => 'raw',
@@ -43,8 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 [
                     'class' => 'yii\grid\ActionColumn',
+                    'template' => '{rating} {update}',
                     'buttons' => [
-                        'view' => function ($url, $model) {
+                        'rating' => function ($url, $model) {
                             $url = Url::toRoute(['/rating/multiple-input', 'region_id' => $model->id]);
                             return Html::a('<span class="glyphicon glyphicon-list"></span>', $url, [
                                 'title' => 'Рейтинги'
