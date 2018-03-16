@@ -12,6 +12,10 @@
     outline: none;
     background-color: rgba(255, 255, 255, 0.8);
 }
+.right-part__content .news-item {
+    width: auto;
+    margin-bottom: 40px;
+}
 #hidden-menu_cls {
     position: fixed;
     right: 0;
@@ -47,7 +51,7 @@
 }
 .reg_id {
     width: 280px;
-    font-family: 'FiraSans';
+    font-family: 'FiraSans-Medium';
     font-size: 30px;
     font-weight: 500;
     font-style: normal;
@@ -59,7 +63,7 @@
 }
 .reg_title {
     width: 280px;
-    font-family: 'FiraSans';
+    font-family: 'FiraSans-Medium';
     font-size: 20px;
     font-weight: 500;
     font-style: normal;
@@ -71,7 +75,7 @@
 }
 .reg_desc {
     width: 280px;
-    font-family: 'FiraSans';
+    font-family: 'FiraSans-Light';
     font-size: 14px;
     font-weight: 300;
     font-style: normal;
@@ -168,7 +172,13 @@
     padding: 0!important;
 }
 .right-part__content {
-    padding: 40px 0 40px 40px;
+    padding: 40px 0 40px 40px!important;
+}
+.right-part__content .owl-dots {
+    right: 65px!important;
+}
+.right-part__content.news::before {
+    background: none!important;
 }
 .custom-candidates {
     width: calc(100% - 640px)!important;
@@ -192,9 +202,9 @@
     display: inline-block;
 }
 .color-block .text {
-    width: 130px;
+    width: 140px;
     height: 45px;
-    font-family: 'FiraSans';
+    font-family: 'FiraSans-Regular';
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -258,6 +268,7 @@
     width: 100%;
     font-size: 18px;
     color: #1fb38c;
+    border: none;
 }
 .top__oval .oval-inner {
     border-radius: 50%;
@@ -529,6 +540,9 @@
     .hide-mobile {
         display: none;
     }
+    .right-part__content .news-item {
+        width: 150px;
+    }
     .fh-page__header .left-part {
         width: 100%;
         padding-bottom: 20px;
@@ -696,6 +710,9 @@
     .first-items {
         margin-bottom: 40px;
     }
+    .right-part__content .news-item {
+        margin-bottom: 0px;
+    }
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
     #russian_map svg {
@@ -703,6 +720,9 @@
     }
     .active-modal {
         padding: 70px 20px 20px 20px;
+    }
+    .right-part__content {
+        padding: 20px 0 20px 20px!important;
     }
     .map {
         padding: 160px 20px 40px 20px;

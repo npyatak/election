@@ -43,8 +43,8 @@ IndexVoterParticipationAsset::register($this);
     <div class="items first-items">
         <?php foreach($regionStatusArr as $rs):?>
             <?php if(!in_array($rs['id'], [11, 65])):?>
-                <div class="content">
-                    <div class="content__left">
+                <div class="content" data-id="<?=$rs['id'];?>">
+                    <div class="content__left" data-id="<?=$rs['id'];?>">
                         <span><?=$rs['title'];?></span>
                     </div>
                     <div class="content__right">
@@ -325,7 +325,25 @@ IndexVoterParticipationAsset::register($this);
                     </div>
                 </div>
             <?php endif;?>
-            <div class="right-part__content">
+            <div class="news right-part__content hide-desktop">
+                <div><h4 class="title">Новости</h4></div>
+                <div class="news_inner">
+                    <?php if($news):?>
+                        <div id="news-slider" class="owl-carousel">
+                            <?php foreach ($news as $n):?>
+                                <div class="news-item">
+                                    <div class="news-item_date"><?=$n->viewDate;?></div>
+                                    <div class="news-item_title">
+                                        <a href="<?=$n->url;?>" target="_blank"><?=$n->title;?></a>
+                                    </div>
+                                    <a href="http://tass.ru/vybory-prezidenta-rf-2018" class="all-news" target="_blank">Все новости</a>
+                                </div>
+                            <?php endforeach;?>
+                        </div>
+                    <?php endif;?>
+                </div>
+            </div>
+            <div class="right-part__content hide-mobile">
                 <div class="right-part__title">
                     <h2 class="title">
                         Новости
@@ -375,6 +393,38 @@ IndexVoterParticipationAsset::register($this);
 <?php
 $script = "
     $(document).ready(function() {
+        $('#news-slider-yavka').owlCarousel({
+            margin: 0,
+            autoplay: false,
+            nav: false,
+            responsiveClass:true,
+            responsive: {
+                0: {
+                    loop: false,
+                    margin: 0,
+                    items: 1,
+                    autoWidth:true,
+                    dots: true,
+                    mouseDrag: true
+                },
+                768: {
+                    loop: false,
+                    margin: 40,
+                    items: 3,
+                    dots: false,
+                    mouseDrag: false,
+                    touchDrag: false
+                },
+                1199: {
+                    loop: false,
+                    margin: 40,
+                    items: 3,
+                    dots: false,
+                    mouseDrag: false,
+                    touchDrag: false
+                }
+            }
+        });
         var regionStatusArr = '".json_encode($regionStatusArr)."';
         var obj = JSON.parse(regionStatusArr);
         var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -391,6 +441,22 @@ $script = "
             // $('.voters-block').css('padding', '0!important')
             $('#hidden-menu_cls').fadeOut(300);
         });
+        // 58, 80, 85
+        var id_58 = '58';
+        var id_80 = '80';
+        var id_85 = '85';
+        if (width < 767) {
+
+            $('.content__left[data-id=' + id_58 + ']').css('width', '85%');
+            $('.content[data-id=' + id_58 + ']').css('margin-bottom', '15px');
+
+            $('.content__left[data-id=' + id_80 + ']').css('width', '85%');
+            $('.content[data-id=' + id_80 + ']').css('margin-bottom', '15px');
+
+            $('.content__left[data-id=' + id_85 + ']').css('width', '85%');
+            $('.content[data-id=' + id_85 + ']').css('margin-bottom', '15px');
+
+        }
         if (width > 1199) {
             $(document).ready(function() {
 
