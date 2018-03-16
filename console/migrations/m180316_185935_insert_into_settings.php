@@ -2,6 +2,8 @@
 
 use yii\db\Migration;
 
+use common\models\Region;
+
 class m180316_185935_insert_into_settings extends Migration
 {
     public function safeUp()
