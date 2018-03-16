@@ -283,23 +283,37 @@ $(document).ready(function () {
     //   $('[data-scroll-speed]').moveIt();
     // });
 
-    $.each($('.first-results polygon'), function () {
-        var reg = $(this).attr('id');
-        var new_reg = reg.replace(/[^-0-9]/gim,'');
-        $(this)
+    // $.each($('.map-item'), function () {
+    
+    $('.map-item')
             .mouseenter(function (e) {
-                $('.popup-candidates').addClass('active');
-                var region_name = JSON.parse(regionIdsArr)[new_reg];
-                $('.popup-candidates').find('.region').html(region_name);
+                var reg = $(this).attr('data-id');
+                var popup_c = $('.popup-candidates');
+                popup_c.addClass('active');
+                var region_name = JSON.parse(regionIdsArr)[reg];
+                popup_c.find('.region').html(region_name['title']);
+                popup_c.find('.caption').html(region_name['text']);
+
+                var same = $('body').find('.map-item[data-id='+reg+']');
+                $.each(same, function () {
+                    $(this).css({fill:'#1BA07D'});
+                });
                 $.each($('.candidate_id'), function () {
                     var key = $(this).attr('data-id');
-                    $(this).find('.popup-percent').html(JSON.parse(regionResultsArr)[new_reg][key]);
+                    if(JSON.parse(regionResultsArr)[reg]){
+                        $(this).css({display:'block'});
+                        $(this).find('.popup-percent').html(JSON.parse(regionResultsArr)[reg][key]);
+                    }else{
+                        $(this).css({display:'none'});
+                    }
                 });
             })
             .mouseleave(function () {
                 $('.popup-candidates').removeClass('active');
-            })
-    });
+                $('.map-item').css({fill:'#1FB28B'});
+            });
+    // });
+
 
 });
 
