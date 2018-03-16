@@ -342,7 +342,7 @@ use yii\helpers\Url;
 <?php
 $regionIdsArr = [];
 foreach ($regions as $region) {
-    $regionIdsArr[$region['id']] = $region['title'];
+    $regionIdsArr[$region['id']] = ['title' => $region['title'], 'text' => $region['text']];
 }
 
 $script = "
