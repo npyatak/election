@@ -319,7 +319,7 @@ use yii\helpers\Url;
 <div class="popup-candidates">
     <div class="region">Красноярский край</div>
     <?php foreach ($candidates as $c):?>
-        <div class="candidate_id_<?=$c->id;?> clearfix">
+        <div class="candidate_id clearfix" data-id="<?=$c->id;?>">
             <div class="pull-left"><span><?=$c->nameAndSurname;?></span></div>
             <div class="pull-right"><span class="popup-percent">65,3</span>%</div>
         </div>
