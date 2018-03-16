@@ -77,6 +77,12 @@ class Region extends \yii\db\ActiveRecord
     }
 
     public function getStatusFromTime() {
-
+        if(time() < $this->time) {
+            return self::STATUS_WAITING;
+        } elseif(time() > ($this->time + 3600 * 12)) {
+            return self::STATUS_CLOSED;
+        } else {
+            return self::STATUS_OPENED;
+        }
     }
 }

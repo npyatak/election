@@ -28,7 +28,7 @@ IndexVoterParticipationAsset::register($this);
                 <span><?=$regionStatusArr[11]['title'];?></span>
             </div>
             <div class="content__right">
-                <span class="percent"><?=$regionStatusArr[11]['voter_participation'];?></span>
+                <span class="percent"><?=$regionStatusArr[11]['voter_participation'] != 0.0 ? $regionStatusArr[11]['voter_participation'] : '-';?></span>
             </div>
         </div>
         <div class="content">
@@ -36,7 +36,7 @@ IndexVoterParticipationAsset::register($this);
                 <span><?=$regionStatusArr[65]['title'];?></span>
             </div>
             <div class="content__right">
-                <span class="percent"><?=$regionStatusArr[65]['voter_participation'];?></span>
+                <span class="percent"><?=$regionStatusArr[65]['voter_participation'] != 0.0 ? $regionStatusArr[65]['voter_participation'] : '-';?></span>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@ IndexVoterParticipationAsset::register($this);
                         <span><?=$rs['title'];?></span>
                     </div>
                     <div class="content__right">
-                        <span class="percent"><?=$rs['voter_participation'];?></span>
+                        <span class="percent"><?=$rs['voter_participation'] != 0.0 ? $rs['voter_participation'] : '-';?></span>
                     </div>
                 </div>
             <?php endif;?>
