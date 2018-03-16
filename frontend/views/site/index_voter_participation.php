@@ -20,7 +20,7 @@ IndexVoterParticipationAsset::register($this);
         Явка избирателей в регионах
     </h2>
     <h4 class="voters-block__subtitle">
-        По данным от 18 марта, 17:45
+        <?=Yii::$app->settings->get('mainPageVoterParticipationText');?>
     </h4>
     <div class="items first-items">
         <div class="content">
@@ -318,9 +318,9 @@ IndexVoterParticipationAsset::register($this);
                                     <?=Yii::$app->settings->get('mainPageOnlineBlockText');?>
                                 </p>
                             </div>
-                            <button class="online-btn hide-desktop">
+                            <a href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" class="online-btn hide-desktop">
                                 Читать трансляцию
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
