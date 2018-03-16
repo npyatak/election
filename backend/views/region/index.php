@@ -22,9 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'rowOptions'=>function($model){
-                if($model->statusFromTime === Region::STATUS_OPENED) {
+                if($model->status === Region::STATUS_OPENED) {
                     return ['class' => 'success'];
-                } elseif($model->statusFromTime === Region::STATUS_CLOSED) {
+                } elseif($model->status === Region::STATUS_CLOSED) {
                     return ['class' => 'danger'];
                 }
             },
@@ -37,9 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'status',
                     'format' => 'raw',
                     'value' => function($data) {
-                        return $data->getStatusArray()[$data->statusFromTime];
+                        return $data->getStatusArray()[$data->status];
                     },
-                    'filter' => false//Html::activeDropDownList($searchModel, 'statusFromTime', Region::getStatusArray(), ['prompt'=>''])
+                    'filter' => Html::activeDropDownList($searchModel, 'status', Region::getStatusArray(), ['prompt'=>''])
                 ], 
 
                 [
