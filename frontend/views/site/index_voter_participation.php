@@ -25,134 +25,34 @@ IndexVoterParticipationAsset::register($this);
     <div class="items first-items">
         <div class="content">
             <div class="content__left">
-                <span>Москва</span>
+                <span><?=$regionStatusArr[11]['title'];?></span>
             </div>
             <div class="content__right">
-                <span class="percent">56%</span>
+                <span class="percent"><?=$regionStatusArr[11]['voter_participation'];?></span>
             </div>
         </div>
         <div class="content">
             <div class="content__left">
-                <span>Питер</span>
+                <span><?=$regionStatusArr[65]['title'];?></span>
             </div>
             <div class="content__right">
-                <span class="percent">26%</span>
+                <span class="percent"><?=$regionStatusArr[65]['voter_participation'];?></span>
             </div>
         </div>
     </div>
     <div class="items first-items">
-        <div class="content">
-            <div class="content__left">
-                <span>Алтайский край</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">96%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Амерская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">27%</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content__left">
-                <span>Иркутская область</span>
-            </div>
-            <div class="content__right">
-                <span class="percent">87%</span>
-            </div>
-        </div>
+        <?php foreach($regionStatusArr as $rs):?>
+            <?php if(!in_array($rs['id'], [11, 65])):?>
+                <div class="content">
+                    <div class="content__left">
+                        <span><?=$rs['title'];?></span>
+                    </div>
+                    <div class="content__right">
+                        <span class="percent"><?=$rs['voter_participation'];?></span>
+                    </div>
+                </div>
+            <?php endif;?>
+        <?php endforeach;?>
     </div>
 </div>
 <div class="fh-page">
@@ -401,27 +301,30 @@ IndexVoterParticipationAsset::register($this);
             </div>
         </div>
         <div class="news-part online-parent">
-            <div class="bottom__part">
-                <div class="right-part">
-                    <div class="online-block">
-                        <div class="top">
-                            <h1 class="top__title">
-                                Онлайн
-                                <div class="top__oval">
-                                    <div class="oval-inner"></div>
-                                </div>
-                            </h1>
+                <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
+                <div class="bottom__part">
+                    <div class="right-part">
+                        <div class="online-block">
+                            <div class="top">
+                                <h1 class="top__title">
+                                    Онлайн
+                                    <div class="top__oval">
+                                        <div class="oval-inner"></div>
+                                    </div>
+                                </h1>
+                            </div>
+                            <div class="bottom">
+                                <p class="bottom__text">
+                                    <?=Yii::$app->settings->get('mainPageOnlineBlockText');?>
+                                </p>
+                            </div>
+                            <button class="online-btn hide-desktop">
+                                Читать трансляцию
+                            </button>
                         </div>
-                        <div class="bottom">
-                            <p class="bottom__text">
-                            </p>
-                        </div>
-                        <button class="online-btn hide-desktop">
-                            Читать трансляцию
-                        </button>
                     </div>
                 </div>
-            </div>
+            <?php endif;?>
             <div class="right-part__content">
                 <div class="right-part__title">
                     <h2 class="title">

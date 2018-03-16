@@ -28,7 +28,7 @@ use yii\helpers\Url;
                     <div class="container">
                         <div class="candidates-inner">
                             <?php foreach ($candidateResults as $key => $r):?>
-                                <a href="/candidate/ghirinovskii" class="candidates-item">
+                                <a href="<?=$candidates[$r['candidate_id']]->url;?>" class="candidates-item">
                                     <span class="number"><?=$key+1;?></span>
                                     <span class="percent"><?=$r['score'];?>%</span>
                                     <div class="candidates-img">
@@ -91,7 +91,7 @@ use yii\helpers\Url;
     <div class="top__part">
         <div class="container">
             <h3>Предварительные результаты по регионам</h3>
-            <p>По данным ЦИК от 18 марта, 17:45</p>
+            <p><?=Yii::$app->settings->get('mainPageFirstResultsText');?></p>
         </div>
         <div class="map result-map">
             <svg viewbox="0 0 1200 650" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -275,7 +275,7 @@ use yii\helpers\Url;
         <div class="right-info">
             <div class="right-title">
                 <h4>Предварительные результаты по регионам</h4>
-                <p>По данным ЦИК от 18 марта, 17:45</p>
+                <p><?=Yii::$app->settings->get('mainPageFirstResultsText');?></p>
             </div>
             <div class="mobile-rating-cat">
                 <select name="" id="" class="selectpicker">
