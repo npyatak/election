@@ -92,9 +92,14 @@ class SiteController extends Controller
             ]);
         } elseif($mainPageType == Settings::INDEX_FIRST_HOURS) {
             $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
+            $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
+            $news = News::find()->orderBy('date DESC')->limit(3)->all();
 
             return $this->render('index_first_hours', [
                 'cards' => $cards,
+                'candidates' => $candidates,
+                'news' => $news,
+
             ]);
         
         } elseif($mainPageType == Settings::INDEX_VOTER_PARTICIPATION) {
