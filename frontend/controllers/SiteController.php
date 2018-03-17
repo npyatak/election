@@ -138,6 +138,7 @@ class SiteController extends Controller
                 'regionResultsArr' => $regionResultsArr,
             ]);
         } elseif($mainPageType == Settings::INDEX_FINAL_RESULTS) {
+            $cards = Card::find()->where(['show_on_main' => 1])->limit(6)->orderBy(new \yii\db\Expression('rand()'))->all();
             $candidateResults = RatingItem::find()->where(['rating_group_id' => 21])->andWhere(['not', ['candidate_id' => null]])->orderBy('score DESC')->indexBy('candidate_id')->asArray()->all();
             $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
             $regions = Region::find()->indexBy('id')->asArray()->all();
@@ -153,6 +154,7 @@ class SiteController extends Controller
                 'candidateResults' => $candidateResults,
                 'regions' => $regions,
                 'regionResultsArr' => $regionResultsArr,
+                'cards' => $cards,
             ]);
         }
     }
