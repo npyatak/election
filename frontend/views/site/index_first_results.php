@@ -1,7 +1,19 @@
 <?php
 use yii\helpers\Url;
 ?>
-
+<style>
+    .online:hover {
+        background: rgb(41, 154, 118);
+        transition: all ease-in .2s;
+        text-decoration: none!important;
+    }
+    .online:hover .online::before {
+      background: rgb(41, 154, 118)!important;
+    }
+    .online:focus {
+        text-decoration: none!important;
+    }
+</style>
 <div class="first-results">
     <div class="top">
         <div class="container">
@@ -63,7 +75,7 @@ use yii\helpers\Url;
             </div>
             <div class="pull-left">
                 <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
-                    <div class="online">
+                    <a class="online" id="online-block-fr" href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" target="_blank">
                         <h4>Онлайн
                             <span class="top__oval">
                                 <span class="oval-inner"></span>
@@ -73,7 +85,7 @@ use yii\helpers\Url;
                         <div class="more-online">
                             <a href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" class="btn btn-h50 btn-w200 btn-white">Читать трансляцию</a>
                         </div>
-                    </div>
+                    </a>
                 <?php endif;?>
                 <?php if($news):?>
                     <div class="news">

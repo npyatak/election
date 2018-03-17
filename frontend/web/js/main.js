@@ -345,3 +345,14 @@ $('.result-map').mousemove(function(e){
         popup_candidates.css({left: X + 15, right: 'auto', top: Y + 15});
     }
 });
+
+$('#online-block-fr').hover(function() { 
+    console.log('hover');
+}, function() {     
+    console.log('unhover');
+});
+
+
+
+
+
