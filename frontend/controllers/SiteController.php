@@ -138,16 +138,21 @@ class SiteController extends Controller
                 'regionResultsArr' => $regionResultsArr,
             ]);
         } elseif($mainPageType == Settings::INDEX_FINAL_RESULTS) {
-            // $regions = Region::find()->indexBy('id')->asArray()->all();
+            $candidateResults = RatingItem::find()->where(['rating_group_id' => 21])->andWhere(['not', ['candidate_id' => null]])->orderBy('score DESC')->indexBy('candidate_id')->asArray()->all();
+            $candidates = Candidate::find()->orderBy('surname')->indexBy('id')->all();
+            $regions = Region::find()->indexBy('id')->asArray()->all();
             
-            // $regionResults = RatingItem::find()->select(['candidate_id', 'region_id', 'score'])->where(['not', ['region_id' => null]])->andWhere(['not', ['candidate_id' => null]])->asArray()->all();
-            // $regionResultsArr = [];
-            // foreach ($regionResults as $rr) {
-            //     $regionResultsArr[$rr['region_id']][$rr['candidate_id']] = $rr['score'];
-            // }
+            $regionResults = RatingItem::find()->select(['candidate_id', 'region_id', 'score'])->where(['not', ['region_id' => null]])->andWhere(['not', ['candidate_id' => null]])->asArray()->all();
+            $regionResultsArr = [];
+            foreach ($regionResults as $rr) {
+                $regionResultsArr[$rr['region_id']][$rr['candidate_id']] = $rr['score'];
+            }
 
             return $this->render('index_final_results', [
-
+                'candidates' => $candidates,
+                'candidateResults' => $candidateResults,
+                'regions' => $regions,
+                'regionResultsArr' => $regionResultsArr,
             ]);
         }
     }
