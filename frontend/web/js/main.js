@@ -317,7 +317,7 @@ $(document).ready(function () {
             })
             .mouseleave(function () {
                 $('.popup-candidates').removeClass('active');
-                // $('.popup-candidates').find('.candidate_id').remove();
+                $('.popup-candidates').find('.candidate_id').remove();
                 $('.map-item').css({fill:'#1FB28B'});
             });
     
