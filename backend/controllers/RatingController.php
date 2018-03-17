@@ -151,7 +151,7 @@ class RatingController extends CController
                 $models[$key] = $item;
                 $key++;
             }
-            if($group_id != 21) {
+            if($group_id != 21 && !$region_id) {
                 foreach ($additionalIds as $additional_id => $title) {
                     $query = RatingItem::find()->where(['additional_id' => $additional_id]);
                     if($group_id !== null) {
