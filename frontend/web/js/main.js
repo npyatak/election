@@ -299,19 +299,25 @@ $(document).ready(function () {
                     $(this).css({fill:'#1BA07D'});
                 });
 
-                $.each($('.candidate_id'), function () {
-                    var key = $(this).attr('data-id');
-                    if(JSON.parse(regionResultsArr)[reg]){
-                        $(this).css({display:'block'});
-                        $(this).find('.popup-percent').html(JSON.parse(regionResultsArr)[reg][key]);
-                    }else{
-                        $(this).css({display:'none'});
-                    }
-                });
-
+                var oldArr = JSON.parse(regionResultsArr)[reg];
+                var arr = [];
+                for (key in oldArr) { arr.push({key: key, val: oldArr[key]}) }
+                arr.sort(function(a,b) { return b.val-a.val });
+                if(JSON.parse(regionResultsArr)[reg]) {
+                    $.each(arr, function () {
+                        var c_name = $('.can_i_'+this.key).text();
+                        popup_c.find('.candidate_ids').append('<div class="candidate_id clearfix">\n' +
+                            '<div class="pull-left"><span>'+c_name+'</span></div>\n' +
+                            '<div class="pull-right"><span class="popup-percent">' + this.val + '</span>%</div>\n' +
+                            '</div>')
+                    });
+                }else{
+                    popup_c.find('.candidate_ids>div').remove();
+                }
             })
             .mouseleave(function () {
                 $('.popup-candidates').removeClass('active');
+                // $('.popup-candidates').find('.candidate_id').remove();
                 $('.map-item').css({fill:'#1FB28B'});
             });
     
