@@ -217,7 +217,7 @@ use yii\helpers\Url;
 
 
                     <polygon data-id="33" id="reg_33" points="315 70 310 75 310 80 315 80 320 75 320 80 320 85 320 90 320 95 325 100 325 105 325 110 330 115 335 120 340 125 345 125 350 120 355 120 360 115 360 110 360 90 360 75 360 70 360 65 355 60 360 55 360 50 355 50 355 45 350 45 345 40 340 40 330 40 325 45 325 50 320 55 310 55 305 60 310 65 315 70" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item" fill="black"/>
-
+                    <polygon data-id="65" fill="black" points="215 105 215 110 210 115 210 110 215 110 210 105 215 105" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item"/>
                     <polygon data-id="34" id="svg_64" points="415 140 415 135 410 130 405 135 400 135 405 140 410 140 415 140" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item"/>
                     <polygon data-id="3" id="svg_65" fill="black" points="460 155 460 140 460 135 465 130 470 125 475 125 480 120 485 120 490 120 495 115 500 115 500 110 505 115 510 110 515 110 520 110 525 110 530 110 535 110 540 115 550 115 555 115 560 110 560 105 540 105 535 100 530 100 525 95 520 95 515 95 510 95 505 95 500 95 495 100 490 100 490 105 485 105 480 105 475 110 470 110 465 110 460 115 455 115 450 115 445 120 450 125 450 130 445 135 445 140 450 140 450 145 455 150 460 155" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item"/>
                     <polygon data-id="34" id="svg_66" points="460 160 465 160 465 170 460 175 460 170 455 165 460 160" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item"/>
@@ -291,9 +291,10 @@ use yii\helpers\Url;
                 <p><?=Yii::$app->settings->get('mainPageFirstResultsText');?></p>
             </div>
             <div class="mobile-rating-cat">
-                <select name="" id="" class="selectpicker">
+                <select name="" id="regions" class="selectpicker">
+                    <option value="0" disabled selected>Выберите регион</option>
                     <?php foreach ($regions as $region):?>
-                        <option value="<?=$region['id'];?>"><?=$region['title'];?></option>
+                        <option data-tokens="<?=$region['id'];?>"><?=$region['title'];?></option>
                     <?php endforeach;?>
                 </select>
             </div>
@@ -301,7 +302,7 @@ use yii\helpers\Url;
                 <?php foreach ($regionResultsArr as $regionId => $regionResults):?>
                     <ul data-region="<?=$regionId;?>">
                         <?php foreach ($regionResults as $candidate_id => $score):?>
-                        <li>
+                        <li class="candidate_mobile_id" data-id="<?=$candidate_id;?>">
                             <div class="left-li"><?=$candidates[$candidate_id]->surname;?></div>
                             <div class="right-li "><?=$score;?>%</div>
                         </li>
