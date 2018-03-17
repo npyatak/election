@@ -4409,9 +4409,9 @@ a.all-news {
     }
     .first-results .top .pull-left:nth-child(2) .h1,
     .first-results .top .pull-left:nth-child(3) .h1 {
-        width: 70px;
         font-size: 20px;
         line-height: 20px;
+        white-space: nowrap;
     }
     .first-results .results-block .right-title h4 {
         font: 20px 'FiraSans-Bold', sans-serif;
