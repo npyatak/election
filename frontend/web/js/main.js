@@ -321,18 +321,31 @@ $(document).ready(function () {
                 $('.map-item').css({fill:'#1FB28B'});
             });
     
-    $('.mobile-rating-cat li').click(function () {
+    $('.rating_select li').click(function () {
+        $('.mobCandidates_ids>li').remove();
         var mob_reg = $(this).find('a').attr('data-tokens');
 
-        $.each($('.candidate_mobile_id'), function () {
-            var key = $(this).attr('data-id');
-            if(JSON.parse(regionResultsArr)[mob_reg]){
-                $(this).addClass('active');
-                $(this).find('.right_li').html(JSON.parse(regionResultsArr)[mob_reg][key]);
-            }else{
-                $(this).removeClass('active');
-            }
-        });
+        var oldArr = JSON.parse(regionResultsArr)[mob_reg];
+        var arr = [];
+        for (key in oldArr) { arr.push({key: key, val: oldArr[key]}) }
+        arr.sort(function(a,b) { return b.val-a.val });
+
+        for(var i=0;i<arr.length;i++){
+            var el = arr[i];
+            var c_name = $('.can_i_'+el.key).text();
+            $('.mobCandidates_ids').append('<li class="candidate_mobile_id">\n'+
+                '<div class="left-li">'+c_name+'</div>\n'+
+                '<div class="right-li ">'+el.val+'%</div>\n'+
+                '</li>')
+        }
+        // $.each(arr, function () {
+        //     var c_name = $('.can_i_'+this.key).text();
+        //     $('.mobCandidates_ids').append('<li class="candidate_mobile_id">\n'+
+        //         '<div class="left-li">'+c_name+'</div>\n'+
+        //     '<div class="right-li ">'+this.val+'%</div>\n'+
+        //     '</li>')
+        // });
+
     })
     
 

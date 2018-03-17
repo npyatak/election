@@ -365,10 +365,10 @@ use yii\helpers\Url;
     <div class="results-block">
         <div class="right-info">
             <div class="right-title">
-                <h4>Предварительные результаты по регионам</h4>
+                <h4>Результаты голосования по регионам</h4>
                 <p><?=Yii::$app->settings->get('mainPageFinalResultsText');?></p>
             </div>
-            <div class="mobile-rating-cat">
+            <div class="rating_select mobile-rating-cat">
                 <select name="" id="regions" class="selectpicker">
                     <option value="0" disabled selected>Выберите регион</option>
                     <?php foreach ($regions as $region):?>
@@ -377,16 +377,7 @@ use yii\helpers\Url;
                 </select>
             </div>
             <div class="right-content">
-                <?php foreach ($regionResultsArr as $regionId => $regionResults):?>
-                    <ul data-region="<?=$regionId;?>">
-                        <?php foreach ($regionResults as $candidate_id => $score):?>
-                            <li class="candidate_mobile_id" data-id="<?=$candidate_id;?>">
-                                <div class="left-li"><?=$candidates[$candidate_id]->surname;?></div>
-                                <div class="right-li "><?=$score;?>%</div>
-                            </li>
-                        <?php endforeach;?>
-                    </ul>
-                <?php endforeach;?>
+                <ul class="mobCandidates_ids"></ul>
             </div>
         </div>
     </div>
