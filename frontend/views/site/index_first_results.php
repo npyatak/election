@@ -392,7 +392,7 @@ use yii\helpers\Url;
     </div>
     <div class="caption"></div>
 </div>
-<div class="cands">
+<div class="cands" style="display:none">
     <?php foreach ($candidates as $c):?>
         <div class="can_i_<?=$c->id;?>"><?=$c->nameAndSurname;?></div>
     <?php endforeach;?>

@@ -55,7 +55,9 @@ use yii\helpers\Url;
                 <h2>Объявлены окончательные итоги президентских выборов 18 марта 2018 года</h2>
                 <h1>Владимир Путин становится избранным президентом набрав 56% голосов</h1>
                 <a href="javascript:void(0)" class="btn btn-h50 btn-w240 btn-white">Инаугурация 7 мая</a>
-                <div class="president-image"><img src="/images/putin.svg" alt="President name"></div>
+                <div class="president-image">
+                    <img src="/images/putin_.svg" alt="President name">
+                </div>
             </div>
         </div>
     </div>
@@ -413,7 +415,7 @@ use yii\helpers\Url;
     </div>
     <div class="caption"></div>
 </div>
-<div class="cands">
+<div class="cands" style="display:none">
     <?php foreach ($candidates as $c):?>
         <div class="can_i_<?=$c->id;?>"><?=$c->nameAndSurname;?></div>
     <?php endforeach;?>
