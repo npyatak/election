@@ -265,7 +265,7 @@ IndexVoterParticipationAsset::register($this);
                             <?=Yii::$app->settings->get('mainPageVoterParticipationScore');?>
                         </h1>
                         <p class="text__middle">
-                            Общая явка избирателей
+                            <?=Yii::$app->settings->get('mainPageFirstResultsTitle');?>
                         </p>
                         <p class="text__bottom">
                             <?=Yii::$app->settings->get('mainPageVoterParticipationText');?>
