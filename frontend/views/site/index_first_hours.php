@@ -21,8 +21,8 @@ IndexFirstHoursAsset::register($this);
 		</div>
 		<div class="fh-right hide-mobile">
             <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
-    			<div class="online-wrapper">
-    	            <div class="onl-block">
+    			<a href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" target="_blank" class="online-wrapper">
+    	            <div class="onl-block" id="hide-mobile">
     	                <div class="top">
     	                    <h1 class="top__title">
     	                        Онлайн
@@ -36,18 +36,15 @@ IndexFirstHoursAsset::register($this);
     	                    	<?=Yii::$app->settings->get('mainPageOnlineBlockText');?>
     	                    </p>
     	                </div>
-    	                <a href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" class="online-btn hide-desktop">
-    	                    Читать трансляцию
-    	                </a>
     	            </div>
-    	        </div>
+    	        </a>
             <?php endif;?>
 		</div>
 	</div>
     <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
     	<div class="fh-right hide-desktop">
-    		<div class="online-wrapper">
-                <div class="onl-block">
+    		<a class="online-wrapper" id="hide-desktop">
+                <div class="onl-block" id="hide-desktop">
                     <div class="top">
                         <h1 class="top__title">
                             Онлайн
@@ -63,9 +60,9 @@ IndexFirstHoursAsset::register($this);
                     </div>
                     <a href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" class="online-btn hide-desktop">
                         Читать трансляцию
-                    </button>
+                    </a>
                 </div>
-            </div>
+            </a>
     	</div>
     <?php endif;?>
 	<div class="fh-page__middle">

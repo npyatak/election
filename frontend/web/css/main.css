@@ -2504,13 +2504,13 @@ a.all-news {
     font: 20px 'FiraSans-Medium', sans-serif;
     color: #000;
 }
-.popup-candidates>div {
+.popup-candidates>div>div {
     position: relative;
 }
 .popup-candidates>div:not(:last-child) {
     margin-bottom: 20px;
 }
-.popup-candidates>div:not(.region)::before {
+.popup-candidates .candidate_id::before {
     content: '';
     display: block;
     position: absolute;

@@ -299,119 +299,119 @@ $script = "
                     ]
                 }]
             });
-            var left_top_offset = $('#left_top_offset').height() + 150;
-            var left = $('#end');
-            var left_height = left.height();
-            var left_offset = left.offset().top;
+            // var left_top_offset = $('#left_top_offset').height() + 150;
+            // var left = $('#end');
+            // var left_height = left.height();
+            // var left_offset = left.offset().top;
 
-            var right = $('#right_1');
-            var right_height = right.height();
+            // var right = $('#right_1');
+            // var right_height = right.height();
 
-            var right_side_height = 0;
+            // var right_side_height = 0;
 
-            right.children().each(function () {
-                if (!$(this).hasClass('right-sw')) {
-                    right_side_height = right_side_height + $(this).height();
-                }
-            });
-            var lastScrollTop = 0;
-            $(window).scroll(function() {
-                var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-                var pos = $(window).scrollTop();
+            // right.children().each(function () {
+            //     if (!$(this).hasClass('right-sw')) {
+            //         right_side_height = right_side_height + $(this).height();
+            //     }
+            // });
+            // var lastScrollTop = 0;
+            // $(window).scroll(function() {
+            //     var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+            //     var pos = $(window).scrollTop();
 
-                if (width >= 1280) {
+            //     if (width >= 1280) {
 
-                    var top_1 = $('#left_1').offset().top
-                    var h_1 = $('.candidate-statistics').height() + 90
-                    var top_2 = $('#left_2').offset().top
-                    var h_2 = $('.candidate-quotes').height() + 90
-                    if ($('#left_3')) {
-                        var top_3 = $('#left_3').offset().top
-                        var h_3 = $('.candidate-hobbies').height() + 90
-                    }
-                    if ($('#left_4')) {
-                        var top_3 = $('#left_3').offset().top
-                        var h_3 = $('.candidate-hobbies').height() + 90
-                        var top_4 = $('#left_4').offset().top
-                    }
-                    if ($('.candidate-hobbies').length === 0) {
-                        console.log('1');
-                        $('#right_1').css('transition', 'all ease-in .5s');
+            //         var top_1 = $('#left_1').offset().top
+            //         var h_1 = $('.candidate-statistics').height() + 90
+            //         var top_2 = $('#left_2').offset().top
+            //         var h_2 = $('.candidate-quotes').height() + 90
+            //         if ($('#left_3')) {
+            //             var top_3 = $('#left_3').offset().top
+            //             var h_3 = $('.candidate-hobbies').height() + 90
+            //         }
+            //         if ($('#left_4')) {
+            //             var top_3 = $('#left_3').offset().top
+            //             var h_3 = $('.candidate-hobbies').height() + 90
+            //             var top_4 = $('#left_4').offset().top
+            //         }
+            //         if ($('.candidate-hobbies').length === 0) {
+            //             console.log('1');
+            //             $('#right_1').css('transition', 'all ease-in .5s');
 
-                        var end2 = $('.candidate-quotes').offset().top + $('.candidate-quotes').height() + 50
+            //             var end2 = $('.candidate-quotes').offset().top + $('.candidate-quotes').height() + 50
 
-                        var end = $('#candidates').offset().top
-                        if (pos >= top_1 && pos < top_4) {
+            //             var end = $('#candidates').offset().top
+            //             if (pos >= top_1 && pos < top_4) {
 
-                            $('#right_1').css('transition', 'all ease-in .5s');
-                            $('#right_1').css('z-index', '0');
-                            $('#right_1').addClass('stickydiv');
+            //                 $('#right_1').css('transition', 'all ease-in .5s');
+            //                 $('#right_1').css('z-index', '0');
+            //                 $('#right_1').addClass('stickydiv');
 
-                        } else if (pos >= top_1 && pos >= top_4) {
+            //             } else if (pos >= top_1 && pos >= top_4) {
 
-                            $('#right_1').css('z-index', '0');
-                            $('#right_1').css('transform', 'translateY(-' + ( h_1) + 'px)');
+            //                 $('#right_1').css('z-index', '0');
+            //                 $('#right_1').css('transform', 'translateY(-' + ( h_1) + 'px)');
 
-                        } else {
+            //             } else {
 
-                            $('#right_1').css('z-index', '0');
-                            $('#right_1').removeClass('stickydiv');
-                            $('#right_1').css('transform', 'translateY(0px)');
+            //                 $('#right_1').css('z-index', '0');
+            //                 $('#right_1').removeClass('stickydiv');
+            //                 $('#right_1').css('transform', 'translateY(0px)');
 
-                        }
-                        if (end2 >= end) {
+            //             }
+            //             if (end2 >= end) {
 
-                            $('#right_1').css('z-index', '-1');
+            //                 $('#right_1').css('z-index', '-1');
                             
-                        } else $('#right_1').css('z-index', '0');
+            //             } else $('#right_1').css('z-index', '0');
 
 
-                    } else if ($('.candidate-hobbies').length !== 0) {
-                        console.log('2');
+            //         } else if ($('.candidate-hobbies').length !== 0) {
+            //             console.log('2');
 
-                        $('#right_1').css('transition', 'all ease-in .5s');
+            //             $('#right_1').css('transition', 'all ease-in .5s');
 
-                        var end2 = $('.candidate-hobbies').offset().top + $('.candidate-hobbies').height() + 50
+            //             var end2 = $('.candidate-hobbies').offset().top + $('.candidate-hobbies').height() + 50
 
-                        var end = $('#candidates').offset().top
-                        if (pos >= top_1 && pos < top_2 && pos < top_3 && pos < top_4) {
+            //             var end = $('#candidates').offset().top
+            //             if (pos >= top_1 && pos < top_2 && pos < top_3 && pos < top_4) {
 
-                            $('#right_1').css('z-index', '0');
-                            $('#right_1').addClass('stickydiv');
+            //                 $('#right_1').css('z-index', '0');
+            //                 $('#right_1').addClass('stickydiv');
 
-                        } else if (pos >= top_1 && pos >= top_2 && pos < top_3 && pos < top_4) {
+            //             } else if (pos >= top_1 && pos >= top_2 && pos < top_3 && pos < top_4) {
 
-                            $('#right_1').css('z-index', '0');
-                            $('#right_1').css('transform', 'translateY(-' + h_1 + 'px)');
+            //                 $('#right_1').css('z-index', '0');
+            //                 $('#right_1').css('transform', 'translateY(-' + h_1 + 'px)');
 
-                        } else if (pos >= top_1 && pos >= top_2 && pos >= top_3 && pos < top_4) {
+            //             } else if (pos >= top_1 && pos >= top_2 && pos >= top_3 && pos < top_4) {
 
-                            $('#right_1').css('z-index', '0');
-                            $('#right_1').css('transform', 'translateY(-' + (h_1 + h_2) + 'px)');
+            //                 $('#right_1').css('z-index', '0');
+            //                 $('#right_1').css('transform', 'translateY(-' + (h_1 + h_2) + 'px)');
 
-                        } else if (pos >= top_1 && pos >= top_2 && pos >= top_3 && pos >= top_4) {
+            //             } else if (pos >= top_1 && pos >= top_2 && pos >= top_3 && pos >= top_4) {
 
-                            $('#right_1').css('transform', 'translateY(-' + (h_1 + h_2 + h_3) + 'px)');
+            //                 $('#right_1').css('transform', 'translateY(-' + (h_1 + h_2 + h_3) + 'px)');
 
-                        } else {
+            //             } else {
 
-                            $('#right_1').css('z-index', '0');
-                            $('#right_1').removeClass('stickydiv');
-                            $('#right_1').css('transform', 'translateY(0px)');
+            //                 $('#right_1').css('z-index', '0');
+            //                 $('#right_1').removeClass('stickydiv');
+            //                 $('#right_1').css('transform', 'translateY(0px)');
 
-                        }
-                        if (end2 >= end) {
+            //             }
+            //             if (end2 >= end) {
 
-                            $('#right_1').css('z-index', '-1');
+            //                 $('#right_1').css('z-index', '-1');
                             
-                        } else $('#right_1').css('z-index', '0');
+            //             } else $('#right_1').css('z-index', '0');
 
 
-                    }
+            //         }
                     
                    
-                }
-            });
+            //     }
+            // });
     })
 ";
 

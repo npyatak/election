@@ -1,7 +1,52 @@
 <?php
 use yii\helpers\Url;
 ?>
+<style>
+    .online:hover {
+        background: rgb(41, 154, 118);
+        transition: all ease-in .0s;
+        text-decoration: none!important;
+    }
+    .online:hover .online::before {
+      background: rgb(41, 154, 118)!important;
+    }
+    .online:focus {
+        text-decoration: none!important;
+    }
+    .hovered::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        bottom: 0;
+        background-color: rgb(41, 154, 118)!important;;
+        width: 4000px;
+    }
 
+    .first-results .online h4 {
+        margin-bottom: 105px;
+    }
+    @media screen and (min-width: 1200px) {
+        .hide-desktop {
+            display: none!important;
+        }
+        .hide-mobile {
+            display: block!important;
+        }
+    }
+    @media screen and (max-width: 1199px) {
+        .hide-mobile {
+            display: none!important;
+        }
+        .hide-desktop {
+            display: block!important;
+        }
+        .first-results .online h4, .first-results .online p {
+            margin-bottom: 20px;
+        }
+    }
+</style>
 <div class="first-results">
     <div class="top">
         <div class="container">
@@ -63,7 +108,15 @@ use yii\helpers\Url;
             </div>
             <div class="pull-left">
                 <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
-                    <div class="online">
+                    <a class="online hide-mobile" id="online-block-fr" href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" target="_blank">
+                        <h4>Онлайн
+                            <span class="top__oval">
+                                <span class="oval-inner"></span>
+                            </span>
+                        </h4>
+                        <p><?=Yii::$app->settings->get('mainPageOnlineBlockText');?></p>
+                    </a>
+                    <div class="online hide-desktop" id="online-block-fr">
                         <h4>Онлайн
                             <span class="top__oval">
                                 <span class="oval-inner"></span>
@@ -181,7 +234,7 @@ use yii\helpers\Url;
                     <polygon data-id="22" id="reg_22" points="545 515 550 510 550 500 550 495 555 490 550 485 550 475 555 470 560 465 560 460 560 455 560 450 555 450 550 450 545 450 540 445 535 450 530 450 520 450 520 455 520 465 520 470 520 475 520 480 525 485 525 490 530 495 525 500 530 505 530 510 535 515 540 520 545 520 545 515" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item" fill="black"/>
                     <polygon data-id="61" id="reg_61" points="550 485 555 490 550 495 550 500 550 510 545 515 545 520 540 520 535 525 530 525 530 530 535 535 540 530 545 530 550 535 555 530 555 525 560 525 565 520 570 520 570 515 575 510 580 510 575 505 575 500 575 490 575 485 570 480 565 475 560 475 555 470 550 475 550 485" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item" fill="black"/>
                     <polygon data-id="37" id="reg_37" points="520 465 520 455 520 450 515 450 510 455 510 450 510 445 510 440 505 440 500 440 495 440 495 435 490 435 485 430 485 425 480 420 475 415 470 415 465 410 460 410 455 405 455 410 455 415 450 420 445 420 440 425 435 430 435 435 435 440 435 445 435 450 440 450 445 450 440 455 440 460 445 465 445 470 450 465 455 470 460 470 465 470 470 470 475 465 480 465 485 470 485 475 485 480 490 485 495 480 500 480 505 480 510 480 515 475 520 475 520 470 520 465" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item" fill="black"/>
-                    <polygon data-id="42" id="svg_42" points="15 255 15 260 10 260 15 255" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item"/>
+                    <polygon data-id="69" id="svg_42" points="15 255 15 260 10 260 15 255" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item"/>
                     <polygon data-id="54" id="reg_54" fill="black" points="20 245 25 250 30 250 35 245 35 265 30 270 30 275 35 280 35 285 30 285 30 280 25 275 20 275 20 270 15 270 10 265 5 260 10 260 15 260 15 240 20 245" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item"/>
                     <polygon data-id="17" id="reg_17" points="60 375 65 375 70 370 70 365 65 365 55 355 50 360 50 365 50 370 55 375 60 375" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item" fill="black"/>
                     <polygon data-id="21" id="reg_21" points="65 350 60 345 60 340 55 345 50 345 50 340 45 340 40 340 40 345 40 350 45 355 50 360 55 355 60 360 60 355 65 350" class="6b883c06-a672-44ef-a6a2-4ad4f4d3a09e map-item" fill="black"/>
@@ -334,15 +387,16 @@ use yii\helpers\Url;
 </div>
 <div class="popup-candidates">
     <div class="region">Красноярский край</div>
-    <?php foreach ($candidates as $c):?>
-        <div class="candidate_id clearfix" data-id="<?=$c->id;?>">
-            <div class="pull-left"><span><?=$c->nameAndSurname;?></span></div>
-            <div class="pull-right"><span class="popup-percent">65,3</span>%</div>
-        </div>
-    <?php endforeach;?>
+    <div class="candidate_ids">
+        
+    </div>
     <div class="caption"></div>
 </div>
-
+<div class="cands">
+    <?php foreach ($candidates as $c):?>
+        <div class="can_i_<?=$c->id;?>"><?=$c->nameAndSurname;?></div>
+    <?php endforeach;?>
+</div>
 <?php
 $regionIdsArr = [];
 foreach ($regions as $region) {
