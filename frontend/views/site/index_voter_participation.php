@@ -263,7 +263,7 @@ IndexVoterParticipationAsset::register($this);
                             <?=Yii::$app->settings->get('mainPageVoterParticipationScore');?>
                         </h1>
                         <p class="text__middle">
-                            <?=Yii::$app->settings->get('mainPageFirstResultsTitle');?>
+                            <?=Yii::$app->settings->get('mainPageVoterParticipationTitle');?>
                         </p>
                         <p class="text__bottom">
                             <?=Yii::$app->settings->get('mainPageVoterParticipationText');?>
