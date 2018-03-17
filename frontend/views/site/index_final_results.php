@@ -114,30 +114,6 @@ use yii\helpers\Url;
                     <a href="" class="btn btn-h50 btn-w200 btn-white">Показать всех</a>
                 </div>
             </div>
-            <div class="pull-left">
-                <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
-                    <a class="online hide-mobile" id="online-block-fr" href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" target="_blank">
-                        <h4>Онлайн
-                            <span class="top__oval">
-                                <span class="oval-inner"></span>
-                            </span>
-                        </h4>
-                        <p><?=Yii::$app->settings->get('mainPageOnlineBlockText');?></p>
-                    </a>
-                    <div class="online hide-desktop" id="online-block-fr">
-                        <h4>Онлайн
-                            <span class="top__oval">
-                                <span class="oval-inner"></span>
-                            </span>
-                        </h4>
-                        <p><?=Yii::$app->settings->get('mainPageOnlineBlockText');?></p>
-                        <div class="more-online">
-                            <a href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" class="btn btn-h50 btn-w200 btn-white">Читать трансляцию</a>
-                        </div>
-                    </div>
-                <?php endif;?>
-
-            </div>
         </div>
     </div>
     <div class="top__part">
