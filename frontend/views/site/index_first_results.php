@@ -28,9 +28,11 @@ use yii\helpers\Url;
                     <div class="container">
                         <div class="candidates-inner">
                             <?php if(!empty($candidateResults)):?>
+                                <?php $number = 0;?>
                                 <?php foreach ($candidateResults as $key => $r):?>
+                                    <?php $number++;?>
                                     <a href="<?=$candidates[$r['candidate_id']]->url;?>" class="candidates-item">
-                                        <span class="number"><?=$key+1;?></span>
+                                        <span class="number"><?=$number;?></span>
                                         <span class="percent"><?=$r['score'];?>%</span>
                                         <div class="candidates-img">
                                             <img src="<?=$candidates[$r['candidate_id']]->imageUrl;?>" alt="<?=$candidates[$r['candidate_id']]->nameAndSurname;?>">
