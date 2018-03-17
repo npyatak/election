@@ -95,45 +95,6 @@ use yii\helpers\Url;
                                         </div>
                                     </a>
                                 <?php endforeach;?>
-                                <?php foreach ($candidateResults as $key => $r):?>
-                                    <?php $number++;?>
-                                    <a href="<?=$candidates[$r['candidate_id']]->url;?>" class="candidates-item">
-                                        <span class="number"><?=$number;?></span>
-                                        <span class="percent"><?=$r['score'];?>%</span>
-                                        <div class="candidates-img">
-                                            <img src="<?=$candidates[$r['candidate_id']]->imageUrl;?>" alt="<?=$candidates[$r['candidate_id']]->nameAndSurname;?>">
-                                        </div>
-                                        <div class="candidate">
-                                            <h4><?=$candidates[$r['candidate_id']]->nameAndSurname;?></h4>
-                                        </div>
-                                    </a>
-                                <?php endforeach;?>
-                                <?php foreach ($candidateResults as $key => $r):?>
-                                    <?php $number++;?>
-                                    <a href="<?=$candidates[$r['candidate_id']]->url;?>" class="candidates-item">
-                                        <span class="number"><?=$number;?></span>
-                                        <span class="percent"><?=$r['score'];?>%</span>
-                                        <div class="candidates-img">
-                                            <img src="<?=$candidates[$r['candidate_id']]->imageUrl;?>" alt="<?=$candidates[$r['candidate_id']]->nameAndSurname;?>">
-                                        </div>
-                                        <div class="candidate">
-                                            <h4><?=$candidates[$r['candidate_id']]->nameAndSurname;?></h4>
-                                        </div>
-                                    </a>
-                                <?php endforeach;?>
-                                <?php foreach ($candidateResults as $key => $r):?>
-                                    <?php $number++;?>
-                                    <a href="<?=$candidates[$r['candidate_id']]->url;?>" class="candidates-item">
-                                        <span class="number"><?=$number;?></span>
-                                        <span class="percent"><?=$r['score'];?>%</span>
-                                        <div class="candidates-img">
-                                            <img src="<?=$candidates[$r['candidate_id']]->imageUrl;?>" alt="<?=$candidates[$r['candidate_id']]->nameAndSurname;?>">
-                                        </div>
-                                        <div class="candidate">
-                                            <h4><?=$candidates[$r['candidate_id']]->nameAndSurname;?></h4>
-                                        </div>
-                                    </a>
-                                <?php endforeach;?>
                             <?php else:?>
                                 <?php foreach ($candidates as $key => $candidate):?>
                                     <a href="<?=$candidate->url;?>" class="candidates-item">
