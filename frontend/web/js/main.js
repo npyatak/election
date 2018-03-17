@@ -347,9 +347,9 @@ $('.result-map').mousemove(function(e){
 });
 
 $('#online-block-fr').hover(function() { 
-    console.log('hover');
+    $('.first-results .online').addClass('hovered');
 }, function() {     
-    console.log('unhover');
+    $('.first-results .online').removeClass('hovered');
 });
 
 

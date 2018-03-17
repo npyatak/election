@@ -4,7 +4,7 @@ use yii\helpers\Url;
 <style>
     .online:hover {
         background: rgb(41, 154, 118);
-        transition: all ease-in .2s;
+        transition: all ease-in .0s;
         text-decoration: none!important;
     }
     .online:hover .online::before {
@@ -12,6 +12,39 @@ use yii\helpers\Url;
     }
     .online:focus {
         text-decoration: none!important;
+    }
+    .hovered::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        bottom: 0;
+        background-color: rgb(41, 154, 118)!important;;
+        width: 4000px;
+    }
+
+    .first-results .online h4 {
+        margin-bottom: 105px;
+    }
+    @media screen and (min-width: 1200px) {
+        .hide-desktop {
+            display: none!important;
+        }
+        .hide-mobile {
+            display: block!important;
+        }
+    }
+    @media screen and (max-width: 1199px) {
+        .hide-mobile {
+            display: none!important;
+        }
+        .hide-desktop {
+            display: block!important;
+        }
+        .first-results .online h4, .first-results .online p {
+            margin-bottom: 20px;
+        }
     }
 </style>
 <div class="first-results">
@@ -75,7 +108,15 @@ use yii\helpers\Url;
             </div>
             <div class="pull-left">
                 <?php if(Yii::$app->settings->get('mainPageOnlineBlockText') != ''):?>
-                    <a class="online" id="online-block-fr" href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" target="_blank">
+                    <a class="online hide-mobile" id="online-block-fr" href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" target="_blank">
+                        <h4>Онлайн
+                            <span class="top__oval">
+                                <span class="oval-inner"></span>
+                            </span>
+                        </h4>
+                        <p><?=Yii::$app->settings->get('mainPageOnlineBlockText');?></p>
+                    </a>
+                    <div class="online hide-desktop" id="online-block-fr">
                         <h4>Онлайн
                             <span class="top__oval">
                                 <span class="oval-inner"></span>
@@ -85,7 +126,7 @@ use yii\helpers\Url;
                         <div class="more-online">
                             <a href="<?=Yii::$app->settings->get('mainPageOnlineBlockLink');?>" class="btn btn-h50 btn-w200 btn-white">Читать трансляцию</a>
                         </div>
-                    </a>
+                    </div>
                 <?php endif;?>
                 <?php if($news):?>
                     <div class="news">
