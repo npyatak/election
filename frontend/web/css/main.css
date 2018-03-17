@@ -2370,6 +2370,9 @@ a.all-news {
     margin-bottom: 20px;
 }
 .first-results .results-block .right-content li {
+    display: none;
+}
+.first-results .results-block .right-content li.active {
     position: relative;
     display: -webkit-box;
     display: -moz-box;
@@ -2380,7 +2383,7 @@ a.all-news {
     justify-content: space-between;
     z-index: 0;
 }
-.first-results .results-block .right-content li::before {
+.first-results .results-block .right-content li.active::before {
     content: '';
     display: block;
     position: absolute;

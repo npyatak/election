@@ -282,8 +282,7 @@ $(document).ready(function () {
     // $(function(){
     //   $('[data-scroll-speed]').moveIt();
     // });
-
-    // $.each($('.map-item'), function () {
+    
     
     $('.map-item')
             .mouseenter(function (e) {
@@ -315,8 +314,21 @@ $(document).ready(function () {
                 $('.popup-candidates').removeClass('active');
                 $('.map-item').css({fill:'#1FB28B'});
             });
-    // });
+    
+    $('.mobile-rating-cat li').click(function () {
+        var mob_reg = $(this).find('a').attr('data-tokens');
 
+        $.each($('.candidate_mobile_id'), function () {
+            var key = $(this).attr('data-id');
+            if(JSON.parse(regionResultsArr)[mob_reg]){
+                $(this).addClass('active');
+                $(this).find('.right_li').html(JSON.parse(regionResultsArr)[mob_reg][key]);
+            }else{
+                $(this).removeClass('active');
+            }
+        });
+    })
+    
 
 });
 
