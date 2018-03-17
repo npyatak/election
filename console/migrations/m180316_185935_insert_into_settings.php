@@ -16,6 +16,7 @@ class m180316_185935_insert_into_settings extends Migration
 
         $this->batchInsert('{{%settings}}', ['key', 'value', 'title', 'type', 'section'], [
             ['mainPageOnlineBlockLink', 'http://tass.ru', 'Онлайн текст ссылка', 1, 1],
+            ['mainPageFirstResultsTitle', 'Общая явка избирателей', 'Заголовок общая явка', 1, 1],
         ]);
 
         Region::updateAll(['text' => 'Избирательные участки еще не открылись']);
@@ -24,5 +25,6 @@ class m180316_185935_insert_into_settings extends Migration
     public function safeDown()
     {
         $this->delete('{{%settings}}', ['key' => 'mainPageOnlineBlockLink']);
+        $this->delete('{{%settings}}', ['key' => 'mainPageFirstResultsTitle']);
     }
 }
