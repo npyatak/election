@@ -812,7 +812,7 @@ footer .copyright a {
 }
 .candidate-rating {
     position: relative;
-    width: 100%;
+    width: 280px;
     margin-top: 12px;
 }
 .candidate-rating p {
