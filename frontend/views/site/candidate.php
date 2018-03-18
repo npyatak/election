@@ -58,6 +58,13 @@ $this->params['share'] = [
                             <?php if ($candidate->active != Candidate::QUIT && $candidatePlace):?>
                             <div class="candidate-rating">
                                 <p><?=$rating->date;?></p>
+                                <div class="question-icon">
+                                    <i></i>
+                                    <div class="question-popup">
+                                        <p><?=$rating->text;?></p>
+                                        <span class="question-close">Закрыть</span>
+                                    </div>
+                                </div>
                             </div>
                             <?php endif;?>
                         </div>
@@ -87,6 +94,13 @@ $this->params['share'] = [
                     <?php if ($candidate->active != Candidate::QUIT && $candidatePlace):?>
                     <div class="candidate-rating">
                         <p><?=$rating->date;?></p>
+                        <div class="question-icon">
+                            <i></i>
+                            <div class="question-popup">
+                                <p><?=$rating->text;?></p>
+                                <span class="question-close">Закрыть</span>
+                            </div>
+                        </div>
                     </div>
                     <?php endif;?>
                 </div>
