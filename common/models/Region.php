@@ -29,7 +29,7 @@ class Region extends \yii\db\ActiveRecord
             [['data'], 'string'],
             [['status', 'time'], 'integer'],
             [['title', 'text'], 'string', 'max' => 255],
-            [['voter_participation'], 'number', 'min' => 0, 'max' => 99.9],
+            [['voter_participation'], 'number', 'min' => 0, 'max' => 99.99],
         ];
     }
 
