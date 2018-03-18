@@ -13,9 +13,11 @@ class RegionController extends Controller {
 
 	public function actionStatus() {
         $regions = Region::find()->all();
+        $countChanged = 0;
 
         foreach ($regions as $region) {
             if($region->status != $region->statusFromTime) {
+                $countChanged++;
                 $region->status = $region->statusFromTime;
                 if($region->statusFromTime == Region::STATUS_WAITING) {
                     $region->text = 'Избирательные участки еще не открылись';
@@ -26,5 +28,7 @@ class RegionController extends Controller {
                 $region->save(false);
             }
         }
+
+        Yii::info('Regions passed. '.$countChanged.' updated', 'rss');
 	}
 }
