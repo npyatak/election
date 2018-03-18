@@ -58,6 +58,7 @@ class Region extends \yii\db\ActiveRecord
 
     public function afterFind() {
         $this->timeFormatted = date('d.m.Y H.i', $this->time);
+        $this->voter_participation = floatval($this->voter_participation);
     }
 
     /**

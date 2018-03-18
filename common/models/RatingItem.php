@@ -50,6 +50,10 @@ class RatingItem extends \yii\db\ActiveRecord
         ];
     }
 
+    public function afterFind() {
+        $this->score = floatval($this->score);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
