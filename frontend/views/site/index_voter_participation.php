@@ -13,6 +13,59 @@ IndexVoterParticipationAsset::register($this);
     .p-left {
         margin-left: -340px;
     }
+    .voters-block .content {
+        height: auto!important;
+        margin: 0 0 10px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    .content__left {
+        display: inline-block!important;
+        float: none!important;
+        max-width: 79%!important;
+        text-align: left;
+        text-align: -webkit-left
+    }
+    .content__right {
+        text-align: right;
+        text-align: -webkit-right;
+        display: flex;
+        align-items: flex-end;
+        padding-left: 10px;
+    }
+    .content__left span {
+        background: #3e43c8;
+        z-index: 2;
+        display: block;
+        padding-right: 10px;
+    }
+    .content__right .percent {
+        background: #3e43c8;
+        z-index: 2;
+    }
+    .voters-block .content::before {
+        border-top: none!important;
+    }
+    .dotted-line {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        border-top: 2px dotted #fff;
+        z-index: -1;
+    }
+    .dotted-line-special {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        right: 2px;
+        width: 60%;
+        border-top: 2px dotted #fff;
+        z-index: -1;
+    }
 </style>
 <div class="voters-block hide-desktop">
     <a href="http://tass.ru" target="_blank" id="logo"></a>
@@ -27,6 +80,7 @@ IndexVoterParticipationAsset::register($this);
     </h4>
     <div class="items first-items">
         <div class="content">
+            <div class="dotted-line"></div>
             <div class="content__left">
                 <span><?=$regionStatusArr[11]['title'];?></span>
             </div>
@@ -35,6 +89,7 @@ IndexVoterParticipationAsset::register($this);
             </div>
         </div>
         <div class="content">
+            <div class="dotted-line"></div>
             <div class="content__left">
                 <span><?=$regionStatusArr[65]['title'];?></span>
             </div>
@@ -47,8 +102,10 @@ IndexVoterParticipationAsset::register($this);
         <?php foreach($regionStatusArr as $rs):?>
             <?php if(!in_array($rs['id'], [11, 65])):?>
                 <div class="content" data-id="<?=$rs['id'];?>">
+                    <div class="dotted-line"></div>
                     <div class="content__left" data-id="<?=$rs['id'];?>">
                         <span><?=$rs['title'];?></span>
+                        <div class="dotted-line-special"></div>
                     </div>
                     <div class="content__right">
                         <span class="percent"><?=$rs['voter_participation'] != 0 ? $rs['voter_participation'].' %' : '-';?></span>
@@ -464,14 +521,8 @@ $script = "
             // $('.voters-block').css('padding', '0!important')
             $('#hidden-menu_cls').fadeOut(300);
         });
-        // 58, 80, 85
-        var id_58 = '58';
-        var id_80 = '80';
-        var id_85 = '85';
         
-        // const STATUS_WAITING = 0;
-        // const STATUS_OPENED = 5;
-        // const STATUS_CLOSED = 9;
+        
         function chechStatus(_id) {
             return obj[_id].status;
         }
@@ -708,18 +759,32 @@ $script = "
                 }
             }
         });
+
+        
+
         if (width < 1199) {
-
-            $('.content__left[data-id=' + id_58 + ']').css('width', '85%');
-            $('.content[data-id=' + id_58 + ']').css('margin-bottom', '15px');
-
-            $('.content__left[data-id=' + id_80 + ']').css('width', '85%');
-            $('.content[data-id=' + id_80 + ']').css('margin-bottom', '15px');
-
-            $('.content__left[data-id=' + id_85 + ']').css('width', '85%');
-            $('.content[data-id=' + id_85 + ']').css('margin-bottom', '15px');
-
-            
+            // if (width < 767) {
+                // $('.content__left span').each(function() {
+                //     var _length = $(this).html().length;
+                //     if (_length >= 27) {
+                //         var special_line = $(this).siblings('.dotted-line-special');
+                //         if (_length >= 36) {
+                //             special_line.css('width', 'calc(100% - ' + ($(this).width() - 50) + 'px');
+                //         } else if (_length == 28 || _length == 30 || _length == 35) {
+                //             special_line.css('width', '70%');
+                //         } else if (_length == 31) {
+                //             special_line.css('width', '61%');
+                //         } else {
+                //             special_line.css('width', '63%');
+                //         }
+                //         special_line.css('z-index', '1');
+                //     }
+                // });
+                // setTimeout(function() {
+                //     var super_special_id = '85';
+                //     $('.content__left[data-id=' + super_special_id + ']').children('').css('width', '77%');
+                // }, 1000);
+            // }
         } else if (width > 1199) {
 
             $.each($('#russian_map polygon'), function () {
