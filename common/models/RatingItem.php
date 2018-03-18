@@ -22,7 +22,7 @@ class RatingItem extends \yii\db\ActiveRecord
         return [
             [['candidate_id', 'additional_id', 'rating_group_id', 'no_poll', 'region_id'], 'integer'],
             [['score'], 'required'],
-            [['score'], 'number', 'min' => 0, 'max' => 99.9],
+            [['score'], 'number', 'min' => 0, 'max' => 99.99],
             [['candidate_id'], 'exist', 'skipOnError' => true, 'targetClass' => Candidate::className(), 'targetAttribute' => ['candidate_id' => 'id']],
             [['rating_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => RatingGroup::className(), 'targetAttribute' => ['rating_group_id' => 'id']],
             [['rating_group_id',], 'required', 'when' => function($model) {
