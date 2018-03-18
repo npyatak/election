@@ -76,7 +76,7 @@ class Settings extends Component {
      *
      * @return array
      */
-    public function getRawConfig() {
+    /*public function getRawConfig() {
         if ($this->_data === null) {
             $data = Yii::$app->cacheFrontend->get($this->cacheKey);
             
@@ -87,5 +87,8 @@ class Settings extends Component {
             $this->_data = $data;
         }
         return $this->_data;
+    } */
+    public function getRawConfig() {
+        return $this->model->getSettings();
     }
 }
