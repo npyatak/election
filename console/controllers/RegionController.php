@@ -19,11 +19,11 @@ class RegionController extends Controller {
             if($region->status != $region->statusFromTime) {
                 $countChanged++;
                 $region->status = $region->statusFromTime;
-                if($region->statusFromTime == Region::STATUS_WAITING) {
-                    $region->text = 'Избирательные участки еще не открылись';
-                } elseif($region->statusFromTime == Region::STATUS_OPENED && $region->voter_participation == 0.0) {
-                    $region->text = 'Данных еще нет';
-                } 
+                // if($region->statusFromTime == Region::STATUS_WAITING) {
+                //     $region->text = 'Избирательные участки еще не открылись';
+                // } elseif($region->statusFromTime == Region::STATUS_OPENED && $region->voter_participation == 0.0) {
+                //     $region->text = 'Данных еще нет';
+                // } 
 
                 $region->save(false);
             }
