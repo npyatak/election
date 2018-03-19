@@ -9,7 +9,7 @@ class IndexFirstHoursAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/index_first_hours.css',
+        'css/index_first_hours.css?v=190318',
     ];
     public $js = [
     ];

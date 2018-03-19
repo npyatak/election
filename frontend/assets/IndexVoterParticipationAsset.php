@@ -9,7 +9,7 @@ class IndexVoterParticipationAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/index_voter_participation.css',
+        'css/index_voter_participation.css?v=190318',
         'js/tooltip/tooltip-helper.min.css',
     ];
     public $js = [

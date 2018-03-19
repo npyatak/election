@@ -19,15 +19,15 @@ class AppAsset extends AssetBundle
         'css/slick.css',
         'css/slick-theme.css',
         'css/preload.css',
-        'css/core.css?v=060218',
-        'css/main.css?v=060218',
+        'css/core.css?v=190318',
+        'css/main.css?v=190318',
     ];
     public $js = [
         'js/bootstrap.min.js',
         'js/bootstrap-select.js',
         'js/owl.carousel.min.js',
         'js/slick.min.js',
-        'js/main.js?v=060218',
+        'js/main.js?v=190318',
     ];
     public $depends = [
         'yii\web\YiiAsset',

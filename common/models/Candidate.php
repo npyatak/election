@@ -98,7 +98,7 @@ class Candidate extends \yii\db\ActiveRecord
     }
 
     public function getImageUrl() {
-        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl($this->image);
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl($this->image, $_SERVER['REQUEST_SCHEME']);
     }
 
     public function getActiveArray() {
