@@ -51,7 +51,7 @@ $this->params['share'] = [
                                 <?php elseif(!$candidatePlace):?>
                                     <span class="candidate-off">Опрос не проводился</span>
                                 <?php else:?>
-                                    <span class="number"><?=isset($ratingResults[$candidate->id]) ? $ratingResults[$candidate->id]['score'] : '';?>%</span>
+                                    <span class="number"><?=isset($ratingResults[$candidate->id]) ? floatval($ratingResults[$candidate->id]['score']) : '';?>%</span>
                                     <span class="place"><?=$candidatePlace;?> место из <?=count($ratingResults);?></span>
                                 <?php endif;?>
                             </div>
