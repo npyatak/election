@@ -288,4 +288,8 @@ class SiteController extends Controller
             'ratingGroupIds' => $ratingGroupIds,
         ]);
     }
+
+    public function actionInauguration() {
+        return $this->render('inauguration');
+    }
 }
