@@ -56,7 +56,7 @@ use yii\helpers\Url;
             </div>
             <div class="pull-left">
                 <div class="h1"><?=Yii::$app->settings->get('mainPageFirstResultsVotingCardsCount');?></div>
-                <p>бюллетеней обработано</p>
+                <p>протоколов обработано</p>
                 <div class="icon"></div>
             </div>
             <div class="pull-left">
