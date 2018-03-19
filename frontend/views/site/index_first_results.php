@@ -134,7 +134,7 @@ use yii\helpers\Url;
                         <?php foreach ($news as $n):?>
                             <div class="block">
                                 <div class="date"><?=$n->viewDate;?></div>
-                                <a href=""><?=$n->title;?></a>
+                                <a href="<?=$n->url;?>"><?=$n->title;?></a>
                             </div>
                         <?php endforeach;?>
                         <div class="more-news">
@@ -142,15 +142,13 @@ use yii\helpers\Url;
                         </div>
                         <div class="mobile-news">
                             <div id="news-slider" class="owl-carousel">
-                                <?php foreach ($news as $n):?>
                                 <div class="news-item">
                                     <div class="news-item_date"><?=$news[0]->viewDate;?></div>
                                     <div class="news-item_title">
-                                        <a href="" target="_blank"><?=$news[0]->title;?></a>
+                                        <a href="<?=$news[0]->url;?>" target="_blank"><?=$news[0]->title;?></a>
                                     </div>
                                     <a href="http://tass.ru/vybory-prezidenta-rf-2018" class="all-news" target="_blank">Все новости</a>
                                 </div>
-                                <?php endforeach;?>
                             </div>
                         </div>
                     </div>
