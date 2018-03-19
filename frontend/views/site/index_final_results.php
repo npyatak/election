@@ -54,7 +54,7 @@ use yii\helpers\Url;
             <div class="pull-left">
                 <h2><?=Yii::$app->settings->get('mainPageResultsTitle');?></h2>
                 <h1><?=Yii::$app->settings->get('mainPageResultsText');?></h1>
-                <a href="javascript:void(0)" class="btn btn-h50 btn-w240 btn-white"><?=Yii::$app->settings->get('mainPageResultsButtonText');?></a>
+                <!-- <a href="javascript:void(0)" class="btn btn-h50 btn-w240 btn-white"><?=Yii::$app->settings->get('mainPageResultsButtonText');?></a> -->
                 <div class="president-image">
                     <img src="<?=Yii::$app->settings->get('mainPageResultsImage');?>" alt="President name">
                 </div>
