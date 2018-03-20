@@ -87,51 +87,43 @@
 
 <?php 
 $script = "
-    $(document).ready(function() {
-        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-        $(window).on('resize', function() {
-            var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-        });
-        if (width >= 1199) {
-            var leftHeight = $('.header__left').outerHeight(true) + $('.middle').outerHeight(true);
-            var rightHeight = $('.header__right').outerHeight(true) + $('.middle__right').outerHeight(true);
-            var fiveH = $('#five').outerHeight(true);
-            $('#four').css('top', $('#five').offset().top + fiveH + 'px');
+    function checkWidth() {
+        return (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    }
+    function applyStyles() {
+        var leftHeight = $('.header__left').outerHeight(true) + $('.middle').outerHeight(true);
+        var rightHeight = $('.header__right').outerHeight(true) + $('.middle__right').outerHeight(true);
+        var fiveH = $('#five').outerHeight(true) + $('#five').offset().top;
+        var width = checkWidth();
+        var pos = $(window).scrollTop();
+        var speed = (pos) / (leftHeight/rightHeight)  - 80;
 
-            $(window).scroll(function() {
-                var pos = $(window).scrollTop();
-                var top_pos = $('.header__left').outerHeight(true);
-                var widthHeader = $('.header__left').width();
-                var speed = (pos) / (leftHeight/rightHeight);
-                $('.header__right').css({
-                    position: 'fixed',
-                    right: '0',
-                    height: '700px',
-                    transform: 'translateY(-' + (speed) + 'px)'
-                });
-                $('#four').css({
-                    position: 'fixed',
-                    right: '0',
-                    transform: 'translateY(-' + (speed) + 'px)',
-                    height: 'auto'
-                });
-            });
-            
-        } else {
+        $('#four').css('top', fiveH + 'px');
+        if (pos == 0) {
             $('.header__right').css({
-                position: 'relative',
-                right: 'initial',
-                height: (width >= 767) ? '500' : 'initial',
-                transform: 'none'
+                transform: 'translateY(0px)'
             });
             $('#four').css({
-                position: 'relative',
-                right: 'initial',
-                height: 'auto',
-                transform: 'none'
+                transform: 'translateY(0px)'
             });
         }
+        $('.header__right').css({
+            position: (width >= 1199) ? ('fixed') : (width < 1199 && width > 767) ? 'relative' : 'relative',
+            right: (width >= 1199) ? ('0') : (width < 1199 && width > 767) ? 'initial' : 'initial',
+            height: (width >= 1199) ? ('700px') : (width < 1199 && width > 767) ? ('500px') : 'initial',
+            transform: (width >= 1199) ? ('translateY(-' + (speed) + 'px)') : (width < 1199 && width > 767) ? 'none' : 'none'
+        });
+        $('#four').css({
+            position: (width >= 1199) ? ('fixed') : (width < 1199 && width > 767) ? 'relative' : 'relative',
+            top: (width >= 1199) ? ('700px') : (width < 1199 && width > 767) ? 'initial' : 'initial',
+            right: (width >= 1199) ? ('0') : (width < 1199 && width > 767) ? 'initial' : 'initial',
+            height: (width < 1199 && width > 767) ? ('auto') : 'auto',
+            transform: (width >= 1199) ? ('translateY(-' + (speed) + 'px)') : (width < 1199 && width > 767) ? 'none' : 'none'
+        });
+    }
+    $(document).ready(function() {
+        $(window).on('resize', applyStyles);
+        $(window).scroll(applyStyles);
     });
 ";
-
 $this->registerJs($script, yii\web\View::POS_END);?>
