@@ -22,7 +22,7 @@ IndexVoterParticipationAsset::register($this);
     .content__left {
         display: inline-block!important;
         float: none!important;
-        max-width: 79%!important;
+        max-width: 78%!important;
         text-align: left;
         text-align: -webkit-left
     }
