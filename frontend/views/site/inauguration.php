@@ -1,5 +1,18 @@
 <?php \frontend\assets\InaugurationAsset::register($this);?>
-
+<style type="text/css">
+	.inag-page .header__left .text {
+		letter-spacing: normal;
+	}
+	.inag-page .middle__left .title {
+		letter-spacing: normal;
+	}
+	.inag-page .middle .middle__right {
+		z-index: -1;
+	}
+	.header__left .text {
+		padding-right: 10px;
+	}
+</style>
 <div class="inag-page">
     <div class="header">
         <div class="header__left">
