@@ -85,6 +85,7 @@ AppAsset::register($this);
                             <li><a href="<?=Url::toRoute(['site/faq']);?>">Что нужно знать</a></li>
                             <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
                             <li><a href="http://tass.ru/vybory-prezidenta-rf-2018" target="_blank">Новости</a></li>
+                            <li><a href="<?=Url::toRoute(['site/inauguration']);?>">Инаугурация</a></li>
                         </ul>
                     </div>
                 </div>
