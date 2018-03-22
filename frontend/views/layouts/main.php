@@ -136,7 +136,9 @@ AppAsset::register($this);
                                     <a rel="nofollow" href="http://sovhozlenina.ru/" target="_blank">sovhozlenina.ru</a>,
                                     <a rel="nofollow" href="https://wciom.ru/" target="_blank">wciom.ru</a>,
                                     <a rel="nofollow" href="https://www.yabloko.ru/" target="_blank">yabloko.ru</a>,
-                                    <a rel="nofollow" href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>
+                                    <a rel="nofollow" href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>,
+                                    <a rel="nofollow" href="javascript:void(0);">Пресс-служба президента РФ</span>,
+                                    <a rel="nofollow" href="javascript:void(0);">Пресс-служба Президентской библиотеки</span>
                                 </p>
                             </div>
                             <div class="copyright">
