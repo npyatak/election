@@ -137,8 +137,8 @@ AppAsset::register($this);
                                     <a rel="nofollow" href="https://wciom.ru/" target="_blank">wciom.ru</a>,
                                     <a rel="nofollow" href="https://www.yabloko.ru/" target="_blank">yabloko.ru</a>,
                                     <a rel="nofollow" href="https://www.yavlinsky.ru/" target="_blank">yavlinsky.ru</a>,
-                                    <a rel="nofollow" href="javascript:void(0);">Пресс-служба президента РФ</a>,
-                                    <a rel="nofollow" href="javascript:void(0);">Пресс-служба Президентской библиотеки</a>
+                                    Пресс-служба президента РФ, 
+                                    Пресс-служба Президентской библиотеки
                                 </p>
                             </div>
                             <div class="copyright">
