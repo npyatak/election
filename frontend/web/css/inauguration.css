@@ -1,4 +1,3 @@
-
 @media screen and (min-width: 1200px) {
     .hide-desktop {
         display: none;
@@ -71,19 +70,18 @@
 }
 .images__fw-2 {
     position: absolute;
-    right: -40px;
-    top: -60px;
+    right: -90px;
+    top: -100px;
 }
 .images__fw-3 {
     position: absolute;
-    right: -120px;
-    bottom: 120px;
+    right: -190px;
+    bottom: 76px;
 }
 /* middle part */
 .inag-page .middle .middle__left {
     height: 100%;
     width: 50%;
-    /* float: left; */
     display: inline-block;
 }
 .inag-page .middle .middle__left .middle-part {
@@ -136,14 +134,12 @@
     display: block;
     position: absolute;
     left: 0px;
-    top: 25px;
+    top: 15px;
 }
 .inag-page .middle .middle__right {
     height: 100%;
     width: 50%;
     float: right;
-    /* display: inline-block; */
-    /* margin-left: 50%; */
 }
 .middle__right img {
     height: 100%;
@@ -165,17 +161,18 @@
     }
     .images__fw-1 {
         left: 0;
-        top: 40px;
+        top: 100px;
+        width: 84px;
     }
     .images__fw-2 {
         right: 0;
         top: 20px;
-        width: 103px;
+        width: 84px;
     }
     .images__fw-3 {
         right: -60px;
         bottom: 120px;
-        width: 81px;
+        width: 84px;
     }
     .inag-page .middle .middle__left .middle-part {
         padding: 40px!important;
@@ -240,13 +237,3 @@
         padding: 0;
     }
 }
-
-    #one {
-        background: #fff;
-    }
-    #two {
-        background: #2724ad;
-    }
-    #three {
-        background: #fff;
-    }

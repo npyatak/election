@@ -23,7 +23,8 @@
         <div class="header__right" id="five">
             <div class="images">
                 <img class="images__main" src="/images/inauguration/kremlin-inaguracia.svg" alt="Кремль">
-                <img class="images__fw-1" src="/images/inauguration/fireworks-1.svg" alt="Салют-1">
+                <img class="images__fw-1 hide-mobile" src="/images/inauguration/fireworks-1.svg" alt="Салют-1">
+                <img class="images__fw-1 hide-desktop" src="/images/inauguration/fireworks-1-mobile.svg" alt="Салют-1">
                 <img class="images__fw-2" src="/images/inauguration/fireworks-2.svg" alt="Салют-1">
                 <img class="images__fw-3" src="/images/inauguration/fireworks-3.svg" alt="Салют-1">
             </div>
@@ -87,13 +88,14 @@
                     Если в должность президента вступает новое лицо, перед выходом в специальном защищенном помещении Большого Кремлевского дворца ему передают ядерный чемоданчик.
                 </p>
                 <p class="text">
-                    На Соборной площади президент проводит смотр парадного расчета Кремлевского полка. 7 мая — день образования этого полка.присягу, а после этого объявляет о его вступлении в должность.
+                    На Соборной площади президент проводит смотр парадного расчета Кремлевского полка. 7 мая — день образования этого полка.
                 </p>
             </div>
         </div>
         <div class="middle__right hide-mobile" id="four">
-            <img src="/images/inauguration/temp-1.png" alt="Солдаты-1">
-            <img src="/images/inauguration/temp-2.png" alt="Солдаты-2">
+            <img src="/images/inauguration/temp-1.png" alt="Image-1">
+            <img src="/images/inauguration/temp-2.png" alt="Image-2">
+            <img src="/images/inauguration/temp-3.png" alt="Image-2">
         </div>
     </div>
 </div>
@@ -109,7 +111,7 @@ $script = "
         var fiveH = $('#five').outerHeight(true) + $('#five').offset().top;
         var width = checkWidth();
         var pos = $(window).scrollTop();
-        var speed = (pos) / (leftHeight/rightHeight)  - 80;
+        var speed = (pos) / (leftHeight/rightHeight)  - 60;
 
         $('#four').css('top', fiveH + 'px');
         if (pos == 0) {
